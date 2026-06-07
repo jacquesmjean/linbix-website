@@ -113,6 +113,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(26,19,13,.90);backdrop-
 .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:26px 20px}
 .hero-stat .n{font-family:var(--serif);font-size:46px;font-weight:600;color:#fff;line-height:1;letter-spacing:-.02em}
 .hero-stat .n .u{color:var(--gold-2)}
+.hero-stat .n .n-cur{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--gold-2);margin-left:9px;vertical-align:middle;display:inline-block;padding-top:5px}
 .hero-stat .l{font-size:12.5px;color:rgba(255,255,255,.62);margin-top:8px;line-height:1.4}
 .hero-eyebrow{display:flex;align-items:center;gap:10px;color:var(--gold-2)}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(232,86,66,.25);animation:pulse 2s infinite}
@@ -515,7 +516,7 @@ const T = {
     stats: [
       {n:"8", l:{es:"servicios para tu negocio", en:"services for your business", fr:"services pour votre entreprise"}},
       {n:"40", l:{es:"personas en nuestra terraza", en:"capacity on our terrace", fr:"personnes sur notre terrasse"}},
-      {n:"$100", l:{es:"acceso desde, MXN", en:"access from, MXN", fr:"accès dès, MXN"}},
+      {mxn:100, cur:true, l:{es:"acceso desde", en:"access from", fr:"accès dès"}},
       {n:"47", l:{es:"México en facilidad de negocio*", en:"Mexico in ease of business*", fr:"Mexique en facilité d'affaires*"}},
     ],
     cardTitle:{es:"Linbix en números", en:"Linbix by the numbers", fr:"Linbix en chiffres"},
@@ -1140,7 +1141,21 @@ function pageHome(){
         <div class="hero-card reveal d2 in">
           <h3>${tr(h.cardTitle)}</h3>
           <div class="hero-stats">
-            ${h.stats.map(s=>{const m=s.n.match(/^(\D*)(\d+)(.*)$/);const pre=m?m[1]:"";const num=m?m[2]:s.n;const suf=m?m[3]:"";return `<div class="hero-stat"><div class="n"><span class="u">${pre}</span><span class="count" data-to="${num}">0</span><span class="u">${suf}</span></div><div class="l">${tr(s.l)}</div></div>`}).join("")}
+            ${h.stats.map(s=>{
+              let pre, num, code="";
+              if(s.cur && typeof s.mxn==='number'){
+                const c = CURRENCY[CUR];
+                pre  = c.sym;
+                num  = Math.round(s.mxn * c.rate);
+                code = c.code;
+              } else {
+                const m=s.n.match(/^(\D*)(\d+)(.*)$/);
+                pre = m?m[1]:"";
+                num = m?m[2]:s.n;
+                code = m?m[3].trim():"";
+              }
+              return `<div class="hero-stat"><div class="n"><span class="u">${pre}</span><span class="count" data-to="${num}">0</span>${code?`<span class="n-cur">${code}</span>`:""}</div><div class="l">${tr(s.l)}</div></div>`;
+            }).join("")}
           </div>
         </div>
       </div>
