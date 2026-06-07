@@ -254,9 +254,99 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
 .partner-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.6);background:rgba(255,255,255,.05);padding:6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
 .partner-badge b{color:#fff}
 
-/* ---------- WhatsApp float ---------- */
-.wa{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:200;font-size:28px;cursor:pointer;transition:.18s}
-.wa:hover{transform:scale(1.08)}
+/* ---------- Currency note ---------- */
+.fx-note{display:block;font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.02em;font-weight:500;font-family:var(--sans);text-transform:none}
+section.dark .fx-note,.detail-hero .fx-note{color:rgba(255,255,255,.55)}
+.svc-media .price small.fx-note{color:rgba(255,255,255,.7);display:block;font-size:10.5px;margin-top:1px;font-weight:500}
+.chip-fx{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;background:rgba(246,134,59,.12);border:1px solid rgba(246,134,59,.28);color:var(--gold);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+
+/* ---------- Strategic Partners page ---------- */
+.partners-grid{display:grid;gap:32px}
+.partner-card{background:var(--ink);color:#fff;border-radius:24px;padding:48px 44px;position:relative;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
+.partner-card::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 100% 0%,rgba(31,155,224,.18),transparent 55%),radial-gradient(700px 500px at 0% 110%,rgba(246,134,59,.16),transparent 55%);pointer-events:none}
+.partner-card>*{position:relative;z-index:2}
+.partner-card .ph{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+.partner-card .ph-mark{width:60px;height:60px;border-radius:14px;background:linear-gradient(135deg,#1F9BE0,#0F1A2B);display:grid;place-items:center;font-family:var(--serif);color:#fff;font-weight:700;font-size:28px;letter-spacing:-.02em;flex:none;box-shadow:0 8px 20px rgba(31,155,224,.4)}
+.partner-card .ph-name{font-family:var(--serif);font-size:34px;font-weight:600;letter-spacing:-.02em;color:#fff;display:block;line-height:1}
+.partner-card .ph-city{font-family:var(--sans);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px;display:block;font-weight:700}
+.partner-card p.tag{font-size:17px;color:rgba(255,255,255,.82);max-width:48em;margin-bottom:28px;line-height:1.55}
+.partner-card .what-h{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:16px;font-weight:700}
+.partner-card ul.what{list-style:none;margin-bottom:26px}
+.partner-card ul.what li{display:flex;gap:14px;padding:11px 0;font-size:15px;color:rgba(255,255,255,.86);line-height:1.55;border-bottom:1px solid rgba(255,255,255,.06)}
+.partner-card ul.what li:last-child{border:none}
+.partner-card ul.what li::before{content:"→";color:var(--gold-2);font-weight:700;flex:none}
+.partner-card .recog{font-style:italic;color:rgba(255,255,255,.78);padding:16px 20px;border-left:3px solid var(--gold);margin:14px 0 26px;font-size:15px;background:rgba(255,255,255,.04);border-radius:8px;line-height:1.55}
+.partner-card .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- Chat trigger button ---------- */
+.chat-trigger{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;align-items:center;gap:11px;padding:14px 22px 14px 18px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--ink);border:none;cursor:pointer;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:-.005em;box-shadow:0 14px 36px rgba(246,134,59,.4),0 2px 6px rgba(0,0,0,.18);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s;animation:btnFloat 3s ease-in-out infinite}
+.chat-trigger:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 44px rgba(246,134,59,.5),0 3px 10px rgba(0,0,0,.2);animation-play-state:paused}
+.chat-trigger .ic{width:30px;height:30px;border-radius:50%;background:rgba(26,19,13,.14);display:grid;place-items:center;flex:none}
+.chat-trigger .ic svg{width:17px;height:17px;display:block}
+.chat-trigger .badge{position:absolute;top:-3px;right:-3px;width:14px;height:14px;border-radius:50%;background:#28c840;border:2px solid var(--paper);box-shadow:0 0 0 0 rgba(40,200,64,.5);animation:pulse 2s infinite}
+.chat-trigger[hidden]{display:none}
+@keyframes btnFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+/* ---------- Chat panel ---------- */
+.chat-panel{position:fixed;bottom:24px;right:24px;z-index:201;width:386px;max-width:calc(100vw - 32px);height:620px;max-height:calc(100vh - 48px);background:var(--paper);border-radius:24px;box-shadow:0 30px 90px rgba(26,19,13,.32),0 4px 12px rgba(0,0,0,.14);display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);transform:translateY(28px) scale(.95);opacity:0;pointer-events:none;transition:opacity .28s cubic-bezier(.2,.8,.2,1),transform .28s cubic-bezier(.2,.8,.2,1)}
+.chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+.chat-head{padding:20px 22px 18px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.chat-head::after{content:"";position:absolute;inset:0;background:radial-gradient(420px 220px at 100% 0%,rgba(246,134,59,.3),transparent 60%),radial-gradient(360px 180px at 0% 100%,rgba(232,86,66,.18),transparent 60%);pointer-events:none}
+.chat-head>*{position:relative;z-index:2}
+.chat-head .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold-2),var(--gold));display:grid;place-items:center;font-family:var(--serif);font-weight:700;color:var(--ink);font-size:20px;flex:none;box-shadow:0 4px 12px rgba(246,134,59,.4)}
+.chat-head .ti{flex:1;min-width:0}
+.chat-head h4{font-family:var(--serif);font-size:17px;font-weight:600;color:#fff;letter-spacing:-.01em;margin:0;line-height:1.2}
+.chat-head .sub{font-size:11.5px;color:rgba(255,255,255,.72);display:flex;align-items:center;gap:7px;margin-top:3px}
+.chat-head .sub .dot{width:7px;height:7px;border-radius:50%;background:#28c840;box-shadow:0 0 0 3px rgba(40,200,64,.22);animation:pulse 2s infinite}
+.chat-close{background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.85);font-size:20px;cursor:pointer;width:32px;height:32px;border-radius:8px;transition:.16s;line-height:1;display:grid;place-items:center}
+.chat-close:hover{color:#fff;background:rgba(255,255,255,.18)}
+.chat-body{flex:1;overflow-y:auto;padding:18px 18px 12px;display:flex;flex-direction:column;gap:10px;background:var(--paper);scroll-behavior:smooth}
+.chat-body::-webkit-scrollbar{width:6px}
+.chat-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:3px}
+.chat-msg{display:flex;gap:9px;max-width:90%;animation:msgIn .32s cubic-bezier(.2,.8,.2,1)}
+.chat-msg.bot{align-self:flex-start}
+.chat-msg.user{align-self:flex-end;flex-direction:row-reverse}
+.chat-msg .bub{padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5;letter-spacing:.005em}
+.chat-msg.bot .bub{background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:5px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.chat-msg.user .bub{background:var(--ink);color:#fff;border-bottom-right-radius:5px}
+.chat-msg .av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:13px;flex:none}
+.chat-msg.bot .av{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--ink)}
+.chat-msg.user .av{background:var(--ink-2);color:#fff;font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.chat-typing{display:flex;gap:5px;align-items:center;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;width:fit-content;margin-left:37px;animation:msgIn .25s}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:typingBounce 1.2s infinite}
+.chat-typing span:nth-child(2){animation-delay:.15s}
+.chat-typing span:nth-child(3){animation-delay:.3s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.chat-quick{display:flex;flex-wrap:wrap;gap:8px;padding:4px 4px 6px;margin-left:37px;animation:msgIn .35s}
+.chat-quick button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;transition:.18s}
+.chat-quick button:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px);box-shadow:0 6px 14px rgba(246,134,59,.3)}
+.chat-reco{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-left:37px;box-shadow:var(--shadow-sm);animation:msgIn .35s}
+.chat-reco .rtop{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.chat-reco .ico{width:44px;height:44px;border-radius:11px;background:var(--paper-2);display:grid;place-items:center;font-size:22px;flex:none}
+.chat-reco .ri{flex:1;min-width:0}
+.chat-reco .rn{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);line-height:1.2}
+.chat-reco .rp{font-size:12.5px;color:var(--gold);font-weight:700;margin-top:4px;letter-spacing:.02em}
+.chat-reco .rd{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.chat-reco .rcta{display:flex;gap:8px;flex-wrap:wrap}
+.chat-reco .rcta button{flex:1;min-width:120px;padding:10px;border:none;border-radius:10px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;transition:.16s}
+.chat-reco .rcta .primary{background:var(--ink);color:#fff}
+.chat-reco .rcta .primary:hover{background:var(--gold);color:var(--ink)}
+.chat-reco .rcta .ghost{background:var(--paper-2);color:var(--ink);border:1px solid var(--line)}
+.chat-reco .rcta .ghost:hover{background:#fff;border-color:var(--ink)}
+.chat-form{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;margin-left:37px;box-shadow:var(--shadow-sm);animation:msgIn .35s}
+.chat-form label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:-4px}
+.chat-form input,.chat-form select{font-family:var(--sans);font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--paper);width:100%;transition:.15s;color:var(--ink)}
+.chat-form input:focus,.chat-form select:focus{outline:none;border-color:var(--gold);background:#fff}
+.chat-form button.submit{padding:11px;background:var(--ink);color:#fff;border:none;border-radius:9px;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;transition:.18s;margin-top:4px;letter-spacing:.01em}
+.chat-form button.submit:hover{background:var(--gold);color:var(--ink)}
+.chat-foot{padding:10px 16px 12px;border-top:1px solid var(--line);background:var(--paper-2);font-size:10.5px;color:var(--muted);text-align:center;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.chat-foot b{color:var(--ink)}
+@media(max-width:520px){
+  .chat-panel{bottom:0;right:0;left:0;width:100%;max-width:100%;height:100vh;max-height:100vh;border-radius:0}
+  .chat-trigger{bottom:16px;right:16px;padding:12px 18px 12px 14px;font-size:13.5px}
+  .chat-trigger .ic{width:26px;height:26px}
+}
 
 /* ---------- Responsive ---------- */
 @media(max-width:920px){
@@ -339,7 +429,26 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
   </div>
 </footer>
 
-<div class="wa" title="WhatsApp" onclick="alert(waMsg())">🟢</div>
+<!-- Desktop assistant trigger -->
+<button class="chat-trigger" id="chatTrigger" onclick="chatOpen()" aria-label="Habla con Linbix">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+  <span id="chatTriggerLabel">Habla con Linbix</span>
+  <span class="badge"></span>
+</button>
+
+<!-- Chat panel (populated by app.js) -->
+<div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Linbix Assistant">
+  <div class="chat-head">
+    <div class="avatar">L</div>
+    <div class="ti">
+      <h4 id="chatTitle">Habla con Linbix</h4>
+      <div class="sub"><span class="dot"></span><span id="chatSub">Te respondemos en segundos</span></div>
+    </div>
+    <button class="chat-close" onclick="chatClose()" aria-label="Cerrar">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-foot"><b>Linbix</b> · <span id="chatFootRight">Asistente Conversacional</span></div>
+</div>
 
 <script>
 /* ============================================================
@@ -383,6 +492,16 @@ const T = {
     viewConsole:  {es:"Ver la consola →", en:"View the console →", fr:"Voir la console →"},
     perHour:      {es:"/ hora", en:"/ hour", fr:"/ heure"},
     ivaNote:      {es:"+ IVA", en:"+ VAT", fr:"+ TVA"},
+    fromPrefix:   {es:"Desde", en:"From", fr:"Dès"},
+    mxnBaseNote:  {es:"Precio base", en:"Base price", fr:"Prix de base"},
+  },
+
+  /* ---- CURRENCY ---- */
+  currency: {
+    note:{es:"Mostrando precios en", en:"Showing prices in", fr:"Prix affichés en"},
+    label:{MXN:{es:"Pesos mexicanos", en:"Mexican Pesos", fr:"Pesos mexicains"},
+           USD:{es:"Dólares EE.UU.", en:"US Dollars", fr:"Dollars US"},
+           EUR:{es:"Euros", en:"Euros", fr:"Euros"}},
   },
 
   /* ---- HERO ---- */
@@ -543,7 +662,157 @@ const T = {
     addr:"Morelos 1520, Col. Americana, 44160 Guadalajara, Jalisco, México",
     phone:"+52 (33) 1031-0155",
   },
+
+  /* ---- STRATEGIC PARTNERS — mirrors techfides.com/partners/strategic ---- */
+  partners:{
+    eyebrow:{es:"Socios Estratégicos", en:"Strategic Partners", fr:"Partenaires Stratégiques"},
+    h1:{es:"Presencia local. Experiencia real.", en:"Local presence. Real expertise.", fr:"Présence locale. Expertise réelle."},
+    lead:{
+      es:"Trabajamos con un grupo reducido de socios de alianza que comparten nuestros estándares — empresas con presencia real en su mercado, con redes reales y compromiso real. Sin intermediarios, sin reventa, sin etiquetas blancas.",
+      en:"We work with a small set of alliance partners who share our standards — companies on the ground in their market, with real networks and real skin in the game. No middlemen, no resellers, no white-label badges.",
+      fr:"Nous travaillons avec un groupe restreint de partenaires d'alliance qui partagent nos standards — des entreprises présentes sur leur marché, avec de vrais réseaux et un véritable engagement. Pas d'intermédiaires, ni de revente, ni de label blanc.",
+    },
+    reciprocal:{
+      es:"Cada socio aquí es recíproco — ellos nos listan en su sitio, nosotros los listamos en el nuestro, y la relación tiene una forma comercial real.",
+      en:"Every partner here is reciprocal — they list us on their site, we list them on ours, and the relationship has a real commercial shape.",
+      fr:"Chaque partenaire ici est réciproque — ils nous listent sur leur site, nous les listons sur le nôtre, et la relation a une forme commerciale réelle.",
+    },
+    tf:{
+      name:"TechFides",
+      city:{es:"Frisco, Texas · EE. UU.", en:"Frisco, Texas · USA", fr:"Frisco, Texas · États-Unis"},
+      tagline:{
+        es:"Plataforma de IA privada empresarial. Hardware que ellos instalan, suscripción mensual, datos que nunca salen del edificio del cliente.",
+        en:"Enterprise private AI platform. Hardware they install on-site, monthly subscription, data that never leaves the client's building.",
+        fr:"Plateforme d'IA privée pour entreprise. Matériel installé chez le client, abonnement mensuel, données qui ne quittent jamais le bâtiment.",
+      },
+      whatHeader:{es:"Qué ofrece esta alianza", en:"What the partnership delivers", fr:"Ce que le partenariat apporte"},
+      whatList:{
+        es:[
+          "Los miembros de Linbix exploran IA con una ruta directa a infraestructura privada y on-premise que mantiene los datos dentro de México.",
+          "Empresas de EE. UU. y Texas que estudian entrar al mercado mexicano llegan a Linbix vía TechFides — listas para operar desde el primer día.",
+          "Asesoría tecnológica cross-border para empresas mexicanas que expanden a Estados Unidos y para clientes anglófonos que se establecen en Guadalajara.",
+          "Eventos, talleres y demostraciones de IA conjuntos en nuestro espacio de la Colonia Americana.",
+        ],
+        en:[
+          "Linbix members exploring AI get a direct path to private, on-premise infrastructure that keeps their data in-country.",
+          "U.S. and Texas companies evaluating Mexican market entry are introduced to Linbix via TechFides — ready to operate from day one.",
+          "Cross-border tech advisory for Mexican companies expanding into the U.S. and for anglophone clients setting up in Guadalajara.",
+          "Joint events, workshops, and AI demonstrations hosted in our Colonia Americana space.",
+        ],
+        fr:[
+          "Les membres Linbix qui explorent l'IA accèdent directement à une infrastructure privée et sur site qui garde leurs données au Mexique.",
+          "Les entreprises américaines et texanes qui évaluent l'entrée au marché mexicain sont présentées à Linbix par TechFides — prêtes à opérer dès le premier jour.",
+          "Conseil technologique transfrontalier pour les entreprises mexicaines qui s'étendent aux États-Unis et pour les clients anglophones qui s'établissent à Guadalajara.",
+          "Événements, ateliers et démonstrations d'IA conjoints dans notre espace de la Colonia Americana.",
+        ],
+      },
+      recognize:{
+        es:"TechFides reconoce a Linbix como su presencia estratégica en Guadalajara, México.",
+        en:"TechFides recognizes Linbix as its strategic presence in Guadalajara, México.",
+        fr:"TechFides reconnaît Linbix comme sa présence stratégique à Guadalajara, México.",
+      },
+      cta:{es:"Visitar TechFides", en:"Visit TechFides", fr:"Visiter TechFides"},
+      ctaSecondary:{es:"Hablar con Linbix sobre TechFides", en:"Talk to Linbix about TechFides", fr:"Parler à Linbix de TechFides"},
+    },
+  },
+
+  /* ---- DESKTOP AGENT — chatbot trilingual content ---- */
+  bot:{
+    trigger:{es:"Habla con Linbix", en:"Talk to Linbix", fr:"Parle avec Linbix"},
+    title:{es:"Habla con Linbix", en:"Talk to Linbix", fr:"Parle avec Linbix"},
+    subtitle:{es:"Te respondemos en segundos", en:"We reply in seconds", fr:"Nous répondons en quelques secondes"},
+    greeting:{
+      es:"Hola — soy el asistente de Linbix. Te ayudo a encontrar el espacio correcto o resolver una duda. ¿Qué te trae por aquí?",
+      en:"Hi — I'm the Linbix assistant. I'll help you find the right space or answer any question. What brings you here?",
+      fr:"Bonjour — je suis l'assistant Linbix. Je vous aide à trouver le bon espace ou à répondre à votre question. Qu'est-ce qui vous amène ?",
+    },
+    quickReplies:[
+      {key:"office", label:{es:"Necesito una oficina", en:"I need an office", fr:"J'ai besoin d'un bureau"}},
+      {key:"room",   label:{es:"Reservar sala o terraza", en:"Book a room or terrace", fr:"Réserver salle ou terrasse"}},
+      {key:"intl",   label:{es:"Hacer negocios en MX", en:"Do business in MX", fr:"Faire des affaires au Mexique"}},
+      {key:"ask",    label:{es:"Tengo una pregunta", en:"I have a question", fr:"J'ai une question"}},
+    ],
+    flows:{
+      office:{
+        q:{es:"Perfecto. ¿Cómo trabajas?", en:"Got it. How do you work?", fr:"Parfait. Comment travaillez-vous ?"},
+        opts:[
+          {key:"solo",     suggest:"coworking",         label:{es:"Solo o freelance",      en:"Solo or freelance",    fr:"Seul ou freelance"}},
+          {key:"team",     suggest:"executive-office",  label:{es:"Con un equipo pequeño", en:"With a small team",    fr:"Avec une petite équipe"}},
+          {key:"address",  suggest:"oficina-virtual",   label:{es:"Solo necesito un domicilio", en:"Just need an address", fr:"Juste une adresse"}},
+          {key:"flex",     suggest:"business-card",     label:{es:"Quiero algo flexible y prepagado", en:"Want something flexible and prepaid", fr:"Quelque chose de flexible et prépayé"}},
+        ],
+      },
+      room:{
+        q:{es:"Claro. ¿Cuántas personas y qué tipo de evento?", en:"Sure. How many people and what kind of event?", fr:"Bien. Combien de personnes et quel type d'événement ?"},
+        opts:[
+          {key:"meeting", suggest:"sala-de-juntas", label:{es:"Junta hasta 8 personas",   en:"Meeting up to 8 people",   fr:"Réunion jusqu'à 8 personnes"}},
+          {key:"event",   suggest:"terraza",        label:{es:"Evento de hasta 40",       en:"Event up to 40 people",    fr:"Événement jusqu'à 40 personnes"}},
+        ],
+      },
+      intl:{
+        q:{es:"Vamos. ¿En qué etapa estás?", en:"Let's go. What stage are you at?", fr:"Allons-y. À quel stade en êtes-vous ?"},
+        opts:[
+          {key:"explore", suggest:"hacer-negocios", label:{es:"Explorando el mercado mexicano",   en:"Exploring the Mexican market",  fr:"J'explore le marché mexicain"}},
+          {key:"setup",   suggest:"hacer-negocios", label:{es:"Listo para establecer operación",  en:"Ready to set up operations",     fr:"Prêt à établir des opérations"}},
+          {key:"has",     suggest:"oficina-virtual", label:{es:"Ya tengo empresa, busco oficina",  en:"Have a company, need an office", fr:"J'ai une société, je cherche un bureau"}},
+        ],
+      },
+      ask:{
+        q:{es:"Por supuesto, ¿qué quieres saber?", en:"Of course — what would you like to know?", fr:"Bien sûr — que voulez-vous savoir ?"},
+        opts:[
+          {key:"price",    label:{es:"Precios y tarifas",        en:"Prices and rates",       fr:"Prix et tarifs"}},
+          {key:"hours",    label:{es:"Horarios",                 en:"Hours",                  fr:"Horaires"}},
+          {key:"location", label:{es:"¿Dónde están ubicados?",   en:"Where are you located?", fr:"Où êtes-vous situés ?"}},
+          {key:"contract", label:{es:"¿Hay contrato forzoso?",   en:"Is there a fixed contract?", fr:"Y a-t-il un contrat obligatoire ?"}},
+          {key:"human",    label:{es:"Hablar con una persona",   en:"Speak to a human",       fr:"Parler à une personne"}},
+        ],
+        answers:{
+          price:{es:"Nuestros servicios van desde $100 MXN (Linbix Business Card prepagada) hasta oficinas ejecutivas y paquetes integrales de Hacer Negocios en México. Te puedo recomendar el que mejor te convenga.",
+                 en:"Our services range from $100 MXN (prepaid Linbix Business Card) up to executive offices and full Do-Business-in-Mexico packages. I can recommend the right fit for you.",
+                 fr:"Nos services vont de 100 $ MXN (carte prépayée Linbix Business Card) jusqu'aux bureaux exécutifs et aux forfaits complets Faire affaires au Mexique. Je peux vous recommander celui qui vous convient."},
+          hours:{es:"Estamos abiertos de lunes a viernes, de 9:00 a 19:00. Las oficinas ejecutivas abren desde las 8:30.",
+                 en:"We're open Monday to Friday, 9:00 to 19:00. Executive offices open from 8:30.",
+                 fr:"Nous sommes ouverts du lundi au vendredi, de 9h00 à 19h00. Les bureaux exécutifs ouvrent dès 8h30."},
+          location:{es:"Estamos en Morelos 1520, Col. Americana, 44160 Guadalajara — en el corazón de Chapultepec.",
+                 en:"We're at Morelos 1520, Col. Americana, 44160 Guadalajara — in the heart of Chapultepec.",
+                 fr:"Nous sommes à Morelos 1520, Col. Americana, 44160 Guadalajara — au cœur de Chapultepec."},
+          contract:{es:"Coworking y Linbix Business Card no requieren contrato forzoso. Oficina Virtual, Executive Office y Domicilio Comercial son por un mínimo de 6 meses.",
+                 en:"Co-working and the Linbix Business Card require no fixed contract. Virtual Office, Executive Office, and Commercial Address run a 6-month minimum.",
+                 fr:"Le coworking et la Linbix Business Card ne nécessitent aucun contrat. Le bureau virtuel, le bureau exécutif et l'adresse commerciale sont sur un minimum de 6 mois."},
+          human:{es:"Claro. Déjame tus datos y un asesor te contacta hoy mismo.",
+                 en:"Of course. Leave me your details and an advisor will reach out today.",
+                 fr:"Bien sûr. Laissez-moi vos coordonnées et un conseiller vous contactera aujourd'hui."},
+        },
+      },
+    },
+    recommendIntro:{es:"Te recomiendo:", en:"I recommend:", fr:"Je vous recommande :"},
+    bookCTA:{es:"Reservar este servicio", en:"Book this service", fr:"Réserver ce service"},
+    askHuman:{es:"Hablar con un asesor", en:"Talk to an advisor", fr:"Parler à un conseiller"},
+    bookForm:{
+      intro:{es:"Necesito unos datos para preparar tu cita:", en:"I need a few details to set up your appointment:", fr:"J'ai besoin de quelques informations pour préparer votre rendez-vous :"},
+      submit:{es:"Confirmar", en:"Confirm", fr:"Confirmer"},
+    },
+    confirmed:{
+      title:{es:"¡Listo, está confirmado!", en:"Done — it's confirmed!", fr:"C'est confirmé !"},
+      body:{es:"Tu solicitud entró a nuestra automatización. Un asesor te contactará por WhatsApp en minutos.", en:"Your request just entered our automation. An advisor will contact you on WhatsApp shortly.", fr:"Votre demande est entrée dans notre automatisation. Un conseiller vous contactera sur WhatsApp dans quelques minutes."},
+      console:{es:"Ver la consola en vivo →", en:"View the live console →", fr:"Voir la console en direct →"},
+      again:{es:"Hacer otra consulta", en:"Ask something else", fr:"Poser une autre question"},
+    },
+    typing:{es:"Escribiendo…", en:"Typing…", fr:"En train d'écrire…"},
+    restart:{es:"Empezar de nuevo", en:"Start over", fr:"Recommencer"},
+  },
 };
+
+/* ============================================================
+   CURRENCY (auto-derived from selected language)
+   Rates are approximate; production wires a live FX feed.
+   ============================================================ */
+const CURRENCY = {
+  MXN: { code:"MXN", sym:"$",  rate:1,      decimals:0 },
+  USD: { code:"USD", sym:"$",  rate:0.054,  decimals:0 },  // 1 MXN ≈ 0.054 USD
+  EUR: { code:"EUR", sym:"€",  rate:0.049,  decimals:0 },  // 1 MXN ≈ 0.049 EUR
+};
+const LANG_TO_CURRENCY = { es:"MXN", en:"USD", fr:"EUR" };
 
 /* ============================================================
    SERVICES — each with trilingual fields and routing metadata
@@ -552,7 +821,7 @@ const T = {
    ============================================================ */
 const SERVICES = [
   {
-    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true,
+    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true, priceMXN:800,
     img:"https://static.wixstatic.com/media/026b5c_680ad6468d544f5c89ca6d792a0abaa9~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Oficina Virtual", en:"Virtual Office", fr:"Bureau virtuel"},
     price:{es:"Desde $800 MXN", en:"From $800 MXN", fr:"Dès 800 $ MXN"},
@@ -564,22 +833,22 @@ const SERVICES = [
           en:"A smart space with the same infrastructure as a conventional office, at a fraction of the cost — so you start your business without worrying about rent and fixed expenses. Choose the package that fits your stage.",
           fr:"Un espace intelligent avec la même infrastructure qu'un bureau classique, à une fraction du coût — pour démarrer sans vous soucier du loyer et des frais fixes. Choisissez le forfait adapté à votre étape."},
     tiers:[
-      {n:"Virtual Millenial", p:"$800", f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 1 hora"],
+      {n:"Virtual Millenial", p:"$800", mxn:800, f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 1 hora"],
                                           en:["Full mail handling","Commercial address","Tax address","Equipped meeting room · 1 hour"],
                                           fr:["Gestion complète du courrier","Adresse commerciale","Adresse fiscale","Salle de réunion équipée · 1 heure"]}},
-      {n:"Virtual Plus", p:"$1,200", badge:true, f:{es:["Todo lo anterior","Acceso a coworking","Sala de juntas · 6 horas","Número telefónico personal","Contestación telefónica personalizada"],
+      {n:"Virtual Plus", p:"$1,200", mxn:1200, badge:true, f:{es:["Todo lo anterior","Acceso a coworking","Sala de juntas · 6 horas","Número telefónico personal","Contestación telefónica personalizada"],
                                           en:["Everything above","Coworking access","Meeting room · 6 hours","Personal phone number","Personalized call answering"],
                                           fr:["Tout ce qui précède","Accès au coworking","Salle de réunion · 6 heures","Numéro de téléphone personnel","Réponse téléphonique personnalisée"]}},
-      {n:"Virtual Emprendedor", p:"$1,800", f:{es:["Todo lo de Plus","Servicio administrativo"],
+      {n:"Virtual Emprendedor", p:"$1,800", mxn:1800, f:{es:["Todo lo de Plus","Servicio administrativo"],
                                           en:["Everything in Plus","Administrative service"],
                                           fr:["Tout le forfait Plus","Service administratif"]}},
-      {n:"Virtual Empresarial", p:"$2,900", f:{es:["Todo lo de Emprendedor","Cursos y talleres","Acceso a financiamiento de operación"],
+      {n:"Virtual Empresarial", p:"$2,900", mxn:2900, f:{es:["Todo lo de Emprendedor","Cursos y talleres","Acceso a financiamiento de operación"],
                                           en:["Everything in Emprendedor","Courses and workshops","Access to operating finance"],
                                           fr:["Tout le forfait Emprendedor","Cours et ateliers","Accès au financement d'exploitation"]}},
     ],
   },
   {
-    id:"coworking", icon:"💼", queue:"ventas", value:7, recurring:true,
+    id:"coworking", icon:"💼", queue:"ventas", value:7, recurring:true, priceMXN:1800,
     img:"https://static.wixstatic.com/media/026b5c_f946899dafb146f0ae167b16da3be29c~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Co-Working", en:"Co-Working", fr:"Co-Working"},
     price:{es:"Desde $1,800 MXN", en:"From $1,800 MXN", fr:"Dès 1 800 $ MXN"},
@@ -595,7 +864,7 @@ const SERVICES = [
               fr:["Terrasse exécutive avec internet, ou bureau et chaise","Café, thé et eau","Ligne téléphonique dédiée en option","Réception d'appels et de colis","Service de secrétariat en option","Accès aux salles de réunion et de formation","Lundi au vendredi · 9h00 – 19h00"]},
   },
   {
-    id:"executive-office", icon:"🗝️", queue:"ventas", value:8, recurring:true,
+    id:"executive-office", icon:"🗝️", queue:"ventas", value:8, recurring:true, priceMXN:600,
     img:"https://static.wixstatic.com/media/026b5c_2a6f5619c18945509fc7ca9189951751~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Executive Office", en:"Executive Office", fr:"Bureau exécutif"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
@@ -611,7 +880,7 @@ const SERVICES = [
               fr:["Bureau meublé","Internet haut débit","Réceptionniste (visiteurs, colis, appels)","Services de secrétariat","Extension téléphonique avec transfert vers votre mobile","Climatisation et ménage","Terrasse Business Lounge illimitée avec traiteur gratuit","Lundi au vendredi · 8h30 – 19h00"]},
   },
   {
-    id:"domicilio-comercial", icon:"📍", queue:"ventas", value:5, recurring:true,
+    id:"domicilio-comercial", icon:"📍", queue:"ventas", value:5, recurring:true, priceMXN:699,
     img:"https://static.wixstatic.com/media/026b5c_73fd4e99b6a541808a5569e444d655a4~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Domicilio Comercial", en:"Commercial Address", fr:"Adresse commerciale"},
     price:{es:"Desde $699 MXN", en:"From $699 MXN", fr:"Dès 699 $ MXN"},
@@ -627,7 +896,7 @@ const SERVICES = [
               fr:["Adresse commerciale ou juridique","Réception de colis et documents","Avis immédiat de toute notification","Confidentialité de vos informations","Alertes instantanées systématisées"]},
   },
   {
-    id:"sala-de-juntas", icon:"📊", queue:"ops", value:3, recurring:false,
+    id:"sala-de-juntas", icon:"📊", queue:"ops", value:3, recurring:false, priceMXN:250,
     img:"https://static.wixstatic.com/media/026b5c_e1e2b7cdd6994a2d8d39eae6e49510a1~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Sala de Juntas", en:"Meeting Room", fr:"Salle de réunion"},
     price:{es:"Desde $250 MXN", en:"From $250 MXN", fr:"Dès 250 $ MXN"},
@@ -643,7 +912,7 @@ const SERVICES = [
               fr:["Sièges de travail spéciaux","Tableau en verre et écran","Marqueurs gratuits","Internet haut débit","Réceptionniste pour orienter les participants","Climatisation et ménage","Capacité de 8 personnes + intervenants","Service de café, eau ou thé"]},
   },
   {
-    id:"terraza", icon:"🌿", queue:"ops", value:6, recurring:false,
+    id:"terraza", icon:"🌿", queue:"ops", value:6, recurring:false, priceMXN:600,
     img:"https://static.wixstatic.com/media/026b5c_0c24511c7337475db7b6f083bbc37814~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Terraza", en:"Terrace", fr:"Terrasse"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
@@ -659,7 +928,7 @@ const SERVICES = [
               fr:["Capacité d'environ 40 personnes","Bar et cuisine","Accompagnement décor et mobilier","Service traiteur, petit-déjeuner, dîner et toasts","Idéal pour cours, dégustations, lancements et événements sociaux"]},
   },
   {
-    id:"business-card", icon:"💳", queue:"ventas", value:2, recurring:false,
+    id:"business-card", icon:"💳", queue:"ventas", value:2, recurring:false, priceMXN:100,
     img:"https://static.wixstatic.com/media/11062b_f356b0256ee3465b9d5f3b16f13b27ec~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Linbix Business Card", en:"Linbix Business Card", fr:"Linbix Business Card"},
     price:{es:"Desde $100 MXN", en:"From $100 MXN", fr:"Dès 100 $ MXN"},
@@ -675,7 +944,7 @@ const SERVICES = [
               fr:["Terrasse","Espace coworking","Salle de réunion","Salle de formation","Bureau physique temporaire (selon disponibilité)","Services de secrétariat","Ligne téléphonique dédiée","Réponse aux appels clients"]},
   },
   {
-    id:"membresia", icon:"⭐", queue:"ventas", value:4, recurring:true,
+    id:"membresia", icon:"⭐", queue:"ventas", value:4, recurring:true, priceMXN:600,
     img:"https://static.wixstatic.com/media/026b5c_6547fecec7fe406b91d725afa5d09c9c~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Membresía", en:"Membership", fr:"Adhésion"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
@@ -698,9 +967,43 @@ const SERVICES = [
    LINBIX prototype — app: i18n, router, renderer, demo backend
    ============================================================ */
 let LANG = "es";
+let CUR  = "MXN";          // current display currency, derived from LANG
 let CURRENT = "home";
 
 const tr = (obj) => (obj && (obj[LANG] ?? obj.es)) || "";
+
+/* ============================================================
+   CURRENCY HELPERS — auto-derive currency from selected language,
+   format prices with the source MXN value shown for transparency.
+   ============================================================ */
+function setCurrencyFromLang(){ CUR = LANG_TO_CURRENCY[LANG] || "MXN"; }
+
+const fmtN = (n, dec=0) => {
+  const locale = LANG==="fr" ? "fr-FR" : LANG==="en" ? "en-US" : "es-MX";
+  return n.toLocaleString(locale, {minimumFractionDigits:dec, maximumFractionDigits:dec});
+};
+
+// Build a price string for a given service or numeric MXN value.
+// Returns HTML — primary in active currency, MXN reference if foreign.
+function buildPrice(mxn, opts){
+  opts = opts || {};
+  const c = CURRENCY[CUR];
+  const converted = Math.round(mxn * c.rate);
+  const prefix = opts.skipFrom ? "" : tr(T.ui.fromPrefix) + " ";
+  if(CUR==="MXN"){
+    return `${prefix}${c.sym}${fmtN(mxn)} <span class="ccode">MXN</span>`;
+  }
+  // Foreign currency: lead with converted, show MXN base subtly
+  return `${prefix}${c.sym}${fmtN(converted)} <span class="ccode">${c.code}</span>
+          <small class="fx-note">${tr(T.ui.mxnBaseNote)}: $${fmtN(mxn)} MXN</small>`;
+}
+
+// Compact inline price (for chat reco card etc.)
+function priceInline(mxn){
+  const c = CURRENCY[CUR];
+  if(CUR==="MXN") return `${c.sym}${fmtN(mxn)} MXN`;
+  return `${c.sym}${fmtN(Math.round(mxn*c.rate))} ${c.code}`;
+}
 const $ = (s, r=document) => r.querySelector(s);
 const el = (html) => { const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstChild; };
 const phone = T.contactInfo.phone;
@@ -709,10 +1012,12 @@ const waMsg = () => ({es:"Abriendo WhatsApp de Linbix…", en:"Opening Linbix Wh
 /* ---------------- LANGUAGE ---------------- */
 function setLang(l){
   LANG = l;
+  setCurrencyFromLang();
   document.documentElement.lang = l;
   document.querySelectorAll("#langsel button").forEach(b=>b.classList.toggle("active", b.dataset.lang===l));
   renderChrome();
   render();              // re-render current page
+  refreshChatChrome();   // update assistant labels
 }
 
 /* ---------------- ROUTER ---------------- */
@@ -728,7 +1033,7 @@ function go(page){
 function renderChrome(){
   // top menu
   const menu = $("#menu");
-  const svcLinks = SERVICES.map(s=>`<a class="di-row" onclick="go('svc:${s.id}')"><span class="di">${s.icon}</span><span>${tr(s.name)}<small>${tr(s.price)} ${tr(s.pnote)}</small></span></a>`).join("");
+  const svcLinks = SERVICES.map(s=>`<a class="di-row" onclick="go('svc:${s.id}')"><span class="di">${s.icon}</span><span>${tr(s.name)}<small>${tr(T.ui.fromPrefix)} ${priceInline(s.priceMXN)} · ${tr(s.pnote)}</small></span></a>`).join("");
   menu.innerHTML = `
     <a data-page="about" onclick="go('about')">${tr(T.ui.about)}</a>
     <div class="dropdown">
@@ -736,6 +1041,7 @@ function renderChrome(){
       <div class="dropdown-menu">${svcLinks}</div>
     </div>
     <a data-page="dobiz" onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
+    <a data-page="partners" onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
     <a data-page="automation" onclick="go('automation')">${tr(T.ui.automation)}</a>
     <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
@@ -745,6 +1051,7 @@ function renderChrome(){
     <a onclick="go('about')">${tr(T.ui.about)}</a>
     <a onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
     ${SERVICES.map(s=>`<a onclick="go('svc:${s.id}')">${s.icon} ${tr(s.name)}</a>`).join("")}
+    <a onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a onclick="go('events')">${tr(T.ui.events)}</a>
     <a onclick="go('automation')">${tr(T.ui.automation)}</a>
     <a onclick="go('contact')">${tr(T.ui.contact)}</a>
@@ -771,7 +1078,7 @@ function closeMobile(){ $("#mobileMenu").classList.remove("open"); }
 function render(){
   const app = $("#app");
   if(CURRENT.startsWith("svc:")){ app.innerHTML = pageService(CURRENT.slice(4)); afterRender(); return; }
-  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, contact:pageContact, automation:pageAutomation};
+  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, contact:pageContact, automation:pageAutomation, partners:pagePartners};
   app.innerHTML = (map[CURRENT]||pageHome)();
   afterRender();
 }
@@ -870,7 +1177,7 @@ function pageHome(){
               <div class="svc-media">
                 <span class="svc-ic">${s.icon}</span>
                 <img src="${s.img}" alt="${tr(s.name)}" loading="lazy" onerror="this.style.display='none'"/>
-                <span class="price">${tr(s.price)}</span>
+                <span class="price">${buildPrice(s.priceMXN)}</span>
               </div>
               <div class="svc-body">
                 <h3>${tr(s.name)}</h3>
@@ -977,13 +1284,19 @@ function pageService(id){
   if(!s) return pageHome();
   const tiersHtml = s.tiers ? `
     <div class="price-grid" style="margin-top:34px">
-      ${s.tiers.map(t=>`
+      ${s.tiers.map(t=>{
+        const mxn = t.mxn || parseInt((t.p||"").replace(/[^0-9]/g,""),10);
+        const c = CURRENCY[CUR]; const conv = Math.round(mxn * c.rate);
+        const primary = CUR==="MXN" ? `${c.sym}${fmtN(mxn)} <small>MXN ${tr(T.ui.ivaNote)}</small>`
+                                    : `${c.sym}${fmtN(conv)} <small>${c.code} ${tr(T.ui.ivaNote)}</small><small class="fx-note">${tr(T.ui.mxnBaseNote)}: $${fmtN(mxn)} MXN</small>`;
+        return `
         <div class="price-card ${t.badge?'feat':''}" ${t.badge?`data-badge="${tr(T.membership.eyebrow)}"`:''}>
           <h4>${t.n}</h4>
-          <div class="amt">${t.p} <small>MXN ${tr(T.ui.ivaNote)}</small></div>
+          <div class="amt">${primary}</div>
           <ul>${tr(t.f).map(x=>`<li>${x}</li>`).join("")}</ul>
           <button class="btn btn-ink" onclick="go('contact')">${tr(T.ui.requestBtn)}</button>
-        </div>`).join("")}
+        </div>`;
+      }).join("")}
     </div>` : "";
   const incHtml = s.includes ? `
     <h3 style="font-size:22px;margin:6px 0 14px">${tr(T.ui.whatIncludes)}</h3>
@@ -994,7 +1307,7 @@ function pageService(id){
       <span class="backlink" onclick="go('home')">← ${tr(T.ui.back)}</span>
       <div class="eyebrow" style="color:var(--gold-2)">${s.icon} ${tr(T.ui.services)}</div>
       <h1>${tr(s.name)}</h1>
-      <div class="price">${tr(s.price)}</div>
+      <div class="price">${buildPrice(s.priceMXN)}</div>
       <p class="note">${tr(s.pnote)}</p>
     </div></div>
     <section class="detail-body"><div class="wrap">
@@ -1256,11 +1569,261 @@ function renderConsole(){
 }
 
 /* ---------------- BOOT ---------------- */
+setCurrencyFromLang();
 seedLeads();
 renderChrome();
+refreshChatChrome();
 render();
 // age the SLA timers a touch for realism
 setInterval(()=>{ LEADS.forEach(l=>{ if(l.status==="new") l.ageMin++; }); if(CURRENT==="automation") renderConsole(); }, 8000);
+
+/* ============================================================
+   PARTNERS PAGE — mirrors techfides.com/partners/strategic
+   ============================================================ */
+function pagePartners(){
+  const p = T.partners, tf = p.tf;
+  return `
+  <div class="page active">
+    <div class="detail-hero"><div class="wrap">
+      <div class="eyebrow" style="color:var(--gold-2)">${tr(p.eyebrow)}</div>
+      <h1>${tr(p.h1)}</h1>
+      <p class="note" style="max-width:48em;margin-top:14px;font-size:17px;line-height:1.55">${tr(p.lead)}</p>
+    </div></div>
+    <section class="detail-body"><div class="wrap">
+      <p style="font-style:italic;color:var(--muted);font-size:15px;margin-bottom:32px;max-width:48em">${tr(p.reciprocal)}</p>
+      <div class="partners-grid reveal">
+        <div class="partner-card">
+          <div class="ph">
+            <div class="ph-mark">TF</div>
+            <div>
+              <span class="ph-name">${tf.name}</span>
+              <span class="ph-city">${tr(tf.city)}</span>
+            </div>
+          </div>
+          <p class="tag">${tr(tf.tagline)}</p>
+          <div class="what-h">${tr(tf.whatHeader)}</div>
+          <ul class="what">${tr(tf.whatList).map(i=>`<li>${i}</li>`).join("")}</ul>
+          <div class="recog">${tr(tf.recognize)}</div>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="https://techfides.com" target="_blank" rel="noopener">${tr(tf.cta)} →</a>
+            <button class="btn btn-light" onclick="chatOpen()">${tr(tf.ctaSecondary)}</button>
+          </div>
+        </div>
+      </div>
+    </div></section>
+    ${blockContactStrip()}
+  </div>`;
+}
+
+/* ============================================================
+   DESKTOP ASSISTANT — "Habla con Linbix" chat agent
+   Rule-based conversational flow: greeting → discovery →
+   recommendation → in-chat booking → confirmation. Submits as
+   lead through the same buildLead() pipeline with source="chat".
+   ============================================================ */
+const CHAT = {
+  state: "idle",       // idle | greet | flow:office|room|intl|ask | reco | book | done
+  ctx:   {},           // captured context (flow, suggested service, prefs)
+  open:  false,
+  history: [],         // array of message records (for redraws on lang switch)
+};
+
+function chatOpen(){
+  $("#chatPanel").classList.add("open");
+  $("#chatTrigger").setAttribute("hidden","");
+  if(!CHAT.open){
+    CHAT.open = true;
+    chatReset();
+  }
+}
+function chatClose(){
+  $("#chatPanel").classList.remove("open");
+  $("#chatTrigger").removeAttribute("hidden");
+}
+function refreshChatChrome(){
+  const trigEl = document.getElementById("chatTriggerLabel"); if(trigEl) trigEl.textContent = tr(T.bot.trigger);
+  const titEl  = document.getElementById("chatTitle");        if(titEl)  titEl.textContent  = tr(T.bot.title);
+  const subEl  = document.getElementById("chatSub");          if(subEl)  subEl.textContent  = tr(T.bot.subtitle);
+  const footEl = document.getElementById("chatFootRight");
+  if(footEl) footEl.textContent = ({es:"Asistente Conversacional",en:"Conversational Assistant",fr:"Assistant Conversationnel"}[LANG]);
+  const trigBtn = document.getElementById("chatTrigger"); if(trigBtn) trigBtn.setAttribute("aria-label", tr(T.bot.trigger));
+}
+
+function chatReset(){
+  CHAT.state = "greet"; CHAT.ctx = {}; CHAT.history = [];
+  const body = $("#chatBody"); body.innerHTML = "";
+  chatBotMessage(tr(T.bot.greeting), ()=>{
+    chatQuickReplies(T.bot.quickReplies.map(q=>({label:tr(q.label), value:"start:"+q.key})));
+  });
+}
+
+function chatScroll(){ const b=$("#chatBody"); if(b) b.scrollTop = b.scrollHeight; }
+
+function chatBotMessage(text, after){
+  // typing indicator first
+  const body = $("#chatBody");
+  const t = el(`<div class="chat-typing"><span></span><span></span><span></span></div>`);
+  body.appendChild(t); chatScroll();
+  const delay = Math.min(1400, 380 + text.length*16);
+  setTimeout(()=>{
+    t.remove();
+    const m = el(`<div class="chat-msg bot"><div class="av">L</div><div class="bub">${text}</div></div>`);
+    body.appendChild(m); chatScroll();
+    if(after) setTimeout(after, 220);
+  }, delay);
+}
+function chatUserMessage(text){
+  const body = $("#chatBody");
+  const initial = ({es:"Tú",en:"You",fr:"Vous"}[LANG]).slice(0,2);
+  const m = el(`<div class="chat-msg user"><div class="av">${initial}</div><div class="bub">${text}</div></div>`);
+  body.appendChild(m); chatScroll();
+}
+
+function chatQuickReplies(opts){
+  const body = $("#chatBody");
+  const wrap = el(`<div class="chat-quick"></div>`);
+  opts.forEach(o=>{
+    const b = el(`<button>${o.label}</button>`);
+    b.onclick = ()=>{ wrap.remove(); chatHandle(o.value, o.label); };
+    wrap.appendChild(b);
+  });
+  body.appendChild(wrap); chatScroll();
+}
+
+function chatHandle(value, label){
+  chatUserMessage(label);
+  if(value.startsWith("start:")) return chatStartFlow(value.slice(6));
+  if(value.startsWith("flow:"))  return chatFlowAnswer(value.slice(5));
+  if(value === "book")          return chatRenderBookingForm();
+  if(value === "more")          return chatBotMessage(({es:"Mira todos nuestros servicios en el menú Servicios. ¿Algo más en lo que te ayude?",en:"Browse every service in the Services menu. Anything else I can help with?",fr:"Parcourez tous nos services dans le menu Services. Autre chose ?"}[LANG]), ()=>chatQuickReplies([{label:tr(T.bot.restart),value:"restart"}]));
+  if(value === "restart")       return chatReset();
+  if(value === "human")         return chatRenderBookingForm(true);
+  if(value === "console")       { chatClose(); return go("automation"); }
+  if(value.startsWith("ask:"))  return chatAnswerFaq(value.slice(4));
+}
+
+function chatStartFlow(key){
+  CHAT.ctx.flow = key;
+  const flow = T.bot.flows[key];
+  chatBotMessage(tr(flow.q), ()=>{
+    chatQuickReplies(flow.opts.map(o=>({label:tr(o.label), value:"flow:"+o.key})));
+  });
+}
+
+function chatFlowAnswer(optKey){
+  const flow = T.bot.flows[CHAT.ctx.flow];
+  if(CHAT.ctx.flow === "ask"){ return chatAnswerFaq(optKey); }
+  const opt = flow.opts.find(o=>o.key === optKey);
+  if(!opt){ return chatReset(); }
+  CHAT.ctx.serviceId = opt.suggest;
+  chatRenderReco(opt.suggest);
+}
+
+function chatAnswerFaq(key){
+  const ans = tr(T.bot.flows.ask.answers[key] || {});
+  chatBotMessage(ans || "—", ()=>{
+    const extra = (key === "human") ? [{label:tr(T.bot.askHuman), value:"human"}] : [];
+    chatQuickReplies([
+      ...extra,
+      {label:({es:"Otra pregunta",en:"Another question",fr:"Autre question"}[LANG]), value:"start:ask"},
+      {label:tr(T.bot.restart), value:"restart"},
+    ]);
+  });
+}
+
+function chatRenderReco(svcId){
+  const svc = SERVICES.find(s=>s.id===svcId);
+  // Handle the "hacer-negocios" pseudo-service: route to dobiz page instead
+  if(!svc){
+    chatBotMessage(({es:"Para Hacer Negocios en México preparo tu cita con nuestro equipo de internacional. ¿Reservamos una llamada de descubrimiento?",en:"For Do Business in Mexico, I'll set you up with our international team. Shall we book a discovery call?",fr:"Pour Faire affaires au Mexique, je vous mets en relation avec notre équipe internationale. On planifie un appel de découverte ?"}[LANG]), ()=>{
+      CHAT.ctx.serviceId = "hacer-negocios";
+      chatQuickReplies([
+        {label:tr(T.bot.bookCTA), value:"book"},
+        {label:({es:"Más información",en:"More info",fr:"Plus d'info"}[LANG]), value:"more"},
+      ]);
+    });
+    return;
+  }
+  chatBotMessage(tr(T.bot.recommendIntro), ()=>{
+    const body = $("#chatBody");
+    const card = el(`
+      <div class="chat-reco">
+        <div class="rtop">
+          <div class="ico">${svc.icon}</div>
+          <div class="ri">
+            <div class="rn">${tr(svc.name)}</div>
+            <div class="rp">${tr(T.ui.fromPrefix)} ${priceInline(svc.priceMXN)} · ${tr(svc.pnote)}</div>
+          </div>
+        </div>
+        <div class="rd">${tr(svc.summary)}</div>
+        <div class="rcta">
+          <button class="primary">${tr(T.bot.bookCTA)}</button>
+          <button class="ghost">${({es:"Ver detalles",en:"View details",fr:"Voir les détails"}[LANG])}</button>
+        </div>
+      </div>`);
+    body.appendChild(card); chatScroll();
+    const [bookBtn, viewBtn] = card.querySelectorAll(".rcta button");
+    bookBtn.onclick = ()=>{ chatUserMessage(tr(T.bot.bookCTA)); chatRenderBookingForm(); };
+    viewBtn.onclick = ()=>{ chatClose(); go("svc:"+svc.id); };
+  });
+}
+
+function chatRenderBookingForm(isHuman){
+  chatBotMessage(tr(T.bot.bookForm.intro), ()=>{
+    const body = $("#chatBody");
+    const todayPlus1 = (()=>{const d=new Date();d.setDate(d.getDate()+1);return d.toISOString().slice(0,10);})();
+    const labels = {
+      name:tr(T.ui.name), email:tr(T.ui.email), phone:tr(T.ui.phone),
+      date:({es:"Fecha preferida",en:"Preferred date",fr:"Date souhaitée"}[LANG]),
+      time:({es:"Horario preferido",en:"Preferred time",fr:"Horaire préféré"}[LANG]),
+    };
+    const form = el(`
+      <div class="chat-form">
+        <label>${labels.name}</label>
+        <input name="name" required placeholder="${labels.name}" />
+        <label>${labels.email}</label>
+        <input name="email" type="email" required placeholder="${labels.email}" />
+        <label>${labels.phone}</label>
+        <input name="phone" placeholder="${labels.phone}" />
+        <label>${labels.date} / ${labels.time}</label>
+        <input name="date" type="date" min="${todayPlus1}" value="${todayPlus1}" />
+        <select name="time">
+          <option value="09:00">09:00</option><option value="10:00">10:00</option>
+          <option value="11:00">11:00</option><option value="12:00">12:00</option>
+          <option value="14:00">14:00</option><option value="15:00">15:00</option>
+          <option value="16:00">16:00</option><option value="17:00">17:00</option>
+        </select>
+        <button class="submit" type="button">${tr(T.bot.bookForm.submit)}</button>
+      </div>`);
+    body.appendChild(form); chatScroll();
+    form.querySelector("button.submit").onclick = ()=>{
+      const get = n => form.querySelector(`[name="${n}"]`).value.trim();
+      const name = get("name"), email = get("email");
+      if(!name || !email){
+        form.querySelector('[name="name"]').style.borderColor = name ? "" : "var(--teal)";
+        form.querySelector('[name="email"]').style.borderColor = email ? "" : "var(--teal)";
+        return;
+      }
+      chatUserMessage(`${name} · ${email} · ${get("date")} ${get("time")}`);
+      form.remove();
+      // push into the same lead pipeline used by site forms
+      const svcId = CHAT.ctx.serviceId || "contacto";
+      const lead = buildLead({
+        name, email, phone: get("phone"),
+        service: svcId, country: (LANG==="fr" ? "France" : LANG==="en" ? "USA" : "México"),
+      }, false);
+      lead.source = "Chat: " + (isHuman ? "advisor" : (CHAT.ctx.flow||"chat"));
+      LEADS.unshift(lead);
+      flashAutomationLink();
+      chatBotMessage(tr(T.bot.confirmed.title)+" "+tr(T.bot.confirmed.body), ()=>{
+        chatQuickReplies([
+          {label:tr(T.bot.confirmed.console), value:"console"},
+          {label:tr(T.bot.confirmed.again),   value:"restart"},
+        ]);
+      });
+    };
+  });
+}
 
 </script>
 </body>
