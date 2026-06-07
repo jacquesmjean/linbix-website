@@ -588,6 +588,11 @@ const T = {
     vision:{es:"Ser uno de los principales facilitadores y punto de referencia de negocios para empresarios y emprendedores.",
             en:"To be a leading business facilitator and a reference point for executives and entrepreneurs.",
             fr:"Être un facilitateur d'affaires de premier plan et une référence pour les chefs d'entreprise et les entrepreneurs."},
+    tailorH:{es:"Hecho a tu medida", en:"Built around you", fr:"Conçu pour vous"},
+    tailorBody:{es:"¿Ningún paquete encaja con tu negocio? Te diseñamos un plan único — espacios, horarios, idiomas y servicios a tu medida. Propuesta lista en 24 horas.",
+                en:"No package fits your business? We design a one-of-a-kind plan — spaces, hours, languages, and services tailored exactly to you. Proposal in your hands within 24 hours.",
+                fr:"Aucun forfait ne convient à votre entreprise ? Nous concevons un plan unique — espaces, horaires, langues et services adaptés à vous. Devis prêt en 24 heures."},
+    tailorCTA:{es:"Diseñar mi plan ahora", en:"Design my plan now", fr:"Concevoir mon plan maintenant"},
   },
 
   /* ---- SERVICES SECTION ---- */
@@ -1311,6 +1316,13 @@ function pageHome(){
           <div>
             <div class="eyebrow">${tr(T.about.eyebrow)}</div>
             <h2 style="font-size:clamp(28px,3.4vw,40px);margin:14px 0 18px">${tr(T.about.h2)}</h2>
+            <div class="custom-note" style="margin:0 0 22px">
+              <div class="ic">✦</div>
+              <div class="tx">
+                <span class="h">${tr(T.about.tailorH)}</span>
+                <div class="b">${tr(T.about.tailorBody)} <a onclick="chatOpen()">${tr(T.about.tailorCTA)} →</a></div>
+              </div>
+            </div>
             <p style="color:var(--muted);font-size:16.5px">${tr(T.about.intro)}</p>
             <ul class="checks">${tr(T.about.helpList).map(i=>`<li>${i}</li>`).join("")}</ul>
             <button class="btn btn-ghost" style="margin-top:18px" onclick="go('about')">${tr(T.ui.learnMore)}</button>
