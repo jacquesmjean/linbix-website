@@ -200,6 +200,34 @@ section.dark .card .desc{color:rgba(255,255,255,.65)}
 .form-ok.show{display:block;animation:fade .3s}
 .form-ok b{display:block;margin-bottom:4px}
 
+/* ---------- Dobiz full inquiry form ---------- */
+.dobiz-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px;box-shadow:var(--shadow-sm);max-width:760px;margin:0 auto}
+.dobiz-form h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);margin:0 0 18px;letter-spacing:-.01em;display:flex;align-items:center;gap:14px}
+.dobiz-form h3::before{content:"";width:24px;height:2px;background:var(--gold);display:inline-block}
+.dobiz-form .sec{margin-bottom:36px;padding-bottom:30px;border-bottom:1px solid var(--paper-2)}
+.dobiz-form .sec:last-of-type{border:none;padding-bottom:0;margin-bottom:24px}
+.dobiz-form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dobiz-form .row.full{grid-template-columns:1fr}
+.dobiz-form .field{margin-bottom:14px}
+.dobiz-form .field.full{grid-column:1/-1}
+.dobiz-form label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.dobiz-form input,.dobiz-form textarea{width:100%;font-family:var(--sans);font-size:15px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);transition:.15s;color:var(--ink)}
+.dobiz-form input:focus,.dobiz-form textarea:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(246,134,59,.1)}
+.dobiz-form textarea{min-height:96px;resize:vertical;line-height:1.5}
+.checkbox-list{display:flex;flex-direction:column;gap:6px}
+.checkbox-row{display:flex;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:11px;cursor:pointer;transition:.15s;background:var(--paper);align-items:flex-start}
+.checkbox-row:hover{border-color:var(--gold);background:#fff}
+.checkbox-row input{appearance:none;width:20px;height:20px;border:2px solid var(--line);border-radius:5px;cursor:pointer;flex:none;background:#fff;position:relative;transition:.15s;margin-top:1px;padding:0}
+.checkbox-row input:checked{background:var(--gold);border-color:var(--gold)}
+.checkbox-row input:checked::after{content:"✓";color:#fff;font-weight:800;font-size:14px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1}
+.checkbox-row:has(input:checked){border-color:var(--gold);background:rgba(246,134,59,.04)}
+.checkbox-row span{font-size:14px;color:var(--ink);line-height:1.5;flex:1}
+.dobiz-form .submit-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.dobiz-form button[type="submit"]{padding:15px 38px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--ink);border:none;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 8px 22px rgba(246,134,59,.32);transition:.2s}
+.dobiz-form button[type="submit"]:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(246,134,59,.42)}
+.dobiz-form .form-ok{margin-top:18px}
+@media(max-width:600px){.dobiz-form{padding:24px}.dobiz-form .row{grid-template-columns:1fr}}
+
 /* ---------- Contact strip ---------- */
 .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .info-card{display:flex;gap:14px;align-items:flex-start}
@@ -587,6 +615,50 @@ const T = {
              en:"Linbix takes you by the hand to connect with the Mexican market — with tax, accounting, and administrative advisory before and after you begin trading.",
              fr:"Linbix vous accompagne pour vous connecter au marché mexicain — avec un conseil fiscal, comptable et administratif avant et après le début de vos activités."},
     formTitle:{es:"Hablemos de tu expansión", en:"Let's talk about your expansion", fr:"Parlons de votre expansion"},
+    form:{
+      secGeneral:{es:"Información General",                       en:"General Information",                          fr:"Informations Générales"},
+      secAlliances:{es:"Alianzas e Inversión en México",          en:"Alliances and Investment in Mexico",           fr:"Alliances et Investissement au Mexique"},
+      secServices:{es:"Selecciona los Servicios de su interés en Linbix",
+                   en:"Select the Linbix services that interest you",
+                   fr:"Sélectionnez les services Linbix qui vous intéressent"},
+      address:{es:"Dirección",                                    en:"Address",                                      fr:"Adresse"},
+      website:{es:"Sitio Web",                                    en:"Website",                                      fr:"Site Web"},
+      whatsapp:{es:"WhatsApp",                                    en:"WhatsApp",                                     fr:"WhatsApp"},
+      qPromote:{es:"¿Productos o servicios que quiere promover en México?",
+                en:"Products or services you want to promote in Mexico?",
+                fr:"Produits ou services que vous souhaitez promouvoir au Mexique ?"},
+      qTargets:{es:"¿Clientes potenciales de su interés en México?",
+                en:"Target potential clients in Mexico?",
+                fr:"Clients potentiels qui vous intéressent au Mexique ?"},
+      services:[
+        {k:"promotion", t:{es:"Promoción de productos y servicios en México",
+                           en:"Promotion of products and services in Mexico",
+                           fr:"Promotion de produits et services au Mexique"}},
+        {k:"location",  t:{es:"Localización de empresas mexicanas como proveedor o alianza estratégica",
+                           en:"Locate Mexican companies as suppliers or strategic alliances",
+                           fr:"Localisation d'entreprises mexicaines comme fournisseur ou alliance stratégique"}},
+        {k:"research",  t:{es:"Realización de estudios de mercado tomando en cuenta factores socioeconómicos y culturales",
+                           en:"Market studies taking socioeconomic and cultural factors into account",
+                           fr:"Études de marché tenant compte des facteurs socio-économiques et culturels"}},
+        {k:"legal",     t:{es:"Realización de trámites legales para establecer una empresa en México",
+                           en:"Legal procedures to establish a company in Mexico",
+                           fr:"Démarches juridiques pour établir une entreprise au Mexique"}},
+        {k:"facilities",t:{es:"Búsqueda de instalaciones adecuadas para la operación de una empresa en México",
+                           en:"Find suitable facilities to operate a company in Mexico",
+                           fr:"Recherche d'installations adaptées à l'exploitation d'une entreprise au Mexique"}},
+        {k:"recruit",   t:{es:"Reclutamiento de profesionistas bilingües y personal calificado",
+                           en:"Recruit bilingual professionals and qualified staff",
+                           fr:"Recrutement de professionnels bilingues et de personnel qualifié"}},
+        {k:"payroll",   t:{es:"Servicio de operación de pago de nómina de empleados en México a través de empresas especializadas",
+                           en:"Payroll operation service for employees in Mexico through specialized firms",
+                           fr:"Service de paie pour employés au Mexique via des sociétés spécialisées"}},
+      ],
+      submit:{es:"Enviar", en:"Send", fr:"Envoyer"},
+      ok:{es:"¡Recibimos tu solicitud!", en:"We received your request!", fr:"Nous avons reçu votre demande !"},
+      okBody:{es:"Un asesor internacional te contactará en breve con un plan a la medida.",
+              en:"An international advisor will reach out shortly with a tailored plan.",
+              fr:"Un conseiller international vous contactera sous peu avec un plan sur mesure."},
+    },
   },
 
   /* ---- EVENTS ---- */
@@ -1089,6 +1161,9 @@ function afterRender(){
   document.querySelectorAll("form[data-lead]").forEach(f=>{
     f.addEventListener("submit", onLeadSubmit);
   });
+  document.querySelectorAll("form[data-dobiz]").forEach(f=>{
+    f.addEventListener("submit", onDobizSubmit);
+  });
   if(CURRENT==="automation") renderConsole();
   initReveal();
   initCounters();
@@ -1361,7 +1436,7 @@ function pageDobiz(){
         <ul class="checks" style="columns:2;column-gap:40px">${tr(d.helpList).map(i=>`<li>${i}</li>`).join("")}</ul>
         <p style="font-size:16px;color:var(--ink-2);margin-top:24px;font-style:italic">${tr(d.closing)}</p>
       </div>
-      <div style="margin-top:40px;max-width:560px">${leadForm("hacer-negocios", d.formTitle, {intl:true})}</div>
+      <div style="margin-top:48px">${dobizFullForm()}</div>
     </div></section>
   </div>`;
 }
@@ -1838,6 +1913,77 @@ function chatRenderBookingForm(isHuman){
       });
     };
   });
+}
+
+/* ============================================================
+   FULL "HACER NEGOCIOS EN MÉXICO" FORM
+   Matches the live linbix.com form: 8 general fields, 2 textareas,
+   7 service checkboxes. All trilingual. Submits to lead pipeline
+   with rich metadata carried on the lead record.
+   ============================================================ */
+function dobizFullForm(){
+  const f = T.dobiz.form;
+  const u = T.ui;
+  return `
+  <form class="dobiz-form" data-dobiz>
+    <div class="sec">
+      <h3>${tr(f.secGeneral)}</h3>
+      <div class="row">
+        <div class="field"><label>${tr(u.name)} *</label><input name="name" required></div>
+        <div class="field"><label>${tr(u.company)}</label><input name="company"></div>
+        <div class="field full"><label>${tr(f.address)}</label><input name="address"></div>
+        <div class="field"><label>${tr(u.country)} *</label><input name="country" required></div>
+        <div class="field"><label>${tr(u.email)} *</label><input name="email" type="email" required></div>
+        <div class="field"><label>${tr(f.website)}</label><input name="website" placeholder="https://"></div>
+        <div class="field"><label>${tr(u.phone)}</label><input name="phone"></div>
+        <div class="field"><label>${tr(f.whatsapp)}</label><input name="whatsapp"></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h3>${tr(f.secAlliances)}</h3>
+      <div class="field full"><label>${tr(f.qPromote)}</label><textarea name="promote"></textarea></div>
+      <div class="field full"><label>${tr(f.qTargets)}</label><textarea name="targets"></textarea></div>
+    </div>
+    <div class="sec">
+      <h3>${tr(f.secServices)}</h3>
+      <div class="checkbox-list">
+        ${f.services.map(s=>`
+          <label class="checkbox-row">
+            <input type="checkbox" name="svc[]" value="${s.k}">
+            <span>${tr(s.t)}</span>
+          </label>`).join("")}
+      </div>
+    </div>
+    <div class="submit-row">
+      <button type="submit">${tr(f.submit)} →</button>
+    </div>
+    <div class="form-ok"><b>${tr(f.ok)}</b>${tr(f.okBody)} <a onclick="go('automation')" style="color:var(--gold);font-weight:700;cursor:pointer">${tr(u.viewConsole)}</a></div>
+  </form>`;
+}
+
+function onDobizSubmit(e){
+  e.preventDefault();
+  const f = e.target;
+  const data = Object.fromEntries(new FormData(f).entries());
+  const interests = [...f.querySelectorAll('input[name="svc[]"]:checked')].map(c=>c.value);
+  const lead = buildLead({
+    name: data.name, email: data.email, phone: data.phone || data.whatsapp,
+    service: "hacer-negocios", country: data.country,
+  }, false);
+  lead.source = "Hacer Negocios en MX";
+  // bonus score for richer information capture
+  if(data.company)       lead.score = Math.min(99, lead.score + 3);
+  if(interests.length>2) lead.score = Math.min(99, lead.score + 4);
+  if(data.promote || data.targets) lead.score = Math.min(99, lead.score + 3);
+  lead.intl = {
+    company: data.company, address: data.address, website: data.website,
+    whatsapp: data.whatsapp, promote: data.promote, targets: data.targets,
+    interestedServices: interests,
+  };
+  LEADS.unshift(lead);
+  const ok = f.querySelector(".form-ok"); if(ok) ok.classList.add("show");
+  f.reset();
+  flashAutomationLink();
 }
 
 </script>
