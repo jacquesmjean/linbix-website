@@ -523,6 +523,8 @@ const T = {
     ivaNote:      {es:"+ IVA", en:"+ VAT", fr:"+ TVA"},
     fromPrefix:   {es:"Desde", en:"From", fr:"Dès"},
     mxnBaseNote:  {es:"Precio base", en:"Base price", fr:"Prix de base"},
+    perYear:      {es:"/ año", en:"/ year", fr:"/ an"},
+    perMonth:     {es:"/ mes", en:"/ month", fr:"/ mois"},
   },
 
   /* ---- CURRENCY ---- */
@@ -825,8 +827,8 @@ const T = {
       intl:{
         q:{es:"Vamos. ¿En qué etapa estás?", en:"Let's go. What stage are you at?", fr:"Allons-y. À quel stade en êtes-vous ?"},
         opts:[
-          {key:"explore", suggest:"hacer-negocios", label:{es:"Explorando el mercado mexicano",   en:"Exploring the Mexican market",  fr:"J'explore le marché mexicain"}},
-          {key:"setup",   suggest:"hacer-negocios", label:{es:"Listo para establecer operación",  en:"Ready to set up operations",     fr:"Prêt à établir des opérations"}},
+          {key:"explore", suggest:"hacer-negocios",  label:{es:"Explorando el mercado mexicano",   en:"Exploring the Mexican market",  fr:"J'explore le marché mexicain"}},
+          {key:"setup",   suggest:"do-business-mx", label:{es:"Listo para establecer operación",  en:"Ready to set up operations",     fr:"Prêt à établir des opérations"}},
           {key:"has",     suggest:"oficina-virtual", label:{es:"Ya tengo empresa, busco oficina",  en:"Have a company, need an office", fr:"J'ai une société, je cherche un bureau"}},
         ],
       },
@@ -1017,6 +1019,47 @@ const SERVICES = [
               fr:["Terrasse","Espace coworking","Salle de réunion","Salle de formation","Bureau physique temporaire (selon disponibilité)","Services de secrétariat","Ligne téléphonique dédiée","Réponse aux appels clients"]},
   },
   {
+    id:"do-business-mx", icon:"🌎", queue:"intl", value:10, recurring:true,
+    priceUSD:800, period:"annual",
+    img:"https://static.wixstatic.com/media/4cb2411121d14cab94fb4cfb11f4f056.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
+    name:{es:"Quiero Hacer Negocios en México",
+          en:"I Want to Do Business in Mexico",
+          fr:"Je Veux Faire Affaires au Mexique"},
+    pnote:{es:"+ IVA · plan anual", en:"+ VAT · annual plan", fr:"+ TVA · plan annuel"},
+    summary:{es:"El paquete completo para entrar al mercado mexicano: domicilio fiscal, asesoría, networking y acompañamiento durante un año entero.",
+             en:"The complete package to enter the Mexican market: tax address, advisory, networking, and hands-on support for an entire year.",
+             fr:"Le forfait complet pour entrer sur le marché mexicain : adresse fiscale, conseil, réseautage et accompagnement pendant une année entière."},
+    long:{es:"Para empresarios extranjeros que quieren entrar a México con base sólida en Guadalajara. Desde establecer tu domicilio fiscal hasta presentarte con socios potenciales — todo en un plan anual diseñado para que tu primer año en el mercado sea exitoso.",
+          en:"For foreign executives who want to enter Mexico with a solid base in Guadalajara. From setting up your tax address to introducing you to potential partners — everything in one annual plan designed to make your first year in the market a success.",
+          fr:"Pour les dirigeants étrangers qui souhaitent entrer au Mexique avec une base solide à Guadalajara. De l'établissement de votre adresse fiscale jusqu'à l'introduction auprès de partenaires potentiels — tout en un plan annuel conçu pour que votre première année sur le marché soit un succès."},
+    includes:{
+      es:["Domicilio fiscal y comercial en Guadalajara durante 12 meses",
+          "Acceso a oficina virtual y servicios de correspondencia",
+          "12 horas mensuales de sala de juntas",
+          "Asesoría inicial de mercado (1 sesión estratégica)",
+          "4 reuniones trimestrales de seguimiento con el equipo Linbix",
+          "Conexión con aliados legales, contables y de recursos humanos",
+          "Acceso preferente a eventos y networking de la comunidad Linbix",
+          "Soporte ejecutivo en español, inglés y francés"],
+      en:["Tax and commercial address in Guadalajara for 12 months",
+          "Virtual office access and mail handling services",
+          "12 hours of meeting room per month",
+          "Initial market advisory (1 strategic session)",
+          "4 quarterly check-ins with the Linbix team",
+          "Connections with legal, accounting, and HR allies",
+          "Priority access to Linbix community events and networking",
+          "Executive support in Spanish, English, and French"],
+      fr:["Adresse fiscale et commerciale à Guadalajara pendant 12 mois",
+          "Accès au bureau virtuel et au service de courrier",
+          "12 heures mensuelles de salle de réunion",
+          "Conseil initial de marché (1 séance stratégique)",
+          "4 points trimestriels de suivi avec l'équipe Linbix",
+          "Mise en relation avec des partenaires juridiques, comptables et RH",
+          "Accès prioritaire aux événements et au réseautage de la communauté Linbix",
+          "Support exécutif en espagnol, anglais et français"],
+    },
+  },
+  {
     id:"membresia", icon:"⭐", queue:"ventas", value:4, recurring:true, priceMXN:600,
     img:"https://static.wixstatic.com/media/026b5c_6547fecec7fe406b91d725afa5d09c9c~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Membresía", en:"Membership", fr:"Adhésion"},
@@ -1056,23 +1099,34 @@ const fmtN = (n, dec=0) => {
   return n.toLocaleString(locale, {minimumFractionDigits:dec, maximumFractionDigits:dec});
 };
 
-// Build a price string for a given service or numeric MXN value.
-// Returns HTML — primary in active currency, MXN reference if foreign.
-function buildPrice(mxn, opts){
+// Build a price string. Accepts either a service object or a raw MXN number.
+// USD-native services (priceUSD) are shown in USD across all languages.
+function buildPrice(svcOrMxn, opts){
   opts = opts || {};
+  const prefix = opts.skipFrom ? "" : tr(T.ui.fromPrefix) + " ";
+  // USD-native pricing (international advisory etc.)
+  if(svcOrMxn && typeof svcOrMxn==="object" && svcOrMxn.priceUSD){
+    const period = svcOrMxn.period==="annual" ? " "+tr(T.ui.perYear)
+                 : svcOrMxn.period==="monthly" ? " "+tr(T.ui.perMonth) : "";
+    return `${prefix}$${fmtN(svcOrMxn.priceUSD)} <span class="ccode">USD</span>${period}`;
+  }
+  const mxn = (typeof svcOrMxn==="number") ? svcOrMxn : svcOrMxn.priceMXN;
   const c = CURRENCY[CUR];
   const converted = Math.round(mxn * c.rate);
-  const prefix = opts.skipFrom ? "" : tr(T.ui.fromPrefix) + " ";
   if(CUR==="MXN"){
     return `${prefix}${c.sym}${fmtN(mxn)} <span class="ccode">MXN</span>`;
   }
-  // Foreign currency: lead with converted, show MXN base subtly
   return `${prefix}${c.sym}${fmtN(converted)} <span class="ccode">${c.code}</span>
           <small class="fx-note">${tr(T.ui.mxnBaseNote)}: $${fmtN(mxn)} MXN</small>`;
 }
 
-// Compact inline price (for chat reco card etc.)
-function priceInline(mxn){
+function priceInline(svcOrMxn){
+  if(svcOrMxn && typeof svcOrMxn==="object" && svcOrMxn.priceUSD){
+    const period = svcOrMxn.period==="annual" ? " "+tr(T.ui.perYear)
+                 : svcOrMxn.period==="monthly" ? " "+tr(T.ui.perMonth) : "";
+    return `$${fmtN(svcOrMxn.priceUSD)} USD${period}`;
+  }
+  const mxn = (typeof svcOrMxn==="number") ? svcOrMxn : svcOrMxn.priceMXN;
   const c = CURRENCY[CUR];
   if(CUR==="MXN") return `${c.sym}${fmtN(mxn)} MXN`;
   return `${c.sym}${fmtN(Math.round(mxn*c.rate))} ${c.code}`;
@@ -1106,7 +1160,7 @@ function go(page){
 function renderChrome(){
   // top menu
   const menu = $("#menu");
-  const svcLinks = SERVICES.map(s=>`<a class="di-row" onclick="go('svc:${s.id}')"><span class="di">${s.icon}</span><span>${tr(s.name)}<small>${tr(T.ui.fromPrefix)} ${priceInline(s.priceMXN)} · ${tr(s.pnote)}</small></span></a>`).join("");
+  const svcLinks = SERVICES.map(s=>`<a class="di-row" onclick="go('svc:${s.id}')"><span class="di">${s.icon}</span><span>${tr(s.name)}<small>${tr(T.ui.fromPrefix)} ${priceInline(s)} · ${tr(s.pnote)}</small></span></a>`).join("");
   menu.innerHTML = `
     <a data-page="about" onclick="go('about')">${tr(T.ui.about)}</a>
     <div class="dropdown">
@@ -1267,7 +1321,7 @@ function pageHome(){
               <div class="svc-media">
                 <span class="svc-ic">${s.icon}</span>
                 <img src="${s.img}" alt="${tr(s.name)}" loading="lazy" onerror="this.style.display='none'"/>
-                <span class="price">${buildPrice(s.priceMXN)}</span>
+                <span class="price">${buildPrice(s)}</span>
               </div>
               <div class="svc-body">
                 <h3>${tr(s.name)}</h3>
@@ -1397,7 +1451,7 @@ function pageService(id){
       <span class="backlink" onclick="go('home')">← ${tr(T.ui.back)}</span>
       <div class="eyebrow" style="color:var(--gold-2)">${s.icon} ${tr(T.ui.services)}</div>
       <h1>${tr(s.name)}</h1>
-      <div class="price">${buildPrice(s.priceMXN)}</div>
+      <div class="price">${buildPrice(s)}</div>
       <p class="note">${tr(s.pnote)}</p>
     </div></div>
     <section class="detail-body"><div class="wrap">
@@ -1842,7 +1896,7 @@ function chatRenderReco(svcId){
           <div class="ico">${svc.icon}</div>
           <div class="ri">
             <div class="rn">${tr(svc.name)}</div>
-            <div class="rp">${tr(T.ui.fromPrefix)} ${priceInline(svc.priceMXN)} · ${tr(svc.pnote)}</div>
+            <div class="rp">${tr(T.ui.fromPrefix)} ${priceInline(svc)} · ${tr(svc.pnote)}</div>
           </div>
         </div>
         <div class="rd">${tr(svc.summary)}</div>
