@@ -1,0 +1,9 @@
+{
+  "name": "linbix-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Linbix Business Place — trilingual website with embedded lead automation. Built by TechFides.",
+  "homepage": "https://www.linbix.com",
+  "author": "TechFides <engage@techfides.com>",
+  "license": "UNLICENSED"
+}
