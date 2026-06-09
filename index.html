@@ -88,7 +88,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(26,19,13,.90);backdrop-
 .langsel{display:flex;border:1px solid rgba(255,255,255,.22);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.06)}
 .langsel button{border:none;background:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);padding:7px 11px;cursor:pointer;transition:.13s}
 .langsel button.active{background:var(--gold);color:#fff}
-.hamburger{display:none;border:none;background:none;cursor:pointer;font-size:24px;color:#fff}
+/* Hamburger — visible on dark header, 44pt touch target */
+.hamburger{display:none;border:none;background:rgba(255,255,255,.08);cursor:pointer;width:44px;height:44px;border-radius:11px;align-items:center;justify-content:center;color:#fff;transition:background .15s,transform .15s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.hamburger svg{width:22px;height:22px;display:block;stroke:#fff;stroke-width:2.2;stroke-linecap:round;fill:none}
+.hamburger:hover{background:rgba(255,255,255,.14)}
+.hamburger:active{transform:scale(.95)}
+.hamburger:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* ---------- Page system ---------- */
 .page{display:none;animation:fade .4s ease}
@@ -419,9 +424,41 @@ section.dark .fx-note,.detail-hero .fx-note{color:rgba(255,255,255,.55)}
   .leadtable{display:block;overflow-x:auto;white-space:nowrap}
   .hero h1{font-size:32px}.sec-head h2{font-size:28px}
 }
-.mobile-menu{display:none;position:fixed;inset:74px 0 0;background:var(--paper);z-index:99;padding:24px;overflow-y:auto}
-.mobile-menu.open{display:block}
-.mobile-menu a{display:block;padding:14px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--line)}
+/* ---------- Mobile menu — slide-in drawer (enterprise grade) ---------- */
+.mobile-backdrop{position:fixed;inset:0;background:rgba(10,8,5,.55);backdrop-filter:blur(4px);z-index:140;opacity:0;pointer-events:none;transition:opacity .26s cubic-bezier(.2,.8,.2,1)}
+.mobile-backdrop.open{opacity:1;pointer-events:auto}
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;width:min(360px,92vw);background:var(--ink);color:#fff;z-index:150;padding:0;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.4);overscroll-behavior:contain}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu .mm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:var(--ink);z-index:2}
+.mobile-menu .mm-head img{height:28px;width:auto}
+.mobile-menu .mm-close{background:rgba(255,255,255,.08);border:none;color:#fff;width:44px;height:44px;border-radius:11px;display:grid;place-items:center;cursor:pointer;transition:background .15s,transform .15s;-webkit-tap-highlight-color:transparent}
+.mobile-menu .mm-close:hover{background:rgba(255,255,255,.14)}
+.mobile-menu .mm-close:active{transform:scale(.95)}
+.mobile-menu .mm-close svg{width:20px;height:20px;stroke:#fff;stroke-width:2.2;stroke-linecap:round;fill:none}
+.mobile-menu .mm-body{padding:8px 14px 14px;flex:1}
+.mobile-menu a, .mobile-menu .mm-group>button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 16px;font-family:var(--sans);font-size:16px;font-weight:600;color:rgba(255,255,255,.92);border:none;background:transparent;border-radius:12px;cursor:pointer;transition:background .15s,color .15s;min-height:52px;letter-spacing:-.01em}
+.mobile-menu a:hover, .mobile-menu .mm-group>button:hover, .mobile-menu a:focus-visible{background:rgba(255,255,255,.06);color:var(--gold-2);outline:none}
+.mobile-menu a.active{color:var(--gold);background:rgba(246,134,59,.08)}
+.mobile-menu .mm-group{margin:0}
+.mobile-menu .mm-group>button .chev{margin-left:auto;transition:transform .22s cubic-bezier(.2,.8,.2,1);width:18px;height:18px;stroke:rgba(255,255,255,.6);stroke-width:2.2;fill:none}
+.mobile-menu .mm-group.open>button .chev{transform:rotate(180deg);stroke:var(--gold)}
+.mobile-menu .mm-group .mm-sub{max-height:0;overflow:hidden;transition:max-height .3s cubic-bezier(.2,.8,.2,1);padding:0 0 0 12px}
+.mobile-menu .mm-group.open .mm-sub{max-height:560px}
+.mobile-menu .mm-sub a{padding:11px 14px;font-size:14.5px;font-weight:500;color:rgba(255,255,255,.78);min-height:46px;border-left:2px solid rgba(255,255,255,.08);border-radius:0 10px 10px 0;margin-bottom:2px}
+.mobile-menu .mm-sub a .ico{width:22px;text-align:center;font-size:16px;flex:none}
+.mobile-menu .mm-sub a:hover{border-left-color:var(--gold);color:#fff}
+.mobile-menu .mm-foot{padding:18px 22px 24px;border-top:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,transparent,rgba(0,0,0,.18))}
+.mobile-menu .mm-langsel{display:flex;border:1px solid rgba(255,255,255,.18);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.04);margin-bottom:14px}
+.mobile-menu .mm-langsel button{flex:1;border:none;background:none;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);padding:11px;cursor:pointer;transition:.13s;min-height:44px;-webkit-tap-highlight-color:transparent}
+.mobile-menu .mm-langsel button.active{background:var(--gold);color:#fff}
+.mobile-menu .mm-cta{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--ink);border:none;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;min-height:50px;box-shadow:0 8px 22px rgba(246,134,59,.32);transition:.2s}
+.mobile-menu .mm-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(246,134,59,.42)}
+.mobile-menu .mm-cta svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
+body.menu-open{overflow:hidden}
+body.menu-open .chat-trigger{display:none}
+@media (prefers-reduced-motion: reduce){
+  .mobile-menu,.mobile-backdrop,.mobile-menu .mm-group .mm-sub,.mobile-menu .mm-group>button .chev{transition:none}
+}
 </style>
 </head>
 <body>
@@ -439,11 +476,16 @@ section.dark .fx-note,.detail-hero .fx-note{color:rgba(255,255,255,.55)}
         <button data-lang="en" onclick="setLang('en')">EN</button>
         <button data-lang="fr" onclick="setLang('fr')">FR</button>
       </div>
-      <button class="hamburger" onclick="toggleMobile()">☰</button>
+      <button class="hamburger" id="hamburger" onclick="openMobile()" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu"></div>
+  <!-- mobile drawer markers (real elements moved below </header> for stacking-context independence) -->
 </header>
+
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMobile()"></div>
+<aside class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu"></aside>
 
 <main id="app"></main>
 
@@ -1279,15 +1321,39 @@ function renderChrome(){
     <a data-page="automation" onclick="go('automation')">${tr(T.ui.automation)}</a>
     <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
   `;
-  // mobile menu
+  // mobile menu — enterprise drawer pattern
+  const logoSrc = document.querySelector(".brand img")?.src || "";
+  const closeIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>`;
+  const chevIcon  = `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+  const chatIcon  = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
   $("#mobileMenu").innerHTML = `
-    <a onclick="go('about')">${tr(T.ui.about)}</a>
-    <a onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
-    ${SERVICES.map(s=>`<a onclick="go('svc:${s.id}')">${s.icon} ${tr(s.name)}</a>`).join("")}
-    <a onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
-    <a onclick="go('events')">${tr(T.ui.events)}</a>
-    <a onclick="go('automation')">${tr(T.ui.automation)}</a>
-    <a onclick="go('contact')">${tr(T.ui.contact)}</a>
+    <div class="mm-head">
+      <img src="${logoSrc}" alt="Linbix" />
+      <button class="mm-close" onclick="closeMobile()" aria-label="Close menu">${closeIcon}</button>
+    </div>
+    <div class="mm-body">
+      <a onclick="go('about');closeMobile()">${tr(T.ui.about)}</a>
+      <div class="mm-group">
+        <button type="button" onclick="toggleMmGroup(this)" aria-expanded="false">${tr(T.ui.services)} ${chevIcon}</button>
+        <div class="mm-sub">
+          ${SERVICES.map(s=>`<a onclick="go('svc:${s.id}');closeMobile()"><span class="ico">${s.icon}</span>${tr(s.name)}</a>`).join("")}
+        </div>
+      </div>
+      <a onclick="go('dobiz');closeMobile()">${tr(T.ui.doBusiness)}</a>
+      <a onclick="go('partners');closeMobile()">${tr(T.partners.eyebrow)}</a>
+      <a onclick="go('events');closeMobile()">${tr(T.ui.events)}</a>
+      <a onclick="go('automation');closeMobile()">${tr(T.ui.automation)}</a>
+      <a onclick="go('faq');closeMobile()">${tr(T.faq.eyebrow)}</a>
+      <a onclick="go('contact');closeMobile()">${tr(T.ui.contact)}</a>
+    </div>
+    <div class="mm-foot">
+      <div class="mm-langsel" role="group" aria-label="Language">
+        <button onclick="setLang('es')" class="${LANG==='es'?'active':''}">ES</button>
+        <button onclick="setLang('en')" class="${LANG==='en'?'active':''}">EN</button>
+        <button onclick="setLang('fr')" class="${LANG==='fr'?'active':''}">FR</button>
+      </div>
+      <button class="mm-cta" onclick="closeMobile();chatOpen()">${chatIcon} ${tr(T.bot.trigger)}</button>
+    </div>
   `;
   // footer
   $("#foot-tag").textContent = tr(T.footer.tag);
@@ -1304,8 +1370,32 @@ function renderChrome(){
   $("#foot-built").textContent = tr(T.footer.built);
 }
 
-function toggleMobile(){ $("#mobileMenu").classList.toggle("open"); }
-function closeMobile(){ $("#mobileMenu").classList.remove("open"); }
+/* Mobile drawer — open/close with body scroll lock, backdrop, ARIA, ESC */
+function openMobile(){
+  const menu = $("#mobileMenu"), bd = $("#mobileBackdrop"), hb = $("#hamburger");
+  if(!menu) return;
+  menu.classList.add("open"); bd && bd.classList.add("open");
+  document.body.classList.add("menu-open");
+  hb && hb.setAttribute("aria-expanded","true");
+  // close on Escape
+  document.addEventListener("keydown", onMobileEsc);
+}
+function closeMobile(){
+  const menu = $("#mobileMenu"), bd = $("#mobileBackdrop"), hb = $("#hamburger");
+  if(!menu) return;
+  menu.classList.remove("open"); bd && bd.classList.remove("open");
+  document.body.classList.remove("menu-open");
+  hb && hb.setAttribute("aria-expanded","false");
+  document.removeEventListener("keydown", onMobileEsc);
+}
+function onMobileEsc(e){ if(e.key==="Escape") closeMobile(); }
+function toggleMobile(){ // keep old name as alias
+  ($("#mobileMenu")?.classList.contains("open")) ? closeMobile() : openMobile();
+}
+function toggleMmGroup(btn){
+  const grp = btn.closest(".mm-group");
+  if(grp) grp.classList.toggle("open");
+}
 
 /* ---------------- PAGE RENDERER ---------------- */
 function render(){
