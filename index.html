@@ -303,6 +303,23 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
 .faq-more a{color:var(--gold);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:4px;margin-left:6px}
 .faq-more a:hover{color:var(--ink)}
 
+/* ---------- Admin auth ---------- */
+.auth-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:18px}
+.auth-field{display:flex;flex-direction:column;gap:8px}
+.auth-field label{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.auth-field input{font-family:var(--sans);font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:11px;background:var(--paper);color:var(--ink);transition:border-color .15s,box-shadow .15s;min-height:48px}
+.auth-field input:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(246,134,59,.12)}
+.auth-err{font-size:13.5px;color:var(--teal);min-height:18px;font-weight:600;line-height:1.4}
+.auth-err:empty{display:none}
+.auth-submit{padding:15px 24px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--ink);border:none;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 8px 22px rgba(246,134,59,.32);transition:.2s;min-height:50px}
+.auth-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 28px rgba(246,134,59,.42)}
+.auth-submit:disabled{opacity:.6;cursor:wait}
+.auth-foot{font-size:12px;color:var(--muted);text-align:center;line-height:1.5;margin-top:6px}
+.auth-user{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);padding:6px 6px 6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
+.auth-user-email{font-size:12.5px;color:rgba(255,255,255,.88);font-weight:600}
+.auth-logout{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.9);font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.05em;padding:8px 14px;border-radius:999px;cursor:pointer;transition:.16s;min-height:36px}
+.auth-logout:hover{background:rgba(255,255,255,.22);color:#fff}
+
 /* ---------- Customizable callout ---------- */
 .custom-note{background:linear-gradient(135deg,rgba(247,161,34,.10),rgba(246,134,59,.06));border:1px solid rgba(246,134,59,.32);border-left:4px solid var(--gold);border-radius:14px;padding:18px 22px;margin:18px 0 0;display:flex;gap:16px;align-items:flex-start;box-shadow:0 4px 14px rgba(246,134,59,.08)}
 .custom-note .ic{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--gold-2),var(--gold));display:grid;place-items:center;color:#fff;font-size:18px;flex:none;box-shadow:0 4px 10px rgba(246,134,59,.32);font-weight:700}
@@ -762,6 +779,23 @@ const T = {
        en:"Infrastructure, technology, tools, and services to power and simplify business. Write to us and we'll follow up the same day.",
        fr:"Infrastructure, technologie, outils et services pour stimuler et faciliter les affaires. Écrivez-nous et nous vous répondrons le jour même."},
     formTitle:{es:"Envíanos un mensaje", en:"Send us a message", fr:"Envoyez-nous un message"},
+  },
+
+  /* ---- ADMIN AUTH (Luc only) ---- */
+  auth:{
+    title:    {es:"Acceso administrador", en:"Administrator access", fr:"Accès administrateur"},
+    lead:     {es:"Zona privada. Solo Luc Germain Joseph tiene acceso a la consola de automatización y los leads.",
+               en:"Private zone. Only Luc Germain Joseph has access to the automation console and leads.",
+               fr:"Zone privée. Seul Luc Germain Joseph a accès à la console d'automatisation et aux prospects."},
+    email:    {es:"Email", en:"Email", fr:"Email"},
+    emailPh:  {es:"tu email", en:"your email", fr:"votre email"},
+    password: {es:"Contraseña", en:"Password", fr:"Mot de passe"},
+    passwordPh:{es:"tu contraseña", en:"your password", fr:"votre mot de passe"},
+    submit:   {es:"Iniciar sesión", en:"Sign in", fr:"Se connecter"},
+    logout:   {es:"Cerrar sesión", en:"Sign out", fr:"Se déconnecter"},
+    footnote: {es:"Sesión válida por 7 días. Te puedes desconectar en cualquier momento.",
+               en:"Session valid for 7 days. You can sign out at any time.",
+               fr:"Session valable 7 jours. Vous pouvez vous déconnecter à tout moment."},
   },
 
   /* ---- AUTOMATION CONSOLE ---- */
@@ -1233,6 +1267,7 @@ const SERVICES = [
 let LANG = "es";
 let CUR  = "MXN";          // current display currency, derived from LANG
 let CURRENT = "home";
+const AUTH = { checked:false, ok:false, email:null, error:null, busy:false };
 
 const tr = (obj) => (obj && (obj[LANG] ?? obj.es)) || "";
 
@@ -1414,7 +1449,7 @@ function afterRender(){
   document.querySelectorAll("form[data-dobiz]").forEach(f=>{
     f.addEventListener("submit", onDobizSubmit);
   });
-  if(CURRENT==="automation") renderConsole();
+  if(CURRENT==="automation" && AUTH.ok) renderConsole();
   initReveal();
   initCounters();
 }
@@ -1923,14 +1958,113 @@ function flashAutomationLink(){
 }
 
 /* ---------------- AUTOMATION PAGE ---------------- */
+/* ============================================================
+   AUTH gate for /automation
+   ============================================================ */
+async function authCheck(){
+  try{
+    const r = await fetch("/api/auth/check", { credentials:"include", cache:"no-store" });
+    const j = await r.json().catch(()=>({}));
+    AUTH.checked = true; AUTH.ok = !!j.ok; AUTH.email = j.email || null;
+  }catch{ AUTH.checked = true; AUTH.ok = false; }
+}
+
+async function authLogin(e){
+  e.preventDefault();
+  if(AUTH.busy) return;
+  const f = e.target;
+  const email = f.querySelector('[name="email"]').value.trim();
+  const password = f.querySelector('[name="password"]').value;
+  AUTH.busy = true; AUTH.error = null;
+  const btn = f.querySelector('button[type="submit"]');
+  if(btn){ btn.disabled = true; btn.textContent = ({es:"Verificando…",en:"Verifying…",fr:"Vérification…"}[LANG]); }
+  try{
+    const r = await fetch("/api/auth/login", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      credentials:"include",
+      body: JSON.stringify({ email, password }),
+    });
+    const j = await r.json().catch(()=>({}));
+    if(j.ok){
+      AUTH.ok = true; AUTH.email = j.email; AUTH.error = null;
+      AUTH.busy = false;
+      render();
+    } else {
+      AUTH.error = j.error || ({es:"Email o contraseña incorrectos",en:"Wrong email or password",fr:"Email ou mot de passe incorrect"}[LANG]);
+      AUTH.busy = false;
+      if(btn){ btn.disabled = false; btn.textContent = tr(T.auth.submit); }
+      const errEl = document.getElementById("authErr"); if(errEl) errEl.textContent = AUTH.error;
+    }
+  }catch(err){
+    AUTH.error = err.message; AUTH.busy = false;
+    if(btn){ btn.disabled = false; btn.textContent = tr(T.auth.submit); }
+    const errEl = document.getElementById("authErr"); if(errEl) errEl.textContent = AUTH.error;
+  }
+}
+
+async function authLogout(){
+  try{ await fetch("/api/auth/logout", { method:"POST", credentials:"include" }); }catch{}
+  AUTH.ok = false; AUTH.email = null;
+  render();
+}
+
+function pageAutomationLoading(){
+  return `<div class="page active"><div class="detail-hero"><div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-2)">${tr(T.auto.eyebrow)}</div>
+    <h1>${tr(T.auto.h2)}</h1>
+    <p class="note" style="max-width:46em;margin-top:10px;opacity:.6">${({es:"Verificando acceso…",en:"Verifying access…",fr:"Vérification de l'accès…"}[LANG])}</p>
+  </div></div></div>`;
+}
+
+function pageAutomationLogin(){
+  const t = T.auth;
+  return `<div class="page active">
+    <div class="detail-hero"><div class="wrap">
+      <div class="eyebrow" style="color:var(--gold-2)">${tr(T.auto.eyebrow)}</div>
+      <h1>${tr(t.title)}</h1>
+      <p class="note" style="max-width:42em;margin-top:14px">${tr(t.lead)}</p>
+    </div></div>
+    <section class="detail-body"><div class="wrap" style="max-width:480px">
+      <form class="auth-form" onsubmit="authLogin(event)">
+        <div class="auth-field">
+          <label for="auth-email">${tr(t.email)}</label>
+          <input id="auth-email" name="email" type="email" autocomplete="username" required placeholder="${tr(t.emailPh)}" />
+        </div>
+        <div class="auth-field">
+          <label for="auth-password">${tr(t.password)}</label>
+          <input id="auth-password" name="password" type="password" autocomplete="current-password" required placeholder="${tr(t.passwordPh)}" />
+        </div>
+        <div id="authErr" class="auth-err">${AUTH.error || ""}</div>
+        <button class="auth-submit" type="submit">${tr(t.submit)}</button>
+        <div class="auth-foot">${tr(t.footnote)}</div>
+      </form>
+    </div></section>
+  </div>`;
+}
+
 function pageAutomation(){
+  if(!AUTH.checked){
+    authCheck().then(()=>render());
+    return pageAutomationLoading();
+  }
+  if(!AUTH.ok) return pageAutomationLogin();
+  // authed: render dashboard
   const a=T.auto;
   return `
   <div class="page active">
     <div class="detail-hero"><div class="wrap">
-      <div class="eyebrow" style="color:var(--gold-2)">${tr(a.eyebrow)}</div>
-      <h1>${tr(a.h2)}</h1>
-      <p class="note" style="max-width:46em;margin-top:10px">${tr(a.p)}</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-2)">${tr(a.eyebrow)}</div>
+          <h1>${tr(a.h2)}</h1>
+          <p class="note" style="max-width:46em;margin-top:10px">${tr(a.p)}</p>
+        </div>
+        <div class="auth-user">
+          <span class="auth-user-email">${AUTH.email || ""}</span>
+          <button class="auth-logout" onclick="authLogout()" aria-label="Cerrar sesión">${tr(T.auth.logout)}</button>
+        </div>
+      </div>
     </div></div>
     <section class="detail-body"><div class="wrap">
       <div class="console">
