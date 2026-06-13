@@ -1883,6 +1883,19 @@ function buildLead(input, seeded){
   };
 }
 
+/* Send lead to /api/lead so Luc receives an email. Non-blocking. */
+function sendLeadToAPI(payload){
+  try{
+    fetch("/api/lead", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ ...payload, locale: (LANG || "es").toUpperCase() }),
+    }).then(r=>r.json()).then(j=>{
+      if(!j.ok) console.warn("Lead email failed", j);
+    }).catch(err=>console.warn("Lead email err", err.message));
+  }catch(err){ console.warn("Lead fetch err", err.message); }
+}
+
 function onLeadSubmit(e){
   e.preventDefault();
   const f = e.target;
@@ -1894,6 +1907,8 @@ function onLeadSubmit(e){
   // run pipeline
   const lead = buildLead(data,false);
   LEADS.unshift(lead);
+  // send to backend so Luc receives an email
+  sendLeadToAPI({ ...data, source: "Form: " + (data.service || f.dataset.service || "unknown") });
   // show success
   const ok = f.querySelector(".form-ok");
   if(ok){ ok.classList.add("show"); }
@@ -2221,6 +2236,14 @@ function chatRenderBookingForm(isHuman){
       }, false);
       lead.source = "Chat: " + (isHuman ? "advisor" : (CHAT.ctx.flow||"chat"));
       LEADS.unshift(lead);
+      // backend email — chat booking
+      sendLeadToAPI({
+        name, email, phone: get("phone"),
+        service: svcId,
+        country: (LANG==="fr" ? "France" : LANG==="en" ? "USA" : "México"),
+        message: `Cita preferida: ${get("date")} ${get("time")}${isHuman ? " · Solicitó hablar con asesor" : ""}`,
+        source: lead.source,
+      });
       flashAutomationLink();
       chatBotMessage(tr(T.bot.confirmed.title)+" "+tr(T.bot.confirmed.body), ()=>{
         chatQuickReplies([
@@ -2298,6 +2321,14 @@ function onDobizSubmit(e){
     interestedServices: interests,
   };
   LEADS.unshift(lead);
+  // backend email — rich Doing Business inquiry
+  sendLeadToAPI({
+    name: data.name, email: data.email, phone: data.phone, whatsapp: data.whatsapp,
+    company: data.company, country: data.country, website: data.website,
+    address: data.address, promote: data.promote, targets: data.targets,
+    interestedServices: interests, service: "hacer-negocios",
+    source: "Hacer Negocios en MX",
+  });
   const ok = f.querySelector(".form-ok"); if(ok) ok.classList.add("show");
   f.reset();
   flashAutomationLink();
