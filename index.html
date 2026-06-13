@@ -908,6 +908,361 @@ noscript-content{
 @media (max-width:520px){ .ei-modal{ padding:32px 24px 20px; } }
 
 /* ============================================================
+   COMUNIDAD — Featured Business + Spotlights + Directory
+   ============================================================ */
+.cm-featured-card{
+  max-width:880px; margin:36px auto 0;
+  padding:54px 44px; text-align:center;
+  border-radius:24px; background:#fff;
+  border:1px solid rgba(247,161,34,.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.6),
+    0 24px 60px -22px rgba(246,134,59,.25),
+    0 10px 28px -12px rgba(0,0,0,.1);
+  position:relative; overflow:hidden;
+}
+.cm-featured-card::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%, rgba(247,161,34,.14), transparent 55%);
+}
+.cm-feat-eye, .cm-feat-empty-eye{
+  font-size:11.5px; font-weight:700; letter-spacing:.24em;
+  color:var(--gold); margin-bottom:14px; position:relative;
+}
+.cm-feat-name, .cm-feat-empty-h{
+  font-family:var(--serif); font-size:clamp(28px,3.6vw,42px); font-weight:600;
+  color:var(--ink); margin:0 0 14px; line-height:1.1; position:relative;
+}
+.cm-feat-tag, .cm-feat-empty-p{
+  color:var(--muted); font-size:16.5px; line-height:1.55;
+  max-width:44em; margin:0 auto 22px; position:relative;
+}
+.cm-feat-link{
+  color:var(--gold); font-weight:700; text-decoration:none;
+  border-bottom:1px solid rgba(246,134,59,.35); padding-bottom:2px;
+}
+.cm-feat-link:hover{ color:var(--ink); border-color:var(--ink); }
+.cm-feat-cta{
+  display:inline-block; padding:14px 28px; border-radius:999px;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#1a1208;
+  border:0; cursor:pointer; font-weight:700; font-size:15px;
+  box-shadow:0 14px 28px rgba(246,134,59,.4); position:relative;
+}
+.cm-feat-cta:hover{ transform:translateY(-2px); }
+
+/* Spotlight grid */
+.cm-spotlights{
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:16px;
+  margin-top:32px;
+}
+@media (max-width:980px){ .cm-spotlights{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:560px){ .cm-spotlights{ grid-template-columns:1fr; } }
+.cm-spot-slot{
+  border-radius:14px; padding:22px 18px;
+  display:flex; flex-direction:column; gap:8px; min-height:160px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.cm-spot-held{
+  background:#fff; border:1px solid var(--line);
+  box-shadow:0 12px 24px -16px rgba(0,0,0,.15);
+}
+.cm-spot-held .cm-spot-name{ font-family:var(--serif); font-size:18px; font-weight:600; color:var(--ink); }
+.cm-spot-held .cm-spot-tag{ color:var(--muted); font-size:13.5px; line-height:1.45; flex:1; }
+.cm-spot-held .cm-spot-link{ color:var(--gold); font-weight:700; font-size:18px; align-self:flex-end; text-decoration:none; }
+.cm-spot-open{
+  background:linear-gradient(180deg, rgba(247,161,34,.05), rgba(247,161,34,.12));
+  border:2px dashed rgba(246,134,59,.5);
+  cursor:pointer; align-items:center; justify-content:center; text-align:center;
+}
+.cm-spot-open:hover{ transform:translateY(-3px); border-color:var(--gold); }
+.cm-spot-avail{
+  font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); padding:5px 12px; background:rgba(247,161,34,.12); border-radius:999px;
+}
+.cm-spot-cta{
+  font-family:var(--serif); font-size:16px; font-weight:600; color:var(--ink);
+  line-height:1.25;
+}
+
+/* Directory filters */
+.cm-filters{
+  display:flex; gap:12px; max-width:760px; margin:0 auto 28px;
+}
+.cm-filters select, .cm-filters input{
+  padding:13px 16px; border-radius:12px; border:1px solid var(--line);
+  font-family:var(--sans); font-size:14.5px; background:#fff; color:var(--ink);
+}
+.cm-filters select{ flex:0 0 auto; min-width:200px; cursor:pointer; }
+.cm-filters input{ flex:1; }
+.cm-filters input:focus, .cm-filters select:focus{
+  outline:none; border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(247,161,34,.18);
+}
+
+/* Directory grid */
+.cm-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px;
+}
+.cm-card{
+  background:#fff; border-radius:16px; padding:22px 22px 20px;
+  border:1px solid var(--line);
+  box-shadow:0 12px 22px -18px rgba(0,0,0,.16);
+  display:flex; flex-direction:column; gap:8px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.cm-card:hover{ transform:translateY(-4px); box-shadow:0 20px 36px -18px rgba(0,0,0,.22); }
+.cm-card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+.cm-card-name{ font-family:var(--serif); font-size:19px; font-weight:600; color:var(--ink); line-height:1.2; }
+.cm-card-badge{
+  font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  background:rgba(56,142,60,.1); color:#1e8449;
+  padding:4px 9px; border-radius:999px; white-space:nowrap;
+}
+.cm-card-ind{
+  font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold);
+}
+.cm-card-tag{ color:var(--muted); font-size:14px; line-height:1.55; margin:6px 0 8px; flex:1; }
+.cm-card-link{
+  align-self:flex-start; color:var(--ink); font-weight:600; font-size:13.5px;
+  text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:1px;
+}
+.cm-card-link:hover{ color:var(--gold); border-color:var(--gold); }
+.cm-empty{
+  grid-column:1/-1; text-align:center; color:var(--muted);
+  padding:48px 24px; font-style:italic;
+}
+
+/* ============================================================
+   DOBIZ — international-entry funnel page
+   ============================================================ */
+.dobiz-hero{
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg, #100c08 0%, #1a130d 100%);
+  padding:96px 0 80px; color:#fff;
+}
+.dobiz-hero::before{
+  content:""; position:absolute; inset:-40%;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(31,155,224,.15), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(246,134,59,.18), transparent 55%);
+  pointer-events:none;
+}
+.dobiz-hero-grid{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns: 1.2fr 0.8fr; gap:48px; align-items:center;
+}
+@media (max-width:920px){ .dobiz-hero-grid{ grid-template-columns:1fr; } }
+.dobiz-badge{
+  display:inline-block; padding:6px 14px; border-radius:999px;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#1a1208;
+  font-family:var(--sans); font-size:10.5px; font-weight:800;
+  letter-spacing:.2em; text-transform:uppercase;
+  box-shadow:0 10px 24px rgba(246,134,59,.42);
+}
+.dobiz-h1{
+  font-family:var(--serif); font-size:clamp(34px,4.6vw,60px);
+  font-weight:600; line-height:1.02; letter-spacing:-.015em;
+  color:#fff; margin:14px 0 20px;
+}
+.dobiz-lead{
+  color:rgba(255,255,255,.78); font-size:18.5px; line-height:1.55; max-width:36em; margin-bottom:28px;
+}
+.dobiz-cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:34px; }
+.dobiz-trust-row{ display:flex; gap:36px; flex-wrap:wrap; }
+.dobiz-trust-item{ display:flex; flex-direction:column; }
+.dobiz-trust-n{ font-family:var(--serif); font-size:34px; font-weight:700; color:var(--gold-2); line-height:1; }
+.dobiz-trust-l{ font-size:12.5px; color:rgba(255,255,255,.65); letter-spacing:.04em; margin-top:6px; }
+.dobiz-hero-side{ aspect-ratio:4/5; min-height:420px; }
+@media (max-width:920px){ .dobiz-hero-side{ aspect-ratio:16/10; min-height:0; } }
+.dobiz-hero-side img{ width:100%; height:100%; object-fit:cover; }
+
+/* Pain block */
+.dobiz-pain{
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;
+  max-width:980px; margin:0 auto;
+}
+@media (max-width:720px){ .dobiz-pain{ grid-template-columns:1fr; } }
+.dobiz-pain-card{
+  background:#fff; padding:22px 22px 22px 58px;
+  border-radius:14px; border:1px solid var(--line);
+  box-shadow:0 10px 22px -18px rgba(0,0,0,.12);
+  position:relative;
+}
+.dobiz-pain-x{
+  position:absolute; left:18px; top:22px;
+  width:26px; height:26px; border-radius:999px;
+  background:rgba(192,57,43,.12); color:#c0392b;
+  display:grid; place-items:center; font-weight:800; font-size:13px;
+}
+.dobiz-pain-card p{ color:var(--ink-2); font-size:15.5px; line-height:1.55; margin:0; }
+
+/* Process block — 5 steps */
+.dobiz-proc{
+  display:grid; gap:18px; max-width:880px; margin:0 auto;
+}
+.dobiz-step{
+  display:flex; gap:22px; padding:22px 22px;
+  background:#fff; border:1px solid var(--line); border-radius:16px;
+  box-shadow:0 10px 22px -18px rgba(0,0,0,.12);
+  align-items:flex-start;
+}
+.dobiz-step-n{
+  flex:none; width:48px; height:48px; border-radius:999px;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#1a1208;
+  display:grid; place-items:center; font-family:var(--serif); font-size:22px; font-weight:700;
+  box-shadow:0 10px 18px rgba(246,134,59,.35);
+}
+.dobiz-step-body h4{
+  font-family:var(--serif); font-size:20px; font-weight:600; color:var(--ink);
+  margin:0 0 6px;
+}
+.dobiz-step-body p{ color:var(--muted); font-size:15px; line-height:1.55; margin:0; }
+
+/* Includes list */
+.dobiz-inc{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  max-width:980px; margin:0 auto;
+}
+@media (max-width:720px){ .dobiz-inc{ grid-template-columns:1fr; } }
+.dobiz-inc-item{
+  display:flex; gap:14px; align-items:flex-start;
+  padding:16px 18px; background:#fff;
+  border:1px solid var(--line); border-radius:12px;
+  color:var(--ink); font-size:14.5px; line-height:1.5;
+}
+.dobiz-inc-check{
+  flex:none; width:22px; height:22px; border-radius:999px;
+  background:rgba(247,161,34,.16); color:var(--gold);
+  display:grid; place-items:center; font-weight:800; font-size:12px;
+}
+
+/* Price card */
+.dobiz-price{ max-width:680px; margin:0 auto; }
+.dobiz-price-card{
+  background:linear-gradient(180deg,#fff,rgba(247,161,34,.04));
+  border:1px solid rgba(246,134,59,.4);
+  border-radius:24px; padding:48px 40px 36px;
+  text-align:center; position:relative; overflow:hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    0 32px 70px -22px rgba(246,134,59,.32);
+}
+.dobiz-price-amount{
+  font-family:var(--serif); font-size:clamp(48px,7vw,80px); font-weight:700;
+  color:var(--ink); line-height:1; margin:14px 0 8px;
+}
+.dobiz-price-unit{ color:var(--muted); font-size:14.5px; letter-spacing:.04em; margin-bottom:18px; }
+.dobiz-price-sub{ color:var(--ink-2); font-size:15px; line-height:1.55; max-width:38em; margin:0 auto 24px; }
+.dobiz-guarantee{
+  background:rgba(56,142,60,.06); border:1px solid rgba(56,142,60,.3);
+  border-radius:14px; padding:20px 22px; text-align:left; margin-top:20px;
+}
+.dobiz-guarantee-h{ font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#1e8449; margin-bottom:8px; }
+.dobiz-guarantee-p{ color:var(--ink-2); font-size:14.5px; line-height:1.55; }
+
+/* Proof block */
+.dobiz-proof{ display:grid; gap:16px; max-width:780px; margin:0 auto; }
+.dobiz-proof-item{
+  display:flex; gap:16px; align-items:flex-start;
+  padding:18px 22px; background:#fff;
+  border:1px solid var(--line); border-radius:14px;
+}
+.dobiz-proof-check{
+  flex:none; width:28px; height:28px; border-radius:999px;
+  background:rgba(247,161,34,.16); color:var(--gold);
+  display:grid; place-items:center; font-weight:800; font-size:14px;
+}
+.dobiz-proof-item p{ color:var(--ink-2); font-size:16px; line-height:1.55; margin:0; }
+
+/* ============================================================
+   COMPARISON — Linbix vs WeWork
+   ============================================================ */
+.cmp-hero{
+  background:linear-gradient(180deg, #1a130d 0%, #100c08 100%);
+  padding:88px 0 56px; color:#fff; text-align:center; position:relative;
+}
+.cmp-hero::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(247,161,34,.16), transparent 55%);
+  pointer-events:none;
+}
+.cmp-h1{
+  font-family:var(--serif); font-size:clamp(30px,4.4vw,52px);
+  font-weight:600; line-height:1.05; color:#fff;
+  margin:14px auto 20px; max-width:22ch; position:relative;
+}
+.cmp-lead{
+  color:rgba(255,255,255,.78); font-size:17px; line-height:1.55;
+  max-width:38em; margin:0 auto; position:relative;
+}
+/* Picker */
+.cmp-picker{
+  max-width:780px; margin:24px auto 0;
+  display:grid; gap:14px;
+}
+.cmp-picker-item{
+  display:flex; gap:14px; align-items:flex-start;
+  padding:18px 22px; background:#fff;
+  border:1px solid var(--line); border-radius:12px;
+  box-shadow:0 10px 22px -18px rgba(0,0,0,.12);
+}
+.cmp-picker-dot{
+  flex:none; width:10px; height:10px; border-radius:999px;
+  background:var(--gold-2); margin-top:8px;
+  box-shadow:0 0 0 4px rgba(247,161,34,.18);
+}
+.cmp-picker-item p{ color:var(--ink); font-size:15.5px; line-height:1.55; margin:0; }
+
+/* Table */
+.cmp-table-wrap{ overflow-x:auto; max-width:1080px; margin:0 auto; border-radius:18px; border:1px solid var(--line); background:#fff; }
+.cmp-table{ width:100%; border-collapse:collapse; font-family:var(--sans); }
+.cmp-table th, .cmp-table td{ padding:16px 18px; text-align:left; font-size:14px; line-height:1.5; }
+.cmp-table thead th{ font-family:var(--serif); font-size:18px; color:var(--ink); border-bottom:2px solid var(--line); }
+.cmp-th-linbix{ color:var(--gold); }
+.cmp-th-wework{ color:var(--muted); }
+.cmp-table tbody tr{ border-top:1px solid rgba(0,0,0,.06); }
+.cmp-table tbody tr:nth-child(even){ background:#fbfaf6; }
+.cmp-label{ font-weight:600; color:var(--ink); min-width:200px; }
+.cmp-cell{ color:var(--ink-2); }
+.cmp-win{ background:rgba(247,161,34,.08) !important; font-weight:600; color:var(--ink); position:relative; }
+.cmp-win::before{
+  content:"✓"; position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  color:var(--gold); font-weight:800;
+}
+@media (max-width:720px){
+  .cmp-table th, .cmp-table td{ padding:12px 12px; font-size:13px; }
+  .cmp-label{ min-width:140px; }
+}
+
+/* Choose grid */
+.cmp-choose-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1000px; margin:0 auto; }
+@media (max-width:760px){ .cmp-choose-grid{ grid-template-columns:1fr; } }
+.cmp-choose{
+  background:#fff; border-radius:18px; padding:32px 32px;
+  border:1px solid var(--line);
+  box-shadow:0 16px 30px -18px rgba(0,0,0,.12);
+}
+.cmp-choose-linbix{ border-color:rgba(246,134,59,.45); background:linear-gradient(180deg,#fff,rgba(247,161,34,.04)); }
+.cmp-choose h3{
+  font-family:var(--serif); font-size:24px; font-weight:600;
+  color:var(--ink); margin:0 0 16px; line-height:1.15;
+}
+.cmp-choose-linbix h3{ color:var(--ink); }
+.cmp-choose ul{ list-style:none; padding:0; margin:0 0 24px; }
+.cmp-choose ul li{
+  padding:10px 0 10px 28px; position:relative;
+  color:var(--ink-2); font-size:14.5px; line-height:1.55;
+  border-top:1px solid rgba(0,0,0,.06);
+}
+.cmp-choose ul li:first-child{ border-top:0; }
+.cmp-choose ul li::before{
+  content:"✓"; position:absolute; left:0; top:10px;
+  color:var(--gold); font-weight:800;
+}
+.cmp-choose-wework ul li::before{ color:var(--muted); content:"→"; }
+
+/* ============================================================
    LUXURY FRAME — universal premium image/video container
    - matte mat + brass inner border + multi-layer shadow
    - subtle inner highlight + hover lift
@@ -1440,6 +1795,12 @@ noscript-content{
     <h2>Horarios</h2>
     <p>Lunes a viernes de 8:00 a 19:00. Sábados de 9:00 a 14:00. Acceso extendido para miembros Executive Office desde las 8:30.</p>
 
+    <h2>Comunidad Linbix</h2>
+    <p>Cientos de empresas miembro usan Linbix como su domicilio en Guadalajara. Visita <a href="https://www.linbix.com/community">linbix.com/community</a> para ver el directorio gratuito, los Spotlights mensuales pagados ($1,000 MXN/mes) y la Empresa Destacada del Mes ($3,000 MXN/mes).</p>
+
+    <h2>Linbix vs WeWork Guadalajara</h2>
+    <p>Comparativa honesta entre los dos centros de negocios más usados en Guadalajara, en <a href="https://www.linbix.com/comparison">linbix.com/comparison</a>. Linbix gana en precio, idiomas (ES/EN/FR vs ES/EN), servicio internacional para extranjeros, y red curada de notarios/contadores/abogados. WeWork gana en reconocimiento de marca global y disponibilidad multi-ciudad.</p>
+
     <h2>Sobre Linbix</h2>
     <p>Fundado por Luc Germain Joseph. Socio tecnológico estratégico: <a href="https://techfides.com">TechFides</a>. Linbix Business Place forma parte del ecosistema de centros de negocios incluyentes en el corazón de Guadalajara.</p>
   </noscript-content>
@@ -1857,6 +2218,213 @@ const T = {
     },
   },
 
+  /* ---- COMUNIDAD — paid Spotlight marketplace (mirrors Events revenue engine) ---- */
+  community:{
+    // Page chrome
+    eyebrow:{es:"Comunidad Linbix", en:"Linbix Community", fr:"Communauté Linbix"},
+    h1:{es:"Negocios que crecen aquí.", en:"Businesses growing here.", fr:"Des entreprises qui grandissent ici."},
+    p:{es:"Cientos de empresas que llaman Linbix su casa. Conócelas. Conecta con ellas. O pon la tuya enfrente de todas, por un mes.",
+       en:"Hundreds of companies that call Linbix home. Meet them. Connect with them. Or put yours in front of all of them — for a month.",
+       fr:"Des centaines d'entreprises qui font de Linbix leur maison. Découvrez-les. Connectez-vous avec elles. Ou mettez la vôtre devant toutes — pendant un mois."},
+
+    // Featured Business of the Month
+    featuredH:{es:"Empresa Destacada del Mes", en:"Featured Business of the Month", fr:"Entreprise vedette du mois"},
+    featuredBy:{es:"Destacada por", en:"Featured by", fr:"En vedette par"},
+    featuredEmptyEye:{es:"Slot destacado del mes", en:"Featured slot this month", fr:"Vedette du mois disponible"},
+    featuredEmptyH:{es:"Tu marca aquí. Por 30 días. Toda la comunidad la verá.",
+                    en:"Your brand here. For 30 days. The whole community sees it.",
+                    fr:"Votre marque ici. Pendant 30 jours. Toute la communauté la voit."},
+    featuredEmptyP:{es:"Una sola empresa por mes ocupa este espacio: logo en hero, presentación expandida, video, link directo y mención en nuestro newsletter mensual a 1,200+ miembros.",
+                    en:"One business per month claims this space: hero logo, expanded write-up, video, direct link, and a mention in our monthly newsletter to 1,200+ members.",
+                    fr:"Une seule entreprise par mois occupe cet espace : logo en hero, présentation détaillée, vidéo, lien direct, et mention dans notre newsletter mensuelle à 1 200+ membres."},
+    featuredCTA:{es:"Reservar mi mes — $3,000 MXN", en:"Book my month — $3,000 MXN", fr:"Réserver mon mois — 3 000 $ MXN"},
+
+    // Monthly Spotlight (5 slots)
+    spotlightH:{es:"Spotlights del mes", en:"Spotlights of the month", fr:"Spotlights du mois"},
+    spotlightSubH:{es:"Cinco marcas por mes. Logo en la página, link directo, mención en redes. Renovación opcional al final del mes.",
+                   en:"Five brands per month. Logo on the page, direct link, social mention. Optional renewal at month's end.",
+                   fr:"Cinq marques par mois. Logo sur la page, lien direct, mention sur les réseaux. Renouvellement optionnel à la fin du mois."},
+    spotlightAvail:{es:"Disponible", en:"Available", fr:"Disponible"},
+    spotlightCTA:{es:"Reservar slot — $1,000 MXN", en:"Reserve slot — $1,000 MXN", fr:"Réserver un slot — 1 000 $ MXN"},
+
+    // Directory
+    directoryH:{es:"Directorio de miembros", en:"Member directory", fr:"Annuaire des membres"},
+    directoryP:{es:"Filtra por industria, busca un servicio, contacta directamente. Gratis para todos los miembros activos.",
+                en:"Filter by industry, search a service, contact directly. Free for all active members.",
+                fr:"Filtrez par secteur, recherchez un service, contactez directement. Gratuit pour tous les membres actifs."},
+    industryAll:{es:"Todas las industrias", en:"All industries", fr:"Tous les secteurs"},
+    searchPh:{es:"Buscar miembro o servicio…", en:"Search member or service…", fr:"Rechercher membre ou service…"},
+    listFreeBadge:{es:"Miembro activo", en:"Active member", fr:"Membre actif"},
+    listVisit:{es:"Visitar", en:"Visit", fr:"Visiter"},
+    listEmpty:{es:"Sin resultados. Prueba otra búsqueda.", en:"No results. Try another search.", fr:"Aucun résultat. Essayez une autre recherche."},
+
+    // Join CTA
+    joinH:{es:"¿Eres miembro? Aparece aquí.", en:"Are you a member? Get listed.", fr:"Vous êtes membre ? Apparaissez ici."},
+    joinP:{es:"Aparecer en el directorio es gratis con tu membresía activa. Solo envíanos tu logo, descripción y link.",
+           en:"Listing is free with active membership. Just send us your logo, description, and link.",
+           fr:"L'annonce est gratuite avec une adhésion active. Envoyez-nous votre logo, description et lien."},
+    joinCTA:{es:"Solicitar mi listing", en:"Request my listing", fr:"Demander mon annonce"},
+
+    // Modal
+    modalSpotEye:{es:"Spotlight del mes", en:"Spotlight of the month", fr:"Spotlight du mois"},
+    modalFeatEye:{es:"Empresa Destacada del Mes", en:"Featured Business of the Month", fr:"Entreprise vedette du mois"},
+    modalListEye:{es:"Listing gratuito de miembro", en:"Free member listing", fr:"Annonce gratuite de membre"},
+    modalCompany:{es:"Empresa", en:"Company", fr:"Entreprise"},
+    modalWebsite:{es:"Sitio web", en:"Website", fr:"Site web"},
+    modalTagline:{es:"Tagline (una frase)", en:"Tagline (one sentence)", fr:"Tagline (une phrase)"},
+    modalIndustry:{es:"Industria", en:"Industry", fr:"Secteur"},
+    modalSubmit:{es:"Apartar este lugar", en:"Hold this spot", fr:"Réserver cette place"},
+    modalListSubmit:{es:"Enviar para revisión", en:"Submit for review", fr:"Soumettre pour revue"},
+    modalOk:{es:"¡Apartado!", en:"Held!", fr:"Réservé !"},
+    modalOkP:{es:"Te contactamos en menos de 24 horas para confirmar y enviar el contrato.",
+              en:"We'll contact you within 24 hours to confirm and send the contract.",
+              fr:"Nous vous contactons dans les 24 heures pour confirmer et envoyer le contrat."},
+  },
+
+  communityCatalog:{
+    // Featured Business of the Month — null when slot open
+    featured: null,
+    // Monthly spotlights — array of held slots; remaining = 5 - spotlights.length
+    spotlightCapacity: 5,
+    spotlights: [],
+    // Free member directory — seeded with credible-feeling examples
+    directory:[
+      {company:"Welt México", industry:"Legal & Compliance", tagline:{es:"Asesoría fiscal y corporativa para empresas en México.", en:"Tax and corporate advisory for companies in Mexico.", fr:"Conseil fiscal et corporatif pour les entreprises au Mexique."}, href:"#"},
+      {company:"TechFides", industry:"Tecnología & IA", tagline:{es:"IA local en hardware que tú posees. Tus datos no salen del edificio.", en:"Local AI on hardware you own. Your data stays in your building.", fr:"IA locale sur du matériel que vous possédez. Vos données restent dans votre bâtiment."}, href:"https://techfides.com"},
+      {company:"Notaría 47 GDL", industry:"Notarial", tagline:{es:"Constitución de sociedades, poderes, fideicomisos y compraventa de inmuebles.", en:"Company formation, powers of attorney, trusts, and real-estate transactions.", fr:"Constitution de sociétés, procurations, fiducies et transactions immobilières."}, href:"#"},
+      {company:"Contadores del Bosque", industry:"Contabilidad", tagline:{es:"Contabilidad y nómina para PyMES con sede en Jalisco.", en:"Accounting and payroll for SMBs based in Jalisco.", fr:"Comptabilité et paie pour PME basées au Jalisco."}, href:"#"},
+      {company:"Cone Fest Studio", industry:"Marketing & Eventos", tagline:{es:"Producción audiovisual y eventos corporativos en Guadalajara.", en:"Audiovisual production and corporate events in Guadalajara.", fr:"Production audiovisuelle et événements d'entreprise à Guadalajara."}, href:"#"},
+      {company:"Jalisco Logistics Group", industry:"Logística", tagline:{es:"Comercio exterior y logística USA–MX para empresas medianas.", en:"Foreign trade and US–MX logistics for mid-size companies.", fr:"Commerce extérieur et logistique USA–MX pour entreprises de taille moyenne."}, href:"#"},
+      {company:"Studio Jardín", industry:"Diseño & Arquitectura", tagline:{es:"Interiorismo corporativo para oficinas modernas en Guadalajara.", en:"Corporate interior design for modern offices in Guadalajara.", fr:"Design d'intérieur corporatif pour bureaux modernes à Guadalajara."}, href:"#"},
+      {company:"Iberia Wines", industry:"Distribución", tagline:{es:"Importación y distribución de vinos europeos en Occidente de México.", en:"Import and distribution of European wines in Western Mexico.", fr:"Importation et distribution de vins européens dans l'Ouest du Mexique."}, href:"#"},
+      {company:"Casa Médica Providencia", industry:"Salud", tagline:{es:"Consultas ejecutivas y medicina corporativa para empresas.", en:"Executive consultations and corporate medicine for companies.", fr:"Consultations exécutives et médecine d'entreprise pour entreprises."}, href:"#"},
+      {company:"Bilingual Talent MX", industry:"RR.HH. & Reclutamiento", tagline:{es:"Reclutamiento de talento bilingüe para empresas extranjeras.", en:"Bilingual talent recruitment for foreign companies.", fr:"Recrutement de talents bilingues pour entreprises étrangères."}, href:"#"},
+      {company:"Frisco–GDL Trade Desk", industry:"Comercio Internacional", tagline:{es:"Puente comercial Texas–Jalisco para PyMES exportadoras.", en:"Texas–Jalisco trade bridge for exporting SMBs.", fr:"Pont commercial Texas–Jalisco pour les PME exportatrices."}, href:"#"},
+      {company:"Inkside Branding", industry:"Diseño & Branding", tagline:{es:"Identidad de marca para fundadores que están empezando bien.", en:"Brand identity for founders who want to start right.", fr:"Identité de marque pour fondateurs qui veulent bien démarrer."}, href:"#"},
+    ],
+  },
+
+  /* ---- COMPARISON — Linbix vs WeWork Guadalajara ---- */
+  comparison:{
+    eyebrow:{es:"Comparativa honesta", en:"Honest comparison", fr:"Comparaison honnête"},
+    h1:{es:"Linbix vs WeWork Guadalajara — ¿cuál te conviene?",
+        en:"Linbix vs WeWork Guadalajara — which one is right for you?",
+        fr:"Linbix vs WeWork Guadalajara — lequel vous convient ?"},
+    p:{es:"Una comparación honesta entre los dos centros de negocios más usados en Guadalajara — escrita por uno de ellos. Te decimos cuándo elegir cada uno.",
+       en:"An honest comparison between the two most-used business centers in Guadalajara — written by one of them. We tell you when to choose each.",
+       fr:"Une comparaison honnête entre les deux centres d'affaires les plus utilisés à Guadalajara — écrite par l'un d'entre eux. Nous vous disons quand choisir lequel."},
+
+    pickerH:{es:"¿Cuál te conviene? En una frase.", en:"Which one is right for you? In one sentence.", fr:"Lequel vous convient ? En une phrase."},
+    picker:[
+      {label:{es:"Si quieres una marca global y un edificio reconocido — WeWork.",
+              en:"If you want a global brand and a recognizable building — WeWork.",
+              fr:"Si vous voulez une marque globale et un bâtiment reconnaissable — WeWork."}},
+      {label:{es:"Si quieres atención ejecutiva en tres idiomas y comunidad real — Linbix.",
+              en:"If you want executive support in three languages and real community — Linbix.",
+              fr:"Si vous voulez un service exécutif en trois langues et une vraie communauté — Linbix."}},
+      {label:{es:"Si tu equipo es de 20+ y necesitas múltiples ciudades — WeWork.",
+              en:"If your team is 20+ and you need multiple cities — WeWork.",
+              fr:"Si votre équipe fait 20+ et vous avez besoin de plusieurs villes — WeWork."}},
+      {label:{es:"Si eres ejecutivo extranjero entrando al mercado mexicano — Linbix.",
+              en:"If you're a foreign executive entering the Mexican market — Linbix.",
+              fr:"Si vous êtes un dirigeant étranger entrant au marché mexicain — Linbix."}},
+    ],
+
+    tableH:{es:"Cara a cara", en:"Side by side", fr:"Face à face"},
+    rows:[
+      {label:{es:"Coworking mensual",en:"Monthly coworking",fr:"Coworking mensuel"},
+       linbix:{es:"Desde $1,800 MXN",en:"From $1,800 MXN",fr:"Dès 1 800 $ MXN"},
+       wework:{es:"Desde $4,069 MXN",en:"From $4,069 MXN",fr:"Dès 4 069 $ MXN"},
+       winner:"linbix"},
+      {label:{es:"Day pass",en:"Day pass",fr:"Pass journée"},
+       linbix:{es:"$100 MXN",en:"$100 MXN",fr:"100 $ MXN"},
+       wework:{es:"$732 MXN",en:"$732 MXN",fr:"732 $ MXN"},
+       winner:"linbix"},
+      {label:{es:"Oficina virtual con domicilio fiscal",en:"Virtual office with fiscal address",fr:"Bureau virtuel avec adresse fiscale"},
+       linbix:{es:"$800 MXN/mes — incluido en plan SAT 4.0",en:"$800 MXN/mo — SAT 4.0 included",fr:"800 $ MXN/mois — SAT 4.0 inclus"},
+       wework:{es:"No es servicio principal",en:"Not a primary service",fr:"Pas un service principal"},
+       winner:"linbix"},
+      {label:{es:"Atención en español, inglés y francés",en:"Support in Spanish, English, and French",fr:"Accueil en espagnol, anglais et français"},
+       linbix:{es:"Sí — equipo nativo en los 3 idiomas",en:"Yes — native team in all 3",fr:"Oui — équipe native dans les 3 langues"},
+       wework:{es:"Inglés y español",en:"English and Spanish",fr:"Anglais et espagnol"},
+       winner:"linbix"},
+      {label:{es:"Servicio empaquetado para extranjeros",en:"Packaged service for foreigners",fr:"Forfait pour étrangers"},
+       linbix:{es:"$1,000 USD/año todo incluido",en:"$1,000 USD/year all-inclusive",fr:"1 000 $ USD/an tout inclus"},
+       wework:{es:"No ofrecido",en:"Not offered",fr:"Non proposé"},
+       winner:"linbix"},
+      {label:{es:"Eventos de comunidad",en:"Community events",fr:"Événements communautaires"},
+       linbix:{es:"Mixers ejecutivos mensuales con sponsors locales",en:"Monthly executive mixers with local sponsors",fr:"Mixers exécutifs mensuels avec sponsors locaux"},
+       wework:{es:"Calendario corporativo global",en:"Global corporate calendar",fr:"Calendrier corporatif global"},
+       winner:"tie"},
+      {label:{es:"Reconocimiento de marca",en:"Brand recognition",fr:"Reconnaissance de marque"},
+       linbix:{es:"Local fuerte, internacional emergente",en:"Strong locally, growing internationally",fr:"Fort localement, en croissance à l'international"},
+       wework:{es:"Marca global Fortune-500",en:"Fortune-500 global brand",fr:"Marque globale Fortune-500"},
+       winner:"wework"},
+      {label:{es:"Ubicaciones en Guadalajara",en:"Guadalajara locations",fr:"Emplacements à Guadalajara"},
+       linbix:{es:"1 (Av. Niños Héroes)",en:"1 (Av. Niños Héroes)",fr:"1 (Av. Niños Héroes)"},
+       wework:{es:"1 (Midtown Jalisco)",en:"1 (Midtown Jalisco)",fr:"1 (Midtown Jalisco)"},
+       winner:"tie"},
+      {label:{es:"Conexión con notario / contador / abogado",en:"Notary / accountant / attorney introductions",fr:"Mise en relation notaire / comptable / avocat"},
+       linbix:{es:"Sí — red curada incluida",en:"Yes — curated network included",fr:"Oui — réseau curé inclus"},
+       wework:{es:"Marketplace genérico",en:"Generic marketplace",fr:"Place de marché générique"},
+       winner:"linbix"},
+      {label:{es:"Asistente AI 24/7 multilingüe",en:"24/7 multilingual AI assistant",fr:"Assistant IA 24/7 multilingue"},
+       linbix:{es:"Sí — \"Habla con Linbix\"",en:"Yes — \"Habla con Linbix\"",fr:"Oui — \"Habla con Linbix\""},
+       wework:{es:"Chat de soporte estándar",en:"Standard support chat",fr:"Chat de support standard"},
+       winner:"linbix"},
+      {label:{es:"Compromiso mínimo",en:"Minimum commitment",fr:"Engagement minimum"},
+       linbix:{es:"Sin contrato para day-pass y Business Card",en:"None for day-pass and Business Card",fr:"Aucun pour pass journée et Business Card"},
+       wework:{es:"Mes a mes mínimo",en:"Month-to-month minimum",fr:"Au mois minimum"},
+       winner:"linbix"},
+      {label:{es:"Membresía anual con descuentos",en:"Annual membership with discounts",fr:"Adhésion annuelle avec réductions"},
+       linbix:{es:"$600 MXN/año — 50% off todo el espacio",en:"$600 MXN/year — 50% off whole space",fr:"600 $ MXN/an — -50 % sur tout l'espace"},
+       wework:{es:"No",en:"No",fr:"Non"},
+       winner:"linbix"},
+    ],
+
+    chooseLinbixH:{es:"Elige Linbix si…", en:"Choose Linbix if…", fr:"Choisissez Linbix si…"},
+    chooseLinbix:[
+      {es:"Eres ejecutivo extranjero entrando al mercado mexicano y necesitas atención en EN/FR.",
+       en:"You're a foreign executive entering the Mexican market and need EN/FR support.",
+       fr:"Vous êtes un dirigeant étranger entrant au marché mexicain et avez besoin d'un service EN/FR."},
+      {es:"Tu equipo tiene entre 1 y 15 personas y quieres ser conocido por nombre, no procesado.",
+       en:"Your team is 1–15 people and you want to be known by name, not processed.",
+       fr:"Votre équipe fait 1 à 15 personnes et vous voulez être connu par votre nom, pas traité comme un dossier."},
+      {es:"Buscas conexiones reales con notarios, contadores y socios operativos en Jalisco.",
+       en:"You want real connections to notaries, accountants, and operating partners in Jalisco.",
+       fr:"Vous cherchez des connexions réelles avec des notaires, comptables et partenaires opérationnels au Jalisco."},
+      {es:"Tu presupuesto es importante y prefieres pagar solo por lo que usas.",
+       en:"Budget matters and you'd rather pay only for what you use.",
+       fr:"Le budget compte et vous préférez ne payer que ce que vous utilisez."},
+    ],
+    chooseWeworkH:{es:"Elige WeWork si…", en:"Choose WeWork if…", fr:"Choisissez WeWork si…"},
+    chooseWework:[
+      {es:"Necesitas la misma marca y la misma membresía en múltiples ciudades del mundo.",
+       en:"You need the same brand and same membership across multiple cities worldwide.",
+       fr:"Vous avez besoin de la même marque et de la même adhésion dans plusieurs villes du monde."},
+      {es:"Tu equipo es de 20+ personas y prefieres edificios verticales de varios pisos.",
+       en:"Your team is 20+ people and you prefer multi-floor vertical buildings.",
+       fr:"Votre équipe fait 20+ personnes et vous préférez des bâtiments verticaux multi-étages."},
+      {es:"La marca corporativa global pesa más en tu decisión que el costo o la cercanía.",
+       en:"Corporate global brand matters more in your decision than cost or proximity.",
+       fr:"La marque corporative globale compte plus dans votre décision que le coût ou la proximité."},
+      {es:"No necesitas servicios fiscales/administrativos integrados.",
+       en:"You don't need integrated fiscal/administrative services.",
+       fr:"Vous n'avez pas besoin de services fiscaux/administratifs intégrés."},
+    ],
+
+    closingH:{es:"Una cosa más, honestamente.", en:"One more thing, honestly.", fr:"Une dernière chose, honnêtement."},
+    closingP:{es:"Si después de leer esto WeWork sigue siendo lo que tu negocio necesita — eso también es una buena decisión. La peor opción es elegir mal por no comparar.",
+              en:"If after reading this WeWork is still what your business needs — that's also a good decision. The worst choice is choosing wrong because you didn't compare.",
+              fr:"Si après avoir lu ceci WeWork reste ce dont votre entreprise a besoin — c'est aussi une bonne décision. Le pire choix est de mal choisir faute d'avoir comparé."},
+
+    ctaH:{es:"15 minutos. Te decimos si Linbix encaja.", en:"15 minutes. We'll tell you if Linbix fits.", fr:"15 minutes. Nous vous dirons si Linbix convient."},
+    ctaP:{es:"Si no, te recomendamos WeWork u otro centro con honestidad. No vendemos lo que no necesitas.",
+          en:"If not, we honestly recommend WeWork or another center. We don't sell what you don't need.",
+          fr:"Sinon, nous recommandons honnêtement WeWork ou un autre centre. Nous ne vendons pas ce dont vous n'avez pas besoin."},
+    ctaBtn:{es:"Agendar mi llamada", en:"Book my call", fr:"Réserver mon appel"},
+  },
+
   /* ---- VIVE LINBIX — luxury media wall (auto-scrolling showcase) ---- */
   mediaWall:{
     eyebrow:{es:"Vive Linbix", en:"Live Linbix", fr:"Vivez Linbix"},
@@ -2203,9 +2771,9 @@ const SERVICES = [
     name:{es:"Oficina Virtual", en:"Virtual Office", fr:"Bureau virtuel"},
     price:{es:"Desde $800 MXN", en:"From $800 MXN", fr:"Dès 800 $ MXN"},
     pnote:{es:"+ IVA · mínimo 6 meses", en:"+ VAT · 6-month minimum", fr:"+ TVA · minimum 6 mois"},
-    summary:{es:"Todas las ventajas de una oficina corporativa con domicilio fiscal y comercial — sin estar todo el tiempo en ella.",
-             en:"All the advantages of a corporate office with a tax and commercial address — without being there full time.",
-             fr:"Tous les avantages d'un bureau corporatif avec adresse fiscale et commerciale — sans y être à plein temps."},
+    summary:{es:"Tu empresa con domicilio fiscal en una zona ejecutiva de Guadalajara — sin pagar la renta de una oficina vacía.",
+             en:"Your company with a fiscal address in an executive zone of Guadalajara — without paying rent on an empty office.",
+             fr:"Votre entreprise avec une adresse fiscale dans une zone exécutive de Guadalajara — sans payer le loyer d'un bureau vide."},
     long:{es:"Un espacio inteligente con la misma infraestructura que una oficina convencional, pero con una inversión menor para que comiences tu negocio sin preocuparte por rentas y gastos fijos. Elige el paquete que se ajusta a tu etapa.",
           en:"A smart space with the same infrastructure as a conventional office, at a fraction of the cost — so you start your business without worrying about rent and fixed expenses. Choose the package that fits your stage.",
           fr:"Un espace intelligent avec la même infrastructure qu'un bureau classique, à une fraction du coût — pour démarrer sans vous soucier du loyer et des frais fixes. Choisissez le forfait adapté à votre étape."},
@@ -2230,9 +2798,9 @@ const SERVICES = [
     name:{es:"Co-Working", en:"Co-Working", fr:"Co-Working"},
     price:{es:"Desde $1,800 MXN", en:"From $1,800 MXN", fr:"Dès 1 800 $ MXN"},
     pnote:{es:"+ IVA · sin contratos forzosos", en:"+ VAT · no fixed contracts", fr:"+ TVA · sans contrat contraignant"},
-    summary:{es:"Trabaja rodeado de profesionales de diversos giros en una terraza moderna y ejecutiva.",
-             en:"Work surrounded by professionals from every field on a modern, executive terrace.",
-             fr:"Travaillez entouré de professionnels de tous secteurs sur une terrasse moderne et exécutive."},
+    summary:{es:"Sal de casa. Conecta con profesionales que también están construyendo algo. Sin contrato, paga el día que vienes.",
+             en:"Get out of the house. Connect with professionals who are also building something. No contract, pay the day you come.",
+             fr:"Sortez de chez vous. Connectez-vous avec des professionnels qui construisent aussi quelque chose. Sans contrat, payez le jour où vous venez."},
     long:{es:"¿Eres emprendedor, freelancer o estudiante? Ven y trabaja en un gran ambiente y aprovecha la inercia para darte a conocer. Esta modalidad no requiere contratos forzosos, sujeta a disponibilidad de espacios.",
           en:"Are you an entrepreneur, freelancer, or student? Come work in a great environment and use the momentum to get noticed. No fixed contracts required, subject to availability.",
           fr:"Vous êtes entrepreneur, freelance ou étudiant ? Venez travailler dans un excellent cadre et profitez de la dynamique pour vous faire connaître. Sans contrat contraignant, selon disponibilité."},
@@ -2246,9 +2814,9 @@ const SERVICES = [
     name:{es:"Executive Office", en:"Executive Office", fr:"Bureau exécutif"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
     pnote:{es:"+ IVA / hora", en:"+ VAT / hour", fr:"+ TVA / heure"},
-    summary:{es:"Privados ejecutivos modernos para proyectar la imagen de tu empresa con presencia e infraestructura.",
-             en:"Modern executive private offices to project your company's image with presence and infrastructure.",
-             fr:"Bureaux privés exécutifs modernes pour projeter l'image de votre entreprise avec présence et infrastructure."},
+    summary:{es:"Recibe a tu cliente en una oficina que demuestra que tu empresa va en serio — sin firmar contrato a años.",
+             en:"Receive your client in an office that proves your company is serious — without signing a multi-year lease.",
+             fr:"Recevez votre client dans un bureau qui montre que votre entreprise est sérieuse — sans signer un bail pluriannuel."},
     long:{es:"Instalaciones con diseño, tecnología y todos los servicios incluidos, ideales para proyectar la imagen de tu empresa ante tus clientes.",
           en:"Facilities with design, technology, and all services included — ideal for projecting your company's image to clients.",
           fr:"Des installations avec design, technologie et tous les services inclus — idéales pour projeter l'image de votre entreprise auprès des clients."},
@@ -2262,9 +2830,9 @@ const SERVICES = [
     name:{es:"Domicilio Comercial", en:"Commercial Address", fr:"Adresse commerciale"},
     price:{es:"Desde $699 MXN", en:"From $699 MXN", fr:"Dès 699 $ MXN"},
     pnote:{es:"+ IVA · mínimo 6 meses", en:"+ VAT · 6-month minimum", fr:"+ TVA · minimum 6 mois"},
-    summary:{es:"Domicilio comercial o procesal para recibir paquetes, documentos y notificaciones con confidencialidad.",
-             en:"A commercial or legal address to receive parcels, documents, and notices — with full confidentiality.",
-             fr:"Une adresse commerciale ou juridique pour recevoir colis, documents et notifications — en toute confidentialité."},
+    summary:{es:"Deja de recibir notificaciones legales en tu casa. Tu información personal queda protegida y nosotros te avisamos al instante.",
+             en:"Stop receiving legal notices at your home. Your personal info stays protected and we alert you instantly.",
+             fr:"Arrêtez de recevoir des notifications légales chez vous. Vos informations personnelles restent protégées et nous vous prévenons instantanément."},
     long:{es:"Da de alta el domicilio de tu empresa con nosotros y evita recibir requerimientos o citatorios en tu domicilio personal. Si eres abogado o empresa, contrata tu domicilio procesal para recibir todas las notificaciones a tiempo. Confidencialidad y eficacia, con avisos sistematizados al momento.",
           en:"Register your company's address with us and avoid receiving legal summons at your home. If you're a lawyer or company, set up your legal address to receive every notice on time. Confidentiality and efficiency, with systematized instant alerts.",
           fr:"Enregistrez l'adresse de votre entreprise chez nous et évitez de recevoir des assignations à votre domicile. Avocat ou entreprise ? Établissez votre adresse juridique pour recevoir chaque notification à temps. Confidentialité et efficacité, avec alertes instantanées systématisées."},
@@ -2278,9 +2846,9 @@ const SERVICES = [
     name:{es:"Sala de Juntas", en:"Meeting Room", fr:"Salle de réunion"},
     price:{es:"Desde $250 MXN", en:"From $250 MXN", fr:"Dès 250 $ MXN"},
     pnote:{es:"+ IVA · por reservación", en:"+ VAT · per booking", fr:"+ TVA · par réservation"},
-    summary:{es:"Instalaciones modernas para presentaciones exitosas y una imagen de primer nivel ante tus clientes.",
-             en:"Modern facilities for successful presentations and a first-class image in front of your clients.",
-             fr:"Des installations modernes pour des présentations réussies et une image de premier ordre devant vos clients."},
+    summary:{es:"La sala que tu cliente espera ver — pero solo cuando la necesitas. Reservas por hora, pagas por hora.",
+             en:"The boardroom your client expects — but only when you need it. Book by the hour, pay by the hour.",
+             fr:"La salle de réunion que votre client attend — mais seulement quand vous en avez besoin. Réservez à l'heure, payez à l'heure."},
     long:{es:"Salas totalmente equipadas, ideales para juntas, cursos o talleres de alta calidad. Reserva previa cita con recepción; primer pago del 50% al apartar la fecha y 50% el día de uso.",
           en:"Fully equipped rooms, ideal for meetings, courses, or high-quality workshops. Book by appointment with reception; 50% to reserve the date and 50% on the day of use.",
           fr:"Salles entièrement équipées, idéales pour réunions, cours ou ateliers de qualité. Réservation sur rendez-vous ; 50 % pour réserver la date et 50 % le jour de l'utilisation."},
@@ -2294,9 +2862,9 @@ const SERVICES = [
     name:{es:"Terraza", en:"Terrace", fr:"Terrasse"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
     pnote:{es:"+ IVA / hora · mínimo 2 horas", en:"+ VAT / hour · 2-hour minimum", fr:"+ TVA / heure · minimum 2 heures"},
-    summary:{es:"Espacio multifuncional para capacitaciones, presentaciones, catas y eventos sociales — hasta 40 personas.",
-             en:"A multifunctional space for training, launches, tastings, and social events — up to 40 people.",
-             fr:"Un espace multifonctionnel pour formations, lancements, dégustations et événements sociaux — jusqu'à 40 personnes."},
+    summary:{es:"Lanza tu producto, celebra a tu equipo o cierra un trato bajo el cielo de Guadalajara — hasta 40 personas, catering incluido.",
+             en:"Launch your product, celebrate your team, or close a deal under the Guadalajara sky — up to 40 people, catering included.",
+             fr:"Lancez votre produit, célébrez votre équipe ou concluez un accord sous le ciel de Guadalajara — jusqu'à 40 personnes, traiteur inclus."},
     long:{es:"Se adapta a cualquier formato de evento. Según el tipo, sugerimos decoración y mobiliario, y apoyamos con catering, desayuno, cena y brindis. Cuenta con área de barra y cocina.",
           en:"Adapts to any event format. Based on the type, we suggest décor and furniture, and support with catering, breakfast, dinner, and toasts. Includes a bar area and kitchen.",
           fr:"S'adapte à tout format d'événement. Selon le type, nous suggérons décor et mobilier, et accompagnons avec traiteur, petit-déjeuner, dîner et toasts. Comprend un bar et une cuisine."},
@@ -2310,9 +2878,9 @@ const SERVICES = [
     name:{es:"Linbix Business Card", en:"Linbix Business Card", fr:"Linbix Business Card"},
     price:{es:"Desde $100 MXN", en:"From $100 MXN", fr:"Dès 100 $ MXN"},
     pnote:{es:"+ IVA · sin contratación forzada", en:"+ VAT · no fixed contract", fr:"+ TVA · sans engagement"},
-    summary:{es:"Todos los servicios de oficina en una tarjeta de prepago. Flexible para estudiantes, freelancers y emprendedores.",
-             en:"All the office services on a prepaid card. Flexible for students, freelancers, and entrepreneurs.",
-             fr:"Tous les services de bureau sur une carte prépayée. Flexible pour étudiants, freelances et entrepreneurs."},
+    summary:{es:"Empieza con $100 MXN. Recarga cuando lo necesites. Sin mensualidad, sin contrato, solo lo que vas a usar.",
+             en:"Start with $100 MXN. Top up when you need to. No monthly fee, no contract — only what you'll actually use.",
+             fr:"Commencez avec 100 $ MXN. Rechargez au besoin. Sans mensualité, sans contrat — uniquement ce que vous utiliserez vraiment."},
     long:{es:"Una tarjeta prepagada que puedes inicializar desde $100 MXN para acceder a infraestructura y servicios de oficina con poco recurso y sin contrato forzoso.",
           en:"A prepaid card you can load from $100 MXN to access office infrastructure and services with minimal commitment and no fixed contract.",
           fr:"Une carte prépayée que vous pouvez charger dès 100 $ MXN pour accéder à l'infrastructure et aux services de bureau sans engagement."},
@@ -2364,9 +2932,9 @@ const SERVICES = [
     name:{es:"Membresía", en:"Membership", fr:"Adhésion"},
     price:{es:"Desde $600 MXN", en:"From $600 MXN", fr:"Dès 600 $ MXN"},
     pnote:{es:"+ IVA · anual", en:"+ VAT · annual", fr:"+ TVA · annuel"},
-    summary:{es:"Únete a la comunidad y obtén 50% de descuento en toda nuestra infraestructura durante un año.",
-             en:"Join the community and get 50% off all our infrastructure for a full year.",
-             fr:"Rejoignez la communauté et profitez de 50 % de réduction sur toute notre infrastructure pendant un an."},
+    summary:{es:"Paga $600 una vez. Usa todo el espacio al 50% durante 12 meses — y aparece en el directorio para que la comunidad te encuentre.",
+             en:"Pay $600 once. Use the whole space at 50% off for 12 months — and get listed so the community can find you.",
+             fr:"Payez 600 $ une fois. Utilisez tout l'espace à -50 % pendant 12 mois — et apparaissez dans l'annuaire pour que la communauté vous trouve."},
     long:{es:"La membresía anual te da acceso preferente a salas, terraza, oficinas, cursos y eventos de la comunidad Linbix, además de promoción de tu marca en nuestros medios.",
           en:"The annual membership gives you preferred access to rooms, terrace, offices, courses, and Linbix community events, plus brand promotion across our channels.",
           fr:"L'adhésion annuelle vous donne un accès privilégié aux salles, à la terrasse, aux bureaux, aux cours et aux événements de la communauté Linbix, ainsi qu'à la promotion de votre marque sur nos canaux."},
@@ -2579,6 +3147,8 @@ const PAGE_META = {
   services:    { titleKey: "services",    descKey: "services",    path: "/services" },
   dobiz:       { titleKey: "dobiz",       descKey: "dobiz",       path: "/dobiz" },
   events:      { titleKey: "events",      descKey: "events",      path: "/events" },
+  community:   { titleKey: "community",   descKey: "community",   path: "/community" },
+  comparison:  { titleKey: "comparison",  descKey: "comparison",  path: "/comparison" },
   partners:    { titleKey: "partners",    descKey: "partners",    path: "/partners" },
   faq:         { titleKey: "faq",         descKey: "faq",         path: "/faq" },
   contact:     { titleKey: "contact",     descKey: "contact",     path: "/contact" },
@@ -2625,6 +3195,22 @@ const SEO_STRINGS = {
     desc:  {es:"Donde Guadalajara hace negocios. Mixer mensual, talleres, lanzamientos. Boletos, paquetes de patrocinio mensual y renta de terraza para tu propio evento.",
             en:"Where Guadalajara does business. Monthly mixer, workshops, product launches. Tickets, monthly sponsor packages, and host-your-own-event terrace rental.",
             fr:"Là où Guadalajara fait des affaires. Mixer mensuel, ateliers, lancements. Billets, forfaits de sponsoring mensuels et location de terrasse pour votre événement."},
+  },
+  community: {
+    title: {es:"Comunidad Linbix · Directorio y Spotlights · Guadalajara",
+            en:"Linbix Community · Member Directory and Spotlights · Guadalajara",
+            fr:"Communauté Linbix · Annuaire et Spotlights · Guadalajara"},
+    desc:  {es:"Directorio gratuito de empresas miembro, Spotlights mensuales pagados y Empresa Destacada del Mes. Pon tu marca enfrente de toda la comunidad Linbix.",
+            en:"Free member directory, monthly paid Spotlights, and Featured Business of the Month. Put your brand in front of the whole Linbix community.",
+            fr:"Annuaire gratuit des entreprises membres, Spotlights mensuels payants et Entreprise vedette du mois. Mettez votre marque devant toute la communauté Linbix."},
+  },
+  comparison: {
+    title: {es:"Linbix vs WeWork Guadalajara · ¿Cuál te conviene?",
+            en:"Linbix vs WeWork Guadalajara · Which one is right for you?",
+            fr:"Linbix vs WeWork Guadalajara · Lequel vous convient ?"},
+    desc:  {es:"Comparación honesta de Linbix vs WeWork Guadalajara: precios, servicios, idiomas, comunidad. Te decimos cuándo elegir cada uno — sin disfraz.",
+            en:"Honest comparison of Linbix vs WeWork Guadalajara: prices, services, languages, community. We tell you when to choose each — no spin.",
+            fr:"Comparaison honnête de Linbix vs WeWork Guadalajara : prix, services, langues, communauté. Nous vous disons quand choisir lequel — sans détour."},
   },
   partners: {
     title: {es:"Socios Estratégicos · TechFides · Linbix Guadalajara",
@@ -2704,7 +3290,7 @@ function initialRouteFromUrl(){
   const map = {
     "/": "home", "/home": "home",
     "/about":"about","/services":"services","/dobiz":"dobiz",
-    "/events":"events","/partners":"partners","/faq":"faq",
+    "/events":"events","/community":"community","/comparison":"comparison","/partners":"partners","/faq":"faq",
     "/contact":"contact","/automation":"automation",
   };
   return map[p] || "home";
@@ -2722,6 +3308,7 @@ function renderChrome(){
       <div class="dropdown-menu">${svcLinks}</div>
     </div>
     <a data-page="dobiz" onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
+    <a data-page="community" onclick="go('community')">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
     <a data-page="partners" onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
     <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
@@ -2807,7 +3394,7 @@ function toggleMmGroup(btn){
 function render(){
   const app = $("#app");
   if(CURRENT.startsWith("svc:")){ app.innerHTML = pageService(CURRENT.slice(4)); afterRender(); return; }
-  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ};
+  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, community:pageCommunity, comparison:pageComparison, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ};
   app.innerHTML = (map[CURRENT]||pageHome)();
   afterRender();
 }
@@ -3291,28 +3878,224 @@ function pageService(id){
 
 function pageDobiz(){
   const d=T.dobiz;
+  const svc = SERVICES.find(s => s.id === "do-business-mx");
+  const STR = {
+    pain1H:{es:"El problema con entrar a México solo.",
+            en:"The problem with entering Mexico alone.",
+            fr:"Le problème quand on entre seul au Mexique."},
+    pain1:[
+      {es:"Llamas a 6 abogados. Tres no responden. Dos cotizan en español sin contrato. Uno cobra $4,000 USD por una S. de R.L.",
+       en:"You call 6 lawyers. Three don't answer. Two quote in Spanish without a written contract. One charges $4,000 USD for a S. de R.L.",
+       fr:"Vous appelez 6 avocats. Trois ne répondent pas. Deux devisent en espagnol sans contrat. Un demande 4 000 $ USD pour une S. de R.L."},
+      {es:"Necesitas domicilio fiscal en menos de dos semanas. Las inmobiliarias no entienden lo que es una oficina virtual con compliance SAT.",
+       en:"You need a fiscal address in less than two weeks. Real-estate agents don't understand what a SAT-compliant virtual office is.",
+       fr:"Vous avez besoin d'une domiciliation fiscale en moins de deux semaines. Les agents immobiliers ne comprennent pas ce qu'est un bureau virtuel conforme au SAT."},
+      {es:"No tienes una sala de juntas para tu primera reunión presencial con el cliente local.",
+       en:"You have no meeting room for your first in-person meeting with the local client.",
+       fr:"Vous n'avez pas de salle de réunion pour votre premier rendez-vous en présentiel avec le client local."},
+      {es:"Tu contador en EE.UU. no sabe nada de CFDI 4.0 ni del régimen de incorporación fiscal.",
+       en:"Your US accountant knows nothing about CFDI 4.0 or the Mexican fiscal incorporation regime.",
+       fr:"Votre comptable américain ne connaît rien aux CFDI 4.0 ni au régime d'incorporation fiscale mexicain."},
+    ],
+    solH:{es:"Un solo paquete. Un solo precio. Todo lo que necesitas para operar.",
+          en:"One package. One price. Everything you need to operate.",
+          fr:"Un seul forfait. Un seul prix. Tout ce qu'il faut pour opérer."},
+    solP:{es:"No vendemos servicios sueltos. Vendemos la entrada al mercado mexicano como un paquete completo, listo para arrancar el primer día.",
+          en:"We don't sell loose services. We sell market entry to Mexico as one complete package — operational from day one.",
+          fr:"Nous ne vendons pas de services isolés. Nous vendons l'entrée au marché mexicain comme un forfait complet — opérationnel dès le premier jour."},
+    procH:{es:"Cómo funciona, paso por paso", en:"How it works, step by step", fr:"Comment ça marche, étape par étape"},
+    proc:[
+      {n:1, t:{es:"Llamada de 15 minutos", en:"15-minute call", fr:"Appel de 15 minutes"},
+            d:{es:"Confirmamos que el paquete encaja con tu plan. Si no, te lo decimos.",
+               en:"We confirm the package fits your plan. If it doesn't, we tell you.",
+               fr:"Nous confirmons que le forfait correspond à votre plan. Sinon, nous vous le disons."}},
+      {n:2, t:{es:"Onboarding (Día 1–3)", en:"Onboarding (Day 1–3)", fr:"Onboarding (Jour 1–3)"},
+            d:{es:"Recoges tu llave de buzón. Activamos tu domicilio fiscal. Subes 3 documentos a un portal seguro.",
+               en:"You pick up your mailbox key. We activate your fiscal address. You upload 3 documents to a secure portal.",
+               fr:"Vous récupérez votre clé de boîte aux lettres. Nous activons votre domiciliation fiscale. Vous téléchargez 3 documents sur un portail sécurisé."}},
+      {n:3, t:{es:"Constitución (Día 4–14)", en:"Incorporation (Day 4–14)", fr:"Constitution (Jour 4–14)"},
+            d:{es:"Te conectamos con nuestro notario, contador y abogado. Constituyen tu sociedad mexicana. Tú firmas remoto.",
+               en:"We connect you with our notary, accountant, and attorney. They incorporate your Mexican entity. You sign remotely.",
+               fr:"Nous vous connectons avec notre notaire, comptable et avocat. Ils constituent votre entité mexicaine. Vous signez à distance."}},
+      {n:4, t:{es:"Operación", en:"Operation", fr:"Opération"},
+            d:{es:"Recibimos tu correspondencia, te avisamos al instante. Reservas la sala de juntas o el ejecutivo cuando lo necesites.",
+               en:"We receive your mail and notify you instantly. You book the meeting room or executive office when you need it.",
+               fr:"Nous recevons votre courrier et vous prévenons instantanément. Vous réservez la salle ou le bureau exécutif quand vous en avez besoin."}},
+      {n:5, t:{es:"Crecimiento", en:"Growth", fr:"Croissance"},
+            d:{es:"Cuando tu operación crece, te movemos a Oficina Privada sin renegociar nada. La membresía sigue contando.",
+               en:"When your operation grows, we move you to a Private Office with no renegotiation. The membership keeps counting.",
+               fr:"Quand votre opération grandit, nous vous transférons en bureau privé sans renégocier. L'adhésion continue."}},
+    ],
+    incH:{es:"Qué incluye, exactamente.", en:"What's included, exactly.", fr:"Ce qui est inclus, exactement."},
+    inc:[
+      {es:"Domicilio fiscal y comercial · 12 meses · compatible con SAT 4.0",
+       en:"Fiscal and commercial address · 12 months · SAT 4.0 compliant",
+       fr:"Adresse fiscale et commerciale · 12 mois · conforme SAT 4.0"},
+      {es:"Recepción de paquetes y notificaciones · aviso al instante en ES/EN/FR",
+       en:"Parcel and notification reception · instant alert in ES/EN/FR",
+       fr:"Réception colis et notifications · alerte instantanée en ES/EN/FR"},
+      {es:"24 horas de sala de juntas · incluidas al año",
+       en:"24 hours of meeting room · included per year",
+       fr:"24 heures de salle de réunion · incluses par an"},
+      {es:"12 horas de oficina ejecutiva · incluidas al año",
+       en:"12 hours of executive office · included per year",
+       fr:"12 heures de bureau exécutif · incluses par an"},
+      {es:"Conexión con notario, contador y abogado (1 hora de consulta gratuita c/u)",
+       en:"Notary, accountant, and attorney introductions (1 free hour each)",
+       fr:"Mise en relation notaire, comptable, avocat (1 h gratuite chacun)"},
+      {es:"Atención ejecutiva en español, inglés y francés · 365 días",
+       en:"Executive support in Spanish, English, and French · 365 days",
+       fr:"Accompagnement exécutif en espagnol, anglais et français · 365 jours"},
+      {es:"Invitación al Mixer Internacional mensual (boleto VIP incluido)",
+       en:"Invitation to the monthly International Mixer (VIP ticket included)",
+       fr:"Invitation au Mixer International mensuel (billet VIP inclus)"},
+      {es:"Lista de talento bilingüe verificado para contratar localmente",
+       en:"List of verified bilingual talent for local hiring",
+       fr:"Liste de talents bilingues vérifiés pour le recrutement local"},
+    ],
+    priceH:{es:"Una sola cuota anual.", en:"One annual fee.", fr:"Un seul tarif annuel."},
+    priceP:{es:"Sin cuota de setup. Sin comisión por intermediación. Sin sorpresas en la factura.",
+            en:"No setup fee. No intermediation commission. No surprises on the invoice.",
+            fr:"Pas de frais de mise en place. Pas de commission d'intermédiation. Aucune surprise sur la facture."},
+    guaranteeH:{es:"Garantía", en:"Guarantee", fr:"Garantie"},
+    guaranteeP:{es:"Si en los primeros 30 días decides que no es para ti, reembolsamos el 100% — incluyendo los honorarios de constitución si ya los iniciamos.",
+                en:"If in the first 30 days you decide it isn't for you, we refund 100% — including incorporation fees if we've already started.",
+                fr:"Si dans les 30 premiers jours vous décidez que ce n'est pas pour vous, nous remboursons à 100 % — y compris les frais de constitution si nous avons commencé."},
+    ctaH:{es:"Agenda tu llamada de 15 minutos.", en:"Book your 15-minute call.", fr:"Réservez votre appel de 15 minutes."},
+    ctaP:{es:"Te confirmamos el horario hoy. Si no califica, te lo decimos en la llamada — sin pérdida de tiempo.",
+          en:"We confirm the time today. If it doesn't qualify, we say so on the call — no time wasted.",
+          fr:"Nous confirmons l'horaire aujourd'hui. Si ça ne correspond pas, nous le disons pendant l'appel — sans perte de temps."},
+    ctaBtn:{es:"Agendar mi llamada", en:"Book my call", fr:"Réserver mon appel"},
+    proofH:{es:"Por qué Linbix, y no un despacho tradicional.",
+            en:"Why Linbix, and not a traditional firm.",
+            fr:"Pourquoi Linbix, plutôt qu'un cabinet traditionnel."},
+    proof:[
+      {es:"Un despacho te cobra por hora, por procedimiento, por trámite. Nosotros vendemos el resultado.",
+       en:"A traditional firm bills by the hour, by procedure, by filing. We sell the outcome.",
+       fr:"Un cabinet traditionnel facture à l'heure, par procédure, par formalité. Nous vendons le résultat."},
+      {es:"Trabajamos en español, inglés y francés. La mayoría de los despachos solo en español.",
+       en:"We operate in Spanish, English, and French. Most firms only in Spanish.",
+       fr:"Nous opérons en espagnol, anglais et français. La plupart des cabinets uniquement en espagnol."},
+      {es:"Tienes acceso al espacio físico desde el día uno. Una dirección fiscal sin oficina es solo un buzón con extra.",
+       en:"You access the physical space from day one. A fiscal address without an office is just a fancy mailbox.",
+       fr:"Vous accédez à l'espace physique dès le premier jour. Une adresse fiscale sans bureau, c'est juste une boîte aux lettres améliorée."},
+    ],
+  };
   return `
   <div class="page active">
-    <div class="detail-hero"><div class="wrap">
-      <div class="eyebrow" style="color:var(--gold-2)">${tr(d.eyebrow)}</div>
-      <h1>${tr(d.h1)}</h1>
-    </div></div>
-    <section class="detail-body"><div class="wrap">
-      <div class="split">
-        <div>
-          <p style="font-size:16.5px;color:var(--ink-2)">${tr(d.p1)}</p>
-          <p style="font-size:16px;color:var(--muted);margin-top:14px">${tr(d.p2)}</p>
+    <section class="dobiz-hero">
+      <div class="wrap dobiz-hero-grid">
+        <div class="dobiz-hero-text">
+          <div class="dobiz-badge">${({es:"Único en Guadalajara",en:"Only in Guadalajara",fr:"Unique à Guadalajara"}[LANG])}</div>
+          <div class="eyebrow" style="color:var(--gold-2);margin-top:14px">${tr(d.eyebrow)}</div>
+          <h1 class="dobiz-h1">${tr(d.h1)}</h1>
+          <p class="dobiz-lead">${tr(STR.solP)}</p>
+          <div class="dobiz-cta-row">
+            <button class="btn btn-gold" onclick="scrollToBookForm()">${tr(STR.ctaBtn)} →</button>
+            <button class="btn btn-light" onclick="chatOpen()">${({es:"Hablar con Luc",en:"Talk to Luc",fr:"Parler à Luc"}[LANG])}</button>
+          </div>
+          <div class="dobiz-trust-row">
+            <div class="dobiz-trust-item"><span class="dobiz-trust-n">15</span><span class="dobiz-trust-l">${({es:"Países atendidos",en:"Countries served",fr:"Pays servis"}[LANG])}</span></div>
+            <div class="dobiz-trust-item"><span class="dobiz-trust-n">3</span><span class="dobiz-trust-l">${({es:"Idiomas nativos",en:"Native languages",fr:"Langues natives"}[LANG])}</span></div>
+            <div class="dobiz-trust-item"><span class="dobiz-trust-n">14</span><span class="dobiz-trust-l">${({es:"Días al primer cliente",en:"Days to first client",fr:"Jours pour le 1er client"}[LANG])}</span></div>
+          </div>
         </div>
-        <img src="https://static.wixstatic.com/media/026b5c_c2bed14631a54946a32668aa604a02a2~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/file.jpg" alt="Guadalajara business" onerror="this.style.display='none'"/>
+        <div class="dobiz-hero-side lux-frame">
+          <img src="/media/photos-lg/img_0094.jpg" alt="Ejecutivos haciendo negocios en México · Linbix" loading="lazy" />
+        </div>
       </div>
-      <div style="margin-top:46px">
-        <h3 style="font-size:24px;margin-bottom:8px">${tr(d.helpH)}</h3>
-        <ul class="checks" style="columns:2;column-gap:40px">${tr(d.helpList).map(i=>`<li>${i}</li>`).join("")}</ul>
-        <p style="font-size:16px;color:var(--ink-2);margin-top:24px;font-style:italic">${tr(d.closing)}</p>
+    </section>
+
+    <section class="blk alt">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center" style="color:var(--gold)">${({es:"El problema",en:"The problem",fr:"Le problème"}[LANG])}</div>
+          <h2>${tr(STR.pain1H)}</h2>
+        </div>
+        <div class="dobiz-pain reveal">
+          ${STR.pain1.map(p => `<div class="dobiz-pain-card"><div class="dobiz-pain-x">✕</div><p>${tr(p)}</p></div>`).join("")}
+        </div>
       </div>
-      <div style="margin-top:48px">${dobizFullForm()}</div>
-    </div></section>
+    </section>
+
+    <section class="blk">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center">${({es:"La solución",en:"The solution",fr:"La solution"}[LANG])}</div>
+          <h2>${tr(STR.solH)}</h2>
+          <p>${tr(STR.solP)}</p>
+        </div>
+        <div class="dobiz-proc reveal">
+          ${STR.proc.map(s => `
+            <div class="dobiz-step">
+              <div class="dobiz-step-n">${s.n}</div>
+              <div class="dobiz-step-body">
+                <h4>${tr(s.t)}</h4>
+                <p>${tr(s.d)}</p>
+              </div>
+            </div>`).join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="blk alt">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center">${({es:"Incluye",en:"Includes",fr:"Inclut"}[LANG])}</div>
+          <h2>${tr(STR.incH)}</h2>
+        </div>
+        <div class="dobiz-inc reveal">
+          ${STR.inc.map(item => `<div class="dobiz-inc-item"><span class="dobiz-inc-check">✓</span><span>${tr(item)}</span></div>`).join("")}
+        </div>
+        <!-- inc uses tr(item) directly since STR.inc is array of {es,en,fr} objects -->
+        <span style="display:none"></span>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="wrap">
+        <div class="dobiz-price reveal">
+          <div class="dobiz-price-card">
+            <div class="eyebrow" style="color:var(--gold)">${tr(STR.priceH)}</div>
+            <div class="dobiz-price-amount">${priceInline(svc)}</div>
+            <div class="dobiz-price-unit">${({es:"todo incluido · sin cuota de setup",en:"all-inclusive · no setup fee",fr:"tout inclus · sans frais de mise en place"}[LANG])}</div>
+            <p class="dobiz-price-sub">${tr(STR.priceP)}</p>
+            <div class="dobiz-guarantee">
+              <div class="dobiz-guarantee-h">${tr(STR.guaranteeH)} · 30 ${({es:"días",en:"days",fr:"jours"}[LANG])}</div>
+              <div class="dobiz-guarantee-p">${tr(STR.guaranteeP)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk alt">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <h2 style="font-size:clamp(26px,3.2vw,40px)">${tr(STR.proofH)}</h2>
+        </div>
+        <div class="dobiz-proof reveal">
+          ${STR.proof.map(p => `<div class="dobiz-proof-item"><span class="dobiz-proof-check">✓</span><p>${tr(p)}</p></div>`).join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="blk dark" id="dobiz-book">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center" style="color:var(--gold-2)">${({es:"Siguiente paso",en:"Next step",fr:"Prochaine étape"}[LANG])}</div>
+          <h2 style="color:#fff;font-size:clamp(28px,3.4vw,42px)">${tr(STR.ctaH)}</h2>
+          <p style="color:rgba(255,255,255,.78)">${tr(STR.ctaP)}</p>
+        </div>
+        <div style="max-width:780px;margin:0 auto">${dobizFullForm()}</div>
+      </div>
+    </section>
   </div>`;
+}
+
+function scrollToBookForm(){
+  const el = document.getElementById("dobiz-book");
+  if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
 function fmtEventDate(iso){
@@ -3553,6 +4336,309 @@ function blockEventsPast(){
       </div>
     </div>
   </section>`;
+}
+
+/* ============================================================
+   COMUNIDAD — paid Spotlight marketplace
+   ============================================================ */
+const COMMUNITY = { industry: "all", q: "" };
+
+function pageCommunity(){
+  const c = T.community;
+  return `
+  <div class="page active">
+    <div class="ev-hero" style="min-height:480px">
+      <div class="ev-hero-img" style="background-image:url('/media/photos-lg/img_9541.jpg')"></div>
+      <div class="wrap ev-hero-inner">
+        <div class="eyebrow center" style="color:var(--gold-2)">${tr(c.eyebrow)}</div>
+        <h1 class="ev-h1">${tr(c.h1)}</h1>
+        <p class="ev-lead">${tr(c.p)}</p>
+      </div>
+    </div>
+    ${blockCommunityFeatured()}
+    ${blockCommunitySpotlights()}
+    ${blockCommunityDirectory()}
+    ${blockCommunityJoin()}
+    ${blockContactStrip()}
+  </div>`;
+}
+
+function blockCommunityFeatured(){
+  const c=T.community, cat=T.communityCatalog, f=cat.featured;
+  return `
+  <section class="blk" id="featured-month">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="eyebrow center">${tr(c.featuredH)}</div>
+        <h2 style="font-size:clamp(28px,3.6vw,44px)">${({es:"Una sola marca. Un mes completo. La comunidad entera.",en:"One brand. One full month. The entire community.",fr:"Une seule marque. Un mois complet. Toute la communauté."}[LANG])}</h2>
+      </div>
+      <div class="cm-featured-card reveal">
+        ${f ? `
+          <div class="cm-feat-eye">${tr(c.featuredBy).toUpperCase()}</div>
+          <h3 class="cm-feat-name">${f.name}</h3>
+          <p class="cm-feat-tag">${tr(f.tagline)}</p>
+          <a href="${f.href}" target="_blank" rel="noopener" class="cm-feat-link">${f.href.replace("https://","").replace("http://","")} →</a>
+        ` : `
+          <div class="cm-feat-empty-eye">${tr(c.featuredEmptyEye).toUpperCase()}</div>
+          <h3 class="cm-feat-empty-h">${tr(c.featuredEmptyH)}</h3>
+          <p class="cm-feat-empty-p">${tr(c.featuredEmptyP)}</p>
+          <button class="cm-feat-cta" onclick="openCommunityInq('featured','3000','monthly')">${tr(c.featuredCTA)} →</button>
+        `}
+      </div>
+    </div>
+  </section>`;
+}
+
+function blockCommunitySpotlights(){
+  const c=T.community, cat=T.communityCatalog;
+  const heldCount = cat.spotlights.length;
+  const remaining = cat.spotlightCapacity - heldCount;
+  const slots = [];
+  for(let i=0; i<cat.spotlightCapacity; i++){
+    const held = cat.spotlights[i];
+    slots.push(held
+      ? `<div class="cm-spot-slot cm-spot-held">
+           <div class="cm-spot-name">${held.name}</div>
+           <div class="cm-spot-tag">${tr(held.tagline)}</div>
+           <a href="${held.href}" target="_blank" rel="noopener" class="cm-spot-link">→</a>
+         </div>`
+      : `<div class="cm-spot-slot cm-spot-open" onclick="openCommunityInq('spotlight','1000','monthly')">
+           <div class="cm-spot-avail">${tr(c.spotlightAvail)}</div>
+           <div class="cm-spot-cta">${tr(c.spotlightCTA)}</div>
+         </div>`);
+  }
+  return `
+  <section class="blk alt" id="spotlights">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="eyebrow center">${tr(c.spotlightH)}</div>
+        <h2>${({es:"Cinco marcas. Treinta días. Renovación opcional.",en:"Five brands. Thirty days. Optional renewal.",fr:"Cinq marques. Trente jours. Renouvellement optionnel."}[LANG])}</h2>
+        <p>${tr(c.spotlightSubH)}</p>
+      </div>
+      <div class="cm-spotlights reveal">${slots.join("")}</div>
+    </div>
+  </section>`;
+}
+
+function blockCommunityDirectory(){
+  const c=T.community, cat=T.communityCatalog;
+  // Build industry filter list
+  const industries = Array.from(new Set(cat.directory.map(m=>m.industry))).sort();
+  const q = (COMMUNITY.q || "").toLowerCase();
+  const filtered = cat.directory.filter(m=>{
+    if(COMMUNITY.industry !== "all" && m.industry !== COMMUNITY.industry) return false;
+    if(!q) return true;
+    const blob = (m.company + " " + m.industry + " " + tr(m.tagline)).toLowerCase();
+    return blob.includes(q);
+  });
+  return `
+  <section class="blk" id="directory">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="eyebrow center">${tr(c.directoryH)}</div>
+        <h2>${tr(c.directoryP)}</h2>
+      </div>
+      <div class="cm-filters reveal">
+        <select onchange="COMMUNITY.industry=this.value;rerenderCommunity()">
+          <option value="all">${tr(c.industryAll)}</option>
+          ${industries.map(i=>`<option value="${i}" ${COMMUNITY.industry===i?'selected':''}>${i}</option>`).join("")}
+        </select>
+        <input type="search" placeholder="${tr(c.searchPh)}" value="${COMMUNITY.q||''}" oninput="COMMUNITY.q=this.value;rerenderCommunity()" />
+      </div>
+      <div class="cm-grid reveal">
+        ${filtered.length === 0
+          ? `<div class="cm-empty">${tr(c.listEmpty)}</div>`
+          : filtered.map(m=>`
+            <div class="cm-card">
+              <div class="cm-card-head">
+                <div class="cm-card-name">${m.company}</div>
+                <span class="cm-card-badge">${tr(c.listFreeBadge)}</span>
+              </div>
+              <div class="cm-card-ind">${m.industry}</div>
+              <p class="cm-card-tag">${tr(m.tagline)}</p>
+              ${m.href && m.href !== "#" ? `<a href="${m.href}" class="cm-card-link" target="_blank" rel="noopener">${tr(c.listVisit)} →</a>` : ""}
+            </div>`).join("")}
+      </div>
+    </div>
+  </section>`;
+}
+
+function rerenderCommunity(){
+  // Only re-render the directory section to preserve scroll
+  const dir = document.querySelector("#directory");
+  if(!dir) return;
+  const tmp = document.createElement("div");
+  tmp.innerHTML = blockCommunityDirectory();
+  const fresh = tmp.querySelector("#directory");
+  if(fresh){ dir.replaceWith(fresh); }
+}
+
+function blockCommunityJoin(){
+  const c=T.community;
+  return `
+  <section class="blk dark ev-host">
+    <div class="wrap">
+      <div class="ev-host-row">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-2)">${({es:"Listing gratuito",en:"Free listing",fr:"Annonce gratuite"}[LANG])}</div>
+          <h2 style="color:#fff;font-size:clamp(28px,3.4vw,40px);margin:12px 0">${tr(c.joinH)}</h2>
+          <p style="color:rgba(255,255,255,.78);font-size:17px;max-width:34em">${tr(c.joinP)}</p>
+        </div>
+        <div class="ev-host-actions">
+          <button class="btn btn-gold" onclick="openCommunityInq('listing','0','free')">${tr(c.joinCTA)} →</button>
+          <button class="btn btn-light" onclick="go('svc:membresia')">${tr(T.ui.seePlans)}</button>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function openCommunityInq(type, priceMXN, frequency){
+  const c=T.community;
+  const eye = type === "featured" ? tr(c.modalFeatEye)
+            : type === "spotlight" ? tr(c.modalSpotEye)
+            : tr(c.modalListEye);
+  const isPaid = type !== "listing";
+  const submitTxt = isPaid ? tr(c.modalSubmit) : tr(c.modalListSubmit);
+  const priceLabel = type === "featured" ? "$3,000 MXN / mes"
+                   : type === "spotlight" ? "$1,000 MXN / mes"
+                   : ({es:"Gratis con membresía activa",en:"Free with active membership",fr:"Gratuit avec adhésion active"}[LANG]);
+  const modal = document.createElement("div");
+  modal.className = "rsvp-overlay";
+  modal.innerHTML = `
+    <div class="rsvp-modal">
+      <button class="rsvp-x" onclick="closeRsvp()" aria-label="Close">×</button>
+      <div class="rsvp-eyebrow">${eye}</div>
+      <h3 class="rsvp-title">${priceLabel}</h3>
+      <p class="rsvp-sub">${tr(c.modalOkP)}</p>
+      <form class="rsvp-form" onsubmit="submitCommunityInq(event,'${type}','${priceMXN}','${frequency}')">
+        <div class="rsvp-field"><label>${tr(T.ui.name)}</label><input name="name" required /></div>
+        <div class="rsvp-field"><label>${tr(c.modalCompany)}</label><input name="company" required /></div>
+        <div class="rsvp-field"><label>${tr(T.ui.email)}</label><input name="email" type="email" required /></div>
+        <div class="rsvp-field"><label>${tr(T.ui.phone)}</label><input name="phone" /></div>
+        <div class="rsvp-field"><label>${tr(c.modalWebsite)}</label><input name="website" placeholder="https://" /></div>
+        <div class="rsvp-field"><label>${tr(c.modalIndustry)}</label><input name="industry" /></div>
+        <div class="rsvp-field"><label>${tr(c.modalTagline)}</label><textarea name="tagline" rows="2" maxlength="160" required></textarea></div>
+        <button type="submit" class="rsvp-submit">${submitTxt} →</button>
+        <div class="rsvp-ok" id="rsvpOk"><b>${tr(c.modalOk)}</b><span>${tr(c.modalOkP)}</span></div>
+      </form>
+    </div>`;
+  document.body.appendChild(modal);
+  document.body.classList.add("menu-open");
+  setTimeout(()=>modal.classList.add("open"), 10);
+}
+
+function submitCommunityInq(ev, type, priceMXN, frequency){
+  ev.preventDefault();
+  const f = ev.target;
+  const data = Object.fromEntries(new FormData(f).entries());
+  const sourceLabel = type === "featured" ? "Comunidad · Empresa Destacada ($3,000 MXN/mo)"
+                    : type === "spotlight" ? "Comunidad · Spotlight ($1,000 MXN/mo)"
+                    : "Comunidad · Listing gratuito";
+  sendLeadToAPI({
+    name: data.name, email: data.email, phone: data.phone,
+    company: data.company,
+    service: type === "listing" ? "membresia" : "membresia",
+    country: LANG==="fr"?"France":LANG==="en"?"USA":"México",
+    message: `${sourceLabel}. Empresa: ${data.company}. Web: ${data.website||"—"}. Industria: ${data.industry||"—"}. Tagline: ${data.tagline}.`,
+    source: sourceLabel,
+  });
+  const ok = f.querySelector(".rsvp-ok"); if(ok) ok.classList.add("show");
+  f.querySelector("button[type=submit]").disabled = true;
+  setTimeout(()=>closeRsvp(), 2400);
+}
+
+/* ============================================================
+   COMPARISON — Linbix vs WeWork Guadalajara
+   ============================================================ */
+function pageComparison(){
+  const cp = T.comparison;
+  return `
+  <div class="page active">
+    <section class="cmp-hero">
+      <div class="wrap">
+        <div class="eyebrow center" style="color:var(--gold-2)">${tr(cp.eyebrow)}</div>
+        <h1 class="cmp-h1">${tr(cp.h1)}</h1>
+        <p class="cmp-lead">${tr(cp.p)}</p>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <h2 style="font-size:clamp(26px,3vw,38px)">${tr(cp.pickerH)}</h2>
+        </div>
+        <div class="cmp-picker reveal">
+          ${cp.picker.map(item => `<div class="cmp-picker-item"><span class="cmp-picker-dot"></span><p>${tr(item.label)}</p></div>`).join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="blk alt">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center">${({es:"Comparativa",en:"Side by side",fr:"Comparatif"}[LANG])}</div>
+          <h2>${tr(cp.tableH)}</h2>
+        </div>
+        <div class="cmp-table-wrap reveal">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="cmp-th-linbix">Linbix Business Place</th>
+                <th class="cmp-th-wework">WeWork Midtown Jalisco</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cp.rows.map(row => `
+                <tr>
+                  <td class="cmp-label">${tr(row.label)}</td>
+                  <td class="cmp-cell ${row.winner === 'linbix' ? 'cmp-win' : ''}">${tr(row.linbix)}</td>
+                  <td class="cmp-cell ${row.winner === 'wework' ? 'cmp-win' : ''}">${tr(row.wework)}</td>
+                </tr>`).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="wrap">
+        <div class="cmp-choose-grid reveal">
+          <div class="cmp-choose cmp-choose-linbix">
+            <h3>${tr(cp.chooseLinbixH)}</h3>
+            <ul>${cp.chooseLinbix.map(item => `<li>${tr(item)}</li>`).join("")}</ul>
+            <button class="btn btn-gold" onclick="go('dobiz')">${({es:"Conocer el servicio",en:"See the service",fr:"Voir le service"}[LANG])} →</button>
+          </div>
+          <div class="cmp-choose cmp-choose-wework">
+            <h3>${tr(cp.chooseWeworkH)}</h3>
+            <ul>${cp.chooseWework.map(item => `<li>${tr(item)}</li>`).join("")}</ul>
+            <a class="btn btn-light" href="https://www.wework.com/buildings/midtown-jalisco--guadalajara" target="_blank" rel="noopener">${({es:"Ir a WeWork",en:"Go to WeWork",fr:"Aller chez WeWork"}[LANG])} →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk alt">
+      <div class="wrap" style="max-width:720px">
+        <div class="sec-head center reveal">
+          <h2 style="font-size:clamp(24px,2.8vw,34px)">${tr(cp.closingH)}</h2>
+        </div>
+        <p class="reveal" style="text-align:center;color:var(--muted);font-size:17px;line-height:1.6">${tr(cp.closingP)}</p>
+      </div>
+    </section>
+
+    <section class="blk dark">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <div class="eyebrow center" style="color:var(--gold-2)">${({es:"Honesto",en:"Honest",fr:"Honnête"}[LANG])}</div>
+          <h2 style="color:#fff">${tr(cp.ctaH)}</h2>
+          <p>${tr(cp.ctaP)}</p>
+        </div>
+        <div style="text-align:center"><button class="btn btn-gold" onclick="go('contact')">${tr(cp.ctaBtn)} →</button></div>
+      </div>
+    </section>
+  </div>`;
 }
 
 /* ============================================================
