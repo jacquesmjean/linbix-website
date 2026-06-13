@@ -303,6 +303,113 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
 .faq-more a{color:var(--gold);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:4px;margin-left:6px}
 .faq-more a:hover{color:var(--ink)}
 
+/* ============================================================
+   DECISIVE DASHBOARD — kpis, urgent action, filters, lead cards
+   ============================================================ */
+.dash-hero{padding:48px 0 32px}
+.dash-hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:32px}
+.dash-hello{font-size:clamp(28px,3.6vw,42px);font-weight:600;letter-spacing:-.02em;color:#fff;margin:10px 0 6px}
+.dash-date{font-size:14px;color:rgba(255,255,255,.62);text-transform:capitalize;letter-spacing:.01em}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 22px;transition:.18s}
+.kpi:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+.kpi-n{font-family:var(--serif);font-size:42px;font-weight:600;color:#fff;line-height:1;letter-spacing:-.02em}
+.kpi-n .kpi-u{font-size:22px;color:var(--gold-2);font-weight:500;margin-left:2px}
+.kpi-l{font-size:12px;color:rgba(255,255,255,.6);margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.kpi-danger{background:rgba(232,86,66,.14);border-color:rgba(232,86,66,.4)}
+.kpi-danger .kpi-n{color:#FF8770}
+.kpi-danger .kpi-l{color:#FFA899}
+@media(max-width:680px){ .kpi-grid{grid-template-columns:1fr 1fr;gap:10px} .kpi{padding:16px 18px} .kpi-n{font-size:34px} }
+
+/* Urgent action banner */
+.urgent-card{background:linear-gradient(135deg,#FFF4F1,#FFFCFB);border:1.5px solid rgba(232,86,66,.4);border-left:4px solid #E85642;border-radius:16px;padding:22px 24px;margin:32px 0 0;box-shadow:0 8px 28px rgba(232,86,66,.12)}
+.urgent-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.urgent-pulse{width:12px;height:12px;border-radius:50%;background:#E85642;box-shadow:0 0 0 0 rgba(232,86,66,.6);animation:pulse 1.8s infinite}
+.urgent-head h3{font-family:var(--serif);font-size:22px;font-weight:600;color:#1A130D;margin:0;letter-spacing:-.01em}
+.urgent-badge{background:#E85642;color:#fff;font-size:12px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:999px}
+.urgent-list{display:flex;flex-direction:column;gap:10px}
+.urgent-lead{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid rgba(232,86,66,.18);border-radius:12px;padding:14px 16px;flex-wrap:wrap}
+.urgent-lead-main{flex:1;min-width:0}
+.urgent-lead-name{font-size:15px;font-weight:700;color:#1A130D;margin-bottom:3px}
+.urgent-lead-meta{font-size:12.5px;color:#6B6258}
+.urgent-lead-action{font-size:13px;color:#E85642;font-weight:600;margin-top:6px;line-height:1.4}
+.urgent-lead-cta{display:flex;gap:6px;align-items:center}
+.urgent-btn-call,.urgent-btn-email{padding:9px 14px;border:none;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:12.5px;cursor:pointer;transition:.16s;min-height:38px}
+.urgent-btn-call{background:#25D366;color:#fff}
+.urgent-btn-call:hover{background:#1FB855;transform:translateY(-1px)}
+.urgent-btn-email{background:#1A130D;color:#fff}
+.urgent-btn-email:hover{background:#2A2018;transform:translateY(-1px)}
+.urgent-empty{display:flex;align-items:center;gap:12px;background:rgba(39,194,174,.10);border:1px solid rgba(39,194,174,.3);border-radius:14px;padding:16px 20px;font-size:14.5px;color:#1A130D;font-weight:600;margin:32px 0 0}
+.urgent-empty-ic{width:28px;height:28px;border-radius:50%;background:#27C2AE;color:#fff;display:grid;place-items:center;font-weight:700}
+
+/* Dash sections */
+.dash-section{margin-top:40px}
+.dash-section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.dash-section-head h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);margin:0}
+.dash-section-sub{font-size:12.5px;color:var(--muted);font-weight:500}
+
+/* Inverted pipeline for light bg */
+.dash-pipeline{background:var(--ink);border-radius:14px;padding:18px 16px;display:grid;grid-template-columns:repeat(5,1fr)}
+
+/* Filter bar */
+.dash-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;background:var(--paper-2);padding:12px 14px;border-radius:14px;border:1px solid var(--line)}
+.dash-search{flex:1;min-width:220px;font-family:var(--sans);font-size:14px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);transition:.15s;min-height:42px}
+.dash-search:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(246,134,59,.12)}
+.dash-select{font-family:var(--sans);font-size:13.5px;font-weight:600;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer;min-height:42px;min-width:140px}
+.dash-select:focus{outline:none;border-color:var(--gold)}
+
+/* Lead cards (the main board) */
+.dash-leads{display:flex;flex-direction:column;gap:12px}
+.dash-empty{padding:32px;text-align:center;color:var(--muted);font-size:14.5px;background:var(--paper-2);border-radius:14px;border:1px dashed var(--line)}
+
+.lead-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--u, var(--gold));border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:1fr;gap:10px;box-shadow:0 2px 8px rgba(26,19,13,.04);transition:.18s}
+.lead-card:hover{box-shadow:0 8px 22px rgba(26,19,13,.08);transform:translateY(-1px)}
+.lc-header{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.lc-id{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lc-urgency{font-family:var(--sans);font-size:10.5px;font-weight:800;letter-spacing:.12em;padding:3px 8px;border-radius:4px;background:color-mix(in srgb,var(--u) 12%,transparent)}
+.lc-num{font-family:'JetBrains Mono',Menlo,monospace;font-size:12px;color:var(--muted);font-weight:600}
+.lc-age{font-size:12px;color:var(--muted)}
+.lc-score{display:flex;align-items:center;gap:8px}
+.lc-score-n{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);line-height:1}
+.sla-ok{font-size:11px;color:#27C2AE;font-weight:700;background:rgba(39,194,174,.12);padding:3px 8px;border-radius:999px}
+.sla-warn{font-size:11px;color:#fff;font-weight:700;background:#E85642;padding:3px 8px;border-radius:999px}
+.lc-name{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.lc-meta{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);flex-wrap:wrap}
+.lc-dot{opacity:.5}
+.lc-queue{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.chip-ventas{background:rgba(246,134,59,.14);color:#C66614}
+.chip-ops{background:rgba(39,194,174,.12);color:#178572}
+.chip-intl{background:rgba(99,142,255,.14);color:#3F5FBC}
+
+.lc-rec{background:var(--paper-2);border-radius:10px;padding:11px 14px;display:flex;flex-direction:column;gap:2px}
+.lc-rec-l{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lc-rec-t{font-size:14px;color:var(--ink);font-weight:600;line-height:1.45}
+
+.lc-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.lc-btn{padding:9px 16px;border:none;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:12.5px;cursor:pointer;transition:.16s;min-height:38px}
+.lc-btn-wa{background:#25D366;color:#fff}
+.lc-btn-wa:hover{background:#1FB855;transform:translateY(-1px)}
+.lc-btn-em{background:var(--ink);color:#fff}
+.lc-btn-em:hover{background:var(--ink-2);transform:translateY(-1px)}
+.lc-status-sel{margin-left:auto;font-family:var(--sans);font-size:12.5px;font-weight:600;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;min-height:38px}
+.lc-status-sel[data-status="won"]{background:rgba(39,194,174,.12);border-color:rgba(39,194,174,.4);color:#178572}
+.lc-status-sel[data-status="lost"]{background:rgba(155,155,155,.12);border-color:rgba(155,155,155,.4);color:#6B6258}
+.lc-status-sel[data-status="contacted"]{background:rgba(246,134,59,.14);border-color:rgba(246,134,59,.4);color:#C66614}
+.lc-status-sel[data-status="booked"]{background:rgba(99,142,255,.14);border-color:rgba(99,142,255,.4);color:#3F5FBC}
+@media(max-width:620px){
+  .lc-actions{flex-direction:column;align-items:stretch}
+  .lc-status-sel{margin-left:0;width:100%}
+}
+
+/* Daily summary */
+.dash-summary{margin-top:40px}
+.dash-summary-card{background:linear-gradient(135deg,var(--ink),var(--ink-2));color:#fff;border-radius:18px;padding:26px 30px}
+.dash-summary-title{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin-bottom:14px}
+.dash-summary-row{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:14px;font-size:15px;color:rgba(255,255,255,.85)}
+.dash-summary-row b{font-family:var(--serif);font-size:24px;font-weight:600;color:#fff;margin-right:6px;letter-spacing:-.01em}
+.dash-summary-focus{font-size:14.5px;color:rgba(255,255,255,.82);padding-top:14px;border-top:1px solid rgba(255,255,255,.12);line-height:1.6}
+
 /* ---------- Admin auth ---------- */
 .auth-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:18px}
 .auth-field{display:flex;flex-direction:column;gap:8px}
@@ -837,7 +944,6 @@ const T = {
       {k:"dobiz", t:{es:"Hacer Negocios en MX", en:"Do Business in Mexico", fr:"Faire des affaires au Mexique"}},
       {k:"events", t:{es:"Eventos", en:"Events", fr:"Événements"}},
       {k:"faq", t:{es:"Preguntas Frecuentes", en:"FAQ", fr:"FAQ"}},
-      {k:"automation", t:{es:"Automatización", en:"Automation", fr:"Automatisation"}},
       {k:"contact", t:{es:"Contacto", en:"Contact", fr:"Contact"}},
     ],
     copy:{es:"© 2026 Linbix Business Place. Todos los derechos reservados.", en:"© 2026 Linbix Business Place. All rights reserved.", fr:"© 2026 Linbix Business Place. Tous droits réservés."},
@@ -1268,6 +1374,130 @@ let LANG = "es";
 let CUR  = "MXN";          // current display currency, derived from LANG
 let CURRENT = "home";
 const AUTH = { checked:false, ok:false, email:null, error:null, busy:false };
+const DASH = { queue:"all", urgency:"all", status:"all", q:"" };
+const STATUS_FLOW = ["new","contacted","booked","won","lost"];
+
+/* ============================================================
+   DASHBOARD HELPERS — urgency, recommended actions, filters
+   ============================================================ */
+function urgencyOf(lead){
+  const ageMin = lead.ageMin || Math.floor((Date.now() - lead.ts)/60000);
+  const breached = lead.status === "new" && ageMin > lead.slaTarget;
+  if(lead.status === "won")        return { tier:"GANADO",  color:"#27C2AE", rank:99 };
+  if(lead.status === "lost")       return { tier:"PERDIDO", color:"#9B9B9B", rank:98 };
+  if(breached || lead.score >= 80) return { tier:"HOT",     color:"#E85642", rank:1 };
+  if(lead.score >= 60)             return { tier:"WARM",    color:"#F6863B", rank:2 };
+  return                             { tier:"COOL",    color:"#6B6258", rank:3 };
+}
+
+function recommendedAction(lead, u){
+  const i18n = {
+    es:{
+      hotIntl:"Llamar dentro de 15 min. Lead caliente internacional.",
+      hot:"Llamar o WhatsApp ahora. Lead caliente.",
+      warm:"Contactar hoy mismo por WhatsApp o email.",
+      cool:"Responder dentro de 24 horas.",
+      contacted:"Hacer seguimiento. Esperar respuesta o re-contactar en 24h.",
+      booked:"Confirmar asistencia el día antes.",
+      won:"Cliente activo. Nutrir y referir.",
+      lost:"Cerrado. Posible re-engagement en 90 días.",
+      breach:"⚠ SLA vencido. Contactar ya.",
+    },
+    en:{
+      hotIntl:"Call within 15 min. International hot lead.",
+      hot:"Call or WhatsApp now. Hot lead.",
+      warm:"Contact today via WhatsApp or email.",
+      cool:"Respond within 24 hours.",
+      contacted:"Follow up. Wait for reply or re-contact in 24h.",
+      booked:"Confirm the day before.",
+      won:"Active client. Nurture and refer.",
+      lost:"Closed. Possible re-engagement in 90 days.",
+      breach:"⚠ SLA breached. Contact now.",
+    },
+    fr:{
+      hotIntl:"Appeler sous 15 min. Prospect international chaud.",
+      hot:"Appeler ou WhatsApp maintenant. Prospect chaud.",
+      warm:"Contacter aujourd'hui par WhatsApp ou email.",
+      cool:"Répondre sous 24 heures.",
+      contacted:"Faire un suivi. Attendre réponse ou recontacter sous 24h.",
+      booked:"Confirmer la veille.",
+      won:"Client actif. Fidéliser et référer.",
+      lost:"Fermé. Réengagement possible dans 90 jours.",
+      breach:"⚠ SLA dépassé. Contacter maintenant.",
+    }
+  }[LANG] || {};
+  const ageMin = lead.ageMin || Math.floor((Date.now() - lead.ts)/60000);
+  if(lead.status === "won")       return i18n.won;
+  if(lead.status === "lost")      return i18n.lost;
+  if(lead.status === "booked")    return i18n.booked;
+  if(lead.status === "contacted") return i18n.contacted;
+  if(lead.status === "new" && ageMin > lead.slaTarget) return i18n.breach;
+  if(u.tier === "HOT" && lead.queue === "intl") return i18n.hotIntl;
+  if(u.tier === "HOT")  return i18n.hot;
+  if(u.tier === "WARM") return i18n.warm;
+  return i18n.cool;
+}
+
+function fmtAge(min){
+  if(min < 1)   return ({es:"hace segundos",en:"seconds ago",fr:"il y a quelques secondes"}[LANG]);
+  if(min < 60)  return ({es:`hace ${min}m`,en:`${min}m ago`,fr:`il y a ${min}m`}[LANG]);
+  const h = Math.floor(min/60);
+  if(h < 24)    return ({es:`hace ${h}h`,en:`${h}h ago`,fr:`il y a ${h}h`}[LANG]);
+  const d = Math.floor(h/24);
+  return ({es:`hace ${d}d`,en:`${d}d ago`,fr:`il y a ${d}j`}[LANG]);
+}
+
+function applyFilters(list){
+  const q = (DASH.q || "").toLowerCase().trim();
+  return list.filter(l => {
+    if(DASH.queue !== "all" && l.queue !== DASH.queue) return false;
+    if(DASH.status !== "all" && (l.status||"new") !== DASH.status) return false;
+    if(DASH.urgency !== "all"){
+      const t = urgencyOf(l).tier;
+      if(DASH.urgency === "hot"  && t !== "HOT")  return false;
+      if(DASH.urgency === "warm" && t !== "WARM") return false;
+      if(DASH.urgency === "cool" && t !== "COOL") return false;
+    }
+    if(q){
+      const hay = [l.name, l.email, l.country, tr(l.serviceName), l.id].join(" ").toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+/* Mutate lead status and re-render */
+function markLeadStatus(id, status){
+  const l = LEADS.find(x => x.id === id);
+  if(l){ l.status = status; renderDashboard(); }
+}
+function whatsappLead(id){
+  const l = LEADS.find(x => x.id === id);
+  if(!l) return;
+  const n = (l.whatsapp || l.phone || "").replace(/[^0-9+]/g,"");
+  const msg = encodeURIComponent(
+    ({es:`Hola ${l.name}, te escribo de Linbix. Vi tu interés en ${tr(l.serviceName)}.`,
+      en:`Hi ${l.name}, this is Linbix. Saw your interest in ${tr(l.serviceName)}.`,
+      fr:`Bonjour ${l.name}, c'est Linbix. Vous vous intéressez à ${tr(l.serviceName)}.`}[LANG])
+  );
+  if(n){ window.open(`https://wa.me/${n.replace(/^\+/,"")}?text=${msg}`, "_blank"); }
+  else { alert(({es:"Sin número de teléfono",en:"No phone number",fr:"Pas de numéro"}[LANG])); }
+}
+function emailLead(id){
+  const l = LEADS.find(x => x.id === id);
+  if(!l) return;
+  const subj = encodeURIComponent(`Linbix — ${tr(l.serviceName)}`);
+  const body = encodeURIComponent(
+    ({es:`Hola ${l.name},\n\nGracias por tu interés en ${tr(l.serviceName)}.\n\nMe gustaría coordinar una llamada o visita.\n\nSaludos,\nLuc — Linbix`,
+      en:`Hi ${l.name},\n\nThanks for your interest in ${tr(l.serviceName)}.\n\nI'd like to set up a call or visit.\n\nBest,\nLuc — Linbix`,
+      fr:`Bonjour ${l.name},\n\nMerci pour votre intérêt pour ${tr(l.serviceName)}.\n\nJ'aimerais organiser un appel ou une visite.\n\nCordialement,\nLuc — Linbix`}[LANG])
+  );
+  window.open(`mailto:${l.email}?subject=${subj}&body=${body}`, "_blank");
+}
+function updateDashFilter(key, value){
+  DASH[key] = value;
+  renderDashboard();
+}
 
 const tr = (obj) => (obj && (obj[LANG] ?? obj.es)) || "";
 
@@ -1353,7 +1583,6 @@ function renderChrome(){
     <a data-page="dobiz" onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
     <a data-page="partners" onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
-    <a data-page="automation" onclick="go('automation')">${tr(T.ui.automation)}</a>
     <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
   `;
   // mobile menu — enterprise drawer pattern
@@ -1377,7 +1606,6 @@ function renderChrome(){
       <a onclick="go('dobiz');closeMobile()">${tr(T.ui.doBusiness)}</a>
       <a onclick="go('partners');closeMobile()">${tr(T.partners.eyebrow)}</a>
       <a onclick="go('events');closeMobile()">${tr(T.ui.events)}</a>
-      <a onclick="go('automation');closeMobile()">${tr(T.ui.automation)}</a>
       <a onclick="go('faq');closeMobile()">${tr(T.faq.eyebrow)}</a>
       <a onclick="go('contact');closeMobile()">${tr(T.ui.contact)}</a>
     </div>
@@ -1402,7 +1630,11 @@ function renderChrome(){
   $("#foot-phone").textContent = phone;
   $("#foot-hours").textContent = tr(T.ui.hoursVal);
   $("#foot-copy").textContent = tr(T.footer.copy);
-  $("#foot-built").textContent = tr(T.footer.built);
+  // "Plataforma por TechFides · techfides.com" with TechFides as a real link out
+  const builtTxt = tr(T.footer.built);
+  $("#foot-built").innerHTML = builtTxt
+    .replace(/TechFides/g, `<a href="https://techfides.com?utm_source=linbix&utm_medium=footer&utm_campaign=partner_link" target="_blank" rel="noopener" style="color:var(--gold-2);text-decoration:none;font-weight:700">TechFides</a>`)
+    .replace(/techfides\.com/g, `<a href="https://techfides.com?utm_source=linbix&utm_medium=footer&utm_campaign=partner_link" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px">techfides.com</a>`);
 }
 
 /* Mobile drawer — open/close with body scroll lock, backdrop, ARIA, ESC */
@@ -2049,79 +2281,227 @@ function pageAutomation(){
     return pageAutomationLoading();
   }
   if(!AUTH.ok) return pageAutomationLogin();
-  // authed: render dashboard
+  // authed: render decisive dashboard
   const a=T.auto;
+  const today = new Date().toLocaleDateString(LANG==="fr"?"fr-FR":LANG==="en"?"en-US":"es-MX",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  const hello = {es:`Hola, ${(AUTH.email||"").split("@")[0]}`, en:`Hi, ${(AUTH.email||"").split("@")[0]}`, fr:`Bonjour, ${(AUTH.email||"").split("@")[0]}`}[LANG];
   return `
   <div class="page active">
-    <div class="detail-hero"><div class="wrap">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+    <div class="detail-hero dash-hero"><div class="wrap">
+      <div class="dash-hero-top">
         <div>
           <div class="eyebrow" style="color:var(--gold-2)">${tr(a.eyebrow)}</div>
-          <h1>${tr(a.h2)}</h1>
-          <p class="note" style="max-width:46em;margin-top:10px">${tr(a.p)}</p>
+          <h1 class="dash-hello">${hello}</h1>
+          <div class="dash-date">${today}</div>
         </div>
         <div class="auth-user">
           <span class="auth-user-email">${AUTH.email || ""}</span>
           <button class="auth-logout" onclick="authLogout()" aria-label="Cerrar sesión">${tr(T.auth.logout)}</button>
         </div>
       </div>
+      <div class="kpi-grid" id="dashKpis"></div>
     </div></div>
     <section class="detail-body"><div class="wrap">
-      <div class="console">
-        <div class="console-bar">
-          <div class="dots"><i></i><i></i><i></i></div>
-          <span class="title">${tr(a.consoleTitle)}</span>
-          <span class="live"><span class="pulse"></span>${tr(a.live)}</span>
+      <div id="dashUrgent"></div>
+      <div class="dash-section">
+        <div class="dash-section-head">
+          <h3>Pipeline</h3>
+          <span class="dash-section-sub">${({es:"Cada lead pasa por estos 5 pasos",en:"Every lead flows through these 5 steps",fr:"Chaque prospect suit ces 5 étapes"}[LANG])}</span>
         </div>
-        <div class="pipeline" id="pipeline"></div>
-        <div style="overflow-x:auto"><table class="leadtable" id="leadtable"></table></div>
+        <div class="pipeline dash-pipeline" id="pipeline"></div>
       </div>
-      <div style="margin-top:18px;text-align:center;color:var(--muted);font-size:14px">
-        ${({es:"Tip: ve a cualquier servicio, envía el formulario y vuelve aquí — tu lead aparece arriba.",en:"Tip: open any service, submit the form, and come back — your lead appears at the top.",fr:"Astuce : ouvrez un service, soumettez le formulaire et revenez — votre prospect apparaît en haut."}[LANG])}
+      <div class="dash-section">
+        <div class="dash-section-head">
+          <h3>${({es:"Leads",en:"Leads",fr:"Prospects"}[LANG])}</h3>
+          <span class="dash-section-sub" id="dashCount"></span>
+        </div>
+        <div class="dash-filters" id="dashFilters"></div>
+        <div class="dash-leads" id="dashLeads"></div>
       </div>
-
-      <div class="sec-head center" style="margin-top:64px">
-        <div class="eyebrow">${tr(a.eyebrow).split("·")[0]}</div>
-        <h2>${tr(a.featTitle)}</h2>
-      </div>
-      <div class="grid g4">
-        ${a.feats.map(f=>`<div class="card"><div class="svc-ic">${f.ic}</div><h3 style="font-size:17px">${tr(f.t)}</h3><p class="desc">${tr(f.d)}</p></div>`).join("")}
-      </div>
+      <div class="dash-summary" id="dashSummary"></div>
     </div></section>
   </div>`;
 }
 
-function renderConsole(){
-  // pipeline counts
-  const a=T.auto;
-  const counts = {capture:LEADS.length, enrich:LEADS.length, score:LEADS.length, route:LEADS.length, notify:LEADS.filter(l=>l.status!=="new"||true).length};
-  const order=["capture","enrich","score","route","notify"];
-  $("#pipeline").innerHTML = a.steps.map((s,i)=>`
-    <div class="pstep"><div class="pic">${s.ic}</div><div class="pname">${tr(s.n)}</div><div class="pcount">${LEADS.length} ${({es:"leads",en:"leads",fr:"prospects"}[LANG])}</div></div>
+function renderConsole(){ renderDashboard(); }  // back-compat alias
+
+function renderDashboard(){
+  const a = T.auto;
+  if(!$("#dashKpis")) return;  // not on automation page
+  const i18n = {
+    es:{today:"leads hoy", week:"esta semana", intl:"% internacional", slaRisk:"SLA en riesgo",
+        urgent:"Acción urgente", urgentNone:"No hay leads urgentes. Buen trabajo.",
+        callNow:"Llamar ahora", filterAll:"Todos", searchPh:"Buscar lead, email, país…",
+        showing:"Mostrando", of:"de", noResults:"Ningún lead coincide con los filtros.",
+        action:"Acción recomendada", summary:"Resumen del día", foco:"Foco hoy",
+        queues:{ventas:"Ventas",ops:"Operaciones",intl:"Internacional"},
+        urgencyAll:"Todas las urgencias", statusAll:"Todos los estados",
+        statusName:{new:"Nuevo",contacted:"Contactado",booked:"Reservado",won:"Ganado",lost:"Perdido"},
+        whatsapp:"WhatsApp", email:"Email", revenue:"Potencial estimado"},
+    en:{today:"leads today", week:"this week", intl:"% international", slaRisk:"SLA at risk",
+        urgent:"Urgent action", urgentNone:"No urgent leads. Good job.",
+        callNow:"Call now", filterAll:"All", searchPh:"Search lead, email, country…",
+        showing:"Showing", of:"of", noResults:"No lead matches your filters.",
+        action:"Recommended action", summary:"Today's summary", foco:"Today's focus",
+        queues:{ventas:"Sales",ops:"Operations",intl:"International"},
+        urgencyAll:"All urgencies", statusAll:"All statuses",
+        statusName:{new:"New",contacted:"Contacted",booked:"Booked",won:"Won",lost:"Lost"},
+        whatsapp:"WhatsApp", email:"Email", revenue:"Estimated potential"},
+    fr:{today:"prospects aujourd'hui", week:"cette semaine", intl:"% international", slaRisk:"SLA en risque",
+        urgent:"Action urgente", urgentNone:"Aucun prospect urgent. Bon travail.",
+        callNow:"Appeler", filterAll:"Tous", searchPh:"Rechercher prospect, email, pays…",
+        showing:"Affichage", of:"sur", noResults:"Aucun prospect ne correspond aux filtres.",
+        action:"Action recommandée", summary:"Résumé du jour", foco:"Focus du jour",
+        queues:{ventas:"Ventes",ops:"Opérations",intl:"International"},
+        urgencyAll:"Toutes urgences", statusAll:"Tous statuts",
+        statusName:{new:"Nouveau",contacted:"Contacté",booked:"Réservé",won:"Gagné",lost:"Perdu"},
+        whatsapp:"WhatsApp", email:"Email", revenue:"Potentiel estimé"},
+  }[LANG];
+
+  /* ----- KPIs ----- */
+  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+  const weekStart  = new Date(); weekStart.setDate(weekStart.getDate()-7);
+  const todayCount = LEADS.filter(l => l.ts >= todayStart.getTime()).length;
+  const weekCount  = LEADS.filter(l => l.ts >= weekStart.getTime()).length;
+  const intlPct    = LEADS.length ? Math.round(LEADS.filter(l => l.queue==="intl").length / LEADS.length * 100) : 0;
+  const slaRisk    = LEADS.filter(l => (l.status||"new")==="new" && l.ageMin > l.slaTarget).length;
+  $("#dashKpis").innerHTML = `
+    <div class="kpi"><div class="kpi-n">${todayCount}</div><div class="kpi-l">${i18n.today}</div></div>
+    <div class="kpi"><div class="kpi-n">${weekCount}</div><div class="kpi-l">${i18n.week}</div></div>
+    <div class="kpi"><div class="kpi-n">${intlPct}<span class="kpi-u">%</span></div><div class="kpi-l">${i18n.intl}</div></div>
+    <div class="kpi ${slaRisk>0?'kpi-danger':''}"><div class="kpi-n">${slaRisk}</div><div class="kpi-l">${i18n.slaRisk}</div></div>
+  `;
+
+  /* ----- Urgent action ----- */
+  const urgent = LEADS
+    .filter(l => (l.status||"new")==="new")
+    .map(l => ({ l, u: urgencyOf(l) }))
+    .filter(x => x.u.tier === "HOT" || (x.l.ageMin > x.l.slaTarget))
+    .slice(0, 3);
+  if(urgent.length){
+    $("#dashUrgent").innerHTML = `
+      <div class="urgent-card">
+        <div class="urgent-head">
+          <span class="urgent-pulse"></span>
+          <h3>${i18n.urgent}</h3>
+          <span class="urgent-badge">${urgent.length}</span>
+        </div>
+        <div class="urgent-list">
+          ${urgent.map(({l,u}) => `
+            <div class="urgent-lead">
+              <div class="urgent-lead-main">
+                <div class="urgent-lead-name">${l.name}</div>
+                <div class="urgent-lead-meta">${tr(l.serviceName)} · ${l.country} · ${fmtAge(l.ageMin)}</div>
+                <div class="urgent-lead-action">${recommendedAction(l, u)}</div>
+              </div>
+              <div class="urgent-lead-cta">
+                ${(l.phone || l.whatsapp) ? `<button class="urgent-btn-call" onclick="whatsappLead('${l.id}')">${i18n.callNow}</button>` : ''}
+                <button class="urgent-btn-email" onclick="emailLead('${l.id}')">${i18n.email}</button>
+              </div>
+            </div>`).join("")}
+        </div>
+      </div>`;
+  } else {
+    $("#dashUrgent").innerHTML = `<div class="urgent-empty"><span class="urgent-empty-ic">✓</span>${i18n.urgentNone}</div>`;
+  }
+
+  /* ----- Pipeline (existing visualization, with real counts) ----- */
+  $("#pipeline").innerHTML = a.steps.map(s => `
+    <div class="pstep"><div class="pic">${s.ic}</div><div class="pname">${tr(s.n)}</div><div class="pcount">${LEADS.length} leads</div></div>
   `).join("");
 
-  // table
-  const th=a.th;
-  const head = `<thead><tr>
-    <th>${tr(th.lead)}</th><th>${tr(th.service)}</th><th>${tr(th.score)}</th>
-    <th>${tr(th.queue)}</th><th>${tr(th.sla)}</th><th>${tr(th.status)}</th></tr></thead>`;
-  const rows = LEADS.map(l=>{
-    const sc = l.score>=75?"hi":l.score>=55?"mid":"lo";
-    const qn = a.queues[l.queue]?tr(a.queues[l.queue]):l.queue;
-    const within = l.ageMin <= l.slaTarget;
-    const slaTxt = l.status==="won" ? "✓" : (within? `${l.slaTarget-l.ageMin||1}m`:`+${l.ageMin-l.slaTarget}m`);
-    const slaCls = l.status==="won"?"ok":within?"ok":"warn";
-    const stName = a.statuses[l.status]?tr(a.statuses[l.status]):l.status;
-    return `<tr>
-      <td><b>${l.name}</b><br><span style="color:rgba(255,255,255,.45);font-size:12px">${l.id} · ${l.source} · ${l.locale}</span></td>
-      <td>${tr(l.serviceName)}<br><span style="color:rgba(255,255,255,.45);font-size:12px">${l.country}</span></td>
-      <td><span class="score ${sc}">${l.score}</span></td>
-      <td><span class="chip ${l.queue}">${qn}</span></td>
-      <td><span class="sla ${slaCls}">${slaTxt}</span></td>
-      <td><span class="statusdot ${l.status}"></span>${stName}</td>
-    </tr>`;
-  }).join("");
-  $("#leadtable").innerHTML = head + `<tbody>${rows}</tbody>`;
+  /* ----- Filter bar ----- */
+  $("#dashFilters").innerHTML = `
+    <input class="dash-search" type="search" placeholder="${i18n.searchPh}" value="${DASH.q || ''}" oninput="updateDashFilter('q', this.value)" />
+    <select class="dash-select" onchange="updateDashFilter('queue', this.value)">
+      <option value="all" ${DASH.queue==='all'?'selected':''}>${i18n.filterAll} · ${({es:"colas",en:"queues",fr:"files"}[LANG])}</option>
+      <option value="intl"   ${DASH.queue==='intl'?'selected':''}>${i18n.queues.intl}</option>
+      <option value="ventas" ${DASH.queue==='ventas'?'selected':''}>${i18n.queues.ventas}</option>
+      <option value="ops"    ${DASH.queue==='ops'?'selected':''}>${i18n.queues.ops}</option>
+    </select>
+    <select class="dash-select" onchange="updateDashFilter('urgency', this.value)">
+      <option value="all" ${DASH.urgency==='all'?'selected':''}>${i18n.urgencyAll}</option>
+      <option value="hot"  ${DASH.urgency==='hot'?'selected':''}>🔥 HOT</option>
+      <option value="warm" ${DASH.urgency==='warm'?'selected':''}>⚡ WARM</option>
+      <option value="cool" ${DASH.urgency==='cool'?'selected':''}>· COOL</option>
+    </select>
+    <select class="dash-select" onchange="updateDashFilter('status', this.value)">
+      <option value="all" ${DASH.status==='all'?'selected':''}>${i18n.statusAll}</option>
+      ${STATUS_FLOW.map(s => `<option value="${s}" ${DASH.status===s?'selected':''}>${i18n.statusName[s]}</option>`).join("")}
+    </select>
+  `;
+
+  /* ----- Lead cards (the main board) ----- */
+  const filtered = applyFilters(LEADS).sort((x,y) => urgencyOf(x).rank - urgencyOf(y).rank);
+  $("#dashCount").textContent = `${i18n.showing} ${filtered.length} ${i18n.of} ${LEADS.length}`;
+  if(!filtered.length){
+    $("#dashLeads").innerHTML = `<div class="dash-empty">${i18n.noResults}</div>`;
+  } else {
+    $("#dashLeads").innerHTML = filtered.map(l => {
+      const u = urgencyOf(l);
+      const rec = recommendedAction(l, u);
+      const st = l.status || "new";
+      const sla = st === "new"
+        ? (l.ageMin <= l.slaTarget ? `<span class="sla-ok">${Math.max(1, l.slaTarget - l.ageMin)}m</span>`
+                                    : `<span class="sla-warn">+${l.ageMin - l.slaTarget}m</span>`)
+        : "";
+      return `
+        <div class="lead-card" style="--u:${u.color}">
+          <div class="lc-header">
+            <div class="lc-id">
+              <span class="lc-urgency" style="color:${u.color}">${u.tier}</span>
+              <span class="lc-num">${l.id}</span>
+              <span class="lc-age">${fmtAge(l.ageMin)} · ${l.source}</span>
+            </div>
+            <div class="lc-score">
+              <span class="lc-score-n">${l.score}</span>
+              ${sla}
+            </div>
+          </div>
+          <div class="lc-name">${l.name}</div>
+          <div class="lc-meta">
+            <span>${tr(l.serviceName)}</span>
+            <span class="lc-dot">·</span>
+            <span>${l.country}</span>
+            <span class="lc-dot">·</span>
+            <span class="lc-queue chip-${l.queue}">${i18n.queues[l.queue] || l.queue}</span>
+          </div>
+          <div class="lc-rec">
+            <span class="lc-rec-l">${i18n.action}</span>
+            <span class="lc-rec-t">${rec}</span>
+          </div>
+          <div class="lc-actions">
+            ${(l.phone || l.whatsapp) ? `<button class="lc-btn lc-btn-wa" onclick="whatsappLead('${l.id}')">${i18n.whatsapp}</button>` : ''}
+            <button class="lc-btn lc-btn-em" onclick="emailLead('${l.id}')">${i18n.email}</button>
+            <select class="lc-status-sel" onchange="markLeadStatus('${l.id}', this.value)" data-status="${st}">
+              ${STATUS_FLOW.map(s => `<option value="${s}" ${st===s?'selected':''}>${i18n.statusName[s]}</option>`).join("")}
+            </select>
+          </div>
+        </div>`;
+    }).join("");
+  }
+
+  /* ----- Daily summary ----- */
+  const hotToday    = LEADS.filter(l => l.ts >= todayStart.getTime() && urgencyOf(l).tier === "HOT").length;
+  const intlToday   = LEADS.filter(l => l.ts >= todayStart.getTime() && l.queue === "intl").length;
+  const topHot      = urgent[0]?.l;
+  const focusLine   = topHot
+    ? ({es:`Foco: contactar a <b>${topHot.name}</b> (${tr(topHot.serviceName)}) lo antes posible.`,
+        en:`Focus: contact <b>${topHot.name}</b> (${tr(topHot.serviceName)}) as soon as possible.`,
+        fr:`Focus : contacter <b>${topHot.name}</b> (${tr(topHot.serviceName)}) au plus vite.`}[LANG])
+    : ({es:"No hay leads pendientes urgentes. Mantén el seguimiento de tus contactados.",
+        en:"No urgent pending leads. Keep following up on contacted leads.",
+        fr:"Aucun prospect urgent en attente. Continuez le suivi des contactés."}[LANG]);
+  $("#dashSummary").innerHTML = `
+    <div class="dash-summary-card">
+      <div class="dash-summary-title">${i18n.summary}</div>
+      <div class="dash-summary-row">
+        <span><b>${todayCount}</b> ${i18n.today}</span>
+        <span><b>${intlToday}</b> ${({es:"internacionales",en:"international",fr:"internationaux"}[LANG])}</span>
+        <span><b>${hotToday}</b> HOT</span>
+      </div>
+      <div class="dash-summary-focus"><strong>${i18n.foco}:</strong> ${focusLine}</div>
+    </div>`;
 }
 
 /* ---------------- BOOT ---------------- */
