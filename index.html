@@ -282,6 +282,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
 .foot-brand span{color:var(--gold-2)}
 .foot-brand p{margin-top:12px;max-width:24em;font-size:14px}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px}
+.foot-bottom .tf-link{
+  color:var(--gold-2);
+  font-weight:600;
+  text-decoration:none;
+  border-bottom:1px solid rgba(247,161,34,.4);
+  padding-bottom:1px;
+  transition:color .2s ease, border-color .2s ease;
+}
+.foot-bottom .tf-link:hover{ color:#fff; border-color:#fff; }
 .socials{display:flex;gap:10px}
 .socials a{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:15px;color:#fff}
 .socials a:hover{background:var(--gold);color:var(--ink)}
@@ -1588,7 +1597,7 @@ const T = {
       {k:"contact", t:{es:"Contacto", en:"Contact", fr:"Contact"}},
     ],
     copy:{es:"© 2026 Linbix Business Place. Todos los derechos reservados.", en:"© 2026 Linbix Business Place. All rights reserved.", fr:"© 2026 Linbix Business Place. Tous droits réservés."},
-    built:{es:"Plataforma por TechFides · techfides.com", en:"Platform by TechFides · techfides.com", fr:"Plateforme par TechFides · techfides.com"},
+    built:{es:"Plataforma por {TF}", en:"Platform by {TF}", fr:"Plateforme par {TF}"},
     partner:{es:"Socio tecnológico: TechFides", en:"Technology partner: TechFides", fr:"Partenaire technologique : TechFides"},
   },
 
@@ -2271,11 +2280,9 @@ function renderChrome(){
   $("#foot-phone").textContent = phone;
   $("#foot-hours").textContent = tr(T.ui.hoursVal);
   $("#foot-copy").textContent = tr(T.footer.copy);
-  // "Plataforma por TechFides · techfides.com" with TechFides as a real link out
-  const builtTxt = tr(T.footer.built);
-  $("#foot-built").innerHTML = builtTxt
-    .replace(/TechFides/g, `<a href="https://techfides.com?utm_source=linbix&utm_medium=footer&utm_campaign=partner_link" target="_blank" rel="noopener" style="color:var(--gold-2);text-decoration:none;font-weight:700">TechFides</a>`)
-    .replace(/techfides\.com/g, `<a href="https://techfides.com?utm_source=linbix&utm_medium=footer&utm_campaign=partner_link" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px">techfides.com</a>`);
+  // "Plataforma por TechFides" — single clean link on the brand name
+  const tfLink = `<a href="https://techfides.com?utm_source=linbix&utm_medium=footer&utm_campaign=partner_link" target="_blank" rel="noopener" class="tf-link">TechFides</a>`;
+  $("#foot-built").innerHTML = tr(T.footer.built).replace("{TF}", tfLink);
 }
 
 /* Mobile drawer — open/close with body scroll lock, backdrop, ARIA, ESC */
