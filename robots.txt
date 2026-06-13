@@ -1,0 +1,44 @@
+# www.linbix.com — robots.txt
+# Linbix Business Place · Guadalajara, México
+
+User-agent: *
+Allow: /
+
+# AI search engines — explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Block the admin console from indexing
+Disallow: /automation
+
+Sitemap: https://www.linbix.com/sitemap.xml
