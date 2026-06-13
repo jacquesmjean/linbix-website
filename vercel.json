@@ -1,8 +1,7 @@
 {
-  "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api|media|robots.txt|sitemap.xml|llms.txt|favicon.ico).*)", "destination": "/index.html" }
+    { "source": "/((?!api|media|robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.ico).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -28,7 +27,7 @@
       ]
     },
     {
-      "source": "/(robots.txt|sitemap.xml|llms.txt)",
+      "source": "/(robots\\.txt|sitemap\\.xml|llms\\.txt)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
