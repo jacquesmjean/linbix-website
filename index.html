@@ -535,6 +535,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 28px;marg
 /* Lead cards (the main board) */
 .dash-leads{display:flex;flex-direction:column;gap:12px}
 .dash-empty{padding:32px;text-align:center;color:var(--muted);font-size:14.5px;background:var(--paper-2);border-radius:14px;border:1px dashed var(--line)}
+.dash-fresh{
+  padding:60px 28px; text-align:center;
+  background:linear-gradient(180deg, #fff, var(--paper-2));
+  border:1px dashed rgba(246,134,59,.4); border-radius:18px;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+}
+.dash-fresh-ic{ font-size:54px; line-height:1; opacity:.85; margin-bottom:6px; }
+.dash-fresh h3{ font-family:var(--serif); font-size:24px; font-weight:600; color:var(--ink); margin:0; }
+.dash-fresh p{ color:var(--muted); font-size:15px; line-height:1.55; max-width:42em; margin:0 0 8px; }
 
 .lead-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--u, var(--gold));border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:1fr;gap:10px;box-shadow:0 2px 8px rgba(26,19,13,.04);transition:.18s}
 .lead-card:hover{box-shadow:0 8px 22px rgba(26,19,13,.08);transform:translateY(-1px)}
@@ -2125,7 +2134,7 @@ const T = {
     featured:{
       id:"summer-mixer-2026",
       date:"2026-06-25T18:00:00-05:00",
-      capacity:40, spotsLeft:18, img:"/media/photos-lg/img_0185.jpg",
+      capacity:40, spotsLeft:18, img:"/media/photos-lg/img_rooftop_bar.jpg",
       title:{es:"Mixer Ejecutivo · Verano 2026", en:"Executive Mixer · Summer 2026", fr:"Mixer Exécutif · Été 2026"},
       subtitle:{es:"Ejecutivos, emprendedores y empresas mexicanas — todos bajo el mismo techo.",
                 en:"Executives, entrepreneurs, and Mexican businesses — all under one roof.",
@@ -2438,6 +2447,15 @@ const T = {
     // Mix of video (autoplay muted loop) and photo cards. Curated for variety.
     // ratio: "wide" = 16:9 landscape, "tall" = 3:4 portrait
     items:[
+      // === NEW rooftop / lounge content (June 2026) ===
+      {kind:"video", src:"/media/video/img_rooftop_1.mp4", poster:"/media/posters/img_rooftop_1.jpg", ratio:"tall", caption:{es:"Lounge en la terraza",en:"Rooftop lounge",fr:"Lounge en terrasse"}},
+      {kind:"photo", src:"/media/photos/img_rooftop_bar.jpg", ratio:"wide", caption:{es:"Bar de la terraza",en:"Terrace bar",fr:"Bar de la terrasse"}},
+      {kind:"video", src:"/media/video/img_rooftop_2.mp4", poster:"/media/posters/img_rooftop_2.jpg", ratio:"tall", caption:{es:"Entrada del lounge",en:"Lounge entrance",fr:"Entrée du lounge"}},
+      {kind:"photo", src:"/media/photos/img_rooftop_tables.jpg", ratio:"wide", caption:{es:"Mesas altas para trabajo informal",en:"High tables for casual work",fr:"Tables hautes pour travail informel"}},
+      {kind:"photo", src:"/media/photos/img_rooftop_lounge.jpg", ratio:"wide", caption:{es:"Lounge ejecutivo · piso superior",en:"Executive lounge · upper floor",fr:"Lounge exécutif · étage supérieur"}},
+      {kind:"photo", src:"/media/photos/img_rooftop_entry.jpg", ratio:"tall", caption:{es:"Acceso a la terraza",en:"Access to the terrace",fr:"Accès à la terrasse"}},
+
+      // === Original showcase ===
       {kind:"video", src:"/media/video/img_7878.mp4", poster:"/media/posters/img_7878.jpg", ratio:"tall",  caption:{es:"Bienvenido a Linbix",en:"Welcome to Linbix",fr:"Bienvenue chez Linbix"}},
       {kind:"photo", src:"/media/photos/img_9550.jpg", ratio:"wide", caption:{es:"Lounge · Better Together",en:"Lounge · Better Together",fr:"Lounge · Better Together"}},
       {kind:"video", src:"/media/video/img_7765.mp4", poster:"/media/posters/img_7765.jpg", ratio:"tall",  caption:{es:"Trabajamos mejor juntos",en:"We work better together",fr:"Nous travaillons mieux ensemble"}},
@@ -2453,7 +2471,7 @@ const T = {
       {kind:"video", src:"/media/video/img_0190.mp4", poster:"/media/posters/img_0190.jpg", ratio:"wide", caption:{es:"Salones de evento",en:"Event halls",fr:"Salles d'événements"}},
       {kind:"photo", src:"/media/photos/img_0358.jpg", ratio:"wide", caption:{es:"Salas de junta",en:"Meeting rooms",fr:"Salles de réunion"}},
       {kind:"video", src:"/media/video/img_0192.mp4", poster:"/media/posters/img_0192.jpg", ratio:"tall", caption:{es:"Recorrido Linbix",en:"Linbix walkthrough",fr:"Visite Linbix"}},
-      {kind:"photo", src:"/media/photos/img_0090.jpg", ratio:"wide", caption:{es:"Espacios de creación",en:"Spaces to create",fr:"Espaces de création"}},
+      // img_0090 (basic laptop+plants shot) dropped — replaced by premium rooftop content above
     ],
   },
 
@@ -4850,6 +4868,11 @@ const SOURCES = ["Google Ads","Organic / SEO","Direct","Instagram","Referral"];
 const COUNTRIES_INTL = ["USA","Canada","France","Brasil","España"];
 
 function seedLeads(){
+  // Production mode — no seed data. The console starts empty and fills
+  // only with real leads from /api/lead. To temporarily enable demo
+  // seeding (for screenshots / sales presentations), set this flag.
+  const DEMO_MODE = false;
+  if(!DEMO_MODE) return;
   const seed = [
     {name:"María Fernanda Ríos", service:"oficina-virtual", country:"México", status:"won",    ageMin:1440},
     {name:"James Caldwell",      service:"hacer-negocios", country:"USA",     status:"contacted", ageMin:95},
@@ -5189,7 +5212,21 @@ function renderDashboard(){
   /* ----- Lead cards (the main board) ----- */
   const filtered = applyFilters(LEADS).sort((x,y) => urgencyOf(x).rank - urgencyOf(y).rank);
   $("#dashCount").textContent = `${i18n.showing} ${filtered.length} ${i18n.of} ${LEADS.length}`;
-  if(!filtered.length){
+  if(LEADS.length === 0){
+    // First-time empty state — distinct from "filters returned nothing"
+    const fresh = ({
+      es:{h:"Listo para recibir prospectos.", p:"Cuando alguien envíe un formulario en el sitio, aparecerá aquí en tiempo real. Mientras tanto, comparte el sitio o agenda recorridos.", cta:"Ver el sitio público"},
+      en:{h:"Ready to receive prospects.", p:"As soon as someone submits a form on the site, they'll appear here in real time. In the meantime, share the site or book tours.", cta:"View the public site"},
+      fr:{h:"Prêt à recevoir des prospects.", p:"Dès qu'une personne soumet un formulaire sur le site, elle apparaîtra ici en temps réel. En attendant, partagez le site ou réservez des visites.", cta:"Voir le site public"},
+    })[LANG];
+    $("#dashLeads").innerHTML = `
+      <div class="dash-fresh">
+        <div class="dash-fresh-ic">📭</div>
+        <h3>${fresh.h}</h3>
+        <p>${fresh.p}</p>
+        <button class="btn btn-gold" onclick="go('home')">${fresh.cta} →</button>
+      </div>`;
+  } else if(!filtered.length){
     $("#dashLeads").innerHTML = `<div class="dash-empty">${i18n.noResults}</div>`;
   } else {
     $("#dashLeads").innerHTML = filtered.map(l => {

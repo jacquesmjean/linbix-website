@@ -2,6 +2,15 @@
    /api/lead — Linbix lead capture serverless function (Vercel)
    Receives form submissions from the site, runs the lead
    pipeline server-side, emails Luc at RESEND_TO via Resend.
+
+   TODO BEFORE STRIPE COMMERCE LAUNCH:
+   ▸ Add rate limiting (Upstash Redis or Vercel KV).
+     Currently a script could blast 10K submissions and burn Resend
+     quota / flood Luc's inbox. Acceptable for beta lead-capture
+     phase, NOT acceptable once /api/checkout and /api/stripe-webhook
+     accept payment intents on the same surface.
+   ▸ Suggested limit: 5 requests per IP per 10 minutes (form fills are
+     bursty but never legitimate at >5/min).
    ============================================================ */
 
 const CORS = {
