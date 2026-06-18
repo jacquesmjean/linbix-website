@@ -5,5 +5,8 @@
   "description": "Linbix Business Place — trilingual website with embedded lead automation. Built by TechFides.",
   "homepage": "https://www.linbix.com",
   "author": "TechFides <engage@techfides.com>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "stripe": "^17.4.0"
+  }
 }

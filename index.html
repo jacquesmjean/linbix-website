@@ -1272,6 +1272,48 @@ noscript-content{
 .cmp-choose-wework ul li::before{ color:var(--muted); content:"→"; }
 
 /* ============================================================
+   STRIPE — Buy Now CTA + Checkout result pages
+   ============================================================ */
+.svc-buynow-row{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  margin-top:18px;
+}
+.svc-buynow{
+  font-weight:700; padding:14px 26px;
+  box-shadow:0 14px 28px rgba(246,134,59,.38);
+}
+.svc-buynow:hover{ transform:translateY(-1px); }
+.svc-buynow:disabled{ opacity:.7; cursor:default; transform:none; }
+.svc-buynow-note{
+  font-size:12.5px; color:rgba(255,255,255,.7); letter-spacing:.02em;
+}
+
+.checkout-result{
+  max-width:620px; margin:120px auto; text-align:center; padding:48px 32px;
+  background:#fff; border-radius:24px; border:1px solid var(--line);
+  box-shadow:0 30px 60px -22px rgba(0,0,0,.22);
+}
+.checkout-mark{
+  width:80px; height:80px; border-radius:999px;
+  display:grid; place-items:center; margin:0 auto 24px;
+  font-size:38px; font-weight:700;
+}
+.checkout-mark-success{
+  background:linear-gradient(135deg, #1E8449, #27AE60); color:#fff;
+  box-shadow:0 18px 40px rgba(30,132,73,.4);
+}
+.checkout-mark-cancel{
+  background:rgba(0,0,0,.06); color:var(--ink-2);
+}
+.checkout-result h1{
+  font-family:var(--serif); font-size:clamp(28px,3.4vw,40px);
+  font-weight:600; color:var(--ink); line-height:1.1; margin:0 0 14px;
+}
+.checkout-result p{ color:var(--muted); font-size:16px; line-height:1.55; max-width:42em; margin:0 auto 8px; }
+.checkout-meta{ font-size:13px; color:var(--muted); }
+.checkout-meta code{ background:#f4f1ea; padding:2px 6px; border-radius:4px; font-size:12px; }
+
+/* ============================================================
    LUXURY FRAME — universal premium image/video container
    - matte mat + brass inner border + multi-layer shadow
    - subtle inner highlight + hover lift
@@ -3309,6 +3351,7 @@ function initialRouteFromUrl(){
     "/": "home", "/home": "home",
     "/about":"about","/services":"services","/dobiz":"dobiz",
     "/events":"events","/community":"community","/comparison":"comparison","/partners":"partners","/faq":"faq",
+    "/checkout/success":"checkout/success","/checkout/cancel":"checkout/cancel",
     "/contact":"contact","/automation":"automation",
   };
   return map[p] || "home";
@@ -3412,7 +3455,7 @@ function toggleMmGroup(btn){
 function render(){
   const app = $("#app");
   if(CURRENT.startsWith("svc:")){ app.innerHTML = pageService(CURRENT.slice(4)); afterRender(); return; }
-  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, community:pageCommunity, comparison:pageComparison, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ};
+  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, community:pageCommunity, comparison:pageComparison, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ, "checkout/success":pageCheckoutSuccess, "checkout/cancel":pageCheckoutCancel};
   app.innerHTML = (map[CURRENT]||pageHome)();
   afterRender();
 }
@@ -3840,9 +3883,17 @@ function pageAbout(){
   </div>`;
 }
 
+/* Self-serve SKU mapping — services that can be bought directly via Stripe
+   instead of going through the sales-led lead form. */
+const SERVICE_SKU = {
+  "membresia": "membresia-anual",
+  "coworking": "coworking-day-pass",
+};
+
 function pageService(id){
   const s = SERVICES.find(x=>x.id===id);
   if(!s) return pageHome();
+  const sku = SERVICE_SKU[id];
   const tiersHtml = s.tiers ? `
     <div class="price-grid" style="margin-top:34px">
       ${s.tiers.map(t=>{
@@ -3870,6 +3921,13 @@ function pageService(id){
       <h1>${tr(s.name)}</h1>
       <div class="price">${buildPrice(s)}</div>
       <p class="note">${tr(s.pnote)}</p>
+      ${sku ? `
+        <div class="svc-buynow-row">
+          <button class="btn btn-gold svc-buynow" onclick="buyNow('${sku}', {btn:this})">
+            ${({es:"Comprar ahora",en:"Buy now",fr:"Acheter maintenant"}[LANG])} →
+          </button>
+          <span class="svc-buynow-note">${({es:"Pago seguro con Stripe · OXXO, SPEI, tarjeta",en:"Secure checkout via Stripe · OXXO, SPEI, card",fr:"Paiement sécurisé Stripe · OXXO, SPEI, carte"}[LANG])}</span>
+        </div>` : ""}
     </div></div>
     <section class="detail-body"><div class="wrap">
       <div class="split">
@@ -4301,7 +4359,7 @@ function blockEventsPackages(){
             <div class="pkg-tier">${p.tier}</div>
             <div class="pkg-price">${priceInline(p.priceMXN)} <small>${tr(e.perMonth)}</small></div>
             <ul class="pkg-list">${tr(p.perks).map(x=>`<li>${x}</li>`).join("")}</ul>
-            <button class="pkg-cta" onclick="openSponsorInq('${p.tier}','${p.priceMXN}','monthly')">${tr(e.pickPackage)} →</button>
+            <button class="pkg-cta" onclick="buyNow('sponsor-' + '${p.tier}'.toLowerCase() + '-mensual', {btn:this})">${tr(e.pickPackage)} →</button>
           </div>`).join("")}
       </div>
     </div>
@@ -4357,6 +4415,70 @@ function blockEventsPast(){
 }
 
 /* ============================================================
+   STRIPE CHECKOUT — server-authoritative price book
+   Click any "Buy now" → POST /api/checkout → hosted Stripe Checkout
+   ============================================================ */
+async function buyNow(sku, opts){
+  opts = opts || {};
+  const btn = opts.btn || null;
+  const originalText = btn ? btn.textContent : null;
+  if(btn){ btn.disabled = true; btn.textContent = ({es:"Redirigiendo…",en:"Redirecting…",fr:"Redirection…"}[LANG]); }
+  try{
+    const r = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sku, email: opts.email || "", locale: LANG }),
+    });
+    const j = await r.json().catch(()=>({}));
+    if(r.ok && j.url){
+      window.location.href = j.url;
+      return;
+    }
+    const msg = j.error || ({es:"No se pudo iniciar el pago.",en:"Could not start checkout.",fr:"Impossible de lancer le paiement."}[LANG]);
+    alert(msg);
+  }catch(err){
+    alert(err.message || "Network error");
+  }
+  if(btn){ btn.disabled = false; btn.textContent = originalText; }
+}
+
+function pageCheckoutSuccess(){
+  const sid = new URLSearchParams(location.search).get("sid") || "";
+  const sku = new URLSearchParams(location.search).get("sku") || "";
+  return `
+  <div class="page active">
+    <div class="checkout-result">
+      <div class="checkout-mark checkout-mark-success">✓</div>
+      <div class="eyebrow center" style="color:var(--gold-2)">${({es:"Pago confirmado",en:"Payment confirmed",fr:"Paiement confirmé"}[LANG])}</div>
+      <h1>${({es:"¡Listo! Bienvenido a Linbix.",en:"Done! Welcome to Linbix.",fr:"C'est fait ! Bienvenue chez Linbix."}[LANG])}</h1>
+      <p>${({es:"Te enviamos los detalles a tu email. Si es tu primera vez, recibirás un mensaje de nuestro equipo en menos de 24 horas con los siguientes pasos.",en:"Details are on their way to your email. If this is your first time, our team will reach out within 24 hours with next steps.",fr:"Les détails arrivent par email. Si c'est votre première fois, notre équipe vous contacte dans les 24 heures avec les étapes suivantes."}[LANG])}</p>
+      ${sku ? `<p class="checkout-meta">${({es:"Producto",en:"Product",fr:"Produit"}[LANG])}: <b>${sku}</b></p>` : ""}
+      ${sid ? `<p class="checkout-meta">${({es:"Referencia",en:"Reference",fr:"Référence"}[LANG])}: <code>${sid.slice(0,18)}…</code></p>` : ""}
+      <div class="cta-row" style="justify-content:center;margin-top:28px">
+        <button class="btn btn-gold" onclick="go('home')">${({es:"Volver al inicio",en:"Back to home",fr:"Retour à l'accueil"}[LANG])} →</button>
+        <button class="btn btn-ghost" onclick="go('community')">${({es:"Ver la comunidad",en:"See the community",fr:"Voir la communauté"}[LANG])}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function pageCheckoutCancel(){
+  return `
+  <div class="page active">
+    <div class="checkout-result">
+      <div class="checkout-mark checkout-mark-cancel">↩</div>
+      <div class="eyebrow center">${({es:"Pago cancelado",en:"Payment cancelled",fr:"Paiement annulé"}[LANG])}</div>
+      <h1>${({es:"Sin problema. Aquí estamos cuando quieras.",en:"No problem. We're here when you're ready.",fr:"Pas de problème. Nous sommes là quand vous voulez."}[LANG])}</h1>
+      <p>${({es:"No se hizo ningún cargo. Si tienes preguntas, habla con nuestro equipo.",en:"No charge was made. If you have questions, talk to our team.",fr:"Aucun débit n'a été effectué. Si vous avez des questions, parlez à notre équipe."}[LANG])}</p>
+      <div class="cta-row" style="justify-content:center;margin-top:28px">
+        <button class="btn btn-gold" onclick="chatOpen()">${({es:"Hablar con Linbix",en:"Talk to Linbix",fr:"Parler à Linbix"}[LANG])}</button>
+        <button class="btn btn-ghost" onclick="go('home')">${({es:"Volver",en:"Back",fr:"Retour"}[LANG])}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================
    COMUNIDAD — paid Spotlight marketplace
    ============================================================ */
 const COMMUNITY = { industry: "all", q: "" };
@@ -4400,7 +4522,7 @@ function blockCommunityFeatured(){
           <div class="cm-feat-empty-eye">${tr(c.featuredEmptyEye).toUpperCase()}</div>
           <h3 class="cm-feat-empty-h">${tr(c.featuredEmptyH)}</h3>
           <p class="cm-feat-empty-p">${tr(c.featuredEmptyP)}</p>
-          <button class="cm-feat-cta" onclick="openCommunityInq('featured','3000','monthly')">${tr(c.featuredCTA)} →</button>
+          <button class="cm-feat-cta" onclick="buyNow('featured-mensual', {btn:this})">${tr(c.featuredCTA)} →</button>
         `}
       </div>
     </div>
@@ -4420,7 +4542,7 @@ function blockCommunitySpotlights(){
            <div class="cm-spot-tag">${tr(held.tagline)}</div>
            <a href="${held.href}" target="_blank" rel="noopener" class="cm-spot-link">→</a>
          </div>`
-      : `<div class="cm-spot-slot cm-spot-open" onclick="openCommunityInq('spotlight','1000','monthly')">
+      : `<div class="cm-spot-slot cm-spot-open" onclick="buyNow('spotlight-mensual', {btn:this})">
            <div class="cm-spot-avail">${tr(c.spotlightAvail)}</div>
            <div class="cm-spot-cta">${tr(c.spotlightCTA)}</div>
          </div>`);
