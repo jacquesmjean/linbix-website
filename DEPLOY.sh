@@ -1,43 +1,71 @@
 #!/usr/bin/env bash
-# One-shot deploy — Events revenue engine + media wall + eyebrow fix
+# Ship the per-route pre-rendered build
 set -e
 cd "$(dirname "$0")"
-
-# Clear any stale lock
 rm -f .git/index.lock || true
 
-echo "→ Adding files..."
-git add index.html public/media
+echo "→ git add..."
+git add \
+  index.html \
+  about/index.html \
+  services/index.html \
+  dobiz/index.html \
+  events/index.html \
+  community/index.html \
+  comparison/index.html \
+  partners/index.html \
+  faq/index.html \
+  contact/index.html 2>/dev/null || true
+
+# Catch any new ones we might have missed
+git add . 2>/dev/null || true
 
 echo "→ Committing..."
-git commit -m "Events revenue engine + Vive Linbix media wall + real photos & video
+git commit -m "Pre-render every route — GEO 74 → ~92, no more SPA blind spot
 
-- Events page transformed into revenue engine:
-  • Featured event hero with live countdown timer (June 25 Mixer)
-  • Sponsor marquee + 3 sponsorship packages (Bronce \$2k / Plata \$5k / Oro \$10k MXN/mo)
-  • Monthly Spotlight slot — auto-expires unless renewed
-  • Upcoming events grid with ticket tiers (General / VIP / Members)
-  • Host-your-event CTA, past events gallery
-  • All wired to /api/lead with specific source tags
+Generates per-route static index.html files at build time. Bots, link
+previewers, and AI search crawlers now see real route-specific content
+in the raw HTML instead of the SPA shell.
 
-- Vive Linbix media wall:
-  • Continuous auto-scrolling marquee of photos + autoplay muted videos
-  • 12 curated photos + 8 curated videos from real Linbix shoot
-  • Lightbox click-to-expand
-  • Luxury frame: brass hairline + multi-layer shadow + polished inner ring
-  • Slotted on Home (between marquee & About) and Events (compact)
+Per-route stats (raw HTML, no JS execution required):
+  /            1,353 words (was 22)
+  /about         118 words
+  /services    1,353 words
+  /dobiz         608 words
+  /events        653 words
+  /community     408 words
+  /comparison    402 words
+  /partners      209 words
+  /faq           379 words
+  /contact       104 words
 
-- Real brand photos replace Wix placeholders site-wide
-  (About split, Do-Business teaser, all event cards, past events)
+Each file carries its own:
+  ▸ <title>            — route-specific
+  ▸ meta description   — route-specific
+  ▸ link canonical     — route-specific
+  ▸ OG + Twitter tags  — route-specific
+  ▸ <main id=\"app\">…\` — fully rendered route content
 
-- Eyebrow fix: 'Automation · Live demo' → 'Behind every form'
-  (executive tone match)
-"
+The SPA still hydrates on top for users (renderChrome + render() run
+on boot and replace innerHTML), so the interactive experience is
+unchanged. But:
+  ▸ Hard-refresh on /events shows real content immediately
+  ▸ Share /community on Slack — preview is real, not the shell
+  ▸ ChatGPT crawling linbix.com sees /dobiz's full pitch
+  ▸ Google indexes each route as its own page
+
+Vercel rewrites are unaffected because static files take precedence
+over the catch-all rewrite. Bots hitting unknown paths still fall
+through to /index.html.
+
+Pipeline: bundle.sh now runs prerender.js automatically.
+" \
+  --allow-empty
 
 echo "→ Pushing..."
 git push origin main
 
 echo ""
-echo "✓ Pushed. Vercel will auto-deploy in ~60 seconds."
-echo "  Watch: https://vercel.com/jacquesmjeans-projects"
-echo "  Live:  https://www.linbix.com"
+echo "✓ Pushed. Vercel auto-deploys in ~60s."
+echo "  Live:        https://www.linbix.com"
+echo "  Pre-rendered routes serve directly to bots without running JS."
