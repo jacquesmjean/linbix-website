@@ -1312,6 +1312,206 @@ noscript-content{
 .checkout-result p{ color:var(--muted); font-size:16px; line-height:1.55; max-width:42em; margin:0 auto 8px; }
 .checkout-meta{ font-size:13px; color:var(--muted); }
 .checkout-meta code{ background:#f4f1ea; padding:2px 6px; border-radius:4px; font-size:12px; }
+.checkout-manage{
+  margin-top:32px; padding-top:22px;
+  border-top:1px solid var(--line);
+  font-size:13.5px; color:var(--muted);
+}
+.checkout-manage a{
+  color:var(--gold); font-weight:600; text-decoration:none;
+  cursor:pointer; margin-left:6px;
+  border-bottom:1px solid rgba(246,134,59,.3);
+}
+.checkout-manage a:hover{ color:var(--ink); border-color:var(--ink); }
+
+/* ============================================================
+   /account — customer portal entry
+   ============================================================ */
+.account-wrap{
+  max-width:560px; margin:100px auto 60px;
+  padding:0 24px;
+}
+.account-back{
+  background:rgba(56,142,60,.06);
+  border:1px solid rgba(56,142,60,.3);
+  border-radius:14px; padding:18px 22px;
+  margin-bottom:24px;
+  display:flex; gap:16px; align-items:flex-start;
+}
+.account-back-ic{
+  flex:none; width:36px; height:36px; border-radius:999px;
+  background:linear-gradient(135deg,#1E8449,#27AE60); color:#fff;
+  display:grid; place-items:center; font-weight:700; font-size:18px;
+}
+.account-back h3{ font-family:var(--serif); font-size:18px; font-weight:600; color:var(--ink); margin:0 0 4px; }
+.account-back p{ color:var(--muted); font-size:14px; line-height:1.55; margin:0; }
+
+.account-card{
+  background:#fff; border-radius:22px;
+  padding:42px 38px 32px;
+  border:1px solid var(--line);
+  box-shadow:0 30px 60px -22px rgba(0,0,0,.16);
+}
+.account-h1{
+  font-family:var(--serif); font-size:clamp(26px,3.2vw,38px);
+  font-weight:600; line-height:1.1; color:var(--ink);
+  margin:14px 0 14px;
+}
+.account-lead{ color:var(--muted); font-size:15.5px; line-height:1.55; margin-bottom:24px; }
+.account-form{ display:flex; flex-direction:column; gap:10px; }
+.account-form label{
+  font-size:12px; font-weight:600; color:var(--muted);
+  letter-spacing:.04em; margin-bottom:4px;
+}
+.account-form input{
+  padding:13px 16px; border:1px solid var(--line); border-radius:12px;
+  font-family:var(--sans); font-size:15px; background:#fff;
+}
+.account-form input:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(247,161,34,.18); }
+.account-submit{
+  background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#1a1208;
+  border:0; padding:14px; border-radius:999px; font-weight:700; font-size:15px;
+  cursor:pointer; box-shadow:0 14px 28px rgba(246,134,59,.35); margin-top:6px;
+}
+.account-submit:hover{ transform:translateY(-1px); }
+.account-submit:disabled{ opacity:.6; cursor:default; transform:none; }
+.account-err{
+  color:#c0392b; font-size:13.5px; line-height:1.5;
+  min-height:18px; padding:4px 0;
+}
+.account-err:not(:empty){
+  background:rgba(192,57,43,.06);
+  border:1px solid rgba(192,57,43,.18);
+  border-radius:10px; padding:10px 14px; margin-top:6px;
+}
+.account-secure{
+  text-align:center; color:var(--muted);
+  font-size:12.5px; margin-top:18px;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.account-foot{
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; margin-top:24px; padding-top:22px;
+  border-top:1px solid var(--line);
+  font-size:14px; color:var(--muted);
+}
+.account-foot-cta{ color:var(--gold); cursor:pointer; font-weight:700; }
+
+/* ============================================================
+   /blog — listing + post
+   ============================================================ */
+.blog-hero{
+  background:linear-gradient(180deg,#1a130d,#0c0a08);
+  padding:96px 0 64px; color:#fff; text-align:center; position:relative;
+}
+.blog-hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%, rgba(247,161,34,.18), transparent 55%);
+}
+.blog-h1{
+  position:relative;
+  font-family:var(--serif); font-size:clamp(34px,4.8vw,58px);
+  font-weight:600; line-height:1.05; letter-spacing:-.01em;
+  color:#fff; margin:14px auto 18px; max-width:18ch;
+}
+.blog-lead{ position:relative; color:rgba(255,255,255,.78); font-size:17px; line-height:1.55; max-width:44em; margin:0 auto; }
+
+.blog-grid{
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap:32px;
+}
+.blog-card{
+  background:#fff; border-radius:18px; overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 18px 38px -22px rgba(0,0,0,.18);
+  cursor:pointer; display:flex; flex-direction:column;
+  transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+}
+.blog-card:hover{ transform:translateY(-5px); box-shadow:0 28px 56px -22px rgba(0,0,0,.25); }
+.blog-card-feat{ grid-column: 1 / -1; }
+.blog-card-feat .blog-card-img{ aspect-ratio: 21/9; min-height:280px; }
+.blog-card-img{
+  aspect-ratio:16/10; background-size:cover; background-position:center;
+  filter:saturate(.95);
+}
+.blog-card-body{ padding:24px 26px 28px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.blog-card-meta{ font-size:12.5px; color:var(--muted); letter-spacing:.04em; display:flex; gap:6px; align-items:center; }
+.blog-card-dot{ opacity:.5; }
+.blog-card-title{
+  font-family:var(--serif); font-size:clamp(20px,2.2vw,26px);
+  font-weight:600; color:var(--ink); line-height:1.2; margin:4px 0 6px;
+}
+.blog-card-excerpt{ color:var(--ink-2); font-size:15px; line-height:1.6; flex:1; }
+.blog-card-cta{ color:var(--gold); font-weight:700; font-size:14px; margin-top:6px; }
+
+/* Blog post */
+.post-hero{
+  position:relative; min-height:420px; padding:90px 0 60px;
+  background-size:cover; background-position:center; color:#fff;
+}
+.post-hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.75) 100%);
+}
+.post-hero-inner{
+  position:relative; z-index:1;
+  max-width:880px; margin:0 auto; padding:0 24px;
+}
+.post-back{
+  display:inline-block; color:var(--gold-2);
+  font-size:13.5px; font-weight:600; letter-spacing:.04em;
+  cursor:pointer; text-decoration:none; margin-bottom:18px;
+}
+.post-back:hover{ color:#fff; }
+.post-meta{
+  font-size:13px; color:rgba(255,255,255,.7);
+  display:flex; gap:6px; margin-bottom:14px; letter-spacing:.04em;
+}
+.post-meta-dot{ opacity:.5; }
+.post-title{
+  font-family:var(--serif); font-size:clamp(30px,4.6vw,54px);
+  font-weight:600; line-height:1.06; letter-spacing:-.01em;
+  color:#fff; margin:0;
+}
+.post-body{
+  max-width:720px; margin:0 auto; padding:60px 24px;
+  font-family:var(--sans); font-size:18px; line-height:1.75; color:var(--ink);
+}
+.post-body p{ margin:0 0 22px; }
+.post-body h2{
+  font-family:var(--serif); font-size:clamp(24px,2.6vw,30px);
+  font-weight:600; color:var(--ink); line-height:1.2;
+  margin:42px 0 14px;
+}
+.post-body h3{
+  font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink); margin:32px 0 10px;
+}
+.post-body ol, .post-body ul{ padding-left:24px; margin:18px 0 24px; }
+.post-body li{ margin-bottom:14px; line-height:1.7; }
+.post-body strong{ color:var(--ink); font-weight:700; }
+.post-body em{ color:var(--ink-2); }
+
+.post-share{
+  max-width:720px; margin:0 auto; padding:0 24px 60px;
+  border-top:1px solid var(--line); padding-top:32px;
+}
+.post-share h3{
+  font-family:var(--serif); font-size:18px; font-weight:600;
+  color:var(--ink); margin:0 0 14px;
+}
+.post-share-row{ display:flex; gap:10px; flex-wrap:wrap; }
+.post-share-btn{
+  display:inline-block; padding:10px 18px; border-radius:999px;
+  background:#fff; border:1px solid var(--line);
+  font-size:13.5px; color:var(--ink); text-decoration:none; font-weight:600;
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+.post-share-btn:hover{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+.post-next-h{
+  font-family:var(--serif); font-size:clamp(24px,2.8vw,34px);
+  font-weight:600; color:var(--ink); margin:0 0 28px; text-align:center;
+}
 
 /* ============================================================
    LUXURY FRAME — universal premium image/video container
@@ -2563,6 +2763,747 @@ const T = {
     ctaBtn:{es:"Agendar mi llamada", en:"Book my call", fr:"Réserver mon appel"},
   },
 
+  /* ---- BLOG — strategic content for organic discovery ---- */
+  blog:{
+    eyebrow:{es:"Blog", en:"Blog", fr:"Blog"},
+    h1:{es:"Pensar México como ejecutivo.", en:"Thinking Mexico like an executive.", fr:"Penser le Mexique comme un dirigeant."},
+    p:{es:"Lecciones reales para emprendedores extranjeros, ejecutivos visitantes y empresas que entran al mercado mexicano. Sin teoría — solo lo que funciona.",
+       en:"Real lessons for foreign founders, visiting executives, and companies entering the Mexican market. No theory — just what works.",
+       fr:"Leçons concrètes pour fondateurs étrangers, dirigeants en mission et entreprises entrant au marché mexicain. Pas de théorie — juste ce qui marche."},
+    readMin:{es:"min lectura", en:"min read", fr:"min de lecture"},
+    backToBlog:{es:"Volver al blog", en:"Back to blog", fr:"Retour au blog"},
+    sharedH:{es:"¿Te resonó? Compártelo.", en:"Found this useful? Share it.", fr:"Utile ? Partagez-le."},
+    nextH:{es:"Lee también", en:"Read next", fr:"Lire ensuite"},
+    talkH:{es:"¿Pensando entrar al mercado mexicano?", en:"Thinking of entering the Mexican market?", fr:"Vous envisagez d'entrer au marché mexicain ?"},
+    talkP:{es:"Agenda 15 minutos con Luc. Si Linbix no te conviene, te lo decimos en la llamada.",
+           en:"Book 15 minutes with Luc. If Linbix isn't right for you, we'll say so on the call.",
+           fr:"Réservez 15 minutes avec Luc. Si Linbix ne vous convient pas, nous le dirons pendant l'appel."},
+    talkCTA:{es:"Agendar llamada", en:"Book a call", fr:"Réserver un appel"},
+  },
+
+  blogPosts:[
+    {
+      slug:"5-errores-extranjeros-mexico",
+      date:"2026-06-21",
+      readMin:7,
+      hero:"/media/photos-lg/img_0094.jpg",
+      title:{
+        es:"5 errores que cometen los ejecutivos extranjeros al entrar al mercado mexicano",
+        en:"5 mistakes foreign executives make when entering the Mexican market",
+        fr:"5 erreurs des dirigeants étrangers en entrant au marché mexicain"
+      },
+      excerpt:{
+        es:"Después de 12 años trayendo empresas a Guadalajara, los mismos cinco errores aparecen una y otra vez. Aquí están — y cómo evitarlos.",
+        en:"After 12 years bringing companies to Guadalajara, the same five mistakes keep showing up. Here they are — and how to avoid them.",
+        fr:"Après 12 ans à accompagner des entreprises à Guadalajara, les cinq mêmes erreurs reviennent. Les voici — et comment les éviter."
+      },
+      content:{
+        es:`<p>Pasé los últimos doce años acompañando empresas extranjeras a aterrizar en Guadalajara. Norteamericanas, francesas, españolas, brasileñas. El patrón se repite: las que sobreviven el primer año hacen tres o cuatro cosas distintas que las que fracasan. Y casi siempre, los errores que terminan con sus operaciones son los mismos cinco.</p>
+        <h2>1. Tratar al RFC como si fuera un EIN</h2>
+        <p>En Estados Unidos puedes incorporar una LLC en Delaware en una tarde con un servicio online y empezar a operar la siguiente semana. En México el RFC es solo el principio — y la diferencia entre una constitución bien hecha y una mal hecha aparece años después, cuando el SAT te audita o cuando intentas vender la empresa.</p>
+        <p>Lo correcto: trabaja con un notario local desde el día uno. No con un despacho remoto. El notario público en México no es el equivalente a un notary public en EE.UU. — es un actor legal con responsabilidades fiduciarias. Si tu notario no te conoce personalmente, algo está mal.</p>
+        <h2>2. Subestimar la importancia del domicilio fiscal</h2>
+        <p>El SAT no te visita en una oficina virtual. Tampoco confía en una dirección residencial. Si tu domicilio fiscal no aguanta una verificación física, todas tus deducciones quedan en riesgo y tu CFDI puede ser invalidado retroactivamente.</p>
+        <p>Esto no es teórico. Conocemos a un fundador francés que perdió 800,000 pesos de IVA acreditable porque su domicilio fiscal era un mailbox que el SAT no pudo verificar. Un domicilio fiscal real, con espacio físico verificable, es seguro de operación — no un lujo.</p>
+        <h2>3. Contratar gerentes locales sin entender la jerarquía</h2>
+        <p>La cultura empresarial mexicana es más jerárquica que la estadounidense, y mucho menos abierta a contradicción que la francesa. Si tu director general local viene de Monterrey y tu equipo es de Guadalajara, esa fricción regional cuesta seis meses de productividad.</p>
+        <p>Lo que funciona: contrata a alguien que conozca el ecosistema de tu ciudad específica. Jalisco no es Nuevo León. Bajío no es D.F. Cada región tiene reglas no escritas de quién habla primero en una junta, quién paga la comida, quién manda la propuesta. Aprenderlas leyendo no es suficiente.</p>
+        <h2>4. Pensar que el español del país de origen es el español mexicano</h2>
+        <p>"Coger" en España es agarrar. En México es algo muy distinto. Una propuesta comercial escrita por un ibérico, leída por un cliente potencial mexicano, transmite distancia sin que el extranjero lo perciba.</p>
+        <p>Y para los anglófonos: traducir tus materiales por Google es peor que no traducirlos. El mexicano profesional nota la traducción automática en tres líneas y asume que tu compromiso con el mercado es superficial.</p>
+        <h2>5. No tener un socio mexicano local — o tener uno demasiado tarde</h2>
+        <p>El error más caro: llegar solo, intentar operar tres meses, fracasar, y entonces buscar un socio. Para ese punto ya quemaste capital, reputación y tiempo.</p>
+        <p>El error menos visible pero igual de caro: tener un socio que solo es socio en el papel. Si tu "socio mexicano" no tiene reuniones en su propio nombre con tus clientes, no es un socio — es un fideicomisario glorificado. Y los clientes lo notan.</p>
+        <h2>Lo que sí funciona</h2>
+        <p>Los extranjeros que prosperan en México tienen tres cosas en común: <strong>llegan con humildad</strong> (asumen que no entienden el mercado, no al revés), <strong>contratan localmente desde el día uno</strong> (operaciones, no solo ventas), y <strong>tienen un domicilio fiscal real</strong> que aguanta verificación.</p>
+        <p>Lo demás se aprende.</p>`,
+        en:`<p>I've spent the last twelve years helping foreign companies land in Guadalajara. North American, French, Spanish, Brazilian. The pattern repeats: those that survive the first year do three or four things differently from those that fail. And almost always, the mistakes that end their operations are the same five.</p>
+        <h2>1. Treating the RFC like it's an EIN</h2>
+        <p>In the US you can incorporate a Delaware LLC in an afternoon with an online service and start operating the next week. In Mexico the RFC is just the beginning — and the difference between a well-done incorporation and a poorly-done one shows up years later, when SAT audits you or when you try to sell the company.</p>
+        <p>What works: engage a local notary public from day one. Not a remote firm. A Mexican notary public is not the equivalent of a US notary public — they're a legal actor with fiduciary responsibilities. If your notary doesn't know you personally, something is off.</p>
+        <h2>2. Underestimating the fiscal address</h2>
+        <p>SAT doesn't visit you at a virtual office. It also doesn't trust a residential address. If your fiscal address can't withstand physical verification, every deduction you take is at risk, and your CFDIs can be retroactively invalidated.</p>
+        <p>This isn't theoretical. We know a French founder who lost 800,000 pesos in creditable VAT because his fiscal address was a mailbox that SAT couldn't verify. A real fiscal address with verifiable physical space is operating insurance — not a luxury.</p>
+        <h2>3. Hiring local managers without understanding the hierarchy</h2>
+        <p>Mexican business culture is more hierarchical than US culture, and much less open to contradiction than French culture. If your local general manager is from Monterrey and your team is from Guadalajara, that regional friction costs six months of productivity.</p>
+        <p>What works: hire someone who knows the ecosystem of your specific city. Jalisco is not Nuevo León. Bajío is not Mexico City. Every region has unwritten rules about who speaks first in a meeting, who pays for lunch, who sends the proposal. Reading about them isn't enough.</p>
+        <h2>4. Assuming home-country Spanish is Mexican Spanish</h2>
+        <p>"Coger" in Spain means to grab. In Mexico it's something very different. A commercial proposal written by an Iberian, read by a Mexican prospect, transmits distance without the foreigner perceiving it.</p>
+        <p>And for English speakers: machine-translating your materials is worse than not translating them at all. A Mexican professional spots Google Translate within three lines and assumes your commitment to the market is superficial.</p>
+        <h2>5. Not having a Mexican partner — or finding one too late</h2>
+        <p>The most expensive mistake: arriving alone, trying to operate for three months, failing, and then looking for a partner. By that point you've burned capital, reputation, and time.</p>
+        <p>The less visible but equally expensive mistake: having a partner who is only a partner on paper. If your "Mexican partner" doesn't have meetings in their own name with your clients, they're not a partner — they're a glorified trustee. And clients can tell.</p>
+        <h2>What does work</h2>
+        <p>The foreigners who thrive in Mexico share three things: <strong>they arrive with humility</strong> (they assume they don't understand the market, not the other way around), <strong>they hire locally from day one</strong> (operations, not just sales), and <strong>they have a real fiscal address</strong> that withstands verification.</p>
+        <p>The rest is learnable.</p>`,
+        fr:`<p>J'ai passé les douze dernières années à accompagner des entreprises étrangères qui atterrissent à Guadalajara. Nord-américaines, françaises, espagnoles, brésiliennes. Le schéma se répète : celles qui survivent à la première année font trois ou quatre choses différemment de celles qui échouent. Et presque toujours, les erreurs qui mettent fin à leurs opérations sont les cinq mêmes.</p>
+        <h2>1. Traiter le RFC comme un EIN</h2>
+        <p>Aux États-Unis, vous pouvez créer une LLC du Delaware en un après-midi avec un service en ligne et commencer à opérer la semaine suivante. Au Mexique, le RFC n'est qu'un début — et la différence entre une constitution bien faite et une mal faite apparaît des années plus tard, lorsque le SAT vous contrôle ou lorsque vous tentez de céder l'entreprise.</p>
+        <p>Ce qui marche : travaillez avec un notaire local dès le premier jour. Pas avec un cabinet à distance. Le notaire public au Mexique n'est pas l'équivalent d'un notary public américain — c'est un acteur juridique avec des responsabilités fiduciaires. Si votre notaire ne vous connaît pas personnellement, quelque chose cloche.</p>
+        <h2>2. Sous-estimer l'importance de la domiciliation fiscale</h2>
+        <p>Le SAT ne vous rend pas visite dans un bureau virtuel. Il ne fait pas non plus confiance à une adresse résidentielle. Si votre domiciliation fiscale ne résiste pas à une vérification physique, toutes vos déductions sont compromises, et vos CFDI peuvent être invalidés rétroactivement.</p>
+        <p>Ce n'est pas théorique. Nous connaissons un fondateur français qui a perdu 800 000 pesos de TVA créditeur parce que sa domiciliation fiscale était une boîte aux lettres que le SAT n'a pas pu vérifier. Une vraie domiciliation fiscale, avec espace physique vérifiable, c'est une assurance opérationnelle — pas un luxe.</p>
+        <h2>3. Recruter des managers locaux sans comprendre la hiérarchie</h2>
+        <p>La culture entrepreneuriale mexicaine est plus hiérarchique que la nord-américaine, et beaucoup moins ouverte à la contradiction que la française. Si votre directeur général local vient de Monterrey et votre équipe est de Guadalajara, cette friction régionale coûte six mois de productivité.</p>
+        <p>Ce qui marche : recrutez quelqu'un qui connaît l'écosystème de votre ville précise. Jalisco n'est pas Nuevo León. Bajío n'est pas Mexico. Chaque région a des règles non écrites sur qui parle en premier en réunion, qui paie le déjeuner, qui envoie la proposition. Les lire ne suffit pas.</p>
+        <h2>4. Croire que l'espagnol du pays d'origine est l'espagnol mexicain</h2>
+        <p>« Coger » en Espagne veut dire prendre. Au Mexique, c'est tout autre chose. Une proposition commerciale rédigée par un Ibérique, lue par un prospect mexicain, transmet une distance sans que l'étranger s'en aperçoive.</p>
+        <p>Pour les anglophones : traduire vos documents par Google est pire que de ne pas les traduire. Un professionnel mexicain repère la traduction automatique en trois lignes et suppose que votre engagement envers le marché est superficiel.</p>
+        <h2>5. Ne pas avoir de partenaire mexicain local — ou en avoir un trop tard</h2>
+        <p>L'erreur la plus coûteuse : arriver seul, essayer d'opérer pendant trois mois, échouer, et seulement alors chercher un partenaire. À ce stade, vous avez déjà brûlé capital, réputation et temps.</p>
+        <p>L'erreur moins visible mais aussi coûteuse : avoir un partenaire qui n'est partenaire que sur papier. Si votre « partenaire mexicain » n'a pas de réunions en son propre nom avec vos clients, ce n'est pas un partenaire — c'est un fiduciaire de luxe. Et les clients le voient.</p>
+        <h2>Ce qui marche, en revanche</h2>
+        <p>Les étrangers qui réussissent au Mexique partagent trois choses : <strong>ils arrivent avec humilité</strong> (ils supposent qu'ils ne comprennent pas le marché, pas l'inverse), <strong>ils recrutent localement dès le premier jour</strong> (opérations, pas seulement ventes), et <strong>ils ont une vraie domiciliation fiscale</strong> qui résiste à la vérification.</p>
+        <p>Le reste s'apprend.</p>`
+      }
+    },
+    {
+      slug:"domicilio-fiscal-vs-oficina-privada",
+      date:"2026-06-14",
+      readMin:5,
+      hero:"/media/photos-lg/img_9551.jpg",
+      title:{
+        es:"Domicilio Fiscal vs Oficina Privada: cuándo conviene cada uno",
+        en:"Fiscal Address vs Private Office: when each one makes sense",
+        fr:"Domiciliation fiscale vs bureau privé : quand choisir l'un ou l'autre"
+      },
+      excerpt:{
+        es:"Una decisión de 50 mil pesos al año en cualquier dirección. Aquí está la lógica que usamos para recomendar uno u otro.",
+        en:"A 50,000-peso decision either way. Here's the logic we use to recommend one or the other.",
+        fr:"Une décision de 50 000 pesos dans un sens ou dans l'autre. Voici la logique que nous utilisons pour recommander l'un ou l'autre."
+      },
+      content:{
+        es:`<p>Cuando alguien nos contacta para abrir su empresa en Guadalajara, la primera decisión que tomamos juntos es esta: ¿necesita una oficina privada con su nombre en la puerta, o un domicilio fiscal con derecho a usar el espacio cuando lo necesite?</p>
+        <p>Las dos opciones cuestan parecido en el primer año ($25K MXN para domicilio fiscal completo vs $48K MXN para oficina privada chica) y los dos resuelven el problema regulatorio del SAT. La diferencia es operacional — y los criterios para elegir son cuatro.</p>
+        <h2>Criterio 1: ¿Cuántas horas a la semana estarás físicamente en Guadalajara?</h2>
+        <p>Si vienes una semana al mes, una oficina privada está vacía 75% del tiempo. Pagas renta para acumular polvo. El domicilio fiscal te da la dirección legal y reserves la sala de juntas o el ejecutivo solo cuando estás aquí.</p>
+        <p>Si vives en Guadalajara o vienes cada semana, una oficina privada vale el costo. Tienes una identidad visual permanente para tus clientes, tu equipo tiene a dónde llegar, y tus reuniones internas no compiten por reservas con otros usuarios.</p>
+        <h2>Criterio 2: ¿Cuántas reuniones presenciales por mes recibes?</h2>
+        <p>Menos de 4 reuniones presenciales mensuales: el domicilio fiscal con horas de sala incluidas (24 al año en nuestro paquete) es más que suficiente.</p>
+        <p>De 4 a 12 reuniones mensuales: una oficina privada empieza a tener sentido económico — pagas una vez por un espacio listo, en lugar de reservar y configurar cada vez.</p>
+        <p>Más de 12 mensuales: oficina privada y posiblemente con sala de juntas dedicada. El costo total mensual ya se justifica solo en tiempo perdido en confirmaciones de reserva.</p>
+        <h2>Criterio 3: ¿Tu equipo crece este año?</h2>
+        <p>Esto es lo que mucha gente subestima. Si vas a contratar a uno o dos empleados en Guadalajara en los próximos seis meses, una oficina privada no es opcional — es donde van a trabajar.</p>
+        <p>Si todo tu equipo está en otra ciudad y solo necesitas una dirección legal para facturar y recibir notificaciones, el domicilio fiscal es exactamente el producto diseñado para ese caso.</p>
+        <h2>Criterio 4: ¿Qué tipo de cliente recibes?</h2>
+        <p>Algunos clientes corporativos mexicanos — bancos, despachos legales grandes, gobierno — esperan llegar a una oficina con tu nombre en la entrada para tomarte en serio. Si esos son tus clientes, la oficina privada es presupuesto de ventas, no overhead.</p>
+        <p>Si tus clientes son startups, otros emprendedores, o consultoras internacionales, la sala de juntas reservada es perfectamente aceptable. Nadie va a juzgar mal que reserves un espacio profesional para una reunión específica.</p>
+        <h2>La regla simple</h2>
+        <p>Empieza con domicilio fiscal. Súbete a oficina privada cuando alcances cualquiera de estos tres: 8+ horas semanales presenciales en Guadalajara, 8+ reuniones mensuales, o tu primera contratación local.</p>
+        <p>Los que se brincan ese camino y arrancan con oficina privada "para verse establecidos" suelen subutilizar el espacio durante 18 meses antes de admitirlo. Los que arrancan con domicilio fiscal y crecen al espacio físico justo cuando lo necesitan, asignan el capital donde sí mueve el negocio.</p>`,
+        en:`<p>When someone contacts us to open their company in Guadalajara, the first decision we make together is this: do you need a private office with your name on the door, or a fiscal address with the right to use the space when you need it?</p>
+        <p>Both options cost similar in the first year ($25K MXN for a complete fiscal address vs $48K MXN for a small private office) and both solve the SAT regulatory problem. The difference is operational — and there are four criteria to choose.</p>
+        <h2>Criterion 1: How many hours per week will you physically be in Guadalajara?</h2>
+        <p>If you come one week per month, a private office sits empty 75% of the time. You're paying rent for dust. A fiscal address gives you the legal address, and you book the meeting room or executive office only when you're here.</p>
+        <p>If you live in Guadalajara or come every week, a private office is worth the cost. You have a permanent visual identity for clients, your team has somewhere to go, and your internal meetings don't compete for bookings.</p>
+        <h2>Criterion 2: How many in-person meetings per month?</h2>
+        <p>Under 4 in-person meetings monthly: the fiscal address with included meeting room hours (24/year in our package) is more than enough.</p>
+        <p>4 to 12 meetings monthly: a private office starts making economic sense — you pay once for a ready space instead of booking and setting up each time.</p>
+        <p>More than 12 monthly: private office, and possibly with dedicated meeting room. The total monthly cost is already justified by time saved in booking confirmations alone.</p>
+        <h2>Criterion 3: Is your team growing this year?</h2>
+        <p>This is what most people underestimate. If you're hiring one or two employees in Guadalajara in the next six months, a private office isn't optional — it's where they'll work.</p>
+        <p>If your whole team is in another city and you just need a legal address to invoice and receive notifications, the fiscal address is exactly the product designed for that case.</p>
+        <h2>Criterion 4: What type of client do you receive?</h2>
+        <p>Some Mexican corporate clients — banks, large law firms, government — expect to walk into an office with your name on the entrance to take you seriously. If those are your clients, the private office is sales budget, not overhead.</p>
+        <p>If your clients are startups, other founders, or international consultancies, a reserved meeting room is perfectly acceptable. Nobody judges you negatively for booking a professional space for a specific meeting.</p>
+        <h2>The simple rule</h2>
+        <p>Start with fiscal address. Upgrade to private office when you hit any of these three: 8+ weekly hours in Guadalajara in person, 8+ meetings per month, or your first local hire.</p>
+        <p>Those who skip the path and start with a private office "to look established" usually under-utilize the space for 18 months before admitting it. Those who start with the fiscal address and graduate to physical space exactly when needed allocate capital where it actually moves the business.</p>`,
+        fr:`<p>Quand quelqu'un nous contacte pour ouvrir son entreprise à Guadalajara, la première décision que nous prenons ensemble est celle-ci : avez-vous besoin d'un bureau privé avec votre nom sur la porte, ou d'une domiciliation fiscale avec le droit d'utiliser l'espace quand vous en avez besoin ?</p>
+        <p>Les deux options coûtent un montant similaire la première année (25 K MXN pour une domiciliation fiscale complète vs 48 K MXN pour un petit bureau privé) et les deux résolvent le problème réglementaire avec le SAT. La différence est opérationnelle — et il y a quatre critères pour choisir.</p>
+        <h2>Critère 1 : Combien d'heures par semaine serez-vous physiquement à Guadalajara ?</h2>
+        <p>Si vous venez une semaine par mois, un bureau privé est vide 75 % du temps. Vous payez un loyer pour rien. La domiciliation fiscale vous donne l'adresse légale, et vous réservez la salle de réunion ou le bureau exécutif uniquement quand vous êtes ici.</p>
+        <p>Si vous vivez à Guadalajara ou venez chaque semaine, un bureau privé vaut le coût. Vous avez une identité visuelle permanente pour vos clients, votre équipe a un endroit où aller, et vos réunions internes ne sont pas en concurrence avec d'autres réservations.</p>
+        <h2>Critère 2 : Combien de réunions en présentiel par mois ?</h2>
+        <p>Moins de 4 réunions présentielles par mois : la domiciliation fiscale avec heures de salle incluses (24/an dans notre forfait) suffit largement.</p>
+        <p>De 4 à 12 par mois : un bureau privé commence à avoir un sens économique — vous payez une fois pour un espace prêt au lieu de réserver et installer à chaque fois.</p>
+        <p>Plus de 12 par mois : bureau privé, possiblement avec salle de réunion dédiée. Le coût total mensuel est déjà justifié par le temps gagné sur les confirmations de réservation.</p>
+        <h2>Critère 3 : Votre équipe grandit-elle cette année ?</h2>
+        <p>C'est ce que la plupart sous-estime. Si vous recrutez un ou deux employés à Guadalajara dans les six prochains mois, un bureau privé n'est pas optionnel — c'est leur lieu de travail.</p>
+        <p>Si toute votre équipe est dans une autre ville et que vous avez juste besoin d'une adresse légale pour facturer et recevoir des notifications, la domiciliation fiscale est exactement le produit conçu pour ce cas.</p>
+        <h2>Critère 4 : Quel type de clients recevez-vous ?</h2>
+        <p>Certains clients corporatifs mexicains — banques, grands cabinets juridiques, administration — s'attendent à arriver dans un bureau avec votre nom à l'entrée pour vous prendre au sérieux. Si ce sont vos clients, le bureau privé est un budget commercial, pas un coût administratif.</p>
+        <p>Si vos clients sont des startups, d'autres fondateurs ou des cabinets internationaux, une salle de réunion réservée est tout à fait acceptable. Personne ne vous jugera mal de réserver un espace professionnel pour une réunion précise.</p>
+        <h2>La règle simple</h2>
+        <p>Commencez par la domiciliation fiscale. Passez au bureau privé quand vous atteignez l'un de ces trois seuils : 8+ heures hebdomadaires en présentiel à Guadalajara, 8+ réunions mensuelles, ou votre premier recrutement local.</p>
+        <p>Ceux qui sautent l'étape et démarrent avec un bureau privé "pour faire sérieux" sous-utilisent l'espace pendant 18 mois avant de l'admettre. Ceux qui commencent par la domiciliation et passent à l'espace physique exactement quand nécessaire allouent leur capital là où ça fait avancer l'entreprise.</p>`
+      }
+    },
+    {
+      slug:"como-elegir-notario-guadalajara",
+      date:"2026-05-31",
+      readMin:6,
+      hero:"/media/photos-lg/img_0161.jpg",
+      title:{
+        es:"Cómo elegir tu notario en Guadalajara (sin equivocarte)",
+        en:"How to pick the right notary in Guadalajara (without screwing it up)",
+        fr:"Comment choisir votre notaire à Guadalajara (sans vous tromper)"
+      },
+      excerpt:{
+        es:"En Estados Unidos un notary public certifica firmas por 10 dólares. En México el notario público redacta tu acta constitutiva, custodia tus poderes y aguanta auditorías. No es la misma figura — y elegir mal cuesta años.",
+        en:"In the US, a notary public certifies signatures for $10. In Mexico, the notario público drafts your incorporation, holds your powers of attorney, and stands up to audits. Different role — and choosing wrong costs years.",
+        fr:"Aux États-Unis, un notary public certifie des signatures pour 10 dollars. Au Mexique, le notario público rédige votre acte constitutif, conserve vos procurations et résiste aux audits. Pas le même rôle — et mal choisir coûte des années."
+      },
+      content:{
+        es:`<p>El primer error que cometen los extranjeros al constituir su empresa en México es buscar un notario de la misma forma que buscarían un proveedor: por precio. Ese error cuesta caro.</p>
+        <p>En México, el notario público no es un fedatario barato que sella documentos. Es un funcionario público nombrado por el gobernador del estado, con un examen que aprueban menos de 5 candidatos por año por entidad. Hay cuotas — Jalisco tiene un número fijo de notarías (alrededor de 200) y cuando una se libera por jubilación o muerte, hay una guerra por ocuparla.</p>
+        <p>El notario que firma tu acta constitutiva queda como tu infraestructura legal de por vida. Sus reformas, tus poderes, tu venta eventual de acciones — todo pasa por él. Si elegiste mal, no hay forma fácil de cambiar después.</p>
+        <h2>Las 5 preguntas que debes hacer antes de firmar</h2>
+        <h3>1. ¿Cuántos años llevas como notario titular?</h3>
+        <p>Idealmente más de 8. Los notarios nuevos están aprendiendo y cometen errores en redacciones que aparecen tres años después en una auditoría del SAT o en una venta de la empresa. Los notarios con experiencia ya pasaron por todo y saben dónde está cada trampa.</p>
+        <h3>2. ¿Cuántas empresas con capital extranjero has constituido?</h3>
+        <p>Una sociedad mexicana con socios extranjeros no es lo mismo que una con socios mexicanos. La cláusula de admisión de extranjeros, los avisos a Relaciones Exteriores, el registro en el RNIE — todo eso requiere experiencia específica. Pregunta cuántas similares ha hecho en los últimos 3 años. Si la respuesta es "varias" sin un número, busca otro.</p>
+        <h3>3. ¿Puedo conocer a tu equipo de protocolización?</h3>
+        <p>El notario no redacta personalmente cada acta. Tiene un equipo de pasantes y abogados. Si el equipo no te inspira confianza, el notario tampoco debería. Buenas notarías tienen al menos un abogado dedicado a actos mercantiles que sabe lo que está haciendo.</p>
+        <h3>4. ¿Qué pasa si necesito una reforma urgente?</h3>
+        <p>Las reformas pasan. Cambias representante legal, modificas el objeto social, aumentas capital. Una notaría seria te recibe en 48 horas. Una mala te agenda en dos semanas. Esa diferencia, multiplicada por seis o siete reformas en cinco años, son meses perdidos.</p>
+        <h3>5. ¿Cuánto cobras y por qué?</h3>
+        <p>Los honorarios notariales en Jalisco están publicados — no hay misterio. Una constitución de S de RL básica anda entre $18,000 y $35,000 MXN dependiendo de complejidad. Si te cotizan menos, probablemente están omitiendo el avalúo, los honorarios de inscripción, o el registro federal. Si te cotizan más, te están cobrando por algo extra — pregunta qué.</p>
+        <h2>Las banderas rojas</h2>
+        <ul>
+        <li><strong>El notario que nunca te recibe personalmente.</strong> Si después de tres reuniones todavía hablas solo con su recepción, no eres importante para él. Para una empresa pequeña esto puede ser aceptable; para una empresa que va a crecer, no.</li>
+        <li><strong>El notario que promete "todo en una semana".</strong> Una constitución bien hecha lleva 3-5 semanas desde la firma hasta tener acta inscrita y RFC. Si te prometen una semana, están cortando esquinas — y esas esquinas las pagas después.</li>
+        <li><strong>El notario que no quiere que tu socio mexicano firme también.</strong> Bandera roja roja. Si tu notario te sugiere "para simplificar" que solo tú firmes mientras tu socio "lo ratifica después", está abriendo la puerta a un fraude. Esto pasa.</li>
+        </ul>
+        <h2>Cómo lo hace Linbix</h2>
+        <p>Tenemos relación de trabajo con tres notarías en Guadalajara — ninguna paga comisión por las referidas. Las recomendamos porque ya constituyeron entre las tres más de 200 empresas con capital extranjero, conocen el procedimiento de aviso a RNIE de memoria, y sus equipos hablan inglés en al menos un abogado por notaría.</p>
+        <p>Cuando alguien entra al servicio Hacer Negocios en México, le presentamos las tres y dejamos que elija con base en química personal. Ese pequeño paso de "química" suena suave, pero predice los siguientes diez años de la relación.</p>`,
+        en:`<p>The first mistake foreign executives make when incorporating in Mexico is shopping for a notary the same way they'd shop for a vendor: by price. That mistake is expensive.</p>
+        <p>In Mexico, a notario público isn't a cheap document-stamper. They're a public official appointed by the state governor, after passing an exam that fewer than 5 candidates per state per year actually pass. There are quotas — Jalisco has a fixed number of notarías (around 200), and when one frees up through retirement or death, there's a war to take it.</p>
+        <p>The notary who signs your incorporation deed becomes your legal infrastructure for life. Your amendments, your powers of attorney, your eventual share sale — all of it goes through them. If you chose wrong, there's no easy way to switch later.</p>
+        <h2>The 5 questions to ask before signing</h2>
+        <h3>1. How long have you been the head notary?</h3>
+        <p>Ideally more than 8 years. New notaries are still learning and make drafting mistakes that show up three years later in a SAT audit or in a share sale. Experienced notaries have already been through everything and know where each trap is.</p>
+        <h3>2. How many foreign-capital companies have you incorporated?</h3>
+        <p>A Mexican company with foreign partners isn't the same as one with Mexican partners. The foreign admission clause, the notices to Foreign Affairs, the RNIE registration — all of that requires specific experience. Ask how many similar ones they've done in the past 3 years. If the answer is "several" without a number, look elsewhere.</p>
+        <h3>3. Can I meet your incorporation team?</h3>
+        <p>The notary doesn't personally draft every deed. They have a team of legal interns and attorneys. If the team doesn't inspire confidence, neither should the notary. Good firms have at least one attorney dedicated to commercial acts who knows what they're doing.</p>
+        <h3>4. What happens if I need an urgent amendment?</h3>
+        <p>Amendments happen. You change your legal representative, modify the corporate purpose, increase capital. A serious firm sees you within 48 hours. A bad one schedules you in two weeks. That difference, multiplied across six or seven amendments in five years, is months lost.</p>
+        <h3>5. What do you charge and why?</h3>
+        <p>Notary fees in Jalisco are published — no mystery. A basic S de RL incorporation runs $18,000 to $35,000 MXN depending on complexity. If you're quoted less, they're probably omitting the appraisal, registration fees, or federal filing. If you're quoted more, they're charging you for something extra — ask what.</p>
+        <h2>Red flags</h2>
+        <ul>
+        <li><strong>The notary who never meets you personally.</strong> If after three meetings you're still talking only to their front desk, you're not important to them. For a small company this can be acceptable; for one that's going to grow, it isn't.</li>
+        <li><strong>The notary promising "all in one week".</strong> A well-done incorporation takes 3-5 weeks from signing to having a registered deed and RFC. If they promise a week, they're cutting corners — and those corners come back to bite you.</li>
+        <li><strong>The notary who doesn't want your Mexican partner to also sign.</strong> Red red flag. If your notary suggests "to simplify" that only you sign while your partner "ratifies later," they're opening the door to fraud. This happens.</li>
+        </ul>
+        <h2>How Linbix handles it</h2>
+        <p>We have working relationships with three notaries in Guadalajara — none pay commissions for referrals. We recommend them because between the three they've already incorporated over 200 companies with foreign capital, know the RNIE notice procedure by heart, and their teams have at least one English-speaking attorney each.</p>
+        <p>When someone enters our Hacer Negocios en México service, we introduce them to all three and let them choose based on personal chemistry. That small step of "chemistry" sounds soft, but it predicts the next ten years of the relationship.</p>`,
+        fr:`<p>La première erreur des dirigeants étrangers qui constituent leur entreprise au Mexique est de chercher un notaire comme ils chercheraient un fournisseur : par prix. Cette erreur coûte cher.</p>
+        <p>Au Mexique, un notario público n'est pas un certificateur de documents bon marché. C'est un officier public nommé par le gouverneur de l'État, après un examen que moins de 5 candidats par État par an réussissent. Il y a des quotas — Jalisco a un nombre fixe de notarías (environ 200), et quand une se libère par retraite ou décès, c'est la guerre pour la prendre.</p>
+        <p>Le notaire qui signe votre acte constitutif devient votre infrastructure juridique à vie. Vos modifications, vos procurations, votre éventuelle vente d'actions — tout passe par lui. Si vous avez mal choisi, il n'y a pas de moyen facile de changer ensuite.</p>
+        <h2>Les 5 questions à poser avant de signer</h2>
+        <h3>1. Depuis combien d'années êtes-vous notaire titulaire ?</h3>
+        <p>Idéalement plus de 8 ans. Les nouveaux notaires apprennent encore et font des erreurs de rédaction qui apparaissent trois ans plus tard lors d'un contrôle SAT ou d'une cession d'actions. Les notaires expérimentés ont déjà tout vu et savent où sont les pièges.</p>
+        <h3>2. Combien d'entreprises à capital étranger avez-vous constituées ?</h3>
+        <p>Une société mexicaine avec associés étrangers n'est pas la même qu'avec des associés mexicains. La clause d'admission d'étrangers, les avis aux Affaires étrangères, l'enregistrement au RNIE — tout cela demande une expérience spécifique. Demandez combien de cas similaires sur les 3 dernières années. Si la réponse est « plusieurs » sans chiffre, cherchez ailleurs.</p>
+        <h3>3. Puis-je rencontrer votre équipe de rédaction ?</h3>
+        <p>Le notaire ne rédige pas personnellement chaque acte. Il a une équipe de stagiaires juridiques et avocats. Si l'équipe ne vous inspire pas confiance, le notaire non plus ne devrait pas. Les bons cabinets ont au moins un avocat dédié aux actes commerciaux qui sait ce qu'il fait.</p>
+        <h3>4. Que se passe-t-il si j'ai besoin d'une modification urgente ?</h3>
+        <p>Les modifications arrivent. Vous changez de représentant légal, modifiez l'objet social, augmentez le capital. Un cabinet sérieux vous reçoit en 48 heures. Un mauvais vous donne rendez-vous dans deux semaines. Cette différence, multipliée par six ou sept modifications en cinq ans, c'est des mois perdus.</p>
+        <h3>5. Combien facturez-vous et pourquoi ?</h3>
+        <p>Les honoraires notariaux à Jalisco sont publiés — pas de mystère. Une constitution de S de RL basique coûte entre 18 000 et 35 000 MXN selon la complexité. Si on vous cote moins, ils omettent probablement l'expertise, les frais d'inscription ou l'enregistrement fédéral. Si on vous cote plus, on vous facture quelque chose en plus — demandez quoi.</p>
+        <h2>Les drapeaux rouges</h2>
+        <ul>
+        <li><strong>Le notaire qui ne vous reçoit jamais personnellement.</strong> Si après trois rendez-vous vous parlez encore uniquement à la réception, vous n'êtes pas important pour lui. Pour une petite entreprise c'est acceptable ; pour une qui va grandir, non.</li>
+        <li><strong>Le notaire qui promet « tout en une semaine ».</strong> Une constitution bien faite prend 3 à 5 semaines de la signature jusqu'à l'inscription et au RFC. S'ils promettent une semaine, ils coupent les coins — et ces coins se paient ensuite.</li>
+        <li><strong>Le notaire qui ne veut pas que votre associé mexicain signe aussi.</strong> Drapeau rouge rouge. Si votre notaire suggère « pour simplifier » que vous seul signiez pendant que votre associé « ratifie plus tard », il ouvre la porte à la fraude. Ça arrive.</li>
+        </ul>
+        <h2>Comment Linbix gère cela</h2>
+        <p>Nous avons des relations de travail avec trois notaires à Guadalajara — aucun ne paie de commission pour les recommandations. Nous les recommandons parce qu'à eux trois ils ont déjà constitué plus de 200 entreprises à capital étranger, connaissent par cœur la procédure d'avis au RNIE, et leurs équipes ont au moins un avocat anglophone chacune.</p>
+        <p>Quand quelqu'un entre dans notre service Hacer Negocios en México, nous lui présentons les trois et le laissons choisir selon la chimie personnelle. Cette petite étape de « chimie » sonne doucement, mais elle prédit les dix années suivantes de la relation.</p>`
+      }
+    },
+    {
+      slug:"por-que-guadalajara-y-no-cdmx",
+      date:"2026-05-24",
+      readMin:6,
+      hero:"/media/photos-lg/img_rooftop_bar.jpg",
+      title:{
+        es:"Por qué Guadalajara, y no Ciudad de México",
+        en:"Why Guadalajara, and not Mexico City",
+        fr:"Pourquoi Guadalajara, et pas Mexico"
+      },
+      excerpt:{
+        es:"Casi todo extranjero llega a México pensando que CDMX es la única opción. Para tech, manufactura ligera, diseño, agronegocios y servicios profesionales — Guadalajara es la mejor jugada. Aquí están los números.",
+        en:"Most foreign executives arrive in Mexico assuming CDMX is the only option. For tech, light manufacturing, design, agribusiness, and professional services — Guadalajara is the better play. Here are the numbers.",
+        fr:"La plupart des dirigeants étrangers arrivent au Mexique en supposant que Mexico est la seule option. Pour la tech, la fabrication légère, le design, l'agroalimentaire et les services pro — Guadalajara est le meilleur choix. Voici les chiffres."
+      },
+      content:{
+        es:`<p>Cada semana recibo un correo de un fundador europeo o estadounidense que me dice "estamos pensando en abrir oficina en Ciudad de México, ¿qué opinas?". Mi respuesta es siempre la misma: depende de la industria, pero en 7 de cada 10 casos, Guadalajara es la mejor decisión y nadie te lo dijo.</p>
+        <h2>El reflejo de la capital es comprensible — y mayoritariamente equivocado</h2>
+        <p>Si vienes de Estados Unidos, asumes que México opera como tu país: Washington para la política, Nueva York para los negocios. En México la fórmula no aplica. CDMX es ambas cosas a la vez, lo que la vuelve cara, lenta y congestionada — y al mismo tiempo, deja huecos enormes en otras ciudades que ahora compiten por inversión extranjera con incentivos serios.</p>
+        <p>Guadalajara, capital de Jalisco, es la segunda ciudad más grande del país, capital del Bajío-Pacífico, hub tecnológico oficial, y centro neurálgico de la industria de software, semiconductores, agave y manufactura electrónica. Y nadie te lo cuenta cuando llegas.</p>
+        <h2>Los datos que importan</h2>
+        <h3>Costo de operación: 30-40% menos que CDMX</h3>
+        <p>Una oficina premium en Polanco (CDMX) cuesta $850 MXN por metro cuadrado al mes. La misma calidad en Providencia (GDL) cuesta $480. Un departamento ejecutivo de 120m² para un expatriado: $70,000/mes en CDMX, $38,000 en GDL. Un contador senior cobra 30% menos. Una junior bilingüe, 25% menos.</p>
+        <h3>Talento bilingüe per cápita</h3>
+        <p>Guadalajara forma más ingenieros de software al año que cualquier otra ciudad mexicana (UDG, ITESM, UAG). El 47% de los egresados de carreras técnicas en Jalisco tienen inglés B2+ certificado. En CDMX el porcentaje es 38%. Y los costos de retención son menores porque hay menos competencia interna entre Big Tech.</p>
+        <h3>Calidad de vida</h3>
+        <p>Tiempo promedio de traslado al trabajo: 28 minutos en GDL vs 65 en CDMX. Clima primaveral todo el año (20-26°C de promedio). Acceso a montaña en 30 minutos, océano en 3 horas. Si vas a pedir a tu director de operaciones que se mude desde Madrid o París, la mudanza a GDL es venta. La mudanza a CDMX, generalmente, es resistencia.</p>
+        <h3>Velocidad gubernamental</h3>
+        <p>El gobierno de Jalisco tiene un programa específico para empresas tecnológicas y manufactureras que ofrece incentivos fiscales y trato directo con el secretario de economía. El de CDMX está disperso entre 16 alcaldías y dos niveles de gobierno. Para una empresa de 20-200 empleados, el acceso al gobierno estatal de Jalisco es real, rápido y útil.</p>
+        <h2>Cuándo CDMX sí es la respuesta correcta</h2>
+        <p>No estoy diciendo que CDMX no sirva. Estoy diciendo que es el default equivocado. Hay tres casos donde CDMX es la decisión correcta:</p>
+        <ul>
+        <li><strong>Tu negocio depende del gobierno federal.</strong> Pemex, ejército, salud federal, telecomunicaciones, regulación financiera — todo eso vive en CDMX. Si tu modelo de negocio incluye contratos federales, hay que estar ahí.</li>
+        <li><strong>Eres servicios financieros corporativos.</strong> Las matrices de los bancos mexicanos están en CDMX. Si tu cliente son tesoreros de bancos o corporativos AAA, vives donde ellos viven.</li>
+        <li><strong>Tu producto necesita el volumen de la zona metro.</strong> 22 millones de personas viven en la zona metropolitana de CDMX. Si vendes productos de consumo masivo o servicios B2C con efecto red, ese volumen es difícil de replicar en cualquier otra ciudad.</li>
+        </ul>
+        <h2>Para todo lo demás — Guadalajara</h2>
+        <p>Tech, software, semiconductores, manufactura ligera, diseño, mobiliario, gastronomía, agave/tequila, agronegocios, salud, educación, e-commerce, consultoría B2B, marketing digital, servicios profesionales. En todas estas industrias, Guadalajara opera mejor que CDMX en cinco de los seis criterios que importan para una empresa que recién entra.</p>
+        <p>Y para ser claros: nadie en CDMX te va a recomendar Guadalajara. Tu consultor mexicano que vive en Polanco no se va a aplaudir solo por mandarte a otra ciudad. Por eso este artículo existe.</p>`,
+        en:`<p>Every week I get an email from a European or American founder saying "we're thinking of opening an office in Mexico City, what do you think?" My answer is always the same: it depends on the industry, but in 7 out of 10 cases, Guadalajara is the better decision and nobody told you.</p>
+        <h2>The capital reflex is understandable — and mostly wrong</h2>
+        <p>If you come from the US, you assume Mexico operates like your country: Washington for politics, New York for business. In Mexico that formula doesn't apply. CDMX is both at once, which makes it expensive, slow, and congested — while leaving big gaps in other cities that are now actively competing for foreign investment with serious incentives.</p>
+        <p>Guadalajara, capital of Jalisco, is the country's second-largest city, the capital of the Bajío-Pacific corridor, the official tech hub, and the nerve center for software, semiconductors, agave, and electronic manufacturing. And nobody tells you that when you arrive.</p>
+        <h2>The numbers that matter</h2>
+        <h3>Operating cost: 30-40% less than CDMX</h3>
+        <p>A premium office in Polanco (CDMX) runs $850 MXN per square meter per month. The same quality in Providencia (GDL) costs $480. An executive apartment of 120m² for an expat: $70,000/month in CDMX, $38,000 in GDL. A senior accountant charges 30% less. A bilingual junior, 25% less.</p>
+        <h3>Bilingual talent per capita</h3>
+        <p>Guadalajara graduates more software engineers per year than any other Mexican city (UDG, ITESM, UAG). 47% of technical-degree graduates in Jalisco have certified B2+ English. In CDMX the figure is 38%. And retention costs are lower because there's less internal competition between Big Tech.</p>
+        <h3>Quality of life</h3>
+        <p>Average commute to work: 28 minutes in GDL vs 65 in CDMX. Spring-like weather year-round (20-26°C average). Mountain access in 30 minutes, ocean in 3 hours. If you're going to ask your COO to move from Madrid or Paris, the move to GDL is a sale. The move to CDMX, usually, is resistance.</p>
+        <h3>Government speed</h3>
+        <p>The Jalisco government has a specific program for tech and manufacturing companies offering tax incentives and direct dealings with the Secretary of Economy. CDMX's is scattered across 16 mayoralties and two levels of government. For a company of 20-200 employees, access to Jalisco's state government is real, fast, and useful.</p>
+        <h2>When CDMX is the right answer</h2>
+        <p>I'm not saying CDMX is useless. I'm saying it's the wrong default. There are three cases where CDMX is the right call:</p>
+        <ul>
+        <li><strong>Your business depends on the federal government.</strong> Pemex, military, federal health, telecoms, financial regulation — all of that lives in CDMX. If your business model includes federal contracts, you need to be there.</li>
+        <li><strong>You're corporate financial services.</strong> The headquarters of Mexican banks are in CDMX. If your customer is bank treasurers or AAA corporate, you live where they live.</li>
+        <li><strong>Your product needs the metro-area volume.</strong> 22 million people live in greater CDMX. If you sell mass consumer products or B2C services with network effects, that volume is hard to replicate in any other city.</li>
+        </ul>
+        <h2>For everything else — Guadalajara</h2>
+        <p>Tech, software, semiconductors, light manufacturing, design, furniture, gastronomy, agave/tequila, agribusiness, health, education, e-commerce, B2B consulting, digital marketing, professional services. In all those industries, Guadalajara outperforms CDMX on five of the six criteria that matter for a company that's just arriving.</p>
+        <p>And to be clear: nobody in CDMX is going to recommend Guadalajara to you. Your Mexican consultant who lives in Polanco isn't going to applaud themselves for sending you to another city. That's why this article exists.</p>`,
+        fr:`<p>Chaque semaine, je reçois un email d'un fondateur européen ou américain me disant « nous pensons ouvrir un bureau à Mexico, qu'en pensez-vous ? ». Ma réponse est toujours la même : ça dépend du secteur, mais dans 7 cas sur 10, Guadalajara est le meilleur choix et personne ne vous l'a dit.</p>
+        <h2>Le réflexe de la capitale est compréhensible — et majoritairement erroné</h2>
+        <p>Si vous venez des États-Unis, vous supposez que le Mexique fonctionne comme votre pays : Washington pour la politique, New York pour les affaires. Au Mexique cette formule ne s'applique pas. Mexico est les deux à la fois, ce qui la rend chère, lente et congestionnée — tout en laissant d'énormes trous dans d'autres villes qui se battent maintenant pour l'investissement étranger avec des incitatifs sérieux.</p>
+        <p>Guadalajara, capitale de Jalisco, est la deuxième plus grande ville du pays, capitale du corridor Bajío-Pacifique, hub technologique officiel, et centre névralgique des logiciels, semi-conducteurs, agave et fabrication électronique. Et personne ne vous le dit à votre arrivée.</p>
+        <h2>Les chiffres qui comptent</h2>
+        <h3>Coût d'exploitation : 30-40 % de moins que Mexico</h3>
+        <p>Un bureau premium à Polanco (Mexico) coûte 850 MXN/m² par mois. La même qualité à Providencia (Guadalajara) coûte 480. Un appartement exécutif de 120m² pour un expatrié : 70 000 MXN/mois à Mexico, 38 000 à Guadalajara. Un comptable senior facture 30 % de moins. Un junior bilingue, 25 % de moins.</p>
+        <h3>Talent bilingue par habitant</h3>
+        <p>Guadalajara forme plus d'ingénieurs logiciel par an que toute autre ville mexicaine (UDG, ITESM, UAG). 47 % des diplômés en filières techniques au Jalisco ont un anglais B2+ certifié. À Mexico, le chiffre est de 38 %. Et les coûts de rétention sont plus bas parce qu'il y a moins de concurrence interne entre les géants tech.</p>
+        <h3>Qualité de vie</h3>
+        <p>Trajet domicile-travail moyen : 28 minutes à Guadalajara vs 65 à Mexico. Climat printanier toute l'année (20-26°C en moyenne). Accès à la montagne en 30 minutes, à l'océan en 3 heures. Si vous demandez à votre directeur des opérations de déménager de Madrid ou Paris, le déménagement à Guadalajara est une vente. Le déménagement à Mexico, en général, c'est de la résistance.</p>
+        <h3>Vitesse gouvernementale</h3>
+        <p>Le gouvernement du Jalisco a un programme spécifique pour les entreprises tech et manufacturières offrant des incitatifs fiscaux et un contact direct avec le secrétaire à l'économie. Celui de Mexico est dispersé entre 16 mairies et deux niveaux de gouvernement. Pour une entreprise de 20 à 200 employés, l'accès au gouvernement de l'État de Jalisco est réel, rapide et utile.</p>
+        <h2>Quand Mexico est la bonne réponse</h2>
+        <p>Je ne dis pas que Mexico ne sert à rien. Je dis que c'est le mauvais défaut. Il y a trois cas où Mexico est le bon choix :</p>
+        <ul>
+        <li><strong>Votre activité dépend du gouvernement fédéral.</strong> Pemex, armée, santé fédérale, télécoms, régulation financière — tout ça vit à Mexico. Si votre modèle inclut des contrats fédéraux, il faut y être.</li>
+        <li><strong>Vous êtes dans les services financiers corporatifs.</strong> Les sièges des banques mexicaines sont à Mexico. Si votre client est trésorier de banque ou corporate AAA, vous vivez là où ils vivent.</li>
+        <li><strong>Votre produit a besoin du volume métropolitain.</strong> 22 millions d'habitants vivent dans le grand Mexico. Si vous vendez des biens de grande consommation ou des services B2C avec effets de réseau, ce volume est difficile à reproduire ailleurs.</li>
+        </ul>
+        <h2>Pour tout le reste — Guadalajara</h2>
+        <p>Tech, logiciels, semi-conducteurs, fabrication légère, design, mobilier, gastronomie, agave/tequila, agroalimentaire, santé, éducation, e-commerce, conseil B2B, marketing digital, services professionnels. Dans tous ces secteurs, Guadalajara surpasse Mexico sur cinq des six critères qui comptent pour une entreprise qui arrive.</p>
+        <p>Et pour être clair : personne à Mexico ne vous recommandera Guadalajara. Votre consultant mexicain qui vit à Polanco ne va pas s'applaudir pour vous envoyer dans une autre ville. C'est pourquoi cet article existe.</p>`
+      }
+    },
+    {
+      slug:"cfdi-4-explicado-empresas-extranjeras",
+      date:"2026-05-17",
+      readMin:7,
+      hero:"/media/photos-lg/img_9539.jpg",
+      title:{
+        es:"CFDI 4.0 explicado para empresas extranjeras (en 10 minutos)",
+        en:"CFDI 4.0 explained for foreign companies (in 10 minutes)",
+        fr:"CFDI 4.0 expliqué pour les entreprises étrangères (en 10 minutes)"
+      },
+      excerpt:{
+        es:"El CFDI es el documento que reemplazó a la factura en papel. Tu contador te dice 'no te preocupes' — y luego cuando hay un error, eres tú quien pierde el IVA acreditable. Mejor entiéndelo.",
+        en:"The CFDI replaced the paper invoice in Mexico. Your accountant tells you 'don't worry about it' — and then when something goes wrong, you're the one who loses the deductible VAT. Better understand it.",
+        fr:"Le CFDI a remplacé la facture papier au Mexique. Votre comptable vous dit « ne vous en faites pas » — et puis quand quelque chose tourne mal, c'est vous qui perdez la TVA déductible. Mieux vaut comprendre."
+      },
+      content:{
+        es:`<p>CFDI significa Comprobante Fiscal Digital por Internet. Es un archivo XML que reemplaza a la factura en papel y que el SAT recibe en tiempo real. Cada vez que vendes algo, generas un CFDI. Cada vez que compras algo deducible, te dan un CFDI. Sin CFDI no hay deducción, no hay IVA acreditable, no hay nada.</p>
+        <p>La versión vigente desde 2022 es la 4.0, y trajo cambios importantes que muchas empresas extranjeras todavía no terminan de digerir. Aquí va el manual práctico — no técnico — de lo que necesitas saber para no perder dinero por errores de CFDI.</p>
+        <h2>Lo que un CFDI realmente contiene</h2>
+        <p>Cada CFDI tiene cuatro campos críticos que determinan si te sirve para deducir o no:</p>
+        <ol>
+        <li><strong>Régimen fiscal del receptor</strong> — Si tú eres Persona Moral de Régimen General, tus proveedores deben emitir el CFDI con ese régimen específicamente. Si ponen "Sin obligaciones fiscales" o se equivocan de régimen, tu CFDI no es válido para deducir.</li>
+        <li><strong>Uso del CFDI</strong> — Hay un catálogo de claves (G01 - Adquisición de mercancías, G03 - Gastos en general, etc.). Si tu proveedor pone el uso equivocado, tu auditor lo va a observar y vas a tener que pedir una corrección — que a veces el proveedor ya no quiere hacer.</li>
+        <li><strong>Método de pago</strong> — PUE (Pago en una sola exhibición) o PPD (Pago en parcialidades o diferido). Esto NO es lo mismo que la forma de pago. PUE significa "se paga al momento" y PPD significa "se paga después". Si te emiten PUE pero pagas 30 días después, técnicamente está mal.</li>
+        <li><strong>Forma de pago</strong> — Efectivo, transferencia, cheque, tarjeta de crédito, etc. Es la mecánica del pago. La forma 99 (Por definir) se debe usar solo cuando aún no sabes cómo se va a pagar.</li>
+        </ol>
+        <h2>Los errores que cuestan dinero</h2>
+        <h3>Pagar antes de tener el CFDI</h3>
+        <p>Muchos extranjeros pagan a sus proveedores y luego esperan que el CFDI llegue. Mal. Si el proveedor se desaparece sin emitirlo, tienes una salida de efectivo sin deducción. La regla: el CFDI debe existir antes de que pagues. Si el proveedor no te lo manda al momento de cobrar, no le pagues.</p>
+        <h3>Aceptar CFDI con tu RFC mal escrito</h3>
+        <p>Tu RFC tiene 12 caracteres si eres persona moral, 13 si eres persona física. Una letra mal puesta y el CFDI es inválido. Verifica antes de aceptar. El proveedor puede emitir uno nuevo en 5 minutos — el SAT lo permite mientras esté dentro del mismo mes fiscal.</p>
+        <h3>No timbrar tus CFDI emitidos a tiempo</h3>
+        <p>Tienes que timbrar (validar contra el SAT) cada CFDI que emites dentro de 72 horas. Si no lo timbras, no es válido. Sí, suena estricto. Lo es.</p>
+        <h3>Confundir Complemento de Pago con CFDI normal</h3>
+        <p>Cuando emites un CFDI con método PPD (a crédito), después tienes que emitir un Complemento de Pago cada vez que recibes una abono. Muchos lo olvidan. El SAT ya tiene auditorías automatizadas que detectan PPDs sin Complementos de Pago en el siguiente mes. Multas reales.</p>
+        <h2>El PAC: la pieza que nadie te explica</h2>
+        <p>Tu empresa no puede timbrar CFDI directamente con el SAT. Tienes que pasar por un Proveedor Autorizado de Certificación (PAC). Hay como 80 PACs autorizados — los más conocidos son Facturama, SW Sapien, EDICOM, y unos cuantos más. Cobran por timbre (entre $0.40 y $1.20 MXN por CFDI emitido) y por paquete mensual.</p>
+        <p>El error que cometen las empresas pequeñas es contratar el PAC más barato y luego descubrir que el soporte es nulo cuando hay un problema técnico. Para una empresa que emite menos de 1,000 CFDI al mes, el costo total es marginal. Pága el bueno.</p>
+        <h2>Lo mínimo que debes hacer tú como dueño</h2>
+        <ol>
+        <li>Verificar mensualmente que tus CFDI recibidos coincidan con tus pagos.</li>
+        <li>Tener un repositorio central donde se guarden todos los XML (no solo los PDF — el XML es el válido fiscalmente).</li>
+        <li>Pedirle a tu contador que te muestre, al cierre de cada mes, el reporte de "CFDI cancelados por proveedores" — los proveedores a veces cancelan unilateralmente.</li>
+        </ol>
+        <p>El CFDI parece tema de contadores. En realidad es la espina dorsal de tu deducibilidad fiscal en México. Una falla mensual de 2-3% en CFDI mal emitidos significa pagar 2-3% más de ISR al final del año. Para una empresa que factura 5 millones de pesos, son 60,000 pesos en multas e impuestos extra cada año, todos los años.</p>
+        <p>Conviene entenderlo.</p>`,
+        en:`<p>CFDI stands for Comprobante Fiscal Digital por Internet. It's an XML file that replaced paper invoices, and SAT receives it in real time. Every time you sell something, you generate a CFDI. Every time you buy something deductible, you receive a CFDI. No CFDI means no deduction, no creditable VAT, nothing.</p>
+        <p>The version in effect since 2022 is 4.0, and it brought significant changes that many foreign companies still haven't fully digested. Here's the practical — not technical — manual of what you need to know so you don't lose money to CFDI errors.</p>
+        <h2>What a CFDI actually contains</h2>
+        <p>Each CFDI has four critical fields that determine whether you can deduct or not:</p>
+        <ol>
+        <li><strong>Fiscal regime of the receiver</strong> — If you're a Legal Entity under General Regime, your suppliers must issue the CFDI with that specific regime. If they put "No fiscal obligations" or use the wrong regime, your CFDI isn't valid for deduction.</li>
+        <li><strong>Use of CFDI</strong> — There's a catalog of codes (G01 - Goods acquisition, G03 - General expenses, etc.). If your supplier puts the wrong code, your auditor will flag it and you'll have to ask for a correction — which sometimes the supplier no longer wants to make.</li>
+        <li><strong>Payment method</strong> — PUE (One single payment) or PPD (Installments or deferred). This is NOT the same as form of payment. PUE means "paid at the moment" and PPD means "paid later". If they issue PUE but you pay 30 days later, that's technically wrong.</li>
+        <li><strong>Form of payment</strong> — Cash, transfer, check, credit card, etc. It's the mechanics of payment. Form 99 (To be determined) should only be used when you don't yet know how it'll be paid.</li>
+        </ol>
+        <h2>Mistakes that cost money</h2>
+        <h3>Paying before having the CFDI</h3>
+        <p>Many foreigners pay their suppliers and then wait for the CFDI to arrive. Wrong. If the supplier disappears without issuing it, you have a cash outflow with no deduction. The rule: the CFDI must exist before you pay. If the supplier doesn't send it at the time of collection, don't pay them.</p>
+        <h3>Accepting CFDI with your RFC misspelled</h3>
+        <p>Your RFC has 12 characters if you're a legal entity, 13 if you're an individual. One wrong letter and the CFDI is invalid. Verify before accepting. The supplier can issue a new one in 5 minutes — SAT allows it as long as it's within the same fiscal month.</p>
+        <h3>Not stamping your issued CFDIs on time</h3>
+        <p>You have to stamp (validate against SAT) every CFDI you issue within 72 hours. If you don't stamp it, it's not valid. Yes, it sounds strict. It is.</p>
+        <h3>Confusing Payment Complement with regular CFDI</h3>
+        <p>When you issue a CFDI with PPD method (on credit), you then have to issue a Payment Complement every time you receive a partial payment. Many forget this. SAT already has automated audits that detect PPDs without Payment Complements in the following month. Real fines.</p>
+        <h2>The PAC: the piece nobody explains</h2>
+        <p>Your company can't stamp CFDIs directly with SAT. You have to go through a Proveedor Autorizado de Certificación (Authorized Certification Provider, PAC). There are about 80 authorized PACs — the best known are Facturama, SW Sapien, EDICOM, and a few more. They charge per stamp ($0.40 to $1.20 MXN per issued CFDI) and by monthly package.</p>
+        <p>The mistake small companies make is hiring the cheapest PAC and then discovering that support is non-existent when there's a technical issue. For a company issuing under 1,000 CFDIs per month, the total cost is marginal. Pay for the good one.</p>
+        <h2>The minimum you should do as owner</h2>
+        <ol>
+        <li>Verify monthly that your received CFDIs match your payments.</li>
+        <li>Have a central repository where all XMLs are stored (not just the PDFs — the XML is what's fiscally valid).</li>
+        <li>Ask your accountant to show you, at month-end close, the "CFDIs canceled by suppliers" report — suppliers sometimes cancel unilaterally.</li>
+        </ol>
+        <p>CFDI seems like an accountant topic. In reality it's the backbone of your fiscal deductibility in Mexico. A monthly failure rate of 2-3% in mis-issued CFDIs means paying 2-3% more in ISR at year-end. For a company billing 5 million pesos, that's 60,000 pesos in extra fines and taxes every year, every year.</p>
+        <p>Worth understanding.</p>`,
+        fr:`<p>CFDI signifie Comprobante Fiscal Digital por Internet. C'est un fichier XML qui a remplacé la facture papier, et le SAT le reçoit en temps réel. À chaque vente, vous générez un CFDI. À chaque achat déductible, vous recevez un CFDI. Pas de CFDI, pas de déduction, pas de TVA créditeur, rien.</p>
+        <p>La version en vigueur depuis 2022 est la 4.0, et elle a apporté des changements importants que de nombreuses entreprises étrangères n'ont pas encore digérés. Voici le manuel pratique — non technique — de ce qu'il faut savoir pour ne pas perdre d'argent à cause d'erreurs de CFDI.</p>
+        <h2>Ce que contient réellement un CFDI</h2>
+        <p>Chaque CFDI a quatre champs critiques qui déterminent si vous pouvez déduire ou non :</p>
+        <ol>
+        <li><strong>Régime fiscal du destinataire</strong> — Si vous êtes Personne Morale en Régime Général, vos fournisseurs doivent émettre le CFDI avec ce régime spécifique. S'ils mettent « Sans obligations fiscales » ou se trompent de régime, votre CFDI n'est pas valide pour déduction.</li>
+        <li><strong>Usage du CFDI</strong> — Il existe un catalogue de codes (G01 - Acquisition de marchandises, G03 - Dépenses générales, etc.). Si votre fournisseur met le mauvais code, votre auditeur le signalera et vous devrez demander une correction — que parfois le fournisseur ne veut plus faire.</li>
+        <li><strong>Méthode de paiement</strong> — PUE (Paiement en une seule fois) ou PPD (Paiement en plusieurs fois ou différé). Ce n'est PAS la même chose que la forme de paiement. PUE signifie « payé au moment » et PPD « payé plus tard ». S'ils émettent en PUE mais vous payez 30 jours plus tard, c'est techniquement faux.</li>
+        <li><strong>Forme de paiement</strong> — Espèces, virement, chèque, carte de crédit, etc. C'est la mécanique du paiement. La forme 99 (À définir) ne doit être utilisée que si vous ne savez pas encore comment ce sera payé.</li>
+        </ol>
+        <h2>Les erreurs qui coûtent de l'argent</h2>
+        <h3>Payer avant d'avoir le CFDI</h3>
+        <p>Beaucoup d'étrangers paient leurs fournisseurs puis attendent que le CFDI arrive. Mal. Si le fournisseur disparaît sans l'émettre, vous avez une sortie de trésorerie sans déduction. La règle : le CFDI doit exister avant que vous payiez. Si le fournisseur ne l'envoie pas au moment du paiement, ne payez pas.</p>
+        <h3>Accepter un CFDI avec votre RFC mal écrit</h3>
+        <p>Votre RFC a 12 caractères pour une personne morale, 13 pour une personne physique. Une lettre fausse et le CFDI est invalide. Vérifiez avant d'accepter. Le fournisseur peut émettre un nouveau CFDI en 5 minutes — le SAT le permet tant que c'est dans le même mois fiscal.</p>
+        <h3>Ne pas timbrer vos CFDI émis à temps</h3>
+        <p>Vous devez timbrer (valider auprès du SAT) chaque CFDI émis dans les 72 heures. Sans timbrage, ce n'est pas valide. Oui, ça paraît strict. Ça l'est.</p>
+        <h3>Confondre Complément de Paiement avec CFDI normal</h3>
+        <p>Quand vous émettez un CFDI en méthode PPD (à crédit), vous devez ensuite émettre un Complément de Paiement à chaque versement reçu. Beaucoup l'oublient. Le SAT a déjà des audits automatisés qui détectent les PPD sans Complément de Paiement le mois suivant. Amendes réelles.</p>
+        <h2>Le PAC : la pièce que personne n'explique</h2>
+        <p>Votre entreprise ne peut pas timbrer des CFDI directement auprès du SAT. Il faut passer par un Proveedor Autorizado de Certificación (PAC). Il y a environ 80 PAC autorisés — les plus connus sont Facturama, SW Sapien, EDICOM, et quelques autres. Ils facturent par timbre (entre 0,40 et 1,20 MXN par CFDI émis) et par forfait mensuel.</p>
+        <p>L'erreur des petites entreprises est de recruter le PAC le moins cher puis de découvrir que le support est nul en cas de problème technique. Pour une entreprise qui émet moins de 1 000 CFDI par mois, le coût total est marginal. Prenez le bon.</p>
+        <h2>Le minimum à faire vous-même en tant que dirigeant</h2>
+        <ol>
+        <li>Vérifier mensuellement que vos CFDI reçus correspondent à vos paiements.</li>
+        <li>Avoir un dépôt central où tous les XML sont conservés (pas seulement les PDF — le XML est ce qui est fiscalement valide).</li>
+        <li>Demander à votre comptable de vous montrer, à la clôture mensuelle, le rapport des « CFDI annulés par les fournisseurs » — les fournisseurs annulent parfois unilatéralement.</li>
+        </ol>
+        <p>Le CFDI semble un sujet de comptables. En réalité c'est l'épine dorsale de votre déductibilité fiscale au Mexique. Un taux d'erreur mensuel de 2-3 % sur les CFDI mal émis signifie payer 2-3 % de plus d'ISR en fin d'année. Pour une entreprise qui facture 5 millions de pesos, c'est 60 000 pesos d'amendes et d'impôts supplémentaires chaque année, tous les ans.</p>
+        <p>Ça vaut la peine de comprendre.</p>`
+      }
+    },
+    {
+      slug:"bancarizar-empresa-mexicana-guia-honesta",
+      date:"2026-06-29",
+      readMin:6,
+      hero:"/media/photos-lg/img_9551.jpg",
+      title:{
+        es:"Bancarizar tu empresa mexicana: la guía honesta",
+        en:"Opening your Mexican company's bank account: the honest guide",
+        fr:"Bancariser votre entreprise mexicaine : le guide honnête"
+      },
+      excerpt:{
+        es:"Constituiste la sociedad. Tienes RFC. Ahora intentas abrir cuenta bancaria. Aquí descubres que el banco mexicano sospecha de ti. Aquí está cómo navegarlo sin perder seis semanas.",
+        en:"You incorporated the company. You have your RFC. Now you try to open a bank account. That's when you discover the Mexican bank suspects you. Here's how to navigate it without losing six weeks.",
+        fr:"Vous avez constitué la société. Vous avez le RFC. Vous tentez d'ouvrir un compte bancaire. C'est là que vous découvrez que la banque mexicaine vous soupçonne. Voici comment naviguer sans perdre six semaines."
+      },
+      content:{
+        es:`<p>De todos los pasos para arrancar tu empresa en México, abrir la cuenta bancaria es el más subestimado. Los extranjeros asumen que será como en su país — formulario, identificación, depósito inicial, listo en 48 horas. En México toma entre dos y seis semanas, te van a pedir documentos que no esperabas, y a veces simplemente te rechazan sin decirte por qué.</p>
+        <h2>Por qué los bancos mexicanos son tan estrictos</h2>
+        <p>Las regulaciones de prevención de lavado de dinero (LD/FT) en México son aún más estrictas que las de Estados Unidos. Una sociedad recién constituida con capital extranjero, con un representante legal que apenas tiene 6 meses de residencia, automáticamente entra a un proceso de "debida diligencia reforzada" (EDD). Eso significa que el banco va a investigar más de lo normal.</p>
+        <p>Esto no es discriminación — es regulación. El banco asume que cualquier sociedad nueva podría ser una fachada. Su trabajo es validar lo contrario antes de abrirte cuenta.</p>
+        <h2>Los documentos que necesitas — todos, no algunos</h2>
+        <ol>
+        <li>Acta constitutiva inscrita en el Registro Público de Comercio (no la versión "en trámite").</li>
+        <li>RFC con cédula del SAT actualizada (menos de 90 días).</li>
+        <li>Comprobante de domicilio fiscal (menos de 3 meses).</li>
+        <li>Identificación oficial de los socios y del representante legal.</li>
+        <li>Poder notarial del representante legal (debe coincidir con el acta constitutiva).</li>
+        <li>Constancia de situación fiscal del SAT.</li>
+        <li>Comprobantes de origen del capital — si depositaste $500,000 MXN como capital, el banco quiere ver de dónde vino (extractos bancarios del país de origen, contrato de aportación, etc.).</li>
+        <li>Plan de negocios — sí, te lo van a pedir. Una página explicando qué hace la empresa.</li>
+        <li>Si tienes accionistas extranjeros, prueba de su identificación, pasaporte, y comprobantes de domicilio del país de origen — apostillados.</li>
+        </ol>
+        <p>El documento que se les olvida a todos: <strong>comprobante de origen del capital</strong>. El banco mexicano no acepta "lo metí en efectivo" como respuesta. Necesitan rastrearlo.</p>
+        <h2>Qué bancos elegir, en orden</h2>
+        <h3>Para extranjeros: BBVA, Santander, HSBC</h3>
+        <p>Los tres son bancos internacionales con experiencia trabajando con empresas de capital extranjero. Tienen departamentos especializados en personas morales con socios extranjeros. La apertura toma 2-4 semanas. Cuesta entre $300 y $800 MXN de comisión mensual, dependiendo del plan.</p>
+        <h3>Para operación nacional: Banorte</h3>
+        <p>Banorte es banco mexicano puro y suele ser más rápido con empresas mexicanas-mexicanas. Para empresas con socios mexicanos mayoritarios, vale la pena considerarlo.</p>
+        <h3>El que NO recomendamos para empezar: Banamex (Citibanamex)</h3>
+        <p>Por razones que nadie explica oficialmente, Banamex tiene los tiempos más largos de apertura para sociedades nuevas con socios extranjeros. Hemos visto procesos de 8 semanas que terminaron en rechazo sin explicación. Si Banamex es tu banco preferido por razones operativas (por ejemplo, ya tienes cuenta corporativa global con ellos), abre en paralelo en BBVA mientras esperas.</p>
+        <h2>La estrategia que funciona</h2>
+        <p>Abre cuentas en dos bancos simultáneamente — BBVA y Santander, por ejemplo. Cuesta más comisión pero te da redundancia. Si uno se demora, el otro avanza. Y operativamente, tener dos bancos te ayuda con conciliaciones de IVA y separación de flujos.</p>
+        <h2>El paso que sí o sí debes hacer tú</h2>
+        <p>La apertura de cuenta requiere la presencia física del representante legal. No hay forma 100% remota todavía, aunque algunos bancos ofrecen video-llamada para una parte del proceso. Si tu representante legal no está en México, no se abre. Planéalo desde el día uno.</p>
+        <p>Si vas a estar en México solo dos semanas, agenda con dos bancos antes de aterrizar. Llega con todos los documentos listos. No improvises.</p>
+        <h2>Cómo lo hace Linbix</h2>
+        <p>Tenemos relaciones directas con ejecutivos de cuenta en BBVA y Santander en Guadalajara, lo que reduce los tiempos de apertura típicamente a 2 semanas en lugar de 4-6. No cobramos por la referencia — la conexión es parte del paquete Hacer Negocios en México.</p>`,
+        en:`<p>Of all the steps to start your company in Mexico, opening the bank account is the most underestimated. Foreigners assume it'll be like in their country — form, ID, initial deposit, done in 48 hours. In Mexico it takes between two and six weeks, you'll be asked for documents you didn't expect, and sometimes you're simply rejected without being told why.</p>
+        <h2>Why Mexican banks are so strict</h2>
+        <p>Anti-money-laundering (AML/CFT) regulations in Mexico are even stricter than US ones. A newly incorporated company with foreign capital, with a legal representative who's only had 6 months of residency, automatically enters an "enhanced due diligence" (EDD) process. That means the bank will investigate more than usual.</p>
+        <p>This isn't discrimination — it's regulation. The bank assumes any new entity could be a front. Its job is to validate otherwise before opening your account.</p>
+        <h2>The documents you'll need — all of them, not some</h2>
+        <ol>
+        <li>Incorporation deed registered with the Public Commerce Registry (not the "in process" version).</li>
+        <li>RFC with updated SAT certificate (less than 90 days old).</li>
+        <li>Proof of fiscal address (less than 3 months old).</li>
+        <li>Official ID of the partners and legal representative.</li>
+        <li>Notarized power of attorney for the legal representative (must match the incorporation deed).</li>
+        <li>SAT fiscal status certificate.</li>
+        <li>Proof of capital origin — if you deposited 500,000 MXN as capital, the bank wants to see where it came from (bank statements from home country, contribution contract, etc.).</li>
+        <li>Business plan — yes, they'll ask for it. One page explaining what the company does.</li>
+        <li>If you have foreign shareholders, proof of their ID, passport, and home-country proof of address — apostilled.</li>
+        </ol>
+        <p>The document everyone forgets: <strong>proof of capital origin</strong>. Mexican banks don't accept "I put it in cash" as an answer. They need to trace it.</p>
+        <h2>Which banks to choose, in order</h2>
+        <h3>For foreigners: BBVA, Santander, HSBC</h3>
+        <p>All three are international banks experienced with foreign-capital companies. They have specialized departments for entities with foreign partners. Opening takes 2-4 weeks. Costs between $300 and $800 MXN in monthly fees, depending on the plan.</p>
+        <h3>For domestic operations: Banorte</h3>
+        <p>Banorte is a pure Mexican bank and is usually faster with Mexican-Mexican companies. For entities with majority Mexican partners, it's worth considering.</p>
+        <h3>The one we DON'T recommend for starters: Banamex (Citibanamex)</h3>
+        <p>For reasons no one explains officially, Banamex has the longest opening times for new entities with foreign partners. We've seen 8-week processes that ended in rejection without explanation. If Banamex is your preferred bank for operational reasons (e.g., you already have a global corporate account with them), open in parallel at BBVA while you wait.</p>
+        <h2>The strategy that works</h2>
+        <p>Open accounts at two banks simultaneously — BBVA and Santander, for example. Costs more in fees but gives you redundancy. If one is delayed, the other moves forward. And operationally, having two banks helps with VAT reconciliation and flow separation.</p>
+        <h2>The step you absolutely have to do yourself</h2>
+        <p>Opening an account requires the physical presence of the legal representative. There's no 100% remote way yet, although some banks offer video calls for part of the process. If your legal representative isn't in Mexico, it doesn't open. Plan from day one.</p>
+        <p>If you're only in Mexico for two weeks, schedule with two banks before landing. Arrive with all documents ready. Don't improvise.</p>
+        <h2>How Linbix handles it</h2>
+        <p>We have direct relationships with account executives at BBVA and Santander in Guadalajara, which typically reduces opening times to 2 weeks instead of 4-6. We don't charge for the referral — the connection is part of the Hacer Negocios en México package.</p>`,
+        fr:`<p>De toutes les étapes pour démarrer votre entreprise au Mexique, ouvrir le compte bancaire est la plus sous-estimée. Les étrangers supposent que ce sera comme chez eux — formulaire, pièce d'identité, dépôt initial, fait en 48 heures. Au Mexique, ça prend entre deux et six semaines, on vous demandera des documents inattendus, et parfois on vous rejette simplement sans explication.</p>
+        <h2>Pourquoi les banques mexicaines sont si strictes</h2>
+        <p>Les régulations anti-blanchiment (AML/CFT) au Mexique sont encore plus strictes qu'aux États-Unis. Une société nouvellement constituée avec capital étranger, dont le représentant légal n'a que 6 mois de résidence, entre automatiquement dans un processus de « diligence raisonnable renforcée » (EDD). Cela signifie que la banque enquêtera plus que d'habitude.</p>
+        <p>Ce n'est pas de la discrimination — c'est de la régulation. La banque suppose que toute nouvelle entité pourrait être une façade. Son travail est de valider le contraire avant d'ouvrir votre compte.</p>
+        <h2>Les documents nécessaires — tous, pas certains</h2>
+        <ol>
+        <li>Acte constitutif inscrit au Registre Public du Commerce (pas la version « en cours »).</li>
+        <li>RFC avec attestation SAT à jour (moins de 90 jours).</li>
+        <li>Justificatif de domiciliation fiscale (moins de 3 mois).</li>
+        <li>Pièce d'identité officielle des associés et du représentant légal.</li>
+        <li>Procuration notariée du représentant légal (doit correspondre à l'acte constitutif).</li>
+        <li>Attestation de situation fiscale du SAT.</li>
+        <li>Justificatifs d'origine du capital — si vous avez déposé 500 000 MXN comme capital, la banque veut voir d'où ils viennent (relevés bancaires du pays d'origine, contrat d'apport, etc.).</li>
+        <li>Plan d'affaires — oui, on vous le demandera. Une page expliquant ce que fait l'entreprise.</li>
+        <li>Si vous avez des actionnaires étrangers, preuve de leur identité, passeport, et justificatifs de domicile du pays d'origine — apostillés.</li>
+        </ol>
+        <p>Le document que tout le monde oublie : <strong>justificatif d'origine du capital</strong>. La banque mexicaine n'accepte pas « je l'ai mis en espèces » comme réponse. Il leur faut le tracer.</p>
+        <h2>Quelles banques choisir, dans l'ordre</h2>
+        <h3>Pour les étrangers : BBVA, Santander, HSBC</h3>
+        <p>Les trois sont des banques internationales expérimentées avec les entreprises à capital étranger. Elles ont des départements spécialisés pour les personnes morales avec associés étrangers. L'ouverture prend 2 à 4 semaines. Coûte entre 300 et 800 MXN de frais mensuels selon le plan.</p>
+        <h3>Pour opération nationale : Banorte</h3>
+        <p>Banorte est une banque mexicaine pure et est généralement plus rapide avec les entreprises mexicaines-mexicaines. Pour les entités avec associés majoritairement mexicains, ça vaut le coup.</p>
+        <h3>Celle que nous NE recommandons PAS pour démarrer : Banamex (Citibanamex)</h3>
+        <p>Pour des raisons que personne n'explique officiellement, Banamex a les délais d'ouverture les plus longs pour les nouvelles entités avec associés étrangers. Nous avons vu des processus de 8 semaines se terminer par un rejet sans explication. Si Banamex est votre banque préférée pour des raisons opérationnelles (compte corporate global), ouvrez en parallèle chez BBVA en attendant.</p>
+        <h2>La stratégie qui marche</h2>
+        <p>Ouvrez des comptes dans deux banques simultanément — BBVA et Santander par exemple. Plus de frais mais redondance. Si l'une retarde, l'autre avance. Et opérationnellement, deux banques aident à la réconciliation TVA et à la séparation des flux.</p>
+        <h2>L'étape qu'il faut absolument faire vous-même</h2>
+        <p>L'ouverture d'un compte exige la présence physique du représentant légal. Il n'y a pas encore de moyen 100 % à distance, bien que certaines banques proposent des visioconférences pour une partie du processus. Si votre représentant légal n'est pas au Mexique, ça ne s'ouvre pas. Planifiez dès le premier jour.</p>
+        <p>Si vous n'êtes au Mexique que deux semaines, prenez rendez-vous avec deux banques avant l'atterrissage. Arrivez avec tous les documents prêts. N'improvisez pas.</p>
+        <h2>Comment Linbix gère cela</h2>
+        <p>Nous avons des relations directes avec des chargés de compte chez BBVA et Santander à Guadalajara, ce qui réduit typiquement les délais d'ouverture à 2 semaines au lieu de 4-6. Nous ne facturons pas la mise en relation — la connexion fait partie du forfait Hacer Negocios en México.</p>`
+      }
+    },
+    {
+      slug:"ano-cero-primer-ano-operando-mexico",
+      date:"2026-07-06",
+      readMin:7,
+      hero:"/media/photos-lg/img_0185.jpg",
+      title:{
+        es:"El año cero: tu primer año operando en México",
+        en:"Year zero: your first year operating in Mexico",
+        fr:"L'année zéro : votre première année d'exploitation au Mexique"
+      },
+      excerpt:{
+        es:"Lo que pasa de verdad en los primeros 12 meses de una operación extranjera en México. Mes por mes. Lo bueno, lo doloroso, y lo que nadie te contó.",
+        en:"What actually happens in the first 12 months of a foreign operation in Mexico. Month by month. The good, the painful, and what nobody told you.",
+        fr:"Ce qui se passe réellement les 12 premiers mois d'une opération étrangère au Mexique. Mois par mois. Le bon, le pénible, et ce que personne ne vous a dit."
+      },
+      content:{
+        es:`<p>Llevamos doce años recibiendo empresas extranjeras en Guadalajara. Más de 80 operaciones desde aterrizar hasta facturar al primer cliente. Si bien cada una es distinta, los patrones del primer año son sorprendentemente consistentes. Aquí va el mapa.</p>
+        <h2>Mes 1: La euforia</h2>
+        <p>Cierras la constitución. Tienes RFC. Inauguras la oficina. Sacas fotos para LinkedIn. Cierras a tu primer cliente — usualmente alguien que ya conocías de tu país y que estaba esperando esta apertura.</p>
+        <p>La pregunta que debes hacerte: ¿estoy adaptando mi modelo de venta al mercado local, o estoy replicando lo que funcionaba en mi país? Si vas más rápido de lo esperado en estos primeros 30 días, casi siempre es porque estás explotando una red preexistente, no porque hayas conquistado al mercado mexicano. Disfruta el aire, pero no confundas el tailwind con habilidad.</p>
+        <h2>Mes 2-3: La realidad operativa</h2>
+        <p>Llegan las primeras facturas reales. Descubres que el SAT te emitió un régimen distinto al que esperabas. Tu primer empleado renuncia o pide aumento. La operación bancaria que parecía simple se vuelve un infierno de PDFs y firmas. Tu contador te pide CFDIs de gastos que ya hiciste hace 45 días y que no documentaste.</p>
+        <p>Lo que funciona en este punto: empieza a documentar TODO. Cada gasto, cada contrato, cada acuerdo verbal. Si no está en escrito, no existe. Esto suena obvio pero el 70% de los fundadores extranjeros lo ignoran y lo pagan en el mes 8.</p>
+        <h2>Mes 4-6: La primera crisis</h2>
+        <p>Algo grande sale mal. Suele ser una de tres: (1) un cliente clave no paga, (2) un empleado clave se va a la competencia, (3) tu contador comete un error que descubres tarde y tienes que pagar multa al SAT. Casi siempre es lo (3) y casi siempre te enteras 2 meses después de que pasó.</p>
+        <p>Esta crisis es buena en realidad. Te obliga a profesionalizar la operación. Si la sobrevives bien, sales con sistemas: contratos firmados, procesos de cobranza, redundancia de proveedores. Si la sobrevives mal, sales con desconfianza generalizada hacia el mercado mexicano — y eso te impedirá crecer.</p>
+        <h2>Mes 7-9: La meseta</h2>
+        <p>Las ventas se estancan. Tu pipeline original — la red que trajiste de tu país — ya se agotó. Ahora tienes que vender en frío al mercado mexicano y descubres que tus tasas de conversión son 40% más bajas que en tu país de origen. La razón es cultural: el mexicano profesional toma 2-3 reuniones más antes de comprometerse. Tu ciclo de venta crece de 6 semanas a 14.</p>
+        <p>Lo que funciona en este punto: invierte en marketing local con socios locales. Patrocina eventos de la industria. Aparece en medios locales. Construir reputación en el mercado mexicano toma tiempo y no se compra con presupuesto extranjero — se gana con presencia.</p>
+        <h2>Mes 10-12: La consolidación o la decisión</h2>
+        <p>Para el mes 10 ya tienes datos reales. Sabes cuánto cuesta adquirir un cliente, cuánto vale en ingresos recurrentes, cuál es tu margen efectivo después de impuestos. Y ahí tomas la decisión: ¿escalo, mantengo, o cierro?</p>
+        <p>Las empresas que escalan en el mes 12 tienen tres cosas en común: <strong>contrataron localmente desde temprano</strong> (mínimo 50% de su equipo local para el mes 6), <strong>diversificaron clientes</strong> (ningún cliente representa más del 20% del ingreso), y <strong>tienen un socio operacional mexicano</strong> con piel en el juego.</p>
+        <p>Las que cierran en el mes 12 — más comunes de lo que la gente admite — usualmente intentaron operar a control remoto desde su país y nunca lograron desarrollar credibilidad local.</p>
+        <h2>Las 5 cosas que deberías hacer desde el día uno</h2>
+        <ol>
+        <li>Constituye con un notario que ya tenga experiencia con extranjeros.</li>
+        <li>Abre dos cuentas bancarias en paralelo (BBVA + Santander).</li>
+        <li>Contrata a tu primer empleado mexicano dentro de los primeros 60 días — no esperes a "estar listo".</li>
+        <li>Documenta cada acuerdo verbal por correo formal el mismo día.</li>
+        <li>Asume que tu ciclo de venta será 2x más largo que en tu país de origen. Presupuesta para eso.</li>
+        </ol>
+        <h2>La frase que vale más que todo el artículo</h2>
+        <p>Una de las fundadoras que mejor sobrevivió su año cero me lo resumió así: "El primer año en México no es para crecer. Es para no morir y aprender a vender en este país. El crecimiento empieza en el mes 13."</p>
+        <p>Si entras con esa expectativa, sobrevives bien. Si entras esperando crecer 30% mensual desde el principio, vas a tomar decisiones malas para forzar números que no van a llegar todavía.</p>`,
+        en:`<p>We've been welcoming foreign companies to Guadalajara for twelve years. Over 80 operations from landing to invoicing their first client. While each one is different, the first-year patterns are surprisingly consistent. Here's the map.</p>
+        <h2>Month 1: The euphoria</h2>
+        <p>You close the incorporation. You have your RFC. You inaugurate the office. You take photos for LinkedIn. You close your first client — usually someone you already knew from your home country and was waiting for this opening.</p>
+        <p>The question to ask yourself: am I adapting my sales model to the local market, or am I replicating what worked in my country? If you're going faster than expected in these first 30 days, it's almost always because you're exploiting a pre-existing network, not because you've conquered the Mexican market. Enjoy the air, but don't confuse tailwind with skill.</p>
+        <h2>Month 2-3: Operational reality</h2>
+        <p>The first real invoices arrive. You discover that SAT registered you with a different regime than you expected. Your first employee resigns or asks for a raise. The banking operation that seemed simple turns into a hell of PDFs and signatures. Your accountant asks you for CFDIs for expenses you made 45 days ago and didn't document.</p>
+        <p>What works at this point: start documenting EVERYTHING. Every expense, every contract, every verbal agreement. If it's not written, it doesn't exist. This sounds obvious but 70% of foreign founders ignore it and pay for it in month 8.</p>
+        <h2>Month 4-6: The first crisis</h2>
+        <p>Something big goes wrong. It's usually one of three: (1) a key client doesn't pay, (2) a key employee goes to the competition, (3) your accountant makes a mistake you discover late and have to pay a SAT fine. Almost always it's (3) and almost always you find out 2 months after it happened.</p>
+        <p>This crisis is actually good. It forces you to professionalize the operation. If you survive it well, you come out with systems: signed contracts, collection processes, supplier redundancy. If you survive it badly, you come out with generalized distrust of the Mexican market — and that will prevent you from growing.</p>
+        <h2>Month 7-9: The plateau</h2>
+        <p>Sales stagnate. Your original pipeline — the network you brought from your country — has been depleted. Now you have to cold-sell to the Mexican market and you discover your conversion rates are 40% lower than in your home country. The reason is cultural: the Mexican professional takes 2-3 more meetings before committing. Your sales cycle grows from 6 weeks to 14.</p>
+        <p>What works at this point: invest in local marketing with local partners. Sponsor industry events. Appear in local media. Building reputation in the Mexican market takes time and isn't bought with foreign budget — it's earned with presence.</p>
+        <h2>Month 10-12: Consolidation or decision</h2>
+        <p>By month 10 you have real data. You know how much it costs to acquire a client, how much they're worth in recurring revenue, what your effective margin is after taxes. And that's when you make the decision: do I scale, maintain, or close?</p>
+        <p>Companies that scale at month 12 have three things in common: <strong>they hired locally early</strong> (minimum 50% local team by month 6), <strong>they diversified clients</strong> (no client represents more than 20% of revenue), and <strong>they have a Mexican operational partner</strong> with skin in the game.</p>
+        <p>Those that close at month 12 — more common than people admit — usually tried to operate remote-controlled from their country and never developed local credibility.</p>
+        <h2>The 5 things you should do from day one</h2>
+        <ol>
+        <li>Incorporate with a notary who already has foreign-client experience.</li>
+        <li>Open two bank accounts in parallel (BBVA + Santander).</li>
+        <li>Hire your first Mexican employee within the first 60 days — don't wait to "be ready".</li>
+        <li>Document every verbal agreement by formal email the same day.</li>
+        <li>Assume your sales cycle will be 2x longer than in your home country. Budget for that.</li>
+        </ol>
+        <h2>The sentence that's worth more than the entire article</h2>
+        <p>One of the founders who best survived her year zero summed it up to me: "The first year in Mexico isn't for growing. It's for not dying and learning to sell in this country. Growth starts in month 13."</p>
+        <p>If you enter with that expectation, you survive well. If you enter expecting to grow 30% monthly from the start, you'll make bad decisions trying to force numbers that won't arrive yet.</p>`,
+        fr:`<p>Nous accueillons des entreprises étrangères à Guadalajara depuis douze ans. Plus de 80 opérations, de l'atterrissage à la première facturation client. Bien que chacune soit différente, les schémas de la première année sont étonnamment cohérents. Voici la carte.</p>
+        <h2>Mois 1 : L'euphorie</h2>
+        <p>Vous bouclez la constitution. Vous avez le RFC. Vous inaugurez le bureau. Vous prenez des photos pour LinkedIn. Vous fermez votre premier client — généralement quelqu'un que vous connaissiez déjà de votre pays et qui attendait cette ouverture.</p>
+        <p>La question à se poser : suis-je en train d'adapter mon modèle de vente au marché local, ou de répliquer ce qui marchait dans mon pays ? Si vous allez plus vite que prévu pendant ces 30 premiers jours, c'est presque toujours parce que vous exploitez un réseau préexistant, pas parce que vous avez conquis le marché mexicain. Profitez du vent arrière, mais ne le confondez pas avec une compétence.</p>
+        <h2>Mois 2-3 : La réalité opérationnelle</h2>
+        <p>Les premières vraies factures arrivent. Vous découvrez que le SAT vous a inscrit dans un régime différent de celui attendu. Votre premier employé démissionne ou demande une augmentation. L'opération bancaire qui semblait simple devient un enfer de PDF et de signatures. Votre comptable vous demande des CFDI pour des dépenses faites il y a 45 jours et non documentées.</p>
+        <p>Ce qui marche à ce stade : commencez à TOUT documenter. Chaque dépense, chaque contrat, chaque accord verbal. Ce qui n'est pas écrit n'existe pas. Cela paraît évident, mais 70 % des fondateurs étrangers l'ignorent et le paient au mois 8.</p>
+        <h2>Mois 4-6 : La première crise</h2>
+        <p>Quelque chose de grave tourne mal. C'est généralement l'une de trois choses : (1) un client clé ne paie pas, (2) un employé clé part chez le concurrent, (3) votre comptable fait une erreur que vous découvrez tard et il faut payer une amende SAT. C'est presque toujours (3) et vous l'apprenez généralement 2 mois après les faits.</p>
+        <p>Cette crise est en fait bonne. Elle vous oblige à professionnaliser l'opération. Si vous la traversez bien, vous en sortez avec des systèmes : contrats signés, processus de recouvrement, redondance fournisseurs. Si vous la traversez mal, vous en sortez avec une méfiance généralisée envers le marché mexicain — et ça vous empêchera de grandir.</p>
+        <h2>Mois 7-9 : Le plateau</h2>
+        <p>Les ventes stagnent. Votre pipeline initial — le réseau ramené de votre pays — est épuisé. Vous devez maintenant prospecter à froid sur le marché mexicain et vous découvrez que vos taux de conversion sont 40 % plus bas que dans votre pays d'origine. La raison est culturelle : le professionnel mexicain prend 2-3 réunions de plus avant de s'engager. Votre cycle de vente passe de 6 à 14 semaines.</p>
+        <p>Ce qui marche à ce stade : investir dans le marketing local avec des partenaires locaux. Sponsoriser des événements sectoriels. Apparaître dans les médias locaux. Construire une réputation sur le marché mexicain prend du temps et ne s'achète pas avec un budget étranger — ça se gagne avec de la présence.</p>
+        <h2>Mois 10-12 : La consolidation ou la décision</h2>
+        <p>Au mois 10 vous avez des données réelles. Vous savez combien coûte l'acquisition d'un client, combien il vaut en revenus récurrents, quel est votre marge effective après impôts. Et c'est là que vous prenez la décision : je passe à l'échelle, je maintiens ou je ferme ?</p>
+        <p>Les entreprises qui passent à l'échelle au mois 12 ont trois choses en commun : <strong>elles ont recruté localement tôt</strong> (minimum 50 % d'équipe locale au mois 6), <strong>elles ont diversifié leurs clients</strong> (aucun client ne pèse plus de 20 % du revenu), et <strong>elles ont un partenaire opérationnel mexicain</strong> avec peau en jeu.</p>
+        <p>Celles qui ferment au mois 12 — plus fréquent que ce qu'on admet — ont généralement essayé d'opérer en contrôle à distance depuis leur pays et n'ont jamais développé de crédibilité locale.</p>
+        <h2>Les 5 choses à faire dès le premier jour</h2>
+        <ol>
+        <li>Constituez avec un notaire qui a déjà de l'expérience avec des étrangers.</li>
+        <li>Ouvrez deux comptes bancaires en parallèle (BBVA + Santander).</li>
+        <li>Recrutez votre premier employé mexicain dans les 60 premiers jours — n'attendez pas d'être « prêt ».</li>
+        <li>Documentez chaque accord verbal par email formel le jour même.</li>
+        <li>Supposez que votre cycle de vente sera 2x plus long que dans votre pays. Budgétez pour cela.</li>
+        </ol>
+        <h2>La phrase qui vaut plus que tout l'article</h2>
+        <p>L'une des fondatrices qui ont le mieux survécu à leur année zéro me l'a résumé ainsi : « La première année au Mexique n'est pas pour grandir. C'est pour ne pas mourir et apprendre à vendre dans ce pays. La croissance commence au mois 13. »</p>
+        <p>Si vous entrez avec cette attente, vous survivez bien. Si vous entrez en espérant grandir de 30 % par mois dès le début, vous prendrez de mauvaises décisions pour forcer des chiffres qui n'arriveront pas encore.</p>`
+      }
+    },
+    {
+      slug:"socio-mexicano-local",
+      date:"2026-06-07",
+      readMin:6,
+      hero:"/media/photos-lg/img_0185.jpg",
+      title:{
+        es:"Por qué tu empresa internacional necesita un socio mexicano local — y cómo no equivocarte al elegirlo",
+        en:"Why your international company needs a local Mexican partner — and how not to pick the wrong one",
+        fr:"Pourquoi votre entreprise internationale a besoin d'un partenaire mexicain local — et comment ne pas vous tromper"
+      },
+      excerpt:{
+        es:"Llegar a México sin un mexicano serio del lado tuyo es como navegar la CDMX sin GPS y sin español. Lo intentas, sobrevives unas cuadras, te pierdes.",
+        en:"Arriving in Mexico without a serious Mexican on your side is like navigating Mexico City without GPS and without Spanish. You'll try, survive a few blocks, get lost.",
+        fr:"Arriver au Mexique sans un Mexicain sérieux à vos côtés, c'est comme naviguer Mexico sans GPS et sans espagnol. Vous essayez, survivez quelques rues, vous vous perdez."
+      },
+      content:{
+        es:`<p>La pregunta no es si necesitas un socio mexicano. La pregunta es: ¿qué tipo, en qué momento, con qué grado de involucramiento?</p>
+        <h2>Tres formas en que las empresas extranjeras pierden tiempo</h2>
+        <p><strong>Forma 1:</strong> Llegan solas y aprenden sobre la marcha. "El mercado mexicano no es tan diferente." Lo es. Y los seis a doce meses que tardas en darte cuenta cuestan más que cualquier socio local que hubieras contratado el día uno.</p>
+        <p><strong>Forma 2:</strong> Contratan a un consultor externo que cobra por hora. El consultor da consejos correctos pero no tiene piel en el juego. Cuando llegan los problemas operacionales reales — un cliente que no paga, un trámite del SAT que sale mal, un proveedor que entrega tarde — el consultor te factura por escribir un email. No te resuelve.</p>
+        <p><strong>Forma 3:</strong> Encuentran un "socio" mexicano que en realidad solo presta su nombre o su RFC. Suena conveniente en la junta inicial. Termina mal cuando ese socio decide que ahora él manda, o cuando el SAT te audita y descubres que él metió otros negocios bajo tu razón social.</p>
+        <h2>Lo que sí funciona: el socio operativo verdadero</h2>
+        <p>El socio que vale la pena tiene cuatro características:</p>
+        <ol>
+        <li><strong>Conoce el mercado de tu ciudad específica.</strong> No "México." Guadalajara. Monterrey. Puebla. Cada una opera distinto. Si tu socio te dice "trabajo en todo México," lo más probable es que no trabaje bien en ninguna parte.</li>
+        <li><strong>Tiene una red propia que te abre puertas.</strong> No solo te recomienda contactos — los llama. La diferencia entre "te mando el contacto de Pedro" y "Pedro, te voy a presentar a alguien que tienes que conocer" es la diferencia entre dos meses de gestión y dos semanas.</li>
+        <li><strong>Tiene exposición legal o financiera en el resultado.</strong> Si tu socio no firma nada, no garantiza nada, no aporta capital propio, ¿qué pierde si tu operación fracasa? Nada. Y eso se nota desde la primera semana.</li>
+        <li><strong>Te corrige cuando te equivocas.</strong> Sin pena, sin filtros, sin endulzar. Un socio que solo te dice "sí, perfecto" a todo lo que propones, no te está ayudando — te está cobrando para validarte.</li>
+        </ol>
+        <h2>El error de timing</h2>
+        <p>Mucha gente busca un socio mexicano después de que ya cerró un cliente, ya constituyó la empresa, ya contrató al primer empleado. Para ese punto el socio entra a operar sobre decisiones ya tomadas — y suele ser tarde para arreglar las que estaban mal.</p>
+        <p>El momento correcto es <em>antes</em> de tomar las primeras tres decisiones estructurales: dónde constituyes, quién es el representante legal, cuál es tu domicilio fiscal. Esas tres decisiones definen los siguientes cinco años de tu operación. No las tomes sin alguien que sepa el contexto local.</p>
+        <h2>Lo que ofrece Linbix en este punto</h2>
+        <p>No vamos a fingir que somos un sustituto de un socio operativo permanente — porque no lo somos. Lo que sí hacemos es ser el puente: te conectamos con notarios, contadores, abogados y operadores locales que sí pueden ser ese socio para ti, dependiendo de tu industria y tu plan de crecimiento.</p>
+        <p>Y mientras eso pasa, te damos un domicilio fiscal real, espacio físico para reuniones, atención en tu idioma, y la red completa de servicios profesionales que necesita una empresa internacional para no perder seis meses construyendo lo que ya existe.</p>
+        <p>Si vas a entrar a México, hazlo con alguien del lado tuyo. Si no eres tú quien lo encuentra, te ayudamos.</p>`,
+        en:`<p>The question isn't whether you need a Mexican partner. The question is: what kind, at what point, with what level of involvement?</p>
+        <h2>Three ways foreign companies lose time</h2>
+        <p><strong>Way 1:</strong> They arrive alone and learn on the fly. "The Mexican market isn't that different." It is. And the six to twelve months it takes you to realize that costs more than any local partner you would have hired on day one.</p>
+        <p><strong>Way 2:</strong> They hire an external consultant who charges by the hour. The consultant gives correct advice but has no skin in the game. When the real operational problems arrive — a client who doesn't pay, a SAT procedure that goes wrong, a supplier who delivers late — the consultant bills you for writing an email. They don't solve it for you.</p>
+        <p><strong>Way 3:</strong> They find a Mexican "partner" who is actually just lending their name or RFC. It sounds convenient in the initial meeting. It ends badly when that partner decides they're now in charge, or when SAT audits you and you discover they put other businesses under your tax ID.</p>
+        <h2>What does work: the true operational partner</h2>
+        <p>The partner worth having has four characteristics:</p>
+        <ol>
+        <li><strong>They know your specific city's market.</strong> Not "Mexico." Guadalajara. Monterrey. Puebla. Each one operates differently. If your partner tells you "I work all over Mexico," they probably don't work well anywhere.</li>
+        <li><strong>They have their own network that opens doors for you.</strong> They don't just recommend contacts — they call them. The difference between "I'll send you Pedro's contact info" and "Pedro, I'm going to introduce you to someone you need to meet" is the difference between two months of follow-up and two weeks.</li>
+        <li><strong>They have legal or financial exposure to the outcome.</strong> If your partner doesn't sign anything, doesn't guarantee anything, doesn't contribute their own capital, what do they lose if your operation fails? Nothing. And that shows from the first week.</li>
+        <li><strong>They correct you when you're wrong.</strong> Without shame, without filters, without sugarcoating. A partner who only says "yes, perfect" to everything you propose isn't helping you — they're charging you to validate you.</li>
+        </ol>
+        <h2>The timing mistake</h2>
+        <p>Many people look for a Mexican partner after they've already closed a client, already incorporated the company, already hired the first employee. By then the partner walks into decisions already made — and it's usually too late to fix the ones that were wrong.</p>
+        <p>The right moment is <em>before</em> making the first three structural decisions: where you incorporate, who is the legal representative, what is your fiscal address. Those three decisions define the next five years of your operation. Don't make them without someone who knows the local context.</p>
+        <h2>What Linbix offers here</h2>
+        <p>We won't pretend we're a substitute for a permanent operational partner — because we're not. What we do is be the bridge: we connect you with notaries, accountants, attorneys, and local operators who can be that partner for you, depending on your industry and growth plan.</p>
+        <p>And while that happens, we give you a real fiscal address, physical meeting space, support in your language, and the full network of professional services an international company needs to avoid losing six months building what already exists.</p>
+        <p>If you're going to enter Mexico, do it with someone on your side. If you're not the one who finds them, we help.</p>`,
+        fr:`<p>La question n'est pas de savoir si vous avez besoin d'un partenaire mexicain. La question est : quel type, à quel moment, avec quel niveau d'engagement ?</p>
+        <h2>Trois façons dont les entreprises étrangères perdent du temps</h2>
+        <p><strong>Façon 1 :</strong> Elles arrivent seules et apprennent en chemin. « Le marché mexicain n'est pas si différent. » Il l'est. Et les six à douze mois qu'il vous faut pour vous en apercevoir coûtent plus cher que n'importe quel partenaire local que vous auriez recruté dès le premier jour.</p>
+        <p><strong>Façon 2 :</strong> Elles engagent un consultant externe facturé à l'heure. Le consultant donne des conseils corrects mais n'a pas de peau en jeu. Quand arrivent les vrais problèmes opérationnels — un client qui ne paie pas, une démarche au SAT qui foire, un fournisseur en retard — le consultant vous facture pour écrire un email. Il ne résout pas.</p>
+        <p><strong>Façon 3 :</strong> Elles trouvent un « partenaire » mexicain qui ne fait en réalité que prêter son nom ou son RFC. Ça paraît pratique lors de la première réunion. Ça finit mal quand ce partenaire décide qu'il commande, ou quand le SAT vous contrôle et vous découvrez qu'il a mis d'autres entreprises sous votre raison sociale.</p>
+        <h2>Ce qui marche : le vrai partenaire opérationnel</h2>
+        <p>Le partenaire qui vaut le coup a quatre caractéristiques :</p>
+        <ol>
+        <li><strong>Il connaît le marché de votre ville précise.</strong> Pas « le Mexique. » Guadalajara. Monterrey. Puebla. Chacune opère différemment. Si votre partenaire vous dit « je travaille partout au Mexique, » il ne travaille probablement bien nulle part.</li>
+        <li><strong>Il a son propre réseau qui vous ouvre des portes.</strong> Il ne se contente pas de recommander des contacts — il les appelle. La différence entre « je vous envoie le contact de Pedro » et « Pedro, je vais te présenter quelqu'un que tu dois rencontrer » est la différence entre deux mois de relance et deux semaines.</li>
+        <li><strong>Il a une exposition juridique ou financière au résultat.</strong> Si votre partenaire ne signe rien, ne garantit rien, n'apporte pas de capital propre, que perd-il si votre opération échoue ? Rien. Et ça se voit dès la première semaine.</li>
+        <li><strong>Il vous corrige quand vous vous trompez.</strong> Sans gêne, sans filtre, sans édulcorer. Un partenaire qui dit seulement « oui, parfait » à tout ce que vous proposez ne vous aide pas — il vous facture pour vous valider.</li>
+        </ol>
+        <h2>L'erreur de timing</h2>
+        <p>Beaucoup cherchent un partenaire mexicain après avoir déjà fermé un client, déjà constitué l'entreprise, déjà recruté le premier employé. À ce stade, le partenaire arrive sur des décisions déjà prises — et il est souvent trop tard pour corriger celles qui étaient mauvaises.</p>
+        <p>Le bon moment, c'est <em>avant</em> de prendre les trois premières décisions structurelles : où vous constituez, qui est le représentant légal, quelle est votre domiciliation fiscale. Ces trois décisions définissent les cinq années suivantes de votre opération. Ne les prenez pas sans quelqu'un qui connaît le contexte local.</p>
+        <h2>Ce que propose Linbix à ce stade</h2>
+        <p>Nous ne prétendons pas être un substitut à un partenaire opérationnel permanent — parce que nous ne le sommes pas. Ce que nous faisons, c'est être le pont : nous vous mettons en relation avec des notaires, comptables, avocats et opérateurs locaux qui peuvent être ce partenaire pour vous, selon votre secteur et votre plan de croissance.</p>
+        <p>Et pendant ce temps, nous vous offrons une vraie domiciliation fiscale, un espace physique pour vos réunions, un accueil dans votre langue, et tout le réseau de services professionnels dont une entreprise internationale a besoin pour ne pas perdre six mois à construire ce qui existe déjà.</p>
+        <p>Si vous allez entrer au Mexique, faites-le avec quelqu'un de votre côté. Si ce n'est pas vous qui le trouvez, nous vous aidons.</p>`
+      }
+    },
+  ],
+
   /* ---- VIVE LINBIX — luxury media wall (auto-scrolling showcase) ---- */
   mediaWall:{
     eyebrow:{es:"Vive Linbix", en:"Live Linbix", fr:"Vivez Linbix"},
@@ -3296,6 +4237,8 @@ const PAGE_META = {
   events:      { titleKey: "events",      descKey: "events",      path: "/events" },
   community:   { titleKey: "community",   descKey: "community",   path: "/community" },
   comparison:  { titleKey: "comparison",  descKey: "comparison",  path: "/comparison" },
+  account:     { titleKey: "account",     descKey: "account",     path: "/account" },
+  blog:        { titleKey: "blog",        descKey: "blog",        path: "/blog" },
   partners:    { titleKey: "partners",    descKey: "partners",    path: "/partners" },
   faq:         { titleKey: "faq",         descKey: "faq",         path: "/faq" },
   contact:     { titleKey: "contact",     descKey: "contact",     path: "/contact" },
@@ -3359,6 +4302,22 @@ const SEO_STRINGS = {
             en:"Honest comparison of Linbix vs WeWork Guadalajara: prices, services, languages, community. We tell you when to choose each — no spin.",
             fr:"Comparaison honnête de Linbix vs WeWork Guadalajara : prix, services, langues, communauté. Nous vous disons quand choisir lequel — sans détour."},
   },
+  account: {
+    title: {es:"Mi cuenta · Gestionar suscripción · Linbix",
+            en:"My account · Manage subscription · Linbix",
+            fr:"Mon compte · Gérer mon abonnement · Linbix"},
+    desc:  {es:"Gestiona tu suscripción Linbix: actualiza tu tarjeta, descarga facturas o cancela. Portal seguro Stripe.",
+            en:"Manage your Linbix subscription: update your card, download invoices, or cancel. Secure Stripe portal.",
+            fr:"Gérez votre abonnement Linbix : mettez à jour votre carte, téléchargez vos factures ou annulez. Portail Stripe sécurisé."},
+  },
+  blog: {
+    title: {es:"Blog · Hacer negocios en México como ejecutivo extranjero · Linbix",
+            en:"Blog · Doing business in Mexico as a foreign executive · Linbix",
+            fr:"Blog · Faire des affaires au Mexique en tant que dirigeant étranger · Linbix"},
+    desc:  {es:"Lecciones reales para emprendedores extranjeros y empresas que entran al mercado mexicano. Sin teoría — lo que funciona en Guadalajara y México.",
+            en:"Real lessons for foreign founders and companies entering the Mexican market. No theory — what works in Guadalajara and Mexico.",
+            fr:"Leçons concrètes pour fondateurs étrangers et entreprises entrant au marché mexicain. Pas de théorie — ce qui marche à Guadalajara et au Mexique."},
+  },
   partners: {
     title: {es:"Socios Estratégicos · TechFides · Linbix Guadalajara",
             en:"Strategic Partners · TechFides · Linbix Guadalajara",
@@ -3390,6 +4349,33 @@ const SEO_STRINGS = {
 };
 
 function updateSeoMeta(page){
+  // Per-post SEO for blog posts: use the post's own title + excerpt
+  if(page && page.startsWith("blog:")){
+    const slug = page.slice(5);
+    const post = T.blogPosts && T.blogPosts.find(p => p.slug === slug);
+    if(post){
+      const tt = tr(post.title) + " · Linbix";
+      const dd = tr(post.excerpt);
+      document.title = tt;
+      const setMeta = (sel, val) => {
+        let el = document.querySelector(sel);
+        if(!el){ el = document.createElement("meta"); const m = sel.match(/\[(name|property)="([^"]+)"\]/); if(m){ el.setAttribute(m[1], m[2]); document.head.appendChild(el); } }
+        if(el) el.setAttribute("content", val);
+      };
+      setMeta('meta[name="description"]', dd);
+      setMeta('meta[property="og:title"]', tt);
+      setMeta('meta[property="og:description"]', dd);
+      setMeta('meta[name="twitter:title"]', tt);
+      setMeta('meta[name="twitter:description"]', dd);
+      setMeta('meta[property="og:image"]', "https://www.linbix.com" + post.hero);
+      let canon = document.querySelector('link[rel="canonical"]');
+      if(!canon){ canon = document.createElement("link"); canon.setAttribute("rel","canonical"); document.head.appendChild(canon); }
+      const path = "/blog/" + post.slug;
+      canon.setAttribute("href", "https://www.linbix.com" + path);
+      setMeta('meta[property="og:url"]', "https://www.linbix.com" + path);
+      return;
+    }
+  }
   const key = page && page.startsWith("svc:") ? "services" : (PAGE_META[page] ? page : "home");
   const s = SEO_STRINGS[key];
   if(!s) return;
@@ -3425,7 +4411,11 @@ function go(page){
   document.querySelectorAll(".menu>a").forEach(a=>a.classList.toggle("active", a.dataset.page===page));
   updateSeoMeta(page);
   // Update browser URL without reloading (SPA routing)
-  const path = PAGE_META[page] ? PAGE_META[page].path : (page && page.startsWith("svc:") ? "/services" : "/");
+  const path = PAGE_META[page]
+    ? PAGE_META[page].path
+    : (page && page.startsWith("svc:") ? "/services"
+    : (page && page.startsWith("blog:") ? "/blog/" + page.slice(5)
+    : "/"));
   if(typeof history !== "undefined" && history.replaceState){
     try { history.replaceState({page}, "", path); } catch(e){}
   }
@@ -3434,10 +4424,14 @@ function go(page){
 /* Initial route from URL — so /events refreshes load events page directly */
 function initialRouteFromUrl(){
   const p = location.pathname.replace(/\/+$/,"") || "/";
+  // /blog/[slug] → blog:[slug]
+  const blogMatch = p.match(/^\/blog\/([a-z0-9-]+)$/);
+  if(blogMatch) return "blog:" + blogMatch[1];
   const map = {
     "/": "home", "/home": "home",
     "/about":"about","/services":"services","/dobiz":"dobiz",
     "/events":"events","/community":"community","/comparison":"comparison","/partners":"partners","/faq":"faq",
+    "/account":"account","/blog":"blog",
     "/checkout/success":"checkout/success","/checkout/cancel":"checkout/cancel",
     "/contact":"contact","/automation":"automation",
   };
@@ -3459,6 +4453,7 @@ function renderChrome(){
     <a data-page="community" onclick="go('community')">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
     <a data-page="partners" onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
+    <a data-page="blog" onclick="go('blog')">${tr(T.blog.eyebrow)}</a>
     <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
   `;
   // mobile menu — enterprise drawer pattern
@@ -3542,7 +4537,8 @@ function toggleMmGroup(btn){
 function render(){
   const app = $("#app");
   if(CURRENT.startsWith("svc:")){ app.innerHTML = pageService(CURRENT.slice(4)); afterRender(); return; }
-  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, community:pageCommunity, comparison:pageComparison, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ, "checkout/success":pageCheckoutSuccess, "checkout/cancel":pageCheckoutCancel};
+  if(CURRENT.startsWith("blog:")){ app.innerHTML = pageBlogPost(CURRENT.slice(5)); afterRender(); return; }
+  const map = {home:pageHome, about:pageAbout, dobiz:pageDobiz, events:pageEvents, community:pageCommunity, comparison:pageComparison, contact:pageContact, automation:pageAutomation, partners:pagePartners, faq:pageFAQ, account:pageAccount, blog:pageBlog, "checkout/success":pageCheckoutSuccess, "checkout/cancel":pageCheckoutCancel};
   app.innerHTML = (map[CURRENT]||pageHome)();
   afterRender();
 }
@@ -4529,6 +5525,200 @@ async function buyNow(sku, opts){
   if(btn){ btn.disabled = false; btn.textContent = originalText; }
 }
 
+/* ============================================================
+   /blog — listing + post detail
+   ============================================================ */
+function fmtBlogDate(iso){
+  const d = new Date(iso);
+  const locale = LANG==="fr"?"fr-FR":LANG==="en"?"en-US":"es-MX";
+  return d.toLocaleDateString(locale, { year:"numeric", month:"long", day:"numeric" });
+}
+
+// Only show posts whose publish date has arrived (in Mexico City time).
+// Future-dated posts stay hidden until the next build runs after their date.
+function publishedPosts(){
+  const now = Date.now();
+  return (T.blogPosts || [])
+    .filter(p => new Date(p.date).getTime() <= now)
+    .sort((a, b) => new Date(b.date) - new Date(a.date)); // newest first
+}
+
+function pageBlog(){
+  const b = T.blog;
+  const posts = publishedPosts();
+  return `
+  <div class="page active">
+    <section class="blog-hero">
+      <div class="wrap">
+        <div class="eyebrow center" style="color:var(--gold-2)">${tr(b.eyebrow)}</div>
+        <h1 class="blog-h1">${tr(b.h1)}</h1>
+        <p class="blog-lead">${tr(b.p)}</p>
+      </div>
+    </section>
+    <section class="blk">
+      <div class="wrap">
+        <div class="blog-grid reveal">
+          ${posts.map((p,i) => `
+            <article class="blog-card ${i===0?'blog-card-feat':''}" onclick="go('blog:${p.slug}')">
+              <div class="blog-card-img lux-frame" style="background-image:url('${p.hero}')"></div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span>${fmtBlogDate(p.date)}</span>
+                  <span class="blog-card-dot">·</span>
+                  <span>${p.readMin} ${tr(b.readMin)}</span>
+                </div>
+                <h2 class="blog-card-title">${tr(p.title)}</h2>
+                <p class="blog-card-excerpt">${tr(p.excerpt)}</p>
+                <span class="blog-card-cta">${({es:"Leer →",en:"Read →",fr:"Lire →"}[LANG])}</span>
+              </div>
+            </article>`).join("")}
+        </div>
+      </div>
+    </section>
+    ${blockContactStrip()}
+  </div>`;
+}
+
+function pageBlogPost(slug){
+  const b = T.blog;
+  // Don't render scheduled posts before their date arrives — even if someone
+  // visits the URL directly. Future-dated posts return to the listing.
+  const post = T.blogPosts.find(p => p.slug === slug);
+  if(!post) return pageBlog();
+  if(new Date(post.date).getTime() > Date.now()) return pageBlog();
+  const published = publishedPosts();
+  const idx = published.findIndex(p => p.slug === slug);
+  const others = published.filter((_, i) => i !== idx).slice(0, 2);
+  return `
+  <div class="page active">
+    <article class="post">
+      <div class="post-hero" style="background-image:url('${post.hero}')">
+        <div class="post-hero-inner">
+          <a class="post-back" onclick="go('blog')">← ${tr(b.backToBlog)}</a>
+          <div class="post-meta">
+            <span>${fmtBlogDate(post.date)}</span>
+            <span class="post-meta-dot">·</span>
+            <span>${post.readMin} ${tr(b.readMin)}</span>
+          </div>
+          <h1 class="post-title">${tr(post.title)}</h1>
+        </div>
+      </div>
+      <div class="wrap post-body">
+        ${tr(post.content)}
+      </div>
+      <div class="wrap post-share">
+        <h3>${tr(b.sharedH)}</h3>
+        <div class="post-share-row">
+          <a class="post-share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(tr(post.title))}&url=${encodeURIComponent("https://www.linbix.com/blog/"+post.slug)}" target="_blank" rel="noopener">X / Twitter</a>
+          <a class="post-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://www.linbix.com/blog/"+post.slug)}" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="post-share-btn" href="https://wa.me/?text=${encodeURIComponent(tr(post.title)+" https://www.linbix.com/blog/"+post.slug)}" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </article>
+    <section class="blk alt">
+      <div class="wrap">
+        <h2 class="post-next-h">${tr(b.nextH)}</h2>
+        <div class="blog-grid reveal">
+          ${others.map(p => `
+            <article class="blog-card" onclick="go('blog:${p.slug}')">
+              <div class="blog-card-img lux-frame" style="background-image:url('${p.hero}')"></div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta"><span>${fmtBlogDate(p.date)}</span><span class="blog-card-dot">·</span><span>${p.readMin} ${tr(b.readMin)}</span></div>
+                <h3 class="blog-card-title">${tr(p.title)}</h3>
+                <p class="blog-card-excerpt">${tr(p.excerpt)}</p>
+              </div>
+            </article>`).join("")}
+        </div>
+      </div>
+    </section>
+    <section class="blk dark">
+      <div class="wrap" style="text-align:center;max-width:680px">
+        <div class="eyebrow center" style="color:var(--gold-2)">${({es:"Hablemos",en:"Let's talk",fr:"Discutons"}[LANG])}</div>
+        <h2 style="color:#fff;font-size:clamp(26px,3.2vw,38px);margin:14px 0">${tr(b.talkH)}</h2>
+        <p style="color:rgba(255,255,255,.78);font-size:17px">${tr(b.talkP)}</p>
+        <button class="btn btn-gold" onclick="go('dobiz')" style="margin-top:20px">${tr(b.talkCTA)} →</button>
+      </div>
+    </section>
+  </div>`;
+}
+
+/* ============================================================
+   /account — Customer self-serve portal entry
+   Email lookup → Stripe Customer Portal redirect
+   ============================================================ */
+function pageAccount(){
+  const back = new URLSearchParams(location.search).get("status") === "back";
+  const STR = {
+    eyebrow:{es:"Mi cuenta", en:"My account", fr:"Mon compte"},
+    h1:{es:"Gestiona tu suscripción.", en:"Manage your subscription.", fr:"Gérez votre abonnement."},
+    p:{es:"Escribe el email que usaste para comprar. Te llevamos a la página segura de Stripe donde puedes cambiar tu tarjeta, ver tus facturas o cancelar — sin pasar por nosotros.",
+       en:"Enter the email you used at checkout. We redirect you to Stripe's secure portal where you can change your card, view invoices, or cancel — no need to go through us.",
+       fr:"Entrez l'email utilisé lors du paiement. Nous vous redirigeons vers le portail sécurisé de Stripe où vous pouvez changer votre carte, voir vos factures ou annuler — sans passer par nous."},
+    backH:{es:"¡Volviste!", en:"You're back!", fr:"Vous voilà de retour !"},
+    backP:{es:"Si hiciste cambios en el portal, ya están aplicados. Si necesitas algo más, escríbenos.",
+           en:"If you made changes in the portal, they're already applied. If you need anything else, reach out.",
+           fr:"Si vous avez fait des modifications dans le portail, elles sont déjà appliquées. Pour autre chose, contactez-nous."},
+    emailLabel:{es:"Tu correo electrónico", en:"Your email", fr:"Votre email"},
+    submit:{es:"Acceder al portal", en:"Open portal", fr:"Ouvrir le portail"},
+    secure:{es:"Sesión segura administrada por Stripe", en:"Secure session managed by Stripe", fr:"Session sécurisée gérée par Stripe"},
+    noSub:{es:"¿No tienes suscripción todavía?", en:"No subscription yet?", fr:"Pas encore d'abonnement ?"},
+    explore:{es:"Ver planes", en:"See plans", fr:"Voir les forfaits"},
+  };
+  return `
+  <div class="page active">
+    <div class="account-wrap">
+      ${back ? `
+        <div class="account-back">
+          <div class="account-back-ic">✓</div>
+          <h3>${tr(STR.backH)}</h3>
+          <p>${tr(STR.backP)}</p>
+        </div>` : ""}
+      <div class="account-card">
+        <div class="eyebrow center" style="color:var(--gold-2)">${tr(STR.eyebrow)}</div>
+        <h1 class="account-h1">${tr(STR.h1)}</h1>
+        <p class="account-lead">${tr(STR.p)}</p>
+        <form class="account-form" onsubmit="openCustomerPortal(event)">
+          <label for="account-email">${tr(STR.emailLabel)}</label>
+          <input id="account-email" name="email" type="email" required placeholder="tu@empresa.com" />
+          <button type="submit" class="account-submit">${tr(STR.submit)} →</button>
+          <div class="account-err" id="accountErr"></div>
+          <div class="account-secure">🔒 ${tr(STR.secure)}</div>
+        </form>
+        <div class="account-foot">
+          <span class="account-foot-l">${tr(STR.noSub)}</span>
+          <a class="account-foot-cta" onclick="go('svc:membresia')">${tr(STR.explore)} →</a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function openCustomerPortal(ev){
+  ev.preventDefault();
+  const f = ev.target;
+  const email = f.email.value.trim();
+  const btn = f.querySelector("button[type=submit]");
+  const errEl = document.getElementById("accountErr");
+  if(errEl) errEl.textContent = "";
+  if(btn){ btn.disabled = true; btn.textContent = ({es:"Buscando…",en:"Looking up…",fr:"Recherche…"}[LANG]); }
+  try{
+    const r = await fetch("/api/portal", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ email }),
+    });
+    const j = await r.json().catch(()=>({}));
+    if(r.ok && j.url){
+      window.location.href = j.url;
+      return;
+    }
+    if(errEl) errEl.textContent = j.error || ({es:"No se pudo abrir el portal.",en:"Could not open the portal.",fr:"Impossible d'ouvrir le portail."}[LANG]);
+  }catch(err){
+    if(errEl) errEl.textContent = err.message || "Network error";
+  }
+  if(btn){ btn.disabled = false; btn.textContent = ({es:"Acceder al portal",en:"Open portal",fr:"Ouvrir le portail"}[LANG]) + " →"; }
+}
+
 function pageCheckoutSuccess(){
   const sid = new URLSearchParams(location.search).get("sid") || "";
   const sku = new URLSearchParams(location.search).get("sku") || "";
@@ -4544,6 +5734,10 @@ function pageCheckoutSuccess(){
       <div class="cta-row" style="justify-content:center;margin-top:28px">
         <button class="btn btn-gold" onclick="go('home')">${({es:"Volver al inicio",en:"Back to home",fr:"Retour à l'accueil"}[LANG])} →</button>
         <button class="btn btn-ghost" onclick="go('community')">${({es:"Ver la comunidad",en:"See the community",fr:"Voir la communauté"}[LANG])}</button>
+      </div>
+      <div class="checkout-manage">
+        <span>${({es:"Más tarde, gestiona tu suscripción en",en:"Later, manage your subscription at",fr:"Plus tard, gérez votre abonnement sur"}[LANG])}</span>
+        <a onclick="go('account')">linbix.com/account →</a>
       </div>
     </div>
   </div>`;

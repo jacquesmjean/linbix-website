@@ -1,5 +1,11 @@
 {
   "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/cron-publish",
+      "schedule": "0 16 * * 1"
+    }
+  ],
   "rewrites": [
     { "source": "/((?!api|media|robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.ico).*)", "destination": "/index.html" }
   ],
