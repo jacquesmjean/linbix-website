@@ -237,17 +237,130 @@ header{position:sticky;top:0;z-index:100;background:rgba(26,19,13,.90);backdrop-
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:18px}
 .brand{display:flex;align-items:center;cursor:pointer}
 .brand img{height:34px;width:auto;display:block}
-.menu{display:flex;align-items:center;gap:4px}
-.menu>a,.dropdown>button{font-family:var(--sans);font-size:14px;font-weight:600;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:8px;border:none;background:none;cursor:pointer;transition:.15s}
-.menu>a:hover,.dropdown>button:hover{background:rgba(255,255,255,.08);color:var(--gold-2)}
-.menu>a.active{color:var(--gold-2)}
+/* ============================================================
+   HEADER NAV — refined minimalism
+   5 items + CTA. Typographic, generous, restrained.
+   Active state: gold underline (no chrome).
+   ============================================================ */
+.menu{display:flex;align-items:center;gap:6px}
+.menu>a,.dropdown>button{
+  position:relative;
+  font-family:var(--sans);
+  font-size:13.5px; font-weight:500;
+  letter-spacing:.01em;
+  color:rgba(255,255,255,.78);
+  padding:10px 14px;
+  border:none; background:transparent; cursor:pointer;
+  transition: color .18s ease;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.menu>a::after,
+.dropdown>button::after{
+  content:"";
+  position:absolute;
+  left:14px; right:14px; bottom:5px;
+  height:1px;
+  background:var(--gold-2);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition: transform .26s cubic-bezier(.16,1,.3,1);
+}
+.menu>a:hover,
+.dropdown>button:hover{ color:#fff; }
+.menu>a:hover::after,
+.dropdown>button:hover::after,
+.menu>a.active::after,
+.dropdown>button[data-page].active-section::after{
+  transform:scaleX(1);
+}
+.menu>a.active{ color:var(--gold-2); }
+.dropdown>button .chev{
+  font-size:9px; opacity:.6;
+  transition: transform .2s ease;
+}
+.dropdown:hover>button .chev{ transform:rotate(180deg); opacity:1; }
+
+/* Primary CTA button — single source of action in the nav */
+.menu .nav-cta{
+  margin-left:14px;
+  padding:11px 22px;
+  background:linear-gradient(135deg, var(--gold-2), var(--gold));
+  color:#1a1208;
+  font-family:var(--sans);
+  font-size:13.5px; font-weight:700;
+  letter-spacing:.02em;
+  border:none; border-radius:999px;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(246,134,59,.32);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.menu .nav-cta::after{ display:none; }
+.menu .nav-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 28px rgba(246,134,59,.42);
+}
+.menu .nav-cta:active{ transform:translateY(0); }
+
+/* Dropdown shell — restrained, premium card */
 .dropdown{position:relative}
-.dropdown-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:248px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:.16s}
-.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:500;transition:.13s;color:var(--ink)}
-.dropdown-menu a:hover{background:var(--paper-2)}
-.dropdown-menu a .di{font-size:16px;width:20px;text-align:center}
-.dropdown-menu a small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.dropdown-menu{
+  position:absolute; top:calc(100% + 14px); left:0;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:14px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 24px 60px -20px rgba(0,0,0,.35),
+    0 8px 22px -10px rgba(0,0,0,.18);
+  min-width:280px;
+  padding:8px;
+  opacity:0; visibility:hidden;
+  transform:translateY(-8px) scale(.98);
+  transform-origin: top left;
+  transition: opacity .22s ease, transform .22s cubic-bezier(.16,1,.3,1), visibility .22s;
+}
+.dropdown:hover .dropdown-menu{
+  opacity:1; visibility:visible;
+  transform:translateY(0) scale(1);
+}
+.dropdown-menu a{
+  display:flex; align-items:center; gap:12px;
+  padding:11px 14px;
+  border-radius:9px;
+  font-size:14px; font-weight:500;
+  color:var(--ink);
+  transition: background .15s ease, color .15s ease;
+  position:relative;
+}
+.dropdown-menu a:hover{ background:#faf8f4; color:var(--gold); }
+.dropdown-menu a .di{
+  font-size:15px; width:22px; text-align:center;
+  opacity:.7;
+}
+.dropdown-menu a small{
+  display:block;
+  color:var(--muted); font-size:11.5px; font-weight:400;
+  margin-top:2px; letter-spacing:.01em;
+}
+
+/* Recursos dropdown — text-only list, no icons, tighter */
+.dropdown-menu-rec{ min-width:260px; padding:10px 8px; }
+.dropdown-menu-rec a{ padding:10px 14px; gap:0; }
+.dropdown-menu-rec a .rec-h{
+  font-family:var(--sans);
+  font-size:13.5px; font-weight:600;
+  color:var(--ink);
+  letter-spacing:.005em;
+  line-height:1.4;
+  position:relative; padding-left:14px;
+}
+.dropdown-menu-rec a .rec-h::before{
+  content:""; position:absolute; left:0; top:50%;
+  width:5px; height:1px; background:var(--gold-2);
+  opacity:.5; transition:width .2s ease, opacity .2s ease;
+}
+.dropdown-menu-rec a:hover .rec-h{ color:var(--gold); }
+.dropdown-menu-rec a:hover .rec-h::before{ width:9px; opacity:1; }
 .nav-right{display:flex;align-items:center;gap:12px}
 .langsel{display:flex;border:1px solid rgba(255,255,255,.22);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.06)}
 .langsel button{border:none;background:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);padding:7px 11px;cursor:pointer;transition:.13s}
@@ -4356,6 +4469,15 @@ function go(page){
   window.scrollTo({top:0,behavior:"instant"});
   render();
   document.querySelectorAll(".menu>a").forEach(a=>a.classList.toggle("active", a.dataset.page===page));
+  // Dropdown buttons highlight when current page belongs to their group
+  document.querySelectorAll(".menu .dropdown>button").forEach(btn=>btn.classList.remove("active-section"));
+  const svcBtn = document.querySelector('.menu .dropdown>button[data-page="services"]');
+  if(svcBtn && (page === "services" || (page && page.startsWith("svc:")))) svcBtn.classList.add("active-section");
+  const recPages = ["blog","faq","comparison","about","partners"];
+  if(recPages.includes(page) || (page && page.startsWith("blog:"))){
+    const recBtn = document.querySelectorAll(".menu .dropdown>button")[1]; // second dropdown = Recursos
+    if(recBtn) recBtn.classList.add("active-section");
+  }
   updateSeoMeta(page);
   // Update browser URL without reloading (SPA routing)
   const path = PAGE_META[page]
@@ -4389,19 +4511,35 @@ function initialRouteFromUrl(){
 function renderChrome(){
   // top menu
   const menu = $("#menu");
+  // Services mega-dropdown — all 9, with price hints
   const svcLinks = SERVICES.map(s=>`<a class="di-row" onclick="go('svc:${s.id}')"><span class="di">${s.icon}</span><span>${tr(s.name)}<small>${tr(T.ui.fromPrefix)} ${priceInline(s)} · ${tr(s.pnote)}</small></span></a>`).join("");
+  // Recursos dropdown — absorbs About, Partners, FAQ, Blog, Comparison
+  const recLabels = {
+    es:{header:"Recursos", blog:"Blog · Hacer negocios en México", faq:"Preguntas frecuentes", about:"Sobre Linbix", partners:"Socios estratégicos", compare:"Linbix vs WeWork"},
+    en:{header:"Resources", blog:"Blog · Doing business in Mexico", faq:"Frequently asked questions", about:"About Linbix", partners:"Strategic partners", compare:"Linbix vs WeWork"},
+    fr:{header:"Ressources", blog:"Blog · Faire des affaires au Mexique", faq:"Questions fréquentes", about:"À propos de Linbix", partners:"Partenaires stratégiques", compare:"Linbix vs WeWork"},
+  }[LANG];
+  const recLinks = `
+    <a class="rec-row" onclick="go('blog')"><span class="rec-h">${recLabels.blog}</span></a>
+    <a class="rec-row" onclick="go('faq')"><span class="rec-h">${recLabels.faq}</span></a>
+    <a class="rec-row" data-page="comparison" onclick="go('comparison')"><span class="rec-h">${recLabels.compare}</span></a>
+    <a class="rec-row" onclick="go('about')"><span class="rec-h">${recLabels.about}</span></a>
+    <a class="rec-row" onclick="go('partners')"><span class="rec-h">${recLabels.partners}</span></a>
+  `;
+  const bookTour = {es:"Reservar tour",en:"Book a tour",fr:"Réserver une visite"}[LANG];
   menu.innerHTML = `
-    <a data-page="about" onclick="go('about')">${tr(T.ui.about)}</a>
     <div class="dropdown">
-      <button>${tr(T.ui.services)} ▾</button>
+      <button data-page="services">${tr(T.ui.services)} <span class="chev">▾</span></button>
       <div class="dropdown-menu">${svcLinks}</div>
     </div>
     <a data-page="dobiz" onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
     <a data-page="community" onclick="go('community')">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
-    <a data-page="partners" onclick="go('partners')">${tr(T.partners.eyebrow)}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
-    <a data-page="blog" onclick="go('blog')">${tr(T.blog.eyebrow)}</a>
-    <a data-page="contact" onclick="go('contact')">${tr(T.ui.contact)}</a>
+    <div class="dropdown">
+      <button>${recLabels.header} <span class="chev">▾</span></button>
+      <div class="dropdown-menu dropdown-menu-rec">${recLinks}</div>
+    </div>
+    <button class="nav-cta" onclick="go('contact')">${bookTour}</button>
   `;
   // mobile menu — enterprise drawer pattern
   const logoSrc = document.querySelector(".brand img")?.src || "";
@@ -4414,7 +4552,6 @@ function renderChrome(){
       <button class="mm-close" onclick="closeMobile()" aria-label="Close menu">${closeIcon}</button>
     </div>
     <div class="mm-body">
-      <a onclick="go('about');closeMobile()">${tr(T.ui.about)}</a>
       <div class="mm-group">
         <button type="button" onclick="toggleMmGroup(this)" aria-expanded="false">${tr(T.ui.services)} ${chevIcon}</button>
         <div class="mm-sub">
@@ -4422,10 +4559,18 @@ function renderChrome(){
         </div>
       </div>
       <a onclick="go('dobiz');closeMobile()">${tr(T.ui.doBusiness)}</a>
-      <a onclick="go('partners');closeMobile()">${tr(T.partners.eyebrow)}</a>
+      <a onclick="go('community');closeMobile()">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
       <a onclick="go('events');closeMobile()">${tr(T.ui.events)}</a>
-      <a onclick="go('faq');closeMobile()">${tr(T.faq.eyebrow)}</a>
-      <a onclick="go('contact');closeMobile()">${tr(T.ui.contact)}</a>
+      <div class="mm-group">
+        <button type="button" onclick="toggleMmGroup(this)" aria-expanded="false">${recLabels.header} ${chevIcon}</button>
+        <div class="mm-sub">
+          <a onclick="go('blog');closeMobile()">${recLabels.blog}</a>
+          <a onclick="go('faq');closeMobile()">${recLabels.faq}</a>
+          <a onclick="go('comparison');closeMobile()">${recLabels.compare}</a>
+          <a onclick="go('about');closeMobile()">${recLabels.about}</a>
+          <a onclick="go('partners');closeMobile()">${recLabels.partners}</a>
+        </div>
+      </div>
     </div>
     <div class="mm-foot">
       <div class="mm-langsel" role="group" aria-label="Language">
@@ -4433,7 +4578,7 @@ function renderChrome(){
         <button onclick="setLang('en')" class="${LANG==='en'?'active':''}">EN</button>
         <button onclick="setLang('fr')" class="${LANG==='fr'?'active':''}">FR</button>
       </div>
-      <button class="mm-cta" onclick="closeMobile();chatOpen()">${chatIcon} ${tr(T.bot.trigger)}</button>
+      <button class="mm-cta" onclick="closeMobile();go('contact')">${bookTour}</button>
     </div>
   `;
   // footer
