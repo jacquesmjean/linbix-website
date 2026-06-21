@@ -1,45 +1,29 @@
 #!/usr/bin/env bash
-# Ship header cleanup
+# Ship: remove 3 old gallery photos per Luc's request
 set -e
 cd "$(dirname "$0")"
 rm -f .git/index.lock || true
 
 echo "→ git add..."
-git add .
+git add -A
 
 echo "→ Committing..."
-git commit -m "Header nav: from 7 items down to 5 + CTA — refined minimalism
+git commit -m "Remove 3 old gallery photos per Luc's request
 
-Applied UI/UX Pro Max nav rules + frontend-design restraint.
+Removed from the home page showcase:
+  ▸ Better Together (empty room neon shot) — img_9550
+  ▸ Trabajamos mejor juntos (Better Together video) — img_7765
+  ▸ Networking ejecutivo (group photo) — img_0094
 
-CHANGES
-  ▸ Old menu (7 items + lang + chat): About, Services▾, Hacer Negocios,
-    Comunidad, Partners, Eventos, Blog, Contact
-  ▸ New menu (5 items + CTA + lang): Servicios▾, Hacer Negocios,
-    Comunidad, Eventos, Recursos▾, [Reservar tour]
+Also swapped these images out of every hero, event card, blog
+hero, and social-share meta tag where they appeared. Replaced
+with rooftop / terrace photos:
+  ▸ img_rooftop_lounge.jpg (split image, members soirée, OG card, JSON-LD)
+  ▸ img_rooftop_bar.jpg (international mixer, intl-entry hero, blog hero)
+  ▸ img_rooftop_tables.jpg (dobiz hero)
 
-  Recursos▾ absorbs the lower-utility items in one dropdown:
-    • Blog
-    • FAQ
-    • Linbix vs WeWork (Comparativa)
-    • Sobre Linbix (About)
-    • Socios estratégicos (Partners)
-
-VISUAL TREATMENT (refined-minimalism)
-  ▸ Typographic nav — no chrome on inactive items
-  ▸ Active state = animated gold underline (no boxes, no rounded rects)
-  ▸ Hover lifts text to white + reveals the gold underline
-  ▸ Dropdowns: scale+translate entry, premium card shadow, gold left-rail
-    accent on Recursos rows
-  ▸ Single primary CTA in the header: 'Reservar tour' as a gold gradient
-    pill — only chrome'd element, single source of action per UX rule
-  ▸ Active-section logic: Servicios highlights on /services or any /svc:*,
-    Recursos highlights on blog/faq/about/partners/comparison
-
-MOBILE PARITY
-  ▸ Same 5-group structure in the slide drawer
-  ▸ CTA at the bottom is now 'Reservar tour' (was 'Habla con Linbix')
-  ▸ Recursos collapses into an accordion group like Servicios
+All Better Together captions removed.
+Twitter and Open Graph share cards now show the rooftop lounge.
 " \
   --allow-empty
 
