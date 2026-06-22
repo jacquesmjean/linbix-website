@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ship: remove 3 old gallery photos per Luc's request
+# Ship: Luc's WhatsApp corrections — round 1 (the clear ones)
 set -e
 cd "$(dirname "$0")"
 rm -f .git/index.lock || true
@@ -8,22 +8,22 @@ echo "→ git add..."
 git add -A
 
 echo "→ Committing..."
-git commit -m "Remove 3 old gallery photos per Luc's request
+git commit -m "Luc corrections round 1: favicon, CTA rename, honest stats, no timeline lies
 
-Removed from the home page showcase:
-  ▸ Better Together (empty room neon shot) — img_9550
-  ▸ Trabajamos mejor juntos (Better Together video) — img_7765
-  ▸ Networking ejecutivo (group photo) — img_0094
+CHANGES (per Luc's WhatsApp punch list)
+  ▸ Browser tab logo — added Linbix favicon (32/192/512 + .ico + manifest)
+  ▸ CTA rename — 'Hablar con Luc' → 'Hablar con asesor Linbix' (3 places)
+  ▸ Removed (Día 1–3) from Onboarding step label
+  ▸ Removed (Día 4–14) from Constitución step label
+  ▸ Replaced the '14 Días al primer cliente' stat with
+    '12 Años acompañando empresas' — matches the truth (per Luc:
+    realistic timeline is ~3 months, not 14 days)
 
-Also swapped these images out of every hero, event card, blog
-hero, and social-share meta tag where they appeared. Replaced
-with rooftop / terrace photos:
-  ▸ img_rooftop_lounge.jpg (split image, members soirée, OG card, JSON-LD)
-  ▸ img_rooftop_bar.jpg (international mixer, intl-entry hero, blog hero)
-  ▸ img_rooftop_tables.jpg (dobiz hero)
-
-All Better Together captions removed.
-Twitter and Open Graph share cards now show the rooftop lounge.
+HELD FOR LUC'S INPUT (round 2)
+  ▸ Hero rewrite: 'No vendemos un simple servicio. Vendemos la entrada...'
+  ▸ Pain-point addition: 'Tu contador en el extranjero no sabe nada'
+  ▸ \$1,000 USD/año offer copy — softer promises
+  ▸ Spotlight headline: 'Una sola marca. Un mes completo. La comunidad entera.'
 " \
   --allow-empty
 
@@ -32,3 +32,6 @@ git push origin main
 
 echo ""
 echo "✓ Pushed. Vercel auto-deploys in ~60s."
+echo "  Verify at:"
+echo "    https://www.linbix.com/                    (favicon in tab + Hablar con asesor Linbix CTA)"
+echo "    https://www.linbix.com/dobiz               (Onboarding/Constitución without day ranges)"
