@@ -4633,6 +4633,9 @@ function afterRender(){
   document.querySelectorAll("form[data-lead]").forEach(f=>{
     f.addEventListener("submit", onLeadSubmit);
   });
+  document.querySelectorAll("form[data-listing]").forEach(f=>{
+    f.addEventListener("submit", onListingSubmit);
+  });
   document.querySelectorAll("form[data-dobiz]").forEach(f=>{
     f.addEventListener("submit", onDobizSubmit);
   });
@@ -5864,6 +5867,7 @@ function pageCommunity(){
     ${blockCommunityFeatured()}
     ${blockCommunitySpotlights()}
     ${blockCommunityDirectory()}
+    ${blockCommunitySubmit()}
     ${blockCommunityJoin()}
     ${blockContactStrip()}
   </div>`;
@@ -5977,6 +5981,34 @@ function rerenderCommunity(){
   tmp.innerHTML = blockCommunityDirectory();
   const fresh = tmp.querySelector("#directory");
   if(fresh){ dir.replaceWith(fresh); }
+}
+
+function blockCommunitySubmit(){
+  const L = LANG;
+  return `
+  <section class="blk alt" id="publica-oferta">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="eyebrow center">${({es:"Publica tu oferta",en:"Post your offer",fr:"Publiez votre offre"}[L])}</div>
+        <h2>${({es:"Suma tu negocio al directorio",en:"Add your business to the directory",fr:"Ajoutez votre entreprise au répertoire"}[L])}</h2>
+        <p>${({es:"Comparte tu producto o servicio con toda la comunidad Linbix. Llena el formulario y lo publicamos en el directorio.",en:"Share your product or service with the entire Linbix community. Fill out the form and we publish it in the directory.",fr:"Partagez votre produit ou service avec toute la communauté Linbix. Remplissez le formulaire et nous le publierons."}[L])}</p>
+      </div>
+      <div class="form-card reveal" style="max-width:620px;margin:24px auto 0">
+        <form data-listing>
+          <div class="field"><label>${({es:"Nombre del negocio",en:"Business name",fr:"Nom de l'entreprise"}[L])} *</label><input name="negocio" required></div>
+          <div class="field"><label>${({es:"Correo de contacto",en:"Contact email",fr:"Email de contact"}[L])} *</label><input name="email" type="email" required></div>
+          <div class="field"><label>WhatsApp *</label><input name="whatsapp" required></div>
+          <div class="field"><label>${({es:"Tipo de producto o servicio",en:"Type of product or service",fr:"Type de produit ou service"}[L])} *</label><input name="tipo" required></div>
+          <div class="field"><label>${({es:"Categoría",en:"Category",fr:"Catégorie"}[L])}</label><input name="categoria"></div>
+          <div class="field"><label>${({es:"Redes sociales",en:"Social media",fr:"Réseaux sociaux"}[L])}</label><input name="redes"></div>
+          <div class="field"><label>${({es:"Sitio web",en:"Website",fr:"Site web"}[L])}</label><input name="web"></div>
+          <div class="field"><label>${({es:"Descripción",en:"Description",fr:"Description"}[L])}</label><textarea name="descripcion"></textarea></div>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center">${({es:"Publicar mi oferta",en:"Post my offer",fr:"Publier mon offre"}[L])}</button>
+          <div class="form-ok"><b>${({es:"¡Recibido!",en:"Got it!",fr:"Reçu !"}[L])}</b> ${({es:"Revisaremos tu oferta y la publicaremos en el directorio. Te contactamos si necesitamos algo.",en:"We will review your offer and publish it in the directory.",fr:"Nous examinerons votre offre et la publierons dans le répertoire."}[L])}</div>
+        </form>
+      </div>
+    </div>
+  </section>`;
 }
 
 function blockCommunityJoin(){
@@ -6433,6 +6465,26 @@ function onLeadSubmit(e){
   f.reset();
   // toast pulse on nav automation
   flashAutomationLink();
+}
+
+function onListingSubmit(e){
+  e.preventDefault();
+  var f=e.target, d=Object.fromEntries(new FormData(f).entries());
+  var L=(typeof LANG!=="undefined"?LANG:"es").toUpperCase();
+  var extra=[];
+  if(d.categoria) extra.push("Categoría: "+d.categoria);
+  if(d.redes) extra.push("Redes sociales: "+d.redes);
+  if(d.descripcion) extra.push("Descripción: "+d.descripcion);
+  try{
+    fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+      name:d.negocio, company:d.negocio, email:d.email, whatsapp:d.whatsapp, phone:d.whatsapp,
+      website:d.web||"", promote:d.tipo||"", message:extra.join(" | "),
+      service:"contacto", source:"Directorio NETWORKING LINBIX - alta de negocio", locale:L
+    })}).catch(function(){});
+  }catch(_){}
+  var ok=f.querySelector(".form-ok"); if(ok) ok.classList.add("show");
+  f.reset();
+  return false;
 }
 
 function flashAutomationLink(){
