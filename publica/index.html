@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Publica tu oferta · Networking Linbix</title>
+<meta name="description" content="Sube tu negocio al directorio Networking Linbix. Cientos de empresas y profesionistas descubren nuevos productos y servicios cada mes." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="/favicon.ico" />
+<style>
+  :root{--gold:#F7A122;--ink:#1A130D;--ink2:#6B6258;--cream:#F4EFE9;--line:#E7DFD5;--card:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  a{color:var(--gold)}
+  .top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+  .top a{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.02em}
+  .top .back{font-size:14px;font-weight:600;opacity:.85}
+  .wrap{max-width:680px;margin:0 auto;padding:38px 20px 60px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  h1{font-size:clamp(28px,5vw,40px);margin:8px 0 10px;line-height:1.1}
+  .lead{color:var(--ink2);font-size:17px;margin-bottom:28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;box-shadow:0 10px 30px rgba(26,19,13,.06)}
+  label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px}
+  label .req{color:#E85642}
+  input,select,textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#FCFAF7;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(247,161,34,.18)}
+  textarea{min-height:110px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  .hint{font-size:12.5px;color:var(--ink2);margin-top:5px}
+  button{margin-top:24px;width:100%;background:var(--gold);color:var(--ink);font-weight:800;font-size:16px;border:0;border-radius:999px;padding:15px;cursor:pointer;transition:filter .15s}
+  button:hover{filter:brightness(.96)}
+  button:disabled{opacity:.6;cursor:default}
+  .ok,.err{display:none;padding:16px 18px;border-radius:12px;margin-top:18px;font-size:15px}
+  .ok{background:#EAF7EE;border:1px solid #Bfe6c9;color:#1c7a3a}
+  .err{background:#FDECEA;border:1px solid #f4c4bd;color:#B93A28}
+  .foot{text-align:center;color:var(--ink2);font-size:12.5px;margin-top:26px}
+  .foot a{color:var(--ink2)}
+</style>
+</head>
+<body>
+  <div class="top">
+    <a href="/">LINBIX</a>
+    <a class="back" href="/community">← Directorio</a>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Networking Linbix</div>
+    <h1>Publica tu oferta</h1>
+    <p class="lead">Cientos de empresas y profesionistas que llaman Linbix su casa descubren nuevos productos y servicios cada mes. Sube el tuyo — es rápido y gratuito para miembros activos.</p>
+
+    <div class="card">
+      <form id="pf" novalidate>
+        <label for="business">Nombre del negocio <span class="req">*</span></label>
+        <input id="business" name="business" type="text" required maxlength="120" autocomplete="organization" />
+
+        <label for="email">Email de contacto <span class="req">*</span></label>
+        <input id="email" name="email" type="email" required maxlength="140" autocomplete="email" />
+        <div class="hint">Solo para confirmar tu publicación. No se muestra en el directorio.</div>
+
+        <div class="row">
+          <div>
+            <label for="category">Categoría <span class="req">*</span></label>
+            <select id="category" name="category" required>
+              <option value="" selected disabled>Elige una…</option>
+              <option>Servicios profesionales</option>
+              <option>Comercio y retail</option>
+              <option>Tecnología</option>
+              <option>Salud y bienestar</option>
+              <option>Alimentos y bebidas</option>
+              <option>Educación y formación</option>
+              <option>Finanzas y legal</option>
+              <option>Manufactura</option>
+              <option>Turismo y hospitalidad</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div>
+            <label for="type">Tipo de producto o servicio</label>
+            <input id="type" name="type" type="text" maxlength="120" placeholder="Ej. Consultoría fiscal" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="website">Sitio web</label>
+            <input id="website" name="website" type="url" maxlength="200" placeholder="https://" />
+          </div>
+          <div>
+            <label for="whatsapp">WhatsApp</label>
+            <input id="whatsapp" name="whatsapp" type="tel" maxlength="40" placeholder="+52 …" />
+          </div>
+        </div>
+
+        <label for="socials">Redes sociales</label>
+        <input id="socials" name="socials" type="text" maxlength="200" placeholder="Instagram, LinkedIn, Facebook…" />
+
+        <label for="description">Descripción rápida del producto o servicio</label>
+        <textarea id="description" name="description" maxlength="600" placeholder="Cuéntanos en una o dos frases qué ofreces."></textarea>
+
+        <button id="submit" type="submit">Publicar en el directorio</button>
+        <div class="ok" id="ok">¡Gracias! Recibimos tu publicación. El equipo de Linbix la revisa y la agrega al directorio. Te confirmamos por email.</div>
+        <div class="err" id="err">No pudimos enviar tu publicación. Revisa los campos e inténtalo de nuevo, o escríbenos a jluc@welt.com.mx.</div>
+      </form>
+    </div>
+
+    <div class="foot">Networking Linbix · <a href="/community">Ver directorio</a> · <a href="/">Inicio</a></div>
+  </div>
+<script>
+(function(){
+  var form=document.getElementById('pf'), btn=document.getElementById('submit');
+  var ok=document.getElementById('ok'), err=document.getElementById('err');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    ok.style.display='none'; err.style.display='none';
+    var business=document.getElementById('business').value.trim();
+    var email=document.getElementById('email').value.trim();
+    var category=document.getElementById('category').value;
+    var type=document.getElementById('type').value.trim();
+    var website=document.getElementById('website').value.trim();
+    var whatsapp=document.getElementById('whatsapp').value.trim();
+    var socials=document.getElementById('socials').value.trim();
+    var description=document.getElementById('description').value.trim();
+    if(business.length<2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !category){
+      err.textContent='Por favor completa el nombre del negocio, un email válido y la categoría.';
+      err.style.display='block'; return;
+    }
+    btn.disabled=true; btn.textContent='Enviando…';
+    var promote='Categoría: '+category + (type?(' · Tipo: '+type):'') + (socials?(' · Redes: '+socials):'');
+    var payload={
+      name: business, company: business, email: email,
+      website: website, whatsapp: whatsapp,
+      service: 'contacto',
+      source: 'Directorio Networking Linbix (self-service)',
+      locale: 'ES',
+      promote: promote,
+      message: description
+    };
+    try{
+      var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var j=await r.json().catch(function(){return {};});
+      if(r.ok && j.ok){
+        form.reset(); ok.style.display='block'; btn.style.display='none';
+        ok.scrollIntoView({behavior:'smooth',block:'center'});
+      }else{
+        err.textContent = (j && j.error) ? ('No se pudo enviar: '+j.error) : 'No pudimos enviar tu publicación. Inténtalo de nuevo.';
+        err.style.display='block'; btn.disabled=false; btn.textContent='Publicar en el directorio';
+      }
+    }catch(ex){
+      err.style.display='block'; btn.disabled=false; btn.textContent='Publicar en el directorio';
+    }
+  });
+})();
+</script>
+</body>
+</html>
