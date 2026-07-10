@@ -2173,7 +2173,7 @@ noscript-content{
                 </tr>
                 <tr>
                   <td class="cmp-label">Oficina virtual con domicilio fiscal</td>
-                  <td class="cmp-cell cmp-win">$1,200 MXN/mes</td>
+                  <td class="cmp-cell cmp-win">$800 MXN/mes — incluido en plan SAT 4.0</td>
                   <td class="cmp-cell ">No es servicio principal</td>
                 </tr>
                 <tr>
@@ -2198,12 +2198,12 @@ noscript-content{
                 </tr>
                 <tr>
                   <td class="cmp-label">Ubicaciones en Guadalajara</td>
-                  <td class="cmp-cell ">Zona Chapultepec</td>
+                  <td class="cmp-cell ">1 (Av. Niños Héroes)</td>
                   <td class="cmp-cell ">1 (Midtown Jalisco)</td>
                 </tr>
                 <tr>
                   <td class="cmp-label">Conexión con notario / contador / abogado</td>
-                  <td class="cmp-cell cmp-win">Sí</td>
+                  <td class="cmp-cell cmp-win">Sí — red curada incluida</td>
                   <td class="cmp-cell ">Marketplace genérico</td>
                 </tr>
                 <tr>
@@ -2218,7 +2218,7 @@ noscript-content{
                 </tr>
                 <tr>
                   <td class="cmp-label">Membresía anual con descuentos</td>
-                  <td class="cmp-cell cmp-win">$600 MXN/año</td>
+                  <td class="cmp-cell cmp-win">$600 MXN/año — 50% off todo el espacio</td>
                   <td class="cmp-cell ">No</td>
                 </tr>
             </tbody>
@@ -2523,9 +2523,9 @@ const T = {
   events: {
     eyebrow:{es:"Eventos", en:"Events", fr:"Événements"},
     h1:{es:"Donde Guadalajara hace negocios", en:"Where Guadalajara does business", fr:"Là où Guadalajara fait des affaires"},
-    p:{es:"Networking ejecutivo, lanzamientos de marca y talleres prácticos. Reserva tu lugar o conviértete en patrocinador de la comunidad.",
-       en:"Executive networking, brand launches, and hands-on workshops. Reserve your seat or become a community sponsor.",
-       fr:"Réseautage exécutif, lancements de marque et ateliers pratiques. Réservez votre place ou devenez partenaire de la communauté."},
+    p:{es:"Desayunos, cenas y cursos prácticos de la Red Linbix. Reserva tu lugar o conviértete en patrocinador.",
+       en:"Breakfasts, dinners, and hands-on courses from the Linbix Network. Reserve your seat or become a sponsor.",
+       fr:"Petits-déjeuners, dîners et cours pratiques du Réseau Linbix. Réservez votre place ou devenez partenaire."},
     // Microcopy
     featured:{es:"Próximo evento", en:"Next event", fr:"Prochain événement"},
     countdown:{d:{es:"días",en:"days",fr:"jours"}, h:{es:"hrs",en:"hrs",fr:"hrs"}, m:{es:"min",en:"min",fr:"min"}, s:{es:"seg",en:"sec",fr:"sec"}},
@@ -2582,59 +2582,36 @@ const T = {
   /* ---- EVENT DATA (curate-able) ---- */
   eventCatalog:{
     featured:{
-      id:"summer-mixer-2026",
-      date:"2026-06-25T18:00:00-05:00",
-      capacity:40, spotsLeft:18, img:"/media/photos-lg/img_rooftop_bar.jpg",
-      title:{es:"Mixer Ejecutivo · Verano 2026", en:"Executive Mixer · Summer 2026", fr:"Mixer Exécutif · Été 2026"},
-      subtitle:{es:"Ejecutivos, emprendedores y empresas mexicanas — todos bajo el mismo techo.",
-                en:"Executives, entrepreneurs, and Mexican businesses — all under one roof.",
-                fr:"Dirigeants, entrepreneurs et entreprises mexicaines — tous sous le même toit."},
+      id:"desayuno-red-linbix-agosto",
+      date:"2026-08-14T09:00:00-05:00",
+      capacity:20, spotsLeft:20, img:"/media/photos-lg/img_rooftop_bar.jpg",
+      title:{es:"Desayuno Red Linbix", en:"Red Linbix Breakfast", fr:"Petit-déjeuner Red Linbix"},
+      subtitle:{es:"Incrementar nuestras ventas apoyándonos mutuamente.",
+                en:"Grow our sales by supporting each other.",
+                fr:"Faire croître nos ventes en nous soutenant mutuellement."},
       tiers:[
-        {k:"general", priceMXN:300, name:{es:"General",en:"General",fr:"Général"}, perks:{
-          es:["Acceso al networking","Cocktail de bienvenida","2 horas de programa"],
-          en:["Networking access","Welcome cocktail","2-hour program"],
-          fr:["Accès au réseautage","Cocktail de bienvenue","Programme de 2 heures"],
+        {k:"general", priceMXN:530, name:{es:"General",en:"General",fr:"Général"}, perks:{
+          es:["Encuentro íntimo con 20 socios","Cada participante comparte su idea de negocio","Fórmulas para detonar ventas","Alianzas estratégicas en el círculo de colaboración"],
+          en:["Intimate meetup — 20 partners","Each attendee shares their business idea","Formulas to trigger sales","Strategic alliances in the collaboration circle"],
+          fr:["Rencontre intime — 20 partenaires","Chaque participant partage son idée","Formules pour déclencher les ventes","Alliances stratégiques dans le cercle"],
         }},
-        {k:"vip", priceMXN:800, featured:true, name:{es:"VIP",en:"VIP",fr:"VIP"}, perks:{
-          es:["Todo lo del General","Acceso pre-evento (1h networking privado)","Mesa reservada","Bebidas premium incluidas"],
-          en:["Everything in General","Pre-event access (1h private networking)","Reserved table","Premium drinks included"],
-          fr:["Tout le forfait Général","Accès pré-événement (1h networking privé)","Table réservée","Boissons premium incluses"],
-        }},
-        {k:"member", priceMXN:0, name:{es:"Miembros Linbix",en:"Linbix Members",fr:"Membres Linbix"}, perks:{
-          es:["Gratis con membresía activa","Acceso VIP automático","Prioridad en presentaciones"],
-          en:["Free with active membership","Automatic VIP access","Priority on pitches"],
-          fr:["Gratuit avec adhésion active","Accès VIP automatique","Priorité sur les présentations"],
-        }, isMember:true},
       ],
     },
     upcoming:[
-      {id:"founders-breakfast", date:"2026-07-09T08:30:00-05:00", capacity:20, spotsLeft:9,
-        img:"/media/photos/img_9544.jpg",
-        title:{es:"Desayuno de Fundadores",en:"Founders Breakfast",fr:"Petit-déjeuner Fondateurs"},
-        summary:{es:"Un panel íntimo de 20 fundadores en distintas etapas comparten su jugada del mes.",
-                 en:"Intimate panel of 20 founders at different stages share their move of the month.",
-                 fr:"Un panel intime de 20 fondateurs à différentes étapes partagent leur coup du mois."},
-        tiers:[{k:"general",priceMXN:450,name:{es:"General",en:"General",fr:"Général"}},{k:"member",priceMXN:0,name:{es:"Miembros",en:"Members",fr:"Membres"},isMember:true}]},
-      {id:"ai-workshop-smb", date:"2026-07-17T16:00:00-05:00", capacity:25, spotsLeft:6,
-        img:"/media/photos/img_9538.jpg",
-        title:{es:"Taller: IA para PyMEs Mexicanas",en:"Workshop: AI for Mexican SMBs",fr:"Atelier : IA pour PME mexicaines"},
-        summary:{es:"Caso a caso — cómo implementar IA local en tu negocio sin renta mensual ni datos saliendo del edificio.",
-                 en:"Case by case — how to deploy local AI in your business without monthly fees or data leaving your building.",
-                 fr:"Cas par cas — comment déployer l'IA locale dans votre entreprise sans frais mensuels ni données qui sortent du bâtiment."},
-        tiers:[{k:"general",priceMXN:1200,name:{es:"General",en:"General",fr:"Général"}},{k:"vip",priceMXN:2400,featured:true,name:{es:"VIP + Consultoría 1:1",en:"VIP + 1:1 consult",fr:"VIP + consultation 1:1"}}]},
-      {id:"members-soiree", date:"2026-07-25T19:00:00-05:00", capacity:30, spotsLeft:11, memberOnly:true,
+      {id:"cena-networking-red-linbix", date:"2026-08-21T19:00:00-05:00", capacity:30, spotsLeft:30,
         img:"/media/photos/img_rooftop_lounge.jpg",
-        title:{es:"Soirée Privada · Miembros",en:"Private Soirée · Members",fr:"Soirée Privée · Membres"},
-        summary:{es:"Solo miembros. Cena ligera en la terraza con música en vivo y curaduría de invitados.",
-                 en:"Members only. Light dinner on the terrace with live music and curated guests.",
-                 fr:"Membres uniquement. Dîner léger sur la terrasse avec musique live et invités triés sur le volet."}},
-      {id:"international-mixer", date:"2026-08-06T18:00:00-05:00", capacity:50, spotsLeft:34,
-        img:"/media/photos/img_rooftop_bar.jpg",
-        title:{es:"Hacer Negocios en MX · Mixer Internacional",en:"Do Business in MX · International Mixer",fr:"Faire affaires au MX · Mixer International"},
-        summary:{es:"Ejecutivos de EE.UU., Brasil y Francia evaluando entrar al mercado mexicano se conectan con socios locales.",
-                 en:"Executives from the U.S., Brazil, and France evaluating Mexican market entry connect with local partners.",
-                 fr:"Dirigeants des États-Unis, du Brésil et de France évaluant l'entrée au marché mexicain rencontrent des partenaires locaux."},
-        tiers:[{k:"general",priceMXN:600,name:{es:"General",en:"General",fr:"Général"}},{k:"vip",priceMXN:1500,featured:true,name:{es:"VIP + dinner",en:"VIP + dinner",fr:"VIP + dîner"}}]},
+        title:{es:"Cena Networking Linbix · Dar & Recibir",en:"Linbix Networking Dinner · Give & Receive",fr:"Dîner Networking Linbix · Donner & Recevoir"},
+        summary:{es:"30 empresas de distintos giros comparten su propuesta y ofrecen un incentivo o regalo especial. Un ecosistema de apoyo mutuo para multiplicar visibilidad y ventas — dar y recibir se vuelve la clave para crecer juntos.",
+                 en:"30 companies from different sectors share their offer and bring an incentive. A mutual-support ecosystem to multiply visibility and sales — give and receive becomes the key to grow together.",
+                 fr:"30 entreprises de secteurs différents partagent leur offre et apportent un incitatif. Un écosystème de soutien mutuel pour multiplier visibilité et ventes — donner et recevoir devient la clé pour grandir ensemble."},
+        tiers:[{k:"general",priceMXN:630,name:{es:"General",en:"General",fr:"Général"}}]},
+      {id:"curso-ia-agosto-2026", date:"2026-08-29T09:00:00-05:00", capacity:12, spotsLeft:12,
+        img:"/media/photos/img_9538.jpg",
+        title:{es:"Curso de Inteligencia Artificial",en:"AI Training Course",fr:"Formation Intelligence Artificielle"},
+        summary:{es:"6 horas prácticas · 9am–3pm · Linbix Chapultepec. Aprende a comunicarte con la IA, crear imágenes e infografías, analizar documentos y datos, y usar ChatGPT · Gemini · Claude · Gamma · NotebookLM · Perplexity. Ideal para profesionistas, estudiantes y quien no quiera quedarse atrás.",
+                 en:"6 practical hours · 9am–3pm · Linbix Chapultepec. Learn to communicate with AI, create images and infographics, analyze documents, research with reliable sources, and use ChatGPT · Gemini · Claude · Gamma · NotebookLM · Perplexity. Ideal for professionals, students, and anyone who doesn't want to fall behind.",
+                 fr:"6 heures pratiques · 9h–15h · Linbix Chapultepec. Apprenez à communiquer avec l'IA, créer images et infographies, analyser documents, faire des recherches fiables, et utiliser ChatGPT · Gemini · Claude · Gamma · NotebookLM · Perplexity. Idéal pour professionnels, étudiants et ceux qui ne veulent pas prendre de retard."},
+        tiers:[{k:"general",priceMXN:2500,name:{es:"General + IVA",en:"General + IVA",fr:"Général + IVA"}}]},
     ],
     past:[
       {date:"2026-05-15", attended:38, img:"/media/photos/img_0358.jpg",
@@ -2680,11 +2657,11 @@ const T = {
   /* ---- COMUNIDAD — paid Spotlight marketplace (mirrors Events revenue engine) ---- */
   community:{
     // Page chrome
-    eyebrow:{es:"Networking Linbix", en:"Linbix Networking", fr:"Réseau Linbix"},
+    eyebrow:{es:"Red Linbix", en:"Linbix Network", fr:"Réseau Linbix"},
     h1:{es:"Negocios que crecen aquí.", en:"Businesses growing here.", fr:"Des entreprises qui grandissent ici."},
-    p:{es:"Cientos de empresas y profesionistas que llaman Linbix su casa publican sus productos y servicios. Descúbrelos, contáctalos y publica tu oferta.",
-       en:"Hundreds of companies and professionals that call Linbix home publish their products and services. Discover them, connect with them, and post your own offer.",
-       fr:"Des centaines d'entreprises et de professionnels qui font de Linbix leur maison publient leurs produits et services. Découvrez-les, contactez-les et publiez votre offre."},
+    p:{es:"Cientos de empresas que llaman Linbix su casa. Conócelas. Conecta con ellas. O pon la tuya enfrente de todas, por un mes.",
+       en:"Hundreds of companies that call Linbix home. Meet them. Connect with them. Or put yours in front of all of them — for a month.",
+       fr:"Des centaines d'entreprises qui font de Linbix leur maison. Découvrez-les. Connectez-vous avec elles. Ou mettez la vôtre devant toutes — pendant un mois."},
 
     // Featured Business of the Month
     featuredH:{es:"Empresa Destacada del Mes", en:"Featured Business of the Month", fr:"Entreprise vedette du mois"},
@@ -2800,7 +2777,7 @@ const T = {
        wework:{es:"$732 MXN",en:"$732 MXN",fr:"732 $ MXN"},
        winner:"linbix"},
       {label:{es:"Oficina virtual con domicilio fiscal",en:"Virtual office with fiscal address",fr:"Bureau virtuel avec adresse fiscale"},
-       linbix:{es:"$1,200 MXN/mes",en:"$1,200 MXN/mo",fr:"1 200 $ MXN/mois"},
+       linbix:{es:"$800 MXN/mes — incluido en plan SAT 4.0",en:"$800 MXN/mo — SAT 4.0 included",fr:"800 $ MXN/mois — SAT 4.0 inclus"},
        wework:{es:"No es servicio principal",en:"Not a primary service",fr:"Pas un service principal"},
        winner:"linbix"},
       {label:{es:"Atención en español, inglés y francés",en:"Support in Spanish, English, and French",fr:"Accueil en espagnol, anglais et français"},
@@ -2820,11 +2797,11 @@ const T = {
        wework:{es:"Marca global Fortune-500",en:"Fortune-500 global brand",fr:"Marque globale Fortune-500"},
        winner:"wework"},
       {label:{es:"Ubicaciones en Guadalajara",en:"Guadalajara locations",fr:"Emplacements à Guadalajara"},
-       linbix:{es:"Zona Chapultepec",en:"Zona Chapultepec",fr:"Zona Chapultepec"},
+       linbix:{es:"1 (Av. Niños Héroes)",en:"1 (Av. Niños Héroes)",fr:"1 (Av. Niños Héroes)"},
        wework:{es:"1 (Midtown Jalisco)",en:"1 (Midtown Jalisco)",fr:"1 (Midtown Jalisco)"},
        winner:"tie"},
       {label:{es:"Conexión con notario / contador / abogado",en:"Notary / accountant / attorney introductions",fr:"Mise en relation notaire / comptable / avocat"},
-       linbix:{es:"Sí",en:"Yes",fr:"Oui"},
+       linbix:{es:"Sí — red curada incluida",en:"Yes — curated network included",fr:"Oui — réseau curé inclus"},
        wework:{es:"Marketplace genérico",en:"Generic marketplace",fr:"Place de marché générique"},
        winner:"linbix"},
       {label:{es:"Asistente AI 24/7 multilingüe",en:"24/7 multilingual AI assistant",fr:"Assistant IA 24/7 multilingue"},
@@ -2836,7 +2813,7 @@ const T = {
        wework:{es:"Mes a mes mínimo",en:"Month-to-month minimum",fr:"Au mois minimum"},
        winner:"linbix"},
       {label:{es:"Membresía anual con descuentos",en:"Annual membership with discounts",fr:"Adhésion annuelle avec réductions"},
-       linbix:{es:"$600 MXN/año",en:"$600 MXN/year",fr:"600 $ MXN/an"},
+       linbix:{es:"$600 MXN/año — 50% off todo el espacio",en:"$600 MXN/year — 50% off whole space",fr:"600 $ MXN/an — -50 % sur tout l'espace"},
        wework:{es:"No",en:"No",fr:"Non"},
        winner:"linbix"},
     ],
@@ -3972,10 +3949,10 @@ const LANG_TO_CURRENCY = { es:"MXN", en:"USD", fr:"EUR" };
    ============================================================ */
 const SERVICES = [
   {
-    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true, priceMXN:1200,
+    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true, priceMXN:800,
     img:"https://static.wixstatic.com/media/026b5c_680ad6468d544f5c89ca6d792a0abaa9~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Oficina Virtual", en:"Virtual Office", fr:"Bureau virtuel"},
-    price:{es:"Desde $1,200 MXN", en:"From $1,200 MXN", fr:"Dès 1 200 $ MXN"},
+    price:{es:"Desde $800 MXN", en:"From $800 MXN", fr:"Dès 800 $ MXN"},
     pnote:{es:"+ IVA · mínimo 6 meses", en:"+ VAT · 6-month minimum", fr:"+ TVA · minimum 6 mois"},
     summary:{es:"Tu empresa con domicilio fiscal en una zona ejecutiva de Guadalajara — sin pagar la renta de una oficina vacía.",
              en:"Your company with a fiscal address in an executive zone of Guadalajara — without paying rent on an empty office.",
@@ -3984,7 +3961,7 @@ const SERVICES = [
           en:"A smart space with the same infrastructure as a conventional office, at a fraction of the cost — so you start your business without worrying about rent and fixed expenses. Choose the package that fits your stage.",
           fr:"Un espace intelligent avec la même infrastructure qu'un bureau classique, à une fraction du coût — pour démarrer sans vous soucier du loyer et des frais fixes. Choisissez le forfait adapté à votre étape."},
     tiers:[
-      {n:"Virtual Millenial", p:"$1,200", mxn:1200, f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 1 hora"],
+      {n:"Virtual Millenial", p:"$800", mxn:800, f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 1 hora"],
                                           en:["Full mail handling","Commercial address","Tax address","Equipped meeting room · 1 hour"],
                                           fr:["Gestion complète du courrier","Adresse commerciale","Adresse fiscale","Salle de réunion équipée · 1 heure"]}},
       {n:"Virtual Plus", p:"$1,200", mxn:1200, badge:true, f:{es:["Todo lo anterior","Acceso a coworking","Sala de juntas · 6 horas","Número telefónico personal","Contestación telefónica personalizada"],
@@ -4405,9 +4382,9 @@ const SEO_STRINGS = {
             fr:"Là où Guadalajara fait des affaires. Mixer mensuel, ateliers, lancements. Billets, forfaits de sponsoring mensuels et location de terrasse pour votre événement."},
   },
   community: {
-    title: {es:"Comunidad Linbix · Directorio y Spotlights · Guadalajara",
-            en:"Linbix Community · Member Directory and Spotlights · Guadalajara",
-            fr:"Communauté Linbix · Annuaire et Spotlights · Guadalajara"},
+    title: {es:"Red Linbix · Directorio y Spotlights · Guadalajara",
+            en:"Linbix Network · Member Directory and Spotlights · Guadalajara",
+            fr:"Réseau Linbix · Annuaire et Spotlights · Guadalajara"},
     desc:  {es:"Directorio gratuito de empresas miembro, Spotlights mensuales pagados y Empresa Destacada del Mes. Pon tu marca enfrente de toda la comunidad Linbix.",
             en:"Free member directory, monthly paid Spotlights, and Featured Business of the Month. Put your brand in front of the whole Linbix community.",
             fr:"Annuaire gratuit des entreprises membres, Spotlights mensuels payants et Entreprise vedette du mois. Mettez votre marque devant toute la communauté Linbix."},
@@ -4591,7 +4568,7 @@ function renderChrome(){
       <div class="dropdown-menu">${svcLinks}</div>
     </div>
     <a data-page="dobiz" onclick="go('dobiz')">${tr(T.ui.doBusiness)}</a>
-    <a data-page="community" onclick="go('community')">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
+    <a data-page="community" onclick="go('community')">${({es:"Red Linbix",en:"Linbix Network",fr:"Réseau Linbix"}[LANG])}</a>
     <a data-page="events" onclick="go('events')">${tr(T.ui.events)}</a>
     <div class="dropdown">
       <button>${recLabels.header} <span class="chev">▾</span></button>
@@ -4617,7 +4594,7 @@ function renderChrome(){
         </div>
       </div>
       <a onclick="go('dobiz');closeMobile()">${tr(T.ui.doBusiness)}</a>
-      <a onclick="go('community');closeMobile()">${({es:"Comunidad",en:"Community",fr:"Communauté"}[LANG])}</a>
+      <a onclick="go('community');closeMobile()">${({es:"Red Linbix",en:"Linbix Network",fr:"Réseau Linbix"}[LANG])}</a>
       <a onclick="go('events');closeMobile()">${tr(T.ui.events)}</a>
       <div class="mm-group">
         <button type="button" onclick="toggleMmGroup(this)" aria-expanded="false">${recLabels.header} ${chevIcon}</button>
@@ -4697,9 +4674,6 @@ function afterRender(){
   // attach form handlers
   document.querySelectorAll("form[data-lead]").forEach(f=>{
     f.addEventListener("submit", onLeadSubmit);
-  });
-  document.querySelectorAll("form[data-listing]").forEach(f=>{
-    f.addEventListener("submit", onListingSubmit);
   });
   document.querySelectorAll("form[data-dobiz]").forEach(f=>{
     f.addEventListener("submit", onDobizSubmit);
@@ -5240,9 +5214,9 @@ function pageDobiz(){
     ],
     incH:{es:"Qué incluye, exactamente.", en:"What's included, exactly.", fr:"Ce qui est inclus, exactement."},
     inc:[
-      {es:"Domicilio fiscal y comercial · 12 meses",
-       en:"Fiscal and commercial address · 12 months",
-       fr:"Adresse fiscale et commerciale · 12 mois"},
+      {es:"Domicilio fiscal y comercial · 12 meses · compatible con SAT 4.0",
+       en:"Fiscal and commercial address · 12 months · SAT 4.0 compliant",
+       fr:"Adresse fiscale et commerciale · 12 mois · conforme SAT 4.0"},
       {es:"Recepción de paquetes y notificaciones · aviso al instante en ES/EN/FR",
        en:"Parcel and notification reception · instant alert in ES/EN/FR",
        fr:"Réception colis et notifications · alerte instantanée en ES/EN/FR"},
@@ -5886,7 +5860,7 @@ function pageCheckoutSuccess(){
       ${sid ? `<p class="checkout-meta">${({es:"Referencia",en:"Reference",fr:"Référence"}[LANG])}: <code>${sid.slice(0,18)}…</code></p>` : ""}
       <div class="cta-row" style="justify-content:center;margin-top:28px">
         <button class="btn btn-gold" onclick="go('home')">${({es:"Volver al inicio",en:"Back to home",fr:"Retour à l'accueil"}[LANG])} →</button>
-        <button class="btn btn-ghost" onclick="go('community')">${({es:"Ver la comunidad",en:"See the community",fr:"Voir la communauté"}[LANG])}</button>
+        <button class="btn btn-ghost" onclick="go('community')">${({es:"Ver la Red Linbix",en:"See the Linbix Network",fr:"Voir le Réseau Linbix"}[LANG])}</button>
       </div>
       <div class="checkout-manage">
         <span>${({es:"Más tarde, gestiona tu suscripción en",en:"Later, manage your subscription at",fr:"Plus tard, gérez votre abonnement sur"}[LANG])}</span>
@@ -5932,7 +5906,6 @@ function pageCommunity(){
     ${blockCommunityFeatured()}
     ${blockCommunitySpotlights()}
     ${blockCommunityDirectory()}
-    ${blockCommunitySubmit()}
     ${blockCommunityJoin()}
     ${blockContactStrip()}
   </div>`;
@@ -6046,34 +6019,6 @@ function rerenderCommunity(){
   tmp.innerHTML = blockCommunityDirectory();
   const fresh = tmp.querySelector("#directory");
   if(fresh){ dir.replaceWith(fresh); }
-}
-
-function blockCommunitySubmit(){
-  const L = LANG;
-  return `
-  <section class="blk alt" id="publica-oferta">
-    <div class="wrap">
-      <div class="sec-head center reveal">
-        <div class="eyebrow center">${({es:"Publica tu oferta",en:"Post your offer",fr:"Publiez votre offre"}[L])}</div>
-        <h2>${({es:"Suma tu negocio al directorio",en:"Add your business to the directory",fr:"Ajoutez votre entreprise au répertoire"}[L])}</h2>
-        <p>${({es:"Comparte tu producto o servicio con toda la comunidad Linbix. Llena el formulario y lo publicamos en el directorio.",en:"Share your product or service with the entire Linbix community. Fill out the form and we publish it in the directory.",fr:"Partagez votre produit ou service avec toute la communauté Linbix. Remplissez le formulaire et nous le publierons."}[L])}</p>
-      </div>
-      <div class="form-card reveal" style="max-width:620px;margin:24px auto 0">
-        <form data-listing>
-          <div class="field"><label>${({es:"Nombre del negocio",en:"Business name",fr:"Nom de l'entreprise"}[L])} *</label><input name="negocio" required></div>
-          <div class="field"><label>${({es:"Correo de contacto",en:"Contact email",fr:"Email de contact"}[L])} *</label><input name="email" type="email" required></div>
-          <div class="field"><label>WhatsApp *</label><input name="whatsapp" required></div>
-          <div class="field"><label>${({es:"Tipo de producto o servicio",en:"Type of product or service",fr:"Type de produit ou service"}[L])} *</label><input name="tipo" required></div>
-          <div class="field"><label>${({es:"Categoría",en:"Category",fr:"Catégorie"}[L])}</label><input name="categoria"></div>
-          <div class="field"><label>${({es:"Redes sociales",en:"Social media",fr:"Réseaux sociaux"}[L])}</label><input name="redes"></div>
-          <div class="field"><label>${({es:"Sitio web",en:"Website",fr:"Site web"}[L])}</label><input name="web"></div>
-          <div class="field"><label>${({es:"Descripción",en:"Description",fr:"Description"}[L])}</label><textarea name="descripcion"></textarea></div>
-          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center">${({es:"Publicar mi oferta",en:"Post my offer",fr:"Publier mon offre"}[L])}</button>
-          <div class="form-ok"><b>${({es:"¡Recibido!",en:"Got it!",fr:"Reçu !"}[L])}</b> ${({es:"Revisaremos tu oferta y la publicaremos en el directorio. Te contactamos si necesitamos algo.",en:"We will review your offer and publish it in the directory.",fr:"Nous examinerons votre offre et la publierons dans le répertoire."}[L])}</div>
-        </form>
-      </div>
-    </div>
-  </section>`;
 }
 
 function blockCommunityJoin(){
@@ -6530,26 +6475,6 @@ function onLeadSubmit(e){
   f.reset();
   // toast pulse on nav automation
   flashAutomationLink();
-}
-
-function onListingSubmit(e){
-  e.preventDefault();
-  var f=e.target, d=Object.fromEntries(new FormData(f).entries());
-  var L=(typeof LANG!=="undefined"?LANG:"es").toUpperCase();
-  var extra=[];
-  if(d.categoria) extra.push("Categoría: "+d.categoria);
-  if(d.redes) extra.push("Redes sociales: "+d.redes);
-  if(d.descripcion) extra.push("Descripción: "+d.descripcion);
-  try{
-    fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      name:d.negocio, company:d.negocio, email:d.email, whatsapp:d.whatsapp, phone:d.whatsapp,
-      website:d.web||"", promote:d.tipo||"", message:extra.join(" | "),
-      service:"contacto", source:"Directorio NETWORKING LINBIX - alta de negocio", locale:L
-    })}).catch(function(){});
-  }catch(_){}
-  var ok=f.querySelector(".form-ok"); if(ok) ok.classList.add("show");
-  f.reset();
-  return false;
 }
 
 function flashAutomationLink(){
