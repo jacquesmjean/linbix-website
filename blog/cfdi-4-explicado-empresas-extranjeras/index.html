@@ -2530,7 +2530,7 @@ const T = {
   eventCatalog:{
     featured:{
       id:"desayuno-red-linbix-agosto",
-      date:"2026-08-14T09:00:00-05:00",
+      date:"2026-08-14T11:00:00-05:00",
       capacity:20, spotsLeft:20, img:"/media/photos-lg/img_rooftop_bar.jpg",
       title:{es:"Desayuno Red Linbix", en:"Red Linbix Breakfast", fr:"Petit-déjeuner Red Linbix"},
       subtitle:{es:"Incrementar nuestras ventas apoyándonos mutuamente.",
@@ -2538,13 +2538,20 @@ const T = {
                 fr:"Faire croître nos ventes en nous soutenant mutuellement."},
       tiers:[
         {k:"general", priceMXN:530, name:{es:"General",en:"General",fr:"Général"}, perks:{
-          es:["Encuentro íntimo con 20 socios","Cada participante comparte su idea de negocio","Fórmulas para detonar ventas","Alianzas estratégicas en el círculo de colaboración"],
-          en:["Intimate meetup — 20 partners","Each attendee shares their business idea","Formulas to trigger sales","Strategic alliances in the collaboration circle"],
-          fr:["Rencontre intime — 20 partenaires","Chaque participant partage son idée","Formules pour déclencher les ventes","Alliances stratégiques dans le cercle"],
+          es:["Encuentro íntimo con 20 socios de Linbix","Comparte tu idea de negocio y propuesta de valor","Alianzas estratégicas en el círculo de colaboración","Fórmulas para detonar las ventas apoyándonos mutuamente"],
+          en:["Intimate meetup with 20 Linbix partners","Share your business idea and value proposition","Strategic alliances within the collaboration circle","Formulas to boost sales by supporting each other"],
+          fr:["Rencontre intime avec 20 partenaires Linbix","Partagez votre idée d'affaires et proposition de valeur","Alliances stratégiques dans le cercle de collaboration","Formules pour dynamiser les ventes en nous soutenant mutuellement"],
         }},
       ],
     },
     upcoming:[
+      {id:"desayuno-red-linbix-agosto", date:"2026-08-14T11:00:00-05:00", capacity:20, spotsLeft:20,
+        img:"/media/photos-lg/img_rooftop_bar.jpg",
+        title:{es:"Desayuno Red Linbix",en:"Red Linbix Breakfast",fr:"Petit-déjeuner Red Linbix"},
+        summary:{es:"Incrementar nuestras ventas apoyándonos mutuamente. Encuentro íntimo con 20 socios de Linbix — cada participante comparte su idea de negocio, explora alianzas estratégicas y propone fórmulas para detonar ventas dentro del círculo de colaboración.",
+                 en:"Grow our sales by supporting each other. Intimate meetup with 20 Linbix partners — each participant shares their business idea, explores strategic alliances, and proposes formulas to trigger sales within the collaboration circle.",
+                 fr:"Faire croître nos ventes en nous soutenant mutuellement. Rencontre intime avec 20 partenaires Linbix — chaque participant partage son idée, explore des alliances stratégiques et propose des formules pour déclencher les ventes."},
+        tiers:[{k:"general",priceMXN:530,name:{es:"General",en:"General",fr:"Général"}}]},
       {id:"cena-networking-red-linbix", date:"2026-08-21T19:00:00-05:00", capacity:30, spotsLeft:30,
         img:"/media/photos/img_rooftop_lounge.jpg",
         title:{es:"Cena Networking Linbix · Dar & Recibir",en:"Linbix Networking Dinner · Give & Receive",fr:"Dîner Networking Linbix · Donner & Recevoir"},
@@ -2724,7 +2731,7 @@ const T = {
        wework:{es:"$732 MXN",en:"$732 MXN",fr:"732 $ MXN"},
        winner:"linbix"},
       {label:{es:"Oficina virtual con domicilio fiscal",en:"Virtual office with fiscal address",fr:"Bureau virtuel avec adresse fiscale"},
-       linbix:{es:"$800 MXN/mes — incluido en plan SAT 4.0",en:"$800 MXN/mo — SAT 4.0 included",fr:"800 $ MXN/mois — SAT 4.0 inclus"},
+       linbix:{es:"$1,200 MXN/mes — incluido en plan SAT 4.0",en:"$1,200 MXN/mo — SAT 4.0 included",fr:"1 200 $ MXN/mois — SAT 4.0 inclus"},
        wework:{es:"No es servicio principal",en:"Not a primary service",fr:"Pas un service principal"},
        winner:"linbix"},
       {label:{es:"Atención en español, inglés y francés",en:"Support in Spanish, English, and French",fr:"Accueil en espagnol, anglais et français"},
@@ -4421,10 +4428,10 @@ const LANG_TO_CURRENCY = { es:"MXN", en:"USD", fr:"EUR" };
    ============================================================ */
 const SERVICES = [
   {
-    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true, priceMXN:800,
+    id:"oficina-virtual", icon:"🏢", queue:"ventas", value:9, recurring:true, priceMXN:1200,
     img:"https://static.wixstatic.com/media/026b5c_680ad6468d544f5c89ca6d792a0abaa9~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/file.jpg",
     name:{es:"Oficina Virtual", en:"Virtual Office", fr:"Bureau virtuel"},
-    price:{es:"Desde $800 MXN", en:"From $800 MXN", fr:"Dès 800 $ MXN"},
+    price:{es:"Desde $1,200 MXN", en:"From $1,200 MXN", fr:"Dès 1 200 $ MXN"},
     pnote:{es:"+ IVA · mínimo 6 meses", en:"+ VAT · 6-month minimum", fr:"+ TVA · minimum 6 mois"},
     summary:{es:"Tu empresa con domicilio fiscal en una zona ejecutiva de Guadalajara — sin pagar la renta de una oficina vacía.",
              en:"Your company with a fiscal address in an executive zone of Guadalajara — without paying rent on an empty office.",
@@ -4433,12 +4440,9 @@ const SERVICES = [
           en:"A smart space with the same infrastructure as a conventional office, at a fraction of the cost — so you start your business without worrying about rent and fixed expenses. Choose the package that fits your stage.",
           fr:"Un espace intelligent avec la même infrastructure qu'un bureau classique, à une fraction du coût — pour démarrer sans vous soucier du loyer et des frais fixes. Choisissez le forfait adapté à votre étape."},
     tiers:[
-      {n:"Virtual Millenial", p:"$800", mxn:800, f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 1 hora"],
-                                          en:["Full mail handling","Commercial address","Tax address","Equipped meeting room · 1 hour"],
-                                          fr:["Gestion complète du courrier","Adresse commerciale","Adresse fiscale","Salle de réunion équipée · 1 heure"]}},
-      {n:"Virtual Plus", p:"$1,200", mxn:1200, badge:true, f:{es:["Todo lo anterior","Acceso a coworking","Sala de juntas · 6 horas","Número telefónico personal","Contestación telefónica personalizada"],
-                                          en:["Everything above","Coworking access","Meeting room · 6 hours","Personal phone number","Personalized call answering"],
-                                          fr:["Tout ce qui précède","Accès au coworking","Salle de réunion · 6 heures","Numéro de téléphone personnel","Réponse téléphonique personnalisée"]}},
+      {n:"Virtual Plus", p:"$1,200", mxn:1200, badge:true, f:{es:["Integral de correspondencia","Domicilio comercial","Domicilio fiscal","Sala de juntas equipada · 6 horas","Acceso a coworking","Número telefónico personal","Contestación telefónica personalizada"],
+                                          en:["Full mail handling","Commercial address","Tax address","Equipped meeting room · 6 hours","Coworking access","Personal phone number","Personalized call answering"],
+                                          fr:["Gestion complète du courrier","Adresse commerciale","Adresse fiscale","Salle de réunion équipée · 6 heures","Accès au coworking","Numéro de téléphone personnel","Réponse téléphonique personnalisée"]}},
       {n:"Virtual Emprendedor", p:"$1,800", mxn:1800, f:{es:["Todo lo de Plus","Servicio administrativo"],
                                           en:["Everything in Plus","Administrative service"],
                                           fr:["Tout le forfait Plus","Service administratif"]}},
